@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <meta name="description" content="This is the preface of the workbook" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the preface of the workbook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  
+  <meta name="twitter:description" content="This is the preface of the workbook" />
+  
+
+<meta name="author" content="Michael Strausz" />
+
+
+<meta name="date" content="2023-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="making-controlled-comparisons.html"/>
+<link rel="next" href="chi-squared-etc.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#class-project"><i class="fa fa-check"></i><b>1.2</b> Create a project for this class</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.3</b> Using the Console</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.3.1</b> Rules about naming objects</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.3.2</b> Common practices when naming objects</a></li>
+<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.3.3</b> About vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.4</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.5</b> What do to if the “load” command doesn’t load the dataframe</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#install-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#exploring"><i class="fa fa-check"></i><b>2.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphing.html"><a href="graphing.html"><i class="fa fa-check"></i><b>3</b> Graphing and describing variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphing.html"><a href="graphing.html#getting-started-tidyverse"><i class="fa fa-check"></i><b>3.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="3.6" data-path="graphing.html"><a href="graphing.html#review-exercises-2"><i class="fa fa-check"></i><b>3.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="recoding.html"><a href="recoding.html"><i class="fa fa-check"></i><b>4</b> Recoding and comparing values of variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
+<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
+<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html"><i class="fa fa-check"></i><b>5</b> Making controlled comparisons</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#getting-started-comparisons"><i class="fa fa-check"></i><b>5.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#stacked"><i class="fa fa-check"></i><b>5.2</b> Representing crosstabs with stacked bar graphs</a></li>
+<li class="chapter" data-level="5.3" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#representing-mean-comparison-tables-with-boxplots"><i class="fa fa-check"></i><b>5.3</b> Representing mean comparison tables with boxplots</a></li>
+<li class="chapter" data-level="5.4" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab"><i class="fa fa-check"></i><b>5.4</b> Adding a control to a crosstab</a></li>
+<li class="chapter" data-level="5.5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table"><i class="fa fa-check"></i><b>5.5</b> Adding a control to a mean comparison table</a></li>
+<li class="chapter" data-level="5.6" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-of-this-chapters-commands-4"><i class="fa fa-check"></i><b>5.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="5.7" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-exercises-4"><i class="fa fa-check"></i><b>5.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferences.html"><a href="inferences.html"><i class="fa fa-check"></i><b>6</b> Making inferences from sample means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inferences.html"><a href="inferences.html#getting-started-inferences"><i class="fa fa-check"></i><b>6.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="6.2" data-path="inferences.html"><a href="inferences.html#constructing-a-confidence-interval-around-a-mean"><i class="fa fa-check"></i><b>6.2</b> Constructing a confidence interval around a mean</a></li>
+<li class="chapter" data-level="6.3" data-path="inferences.html"><a href="inferences.html#ci-around-proportion"><i class="fa fa-check"></i><b>6.3</b> Constructing a confidence interval around a proportion</a></li>
+<li class="chapter" data-level="6.4" data-path="inferences.html"><a href="inferences.html#ci-around-proportions"><i class="fa fa-check"></i><b>6.4</b> Constructing confidence intervals around several proportions at once</a></li>
+<li class="chapter" data-level="6.5" data-path="inferences.html"><a href="inferences.html#t-test-ind-means"><i class="fa fa-check"></i><b>6.5</b> T-test of independent means</a></li>
+<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.6</b> T-test of independent proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-exercises-5"><i class="fa fa-check"></i><b>6.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html"><i class="fa fa-check"></i><b>7</b> From chi-squared to somers’ d</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#getting-started-chi"><i class="fa fa-check"></i><b>7.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Caculating chi-squared</a></li>
+<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda-and-the-pres"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
+<li class="chapter" data-level="7.4" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#cramers-v"><i class="fa fa-check"></i><b>7.4</b> Cramer’s V</a></li>
+<li class="chapter" data-level="7.5" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#somers-d"><i class="fa fa-check"></i><b>7.5</b> Somers’ D</a></li>
+<li class="chapter" data-level="7.6" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-of-this-chapters-commands-6"><i class="fa fa-check"></i><b>7.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="7.7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-exercises-6"><i class="fa fa-check"></i><b>7.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="pearsons-r.html"><a href="pearsons-r.html"><i class="fa fa-check"></i><b>8</b> From Pearson’s r and linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pearsons-r.html"><a href="pearsons-r.html#getting-started-pearsons-r"><i class="fa fa-check"></i><b>8.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="pearsons-r.html"><a href="pearsons-r.html#pearsons-r-1"><i class="fa fa-check"></i><b>8.2</b> Pearson’s R</a></li>
+<li class="chapter" data-level="8.3" data-path="pearsons-r.html"><a href="pearsons-r.html#scatterplot"><i class="fa fa-check"></i><b>8.3</b> The scatterplot</a></li>
+<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-linear-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
+<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-exercises-7"><i class="fa fa-check"></i><b>8.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>9</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression.html"><a href="regression.html#getting-started-multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="9.2" data-path="regression.html"><a href="regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple regression</a></li>
+<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.3</b> Stargazer output</a></li>
+<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.4</b> Dummy variables in multiple regression</a></li>
+<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Graphing multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="regression.html"><a href="regression.html#facets"><i class="fa fa-check"></i><b>9.5.1</b> Facets</a></li>
+<li class="chapter" data-level="9.5.2" data-path="regression.html"><a href="regression.html#color-coding-dots"><i class="fa fa-check"></i><b>9.5.2</b> Color coding dots</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#review-exercises-8"><i class="fa fa-check"></i><b>9.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wild.html"><a href="wild.html"><i class="fa fa-check"></i><b>10</b> R in the wild</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="wild.html"><a href="wild.html#todays-lab-as-a-reference"><i class="fa fa-check"></i><b>10.1</b> Today’s lab as a reference</a></li>
+<li class="chapter" data-level="10.2" data-path="wild.html"><a href="wild.html#importing-data-into-r"><i class="fa fa-check"></i><b>10.2</b> Importing data into R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="wild.html"><a href="wild.html#importing-csv-files"><i class="fa fa-check"></i><b>10.2.1</b> Importing CSV files</a></li>
+<li class="chapter" data-level="10.2.2" data-path="wild.html"><a href="wild.html#importing-excel-files"><i class="fa fa-check"></i><b>10.2.2</b> Importing Excel files</a></li>
+<li class="chapter" data-level="10.2.3" data-path="wild.html"><a href="wild.html#importing-other-files"><i class="fa fa-check"></i><b>10.2.3</b> Importing other files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="wild.html"><a href="wild.html#cleaning-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Cleaning data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="wild.html"><a href="wild.html#resources"><i class="fa fa-check"></i><b>10.4</b> Online R resources</a></li>
+<li class="chapter" data-level="10.5" data-path="wild.html"><a href="wild.html#the-last-command-how-to-get-help"><i class="fa fa-check"></i><b>10.5</b> The last command: how to get help</a></li>
+<li class="chapter" data-level="10.6" data-path="wild.html"><a href="wild.html#the-strausz-method-for-improving-in-r"><i class="fa fa-check"></i><b>10.6</b> The Strausz method for improving in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inferences" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Making inferences from sample means<a href="inferences.html#inferences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-started-inferences" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Getting started with this chapter<a href="inferences.html#getting-started-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section <a href="tidyverse.html#exploring">2.2</a>.</p>
+<p>Now, open a new script file and save it in your scripts folder as “chapter <a href="inferences.html#inferences">6</a> practice.” Copy and paste this onto the page (updating the text so that it is about you):</p>
+<pre><code>####################################
+# Your name
+# 20093 Chapter 6, Practice exercises
+# Date started : Date last modified
+####################################
+
+#libraries------------------------------------------
+library(tidyverse)
+library(Hmisc)        #the cut2 command helps us simplify interval variables
+library(scales) #this is useful when the labels on our axes overlap</code></pre>
+<p>Now select all the text on this page, run it, and save it.</p>
+</div>
+<div id="constructing-a-confidence-interval-around-a-mean" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Constructing a confidence interval around a mean<a href="inferences.html#constructing-a-confidence-interval-around-a-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The fundamental task of much statistical analysis is to make mathematically informed inferences about populations from samples. We can see this most clearly when looking at data like the ANES, which is a sample of Americans from which we want to make inferences about all Americans. But even when looking at our states or world dataset, in which our dataframe includes data about all states and (almost) all countries in the world, it is still helpful to think about making inferences about populations. In this case, we might think of the population as states or countries that we cannot observe because they are hypothetical, they have not yet come into existence (because they are in the future) or they existed in the past. In other words, we are studying our group of states and countries to make inferences about hypothetical states and countries, states and countries in the future, states and countries in the past, or state and countries that we cannot observe for some other reason.</p>
+<p>One inference that we often want to make about a population is the mean of some variable. Given the mean that we observe in sample, what is the range of outcomes for the population mean that we might reasonably expect to observe?</p>
+<p>This is the formula for the confidence interval around a mean:</p>
+<p><span class="math display">\[CI = \bar{x} ± t_{critical}{\frac{s}{\sqrt{n}}}\]</span></p>
+<p>The critical value for t will vary with the sample size. “S” is the sample standard deviation, and “n” is the sample size. You might recall from class that <span class="math display">\[{\frac{s}{\sqrt{n}}}\]</span> is the standard error of the sample mean.</p>
+<p>Let’s imagine that we want to estimate the mean feeling thermometer value for Americans’ view of the Centers for Disease Control and Prevention (the CDC). First we can ask R to calculate the mean of our sample, using the mean() command that we learned in Chapter 3. If we were to enter <code>mean(anes2020$ft_cdc)</code>, we would get NA” as our output, because there are some cases with missing data. To address this, we must ask R to remove the NAs for the purposes of this operation with “na.rm=TRUE”, like this:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="inferences.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(anes2020<span class="sc">$</span>ft_cdc, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 70.19634</code></pre>
+<p>This tells us that the mean of our sample is 70.19634. Or, in other words, the average person in our sample gives the CDC a 70.2 on a feeling thermometer with possible values ranging from 0-100. Based on this, what can we say about the population mean? To answer this question, we can ask R to construct a confidence interval around this mean, with this command:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="inferences.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ft_cdc<span class="sc">~</span><span class="dv">1</span>, <span class="at">data=</span>anes2020)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  ft_cdc
+## t = 253.43, df = 7272, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  69.65338 70.73931
+## sample estimates:
+## mean of x 
+##  70.19634</code></pre>
+<p>Before we look at the output, let’s look at the command. We are asking R to construct a t-test of the mean of only one variable (which explains the ~1), and we are telling R to find that variable in the anes2020 dataframe.</p>
+<p>Looking at the output, after the title, “One Sample t-test” the next three lines are not particularly useful. The fourth and fifh lines, however, are quite helpful. They tell us that the 95% confidence interval that we can put around our sample mean goes from 69.7 to 70.7. In other words, there is a 95% chance that the true population mean feeling thermometer when this survey was taken was somewhere between 69.7 and 70.7. If we wanted to be even more confident than 95%–say, for example, we wanted to be 99% confident that our interval contains the population mean—-we could include a line in our command setting the confidence interval like this:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="inferences.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(ft_cdc<span class="sc">~</span><span class="dv">1</span>, <span class="at">data=</span>anes2020, <span class="at">conf.level=</span>.<span class="dv">99</span>)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  ft_cdc
+## t = 253.43, df = 7272, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 99 percent confidence interval:
+##  69.48270 70.90999
+## sample estimates:
+## mean of x 
+##  70.19634</code></pre>
+<p>When you run this command, notice that if we want to be more confident that our interval contains the true population mean, the margin between our lower and upper estimate gets larger. Similarly, if we set the confidence interval to 90%, or 80%, the interval gets smaller.</p>
+</div>
+<div id="ci-around-proportion" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Constructing a confidence interval around a proportion<a href="inferences.html#ci-around-proportion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For nominal and ordinal variables, it does not make sense to calculate a mean, but we still often want to make inferences about a population from a sample. In fact, these are one of the most commonly reported kinds of inferences that we who follow politics hear: 54.2% of people support this policy, 32.1% of people support that politician, etc. To ask R to calculate a confidence interval around a proportion, we first need two pieces of information: how many cases got the value that we are interested in, and how many cases are there total. So, for example, let’s say that we want to use our anes2020 dataset to estimate the proportion of Americans that are married. We can first run the table command, like this:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="inferences.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(anes2020<span class="sc">$</span>marital)</span></code></pre></div>
+<pre><code>## 
+##      divorced       married never married     separated       widowed 
+##          1221          4322          1951           163           567</code></pre>
+<p>When we run this command, we see that there are 4,322 married people in our sample. Unfortunately, the table command itself does not tell us the total number of cases in our sample, but to get that, we can ask R to sum all the values that it shows in the table command like this:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="inferences.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">table</span>(anes2020<span class="sc">$</span>marital))</span></code></pre></div>
+<pre><code>## [1] 8224</code></pre>
+<p>When we run this command, we get the total number of cases for which R has data on the marital question: 8,224. This is the sum of all of the numbers that we saw above, when we ran the table() command. Since the table() command automatically excludes the NAs, this sum also excludes NAs.</p>
+<p>So, now we know that there were 4,322 married people in our dataset out of the 8,224 people for whom we have data. We could do have R do some simple math and calculate a proportion by entering 4332/8224 into the Console. The output tells us that 0.526751—about 52.7%—of individuals in our sample are married. Based on this finding about our sample, what can we say about our population? To help us generalize, we can use those two numbers (4,332 married people out of 8,224 total people) along with the prop.test() command to help generate a confidence interval around that proportion.</p>
+<p>When using the prop.test() command, in the parenthesis we first put the number of cases with the value that we are interested in, then a comma, then the total number of cases. So, to estimate the proportion of Americans that are married, we would use prop.test() like this:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="inferences.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="dv">4332</span>,<span class="dv">8224</span>)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  4332 out of 8224
+## X-squared = 23.434, df = 1, p-value = 1.293e-06
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.5158893 0.5375875
+## sample estimates:
+##        p 
+## 0.526751</code></pre>
+<p>Just like the output from the t-test, the first few lines are testing a hypothesis that we are likely not interested in. In this case, the default is to test the hypothesis that the population proportion is actually .5. If you want to set that hypothesis to a different value, you can add p=the value you are interested in after a comma. So, for example, if you had a hypothesis that 70% of Americans are married, you could test that hypothesis with this command:</p>
+<pre><code>prop.test(4332,8224, p=.7)</code></pre>
+<p>But the most important part of this output begins with the fourth line. This shows that the 95% confidence interval around the estimate that the proportion of Americans that are married goes from .5158893 to .5375875. Or, put another way, based on our sample, we can infer that 95% of the time, a sample like ours would be drawn from a population where between 51.6% and 53.8% of the population was married.</p>
+<p>If we want to change the values of our confidence interval, to be 99% confident (or 90% confident, or 80% confident), we can add a comma and then conf.level= and then the level that we are interested in, expressed as a proportion. So, for example, if we wanted to be 99% confident that our interval contains the true population proportion, we could alter the command like this:</p>
+<pre><code>prop.test(4332,8224, conf.level=.99)</code></pre>
+<p>Note that the interval gets wider as the confidence level goes up.</p>
+</div>
+<div id="ci-around-proportions" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Constructing confidence intervals around several proportions at once<a href="inferences.html#ci-around-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the previous section, we learned how to construct a confidence interval around a single proportion at a time. However, what if we want to calculate confidence intervals around all values of a nominal or ordinal variable at the same time? To do that, you can use the following code. Just replace anes2020 with the dataframe that you are interested in analyzing, and replace the two instances of marital (in the second and third lines of the code) with the name of the variable that you are interested in. You can keep everything else the same:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="inferences.html#cb197-1" aria-hidden="true" tabindex="-1"></a>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb197-2"><a href="inferences.html#cb197-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(marital)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb197-3"><a href="inferences.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(marital) <span class="sc">%&gt;%</span>     </span>
+<span id="cb197-4"><a href="inferences.html#cb197-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">group.n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb197-5"><a href="inferences.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total.n=</span><span class="fu">sum</span>(group.n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb197-6"><a href="inferences.html#cb197-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>group.n<span class="sc">/</span>total.n) <span class="sc">%&gt;%</span> </span>
+<span id="cb197-7"><a href="inferences.html#cb197-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb197-8"><a href="inferences.html#cb197-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(group.n, total.n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb197-9"><a href="inferences.html#cb197-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(group.n, total.n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>])  </span></code></pre></div>
+<pre><code>## # A tibble: 5 x 6
+## # Rowwise: 
+##   marital       group.n total.n proportion lower_ci upper_ci
+##   &lt;chr&gt;           &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 divorced         1221    8224     0.148    0.141    0.156 
+## 2 married          4322    8224     0.526    0.515    0.536 
+## 3 never married    1951    8224     0.237    0.228    0.247 
+## 4 separated         163    8224     0.0198   0.0170   0.0231
+## 5 widowed           567    8224     0.0689   0.0636   0.0747</code></pre>
+<p>Reading down this output, we can see that a proportion of .148 (or 14.8%) of our sample is divorced. The next two columns tell us that there is a 95% chance that the true population proportion of divorced people is between 14.1% and 15.6%. We can see the married values on the second line, with a familiar confidence interval, and each additional line clearly displays the confidence interval around the proportion that we are interested in. And as we continue to read down, we can see the remaining proportions with their associated confidence intervals.</p>
+</div>
+<div id="t-test-ind-means" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> T-test of independent means<a href="inferences.html#t-test-ind-means" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We often find ourselves in a situation where we want to compare the means of two different groups in our sample, and make inferences about the population. So, for example, we might want to compare men and women, Democrats and Republicans, voters and non-voters, etc. For the purposes of this example, we will be comparing democracies and non-democracies in our world dataframe. Before we can start with this comparison, though, we have to do a bit of housekeeping. The democracy variable that we have in the world dataframe is an interval variable, with values ranging from 14.3 (a value shared by countries including Equatorial Guinea, Eritrea, North Korea, and Saudi Arabia) to 100 (a value shared by Andorra, Australia, the Bahamas, Canada, and the United States).</p>
+<p>To generate an ordinal variable to measure democracies, partial democracies, and non-democracies, we can use the cut2 command like this:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="inferences.html#cb199-1" aria-hidden="true" tabindex="-1"></a>world<span class="sc">$</span>democ3<span class="ot">&lt;-</span><span class="fu">cut2</span>(world<span class="sc">$</span>fh_democ, <span class="at">g=</span><span class="dv">3</span>)</span></code></pre></div>
+<p>When we run this command, we get a new ordinal variable in the world dataframe that has three levels. To see what those levels are named, we can use the levels command, like this:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="inferences.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(world<span class="sc">$</span>democ3)</span></code></pre></div>
+<pre><code>## [1] &quot;[14.3, 57.1)&quot; &quot;[57.1, 92.8)&quot; &quot;[92.8,100.0]&quot;</code></pre>
+<p>We can rename those levels to more intuitive names like this:</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="inferences.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(world<span class="sc">$</span>democ3)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;non-democracy&quot;</span>,<span class="st">&quot;partial democracy&quot;</span>,<span class="st">&quot;democracy&quot;</span>)</span></code></pre></div>
+<p>The question that I want to address is whether democracies have more economic equality than non-democracies. The conventional measure of economic equality is the GINI coefficient, which ranges from 0 (total equality) to 100 (total inequality). Using the commands that we learned in chapter 4, we can first examine what the mean differences are between democracies, partial democracies, and non-democracies on their GINI coefficient, with this command:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="inferences.html#cb203-1" aria-hidden="true" tabindex="-1"></a>world <span class="sc">%&gt;%</span> </span>
+<span id="cb203-2"><a href="inferences.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(democ3)) <span class="sc">%&gt;%</span> </span>
+<span id="cb203-3"><a href="inferences.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(UNDP_Gini2014)) <span class="sc">%&gt;%</span> </span>
+<span id="cb203-4"><a href="inferences.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(democ3) <span class="sc">%&gt;%</span> </span>
+<span id="cb203-5"><a href="inferences.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(UNDP_Gini2014), <span class="at">sd=</span><span class="fu">sd</span>(UNDP_Gini2014), <span class="at">n=</span><span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   democ3             mean    sd     n
+##   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1 non-democracy      38.8  6.77    51
+## 2 partial democracy  43.8 10.3     53
+## 3 democracy          37.2  9.25    32</code></pre>
+<p>This output suggests that the most equal societies are democracies, followed by non-democracies, with partial democracies being the least equal of all. Are these differences due to random sampling error, or do they reflect a population-level difference between democracies and non-democracies? In other words, are these differences statistically significant?</p>
+<p>Before conducting a significance test, it is important to specify our null and research hypotheses. In this case, our null hypothesis is that there is no relationship between regime type and level of equality, and our research hypothesis is that democracies have more equality than non-democracies. To test our hypotheses, we can use the same t.test() command from above, but we have to give it more information first. Here is the command that we can use:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="inferences.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(UNDP_Gini2014 <span class="sc">~</span> democ3, <span class="at">data=</span>world <span class="sc">%&gt;%</span> </span>
+<span id="cb205-2"><a href="inferences.html#cb205-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">filter</span>(democ3<span class="sc">==</span><span class="st">&quot;democracy&quot;</span><span class="sc">|</span>democ3<span class="sc">==</span><span class="st">&quot;non-democracy&quot;</span>))</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  UNDP_Gini2014 by democ3
+## t = 0.8757, df = 51.746, p-value = 0.3852
+## alternative hypothesis: true difference in means between group non-democracy and group democracy is not equal to 0
+## 95 percent confidence interval:
+##  -2.137422  5.446797
+## sample estimates:
+## mean in group non-democracy     mean in group democracy 
+##                    38.82000                    37.16531</code></pre>
+<p>Notice how the first thing in the parentheses after t.test is the dependent variable (i.e. the variable that we are calculating the mean of), followed by a ~ and then our independent variable (democ3). One thing that is a little tricky is that R does not like to do a t-test when the independent variable has more than two values. To address this, I have used the dplyr filter command to set it so that I am only looking at cases of democ2 coded “democracy” or “non-democracy” (i.e. I am filtering out the NAs and partial democracies). The “|” between the two conditions (it is the character above the “" on your keyboard) means”or.”</p>
+<p>Now take a look at the output. There are a few things to note here. First of all, we could see that the reported p-value is .3852. That tells us that, if we accept the research hypothesis that democracies have more equality than non-democracies, there is a probability of .3852, or a 38.5% chance, that we are making Type I error (rejecting a true null hypothesis). Since the critical value for p is generally set to .05 (meaning we are not willing to take more than a 5% risk of Type I error), we would fail to reject the null hypothesis.</p>
+<p>We can also see that we would fail to reject the null hypothesis by looking at the confidence interval that R reports. Since this is a t-test of two samples, the confidence interval is actually of the difference between the two means. In other words, that confidence interval is telling us that there is a 95% chance that the true population difference in GINI coefficient between democracies and non-democracies is between -2.14 and 5.45. Since that interval includes 0, we cannot rule out the possibility that there is no difference at all between our two means in the population.</p>
+<p>We can also graph these results. As usual, we will put our independent variable (regime type) on the X-axis, and our dependent variable, GINI score, on the Y axis. For today’s new feature, we will also add 95% confidence intervals to our graph. This gives us the ability to see whether the differences between all of the bars on our graph are statistically significant. And, while an independent samples t-test can only be between the means of two groups at a time, this graph will let you look at more than two groups at a time. Below is the code:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="inferences.html#cb207-1" aria-hidden="true" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>world <span class="sc">%&gt;%</span> </span>
+<span id="cb207-2"><a href="inferences.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(democ3)) <span class="sc">%&gt;%</span></span>
+<span id="cb207-3"><a href="inferences.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(UNDP_Gini2014)) <span class="sc">%&gt;%</span></span>
+<span id="cb207-4"><a href="inferences.html#cb207-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(democ3) <span class="sc">%&gt;%</span> </span>
+<span id="cb207-5"><a href="inferences.html#cb207-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( </span>
+<span id="cb207-6"><a href="inferences.html#cb207-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb207-7"><a href="inferences.html#cb207-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean=</span><span class="fu">mean</span>(UNDP_Gini2014),</span>
+<span id="cb207-8"><a href="inferences.html#cb207-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd=</span><span class="fu">sd</span>(UNDP_Gini2014)) <span class="sc">%&gt;%</span></span>
+<span id="cb207-9"><a href="inferences.html#cb207-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">se=</span>sd<span class="sc">/</span><span class="fu">sqrt</span>(n))  <span class="sc">%&gt;%</span></span>
+<span id="cb207-10"><a href="inferences.html#cb207-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ci=</span>se <span class="sc">*</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="fl">-0.05</span>)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> .<span class="dv">5</span>, n<span class="dv">-1</span>))</span>
+<span id="cb207-11"><a href="inferences.html#cb207-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-12"><a href="inferences.html#cb207-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
+<span id="cb207-13"><a href="inferences.html#cb207-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>democ3, <span class="at">y=</span>mean), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb207-14"><a href="inferences.html#cb207-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>( <span class="fu">aes</span>(<span class="at">x=</span>democ3, <span class="at">ymin=</span>mean<span class="sc">-</span>ci, <span class="at">ymax=</span>mean<span class="sc">+</span>ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb207-15"><a href="inferences.html#cb207-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Equality in democracies and non-democracies&quot;</span>, </span>
+<span id="cb207-16"><a href="inferences.html#cb207-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
+<span id="cb207-17"><a href="inferences.html#cb207-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb207-18"><a href="inferences.html#cb207-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">&quot;Gini coefficient in 2014 (lower numbers mean more equality)&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+Here we can see the overlapping 95% confidence intervals on each bar, reminding us that the difference that we observe is not statistically significant.</p>
+</div>
+<div id="t-test-ind-props" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> T-test of independent proportions<a href="inferences.html#t-test-ind-props" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are times when we want to compare two or more proportions to examine whether or not the differences are due to random sampling error or some genuine correlation at the population level. Unfortunately, R does not make it easy to run a t-test comparing two proportions. However, we can use dplyr in a way similar to what we did in section <a href="inferences.html#ci-around-proportion">6.3</a> to generate some helpful output. Before we begin, we have to know three things:</p>
+<ol style="list-style-type: decimal">
+<li>What is the nominal or ordinal independent variable that we are interested in examining?</li>
+<li>What is the nominal or ordinal dependent variable that we are interested in examining?</li>
+<li>For our dependent variable, what is the value that we want to focus on?</li>
+</ol>
+<p>For the following example, I am interested in the relationship between whether or not a voter thought that the 2020 government response to COVID was appropriate or not and whether or not the person voted for Trump in the 2020 election. To generate a table that displays that information, I will use the following code. Please note that this is very similar to the code that we used in section (ci-around-proportions). When using this code to generate your own table, you can replace anes2020 with the dataframe that you want to look at, “v2020” with your dependent variable, “covid” with your independent variable, and v2020==“Donald Trump” with:</p>
+<pre><code>DV==&quot;the value that you are interested in&quot;</code></pre>
+<p>Here is the code:</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="inferences.html#cb209-1" aria-hidden="true" tabindex="-1"></a>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb209-2"><a href="inferences.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-3"><a href="inferences.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-4"><a href="inferences.html#cb209-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-5"><a href="inferences.html#cb209-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb209-6"><a href="inferences.html#cb209-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb209-7"><a href="inferences.html#cb209-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-8"><a href="inferences.html#cb209-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-9"><a href="inferences.html#cb209-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb209-10"><a href="inferences.html#cb209-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb209-11"><a href="inferences.html#cb209-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb209-12"><a href="inferences.html#cb209-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 6
+## # Rowwise: 
+##   covid                  n numerat proportion lower_ci upper_ci
+##   &lt;ord&gt;              &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Much too quick        93      63     0.677    0.571     0.769
+## 2 Somewhat too quick    63      56     0.889    0.778     0.950
+## 3 About right         1888    1720     0.911    0.897     0.923
+## 4 Somewhat too slow    595     325     0.546    0.505     0.587
+## 5 Much too slow       3169     286     0.0902   0.0806    0.101</code></pre>
+<p>This output has a bunch of great information. The first row, “much too quick”, for example, tells us that a total of 93 people in the ANES study in 2020 thought that the government’s COVID response moved much too quick. And of those 93, the second number tells us that 63 of them voted for President Trump. The third number tells us that 67.7% of people that thought that the government’s response was much too quick voted for President Trump. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of Trump voters who thought that the COVID response was much too quick is between .571 (or 57.1%) and .769 (or 76.9%). If we read down the rows, we will see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the proportion of Trump votes that thought that the government’s COVID response was somewhat too quick and the proportion that thought that it was about right overlap. The upper limit of the somewhat too quick interval is .95, which is higher than the lower limit of the about right interval (.897). This is easier to see on a graph. We can generate a graph with code similar to what we used in section (t-test-ind-means):</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="inferences.html#cb211-1" aria-hidden="true" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb211-2"><a href="inferences.html#cb211-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-3"><a href="inferences.html#cb211-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-4"><a href="inferences.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-5"><a href="inferences.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb211-6"><a href="inferences.html#cb211-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb211-7"><a href="inferences.html#cb211-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-8"><a href="inferences.html#cb211-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-9"><a href="inferences.html#cb211-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb211-10"><a href="inferences.html#cb211-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb211-11"><a href="inferences.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb211-12"><a href="inferences.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]) </span>
+<span id="cb211-13"><a href="inferences.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb211-14"><a href="inferences.html#cb211-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
+<span id="cb211-15"><a href="inferences.html#cb211-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">y=</span>proportion), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)  <span class="sc">+</span></span>
+<span id="cb211-16"><a href="inferences.html#cb211-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">ymin=</span>lower_ci, <span class="at">ymax=</span>upper_ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb211-17"><a href="inferences.html#cb211-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Assessment of Gov&#39;t covid response and proportion voting for Trump, ANES 2020&quot;</span>,</span>
+<span id="cb211-18"><a href="inferences.html#cb211-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
+<span id="cb211-19"><a href="inferences.html#cb211-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb211-20"><a href="inferences.html#cb211-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion voting for Trump&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>This graph shows us that most of the differences between these bars are statistically significant. In other words, people’s assessment of the government’s response to COVID in 2020 does seem to be pretty strongly correlated with whether or not they voted for President Trump.</p>
+<p>Now when looking at this graph, we might be tempted to observe that it certainly seems like the vast majority of our sample voted for President Trump. After all, more than 50% of respondents in every category, from “much too quick” to “somewhat too slow” voted for President Trump. In only the final category, “much too slow,” were Trump voters a minority. What is going on here?</p>
+<p>To get a clue, we can look at those bars around the 95% confidence intervals. Notice that the narrowest interval is around “much too slow.” This is because that was, by far, the biggest group of people that we surveyed, which means that our estimate can be more precise (and thus the bars can be closer together). To see that even more clearly, let’s take another look at that table that we generated above:</p>
+<pre><code>## # A tibble: 5 x 6
+## # Rowwise: 
+##   covid                  n numerat proportion lower_ci upper_ci
+##   &lt;ord&gt;              &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Much too quick        93      63     0.677    0.571     0.769
+## 2 Somewhat too quick    63      56     0.889    0.778     0.950
+## 3 About right         1888    1720     0.911    0.897     0.923
+## 4 Somewhat too slow    595     325     0.546    0.505     0.587
+## 5 Much too slow       3169     286     0.0902   0.0806    0.101</code></pre>
+<p>The last row tells us that there were 3,169 people who thought that the government’s response to COVID was much too slow. This is much, much larger than any of the other groups. So, when interpreting these kinds of graphs, we want to be careful not to make interferences that aren’t warranted by the graph. The graph does indeed show us that people that approved of the government’s handling of COVID in 2020 were more likely to vote for President Trump, but it does NOT show us that there were more Trump voters in 2020. If you want to know the proportion of our sample that voted for Trump with a 95% confidence interval, you can use <code>table(anes2020$v2020)</code>, <code>sum(table(anes2020$v2020))</code>, and <code>prop.test()</code> to calculate it.</p>
+</div>
+<div id="review-of-this-chapters-commands-5" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Review of this chapter’s commands<a href="inferences.html#review-of-this-chapters-commands-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="93%" />
+<col width="1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Purpose</th>
+<th align="left">Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">t.test()</td>
+<td align="left">To calculate a t-test. With a one sample test, you put the variable that we are interested in ~1, and then a comma, and then data=“your dataframe.” For an an independent samples t-test, you put DV~IV in the parenthesis, and then a comma, and then data= “your dataframe”.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">t.test(…, mu=?)</td>
+<td align="left">A t-test of a single sample is testing the hypothesis that the population mean of the variable you are testing is 0. If you want to test another hypothesis (for example, that the average TCU student has a 17 purple shirts), you can set mu to be the number that you are hypothesizing.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="odd">
+<td align="left">t.test(…, conf.level=?)</td>
+<td align="left">The default confidence interval for a t-test is .95. If you want to set it to something else, you can do it with the conf.level command.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">sum(table())</td>
+<td align="left">This command adds up all of the values in a frequency table. It is useful when calculating proportions.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="odd">
+<td align="left">prop.test()</td>
+<td align="left">This command calculates a confidence interval around a proportion. You must give R two numbers. The number of your cases with the value that you are interested in, followed by a comma, and then the total number of cases that you have data on for that variable (which you can calculate with sum(table()). For example, if you had a sample with 500 people and 200 said that bagels were their favorite baked good, you would write prop,test(200,500) to get a confidence interval around the proportion of people that like bagels best.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">prop.test(…, p=?)</td>
+<td align="left">The default hypothesis for an estimate of a population proportion is that the proportion is .5 (or 50%). If you want to change that, you can type p=and then the proportion that you are hypothesizing about.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="odd">
+<td align="left">prop.test(…, conf.level=?)</td>
+<td align="left">The default confidence interval for a test of proportions is .95. If you want to set it to something else, you can do it with the conf.level command.</td>
+<td align="left">Base R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="review-exercises-5" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Review exercises<a href="inferences.html#review-exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s practice some of the things that we learned in this chapter.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new R script called “Chapter 6 Exercises,” and save it to your R scripts folder. Make a header for the script based on the description from section <a href="tidyverse.html#org-script">2.3</a>. Use the library() command to load the tidyverse, Hmisc, and scales libraries.</li>
+<li>Choose an interval variable from either anes2020, states2010, or world (don’t choose one of the variables that we used as an example in this chapter). Use t.test() to estimate the mean of this variable and a 95% confidence interval. Use t.test() again to generate a 99% confidence interval.</li>
+<li>Create a new file in your word processor. In a few sentences, interpret the means and confidence intervals from question 2.</li>
+<li>Choose a nominal or ordinal variable from either anes2020, states2010, or world (don’t choose one of the variables that we used as an example in this chapter). Choose one particular value of that variable, and using table(), sum(table(), and prop.test(), calculate the proportion of cases with that value and a 95% confidence interval around that value.</li>
+<li>In the word processor file that you interpreted from #3, interpret the proportion and confidence interval from #4.</li>
+<li>Look at the variables that you chose in #2 and #4, and decide which one you’d rather analyze as a dependent variable. Now choose a nominal or ordinal variable as your independent variable. Using techniques from chapter <a href="graphing.html#graphing">3</a>, generate some statistics and a graph to discuss the central tendency and dispersion of your variable. Paste your graph into your word document.</li>
+<li>In a few sentences, hypothesize about the relationship between your independent and dependent variables. What do you expect to see and why?</li>
+<li>If your dependent variable is interval, use the t.test() command to test your hypotheses (remember that you might have to use filter so that you are only looking at two values for your independent variable). If your dependent variable is ordinal or nominal, use the code from section <a href="inferences.html#t-test-ind-props">6.6</a> of this chapter to generate confidence intervals around proportions of a value of interest of your DV for all possible values of your IV.</li>
+<li>Graph the relationship between your IV and DV using techniques from either section <a href="inferences.html#t-test-ind-means">6.5</a> or <a href="inferences.html#t-test-ind-props">6.6</a>.</li>
+<li>Paste your graph into your word processor file as well as a table that shows the statistical significance of the relationships that you are interested in.</li>
+<li>Based on your output from #8 and #10, what do you conclude about your hypothesis from #7 and why?</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="making-controlled-comparisons.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chi-squared-etc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-inferences.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 From Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <meta name="description" content="This is the preface of the workbook" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 From Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the preface of the workbook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 From Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  
+  <meta name="twitter:description" content="This is the preface of the workbook" />
+  
+
+<meta name="author" content="Michael Strausz" />
+
+
+<meta name="date" content="2023-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chi-squared-etc.html"/>
+<link rel="next" href="regression.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#class-project"><i class="fa fa-check"></i><b>1.2</b> Create a project for this class</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.3</b> Using the Console</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.3.1</b> Rules about naming objects</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.3.2</b> Common practices when naming objects</a></li>
+<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.3.3</b> About vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.4</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.5</b> What do to if the “load” command doesn’t load the dataframe</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#install-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#exploring"><i class="fa fa-check"></i><b>2.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphing.html"><a href="graphing.html"><i class="fa fa-check"></i><b>3</b> Graphing and describing variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphing.html"><a href="graphing.html#getting-started-tidyverse"><i class="fa fa-check"></i><b>3.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="3.6" data-path="graphing.html"><a href="graphing.html#review-exercises-2"><i class="fa fa-check"></i><b>3.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="recoding.html"><a href="recoding.html"><i class="fa fa-check"></i><b>4</b> Recoding and comparing values of variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
+<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
+<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html"><i class="fa fa-check"></i><b>5</b> Making controlled comparisons</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#getting-started-comparisons"><i class="fa fa-check"></i><b>5.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#stacked"><i class="fa fa-check"></i><b>5.2</b> Representing crosstabs with stacked bar graphs</a></li>
+<li class="chapter" data-level="5.3" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#representing-mean-comparison-tables-with-boxplots"><i class="fa fa-check"></i><b>5.3</b> Representing mean comparison tables with boxplots</a></li>
+<li class="chapter" data-level="5.4" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab"><i class="fa fa-check"></i><b>5.4</b> Adding a control to a crosstab</a></li>
+<li class="chapter" data-level="5.5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table"><i class="fa fa-check"></i><b>5.5</b> Adding a control to a mean comparison table</a></li>
+<li class="chapter" data-level="5.6" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-of-this-chapters-commands-4"><i class="fa fa-check"></i><b>5.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="5.7" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-exercises-4"><i class="fa fa-check"></i><b>5.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferences.html"><a href="inferences.html"><i class="fa fa-check"></i><b>6</b> Making inferences from sample means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inferences.html"><a href="inferences.html#getting-started-inferences"><i class="fa fa-check"></i><b>6.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="6.2" data-path="inferences.html"><a href="inferences.html#constructing-a-confidence-interval-around-a-mean"><i class="fa fa-check"></i><b>6.2</b> Constructing a confidence interval around a mean</a></li>
+<li class="chapter" data-level="6.3" data-path="inferences.html"><a href="inferences.html#ci-around-proportion"><i class="fa fa-check"></i><b>6.3</b> Constructing a confidence interval around a proportion</a></li>
+<li class="chapter" data-level="6.4" data-path="inferences.html"><a href="inferences.html#ci-around-proportions"><i class="fa fa-check"></i><b>6.4</b> Constructing confidence intervals around several proportions at once</a></li>
+<li class="chapter" data-level="6.5" data-path="inferences.html"><a href="inferences.html#t-test-ind-means"><i class="fa fa-check"></i><b>6.5</b> T-test of independent means</a></li>
+<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.6</b> T-test of independent proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-exercises-5"><i class="fa fa-check"></i><b>6.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html"><i class="fa fa-check"></i><b>7</b> From chi-squared to somers’ d</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#getting-started-chi"><i class="fa fa-check"></i><b>7.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Caculating chi-squared</a></li>
+<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda-and-the-pres"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
+<li class="chapter" data-level="7.4" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#cramers-v"><i class="fa fa-check"></i><b>7.4</b> Cramer’s V</a></li>
+<li class="chapter" data-level="7.5" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#somers-d"><i class="fa fa-check"></i><b>7.5</b> Somers’ D</a></li>
+<li class="chapter" data-level="7.6" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-of-this-chapters-commands-6"><i class="fa fa-check"></i><b>7.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="7.7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-exercises-6"><i class="fa fa-check"></i><b>7.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="pearsons-r.html"><a href="pearsons-r.html"><i class="fa fa-check"></i><b>8</b> From Pearson’s r and linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pearsons-r.html"><a href="pearsons-r.html#getting-started-pearsons-r"><i class="fa fa-check"></i><b>8.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="pearsons-r.html"><a href="pearsons-r.html#pearsons-r-1"><i class="fa fa-check"></i><b>8.2</b> Pearson’s R</a></li>
+<li class="chapter" data-level="8.3" data-path="pearsons-r.html"><a href="pearsons-r.html#scatterplot"><i class="fa fa-check"></i><b>8.3</b> The scatterplot</a></li>
+<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-linear-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
+<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-exercises-7"><i class="fa fa-check"></i><b>8.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>9</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression.html"><a href="regression.html#getting-started-multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="9.2" data-path="regression.html"><a href="regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple regression</a></li>
+<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.3</b> Stargazer output</a></li>
+<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.4</b> Dummy variables in multiple regression</a></li>
+<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Graphing multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="regression.html"><a href="regression.html#facets"><i class="fa fa-check"></i><b>9.5.1</b> Facets</a></li>
+<li class="chapter" data-level="9.5.2" data-path="regression.html"><a href="regression.html#color-coding-dots"><i class="fa fa-check"></i><b>9.5.2</b> Color coding dots</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#review-exercises-8"><i class="fa fa-check"></i><b>9.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wild.html"><a href="wild.html"><i class="fa fa-check"></i><b>10</b> R in the wild</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="wild.html"><a href="wild.html#todays-lab-as-a-reference"><i class="fa fa-check"></i><b>10.1</b> Today’s lab as a reference</a></li>
+<li class="chapter" data-level="10.2" data-path="wild.html"><a href="wild.html#importing-data-into-r"><i class="fa fa-check"></i><b>10.2</b> Importing data into R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="wild.html"><a href="wild.html#importing-csv-files"><i class="fa fa-check"></i><b>10.2.1</b> Importing CSV files</a></li>
+<li class="chapter" data-level="10.2.2" data-path="wild.html"><a href="wild.html#importing-excel-files"><i class="fa fa-check"></i><b>10.2.2</b> Importing Excel files</a></li>
+<li class="chapter" data-level="10.2.3" data-path="wild.html"><a href="wild.html#importing-other-files"><i class="fa fa-check"></i><b>10.2.3</b> Importing other files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="wild.html"><a href="wild.html#cleaning-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Cleaning data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="wild.html"><a href="wild.html#resources"><i class="fa fa-check"></i><b>10.4</b> Online R resources</a></li>
+<li class="chapter" data-level="10.5" data-path="wild.html"><a href="wild.html#the-last-command-how-to-get-help"><i class="fa fa-check"></i><b>10.5</b> The last command: how to get help</a></li>
+<li class="chapter" data-level="10.6" data-path="wild.html"><a href="wild.html#the-strausz-method-for-improving-in-r"><i class="fa fa-check"></i><b>10.6</b> The Strausz method for improving in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="pearsons-r" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> From Pearson’s r and linear regression<a href="pearsons-r.html#pearsons-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-started-pearsons-r" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Getting started with this chapter<a href="pearsons-r.html#getting-started-pearsons-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section <a href="tidyverse.html#exploring">2.2</a>.</p>
+<p>Now type <code>install.packages("ggrepel")</code> into the Console. This new package will help us label our graphs in a way that is easier to read.</p>
+<p>Now, open a new script file and save it in your scripts folder as “chapter <a href="pearsons-r.html#pearsons-r">8</a> practice.” Copy and paste this onto the page (updating the text so that it is about you):</p>
+<pre><code>####################################
+# Your name
+# 20093 Chapter 8, Practice exercises
+# Date started : Date last modified
+####################################
+
+#libraries------------------------------------------
+library(tidyverse)
+library(ggrepel)</code></pre>
+<p>Finally, select all the text on this page, run it, and then save it.</p>
+</div>
+<div id="pearsons-r-1" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Pearson’s R<a href="pearsons-r.html#pearsons-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>What happens when we are interested in the relationship between two interval variables? Up into now, our solution has been to convert those variables into ordinal variables and use chi-squared, Lambda, Cramer’s V, and/or Somers’ D. However, when we do that, we are throwing out information. For example, if we convert an interval measure of respondent’s age into an ordinal variable coded “young”, “middle aged”, and “old”, we are throwing out the distinctions between, for example, 30 and 31-year-olds (assuming that they both fall into our young category) and between 80 and 81-year-olds (assuming that they both fall into our old category).</p>
+<p>Pearson’s R is a test that lets us look at the relationship between two interval variables. It produces a statistic that ranges from -1 to 1, with negative numbers indicating a negative relationship and positive numbers indicating a positive relationship. Although, unlike Lambda and Somers’ D, it is not a Proportional Reduction in Error (PRE) statistic, values farther from 0 indicate stronger relationships, and values closer to 0 indicate weaker relationships (with 0 meaning no relationship).</p>
+<p>R makes it very easy to calculate Pearson’s R. You can simply use the command <code>cor.test()</code>. Below, I test the relationship between two variables that I have found in the states2010 dataframe: citi6013, which is a measure of citizen ideology ranging from 0 to 100 (with higher numbers meaning more liberal and lower numbers being more conservative) and pctfemaleleg (a measure of the percent of a state’s legislators that are women). My hypothesis is that in states where the population is more liberal, there will be more female legislators. In other words, I am hypothesizing that Pearson’s R will be positive. Here is the command:</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="pearsons-r.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(states2010<span class="sc">$</span>pctfemaleleg, states2010<span class="sc">$</span>citi6013)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  x and y
+## t = 4.288, df = 48, p-value = 8.655e-05
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2904799 0.7018161
+## sample estimates:
+##       cor 
+## 0.5262759</code></pre>
+<p>Pearson’s R is a symmetrical test, which means that it produces the same value regardless of which variable you treat as independent or dependent. So, it does not matter which order you enter the variables into a cor.test() command.</p>
+<p>This is R’s Pearson’s R output. R calls this Pearson’s product-moment correlation, which is just another way of saying Pearson’s R. Look at the bottom number of this output: 0.527. That number is positive, which is consistent with my hypothesis. It also seems relatively far for zero, although as I noted above, that is more difficult to interpret with Pearson’s R because it is not a Proportional Reduction in Error statistic.</p>
+<p>The p-value noted at the top ofthe output is 8.655e-05, which is R’s shorthand for 8.655x10-5, which is another way of saying 0.00008655. That is the probability that we would get a sample like this from a population where there was not correlation between our two variables. Since it is (much) lower than 0.05, we can conclude that this relationship is statistically significant. We can also conclude that by looking at the 95% confidence interval around our estimated Pearson’s R value. R reports a confidence interval of 0.29 to 0.7, which does not include 0. Thus, we are 95% confident that there is a positive correlation between our two variables at the population level.</p>
+</div>
+<div id="scatterplot" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> The scatterplot<a href="pearsons-r.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To visualize a relationship between two interval variables, we can generate a scatterplot, one of my favorite graphs to generate. Here is the code that we can use to visualize the relationship between those two variables above. In general, consistent with other graphs you have made, remember to put your independent variable on the x-axis and your dependent variable on the y-axis (as always, you can find a template for this graph in the RStudio code file called “20093 ggplot2 templates.r”.</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="pearsons-r.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
+<span id="cb264-2"><a href="pearsons-r.html#cb264-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb264-3"><a href="pearsons-r.html#cb264-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span>  <span class="co">#if you don’t have data that you want to </span></span>
+<span id="cb264-4"><a href="pearsons-r.html#cb264-4" aria-hidden="true" tabindex="-1"></a>                                                <span class="co">#use to name your dots, leave this line </span></span>
+<span id="cb264-5"><a href="pearsons-r.html#cb264-5" aria-hidden="true" tabindex="-1"></a>                                                <span class="co">#off.</span></span>
+<span id="cb264-6"><a href="pearsons-r.html#cb264-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
+<span id="cb264-7"><a href="pearsons-r.html#cb264-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)<span class="sc">+</span></span>
+<span id="cb264-8"><a href="pearsons-r.html#cb264-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;Citizen ideology and female representation in state legislatures, 2010&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_text_repel).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p>The neat thing about scatterplots is that they display the values of all of the cases of the two variables that you are interested in for all of your data. So, looking at this graph, we can see dots representing all 50 states. How far each dot is along the x-axis tells us how liberal their citizenry is, and how far each dot is along the y-axis tells us the percent of their state legislators that are women.</p>
+<p>We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling dots usually doesn’t make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously.</p>
+<p>The above graph alone tells a pretty clear story about the relationship between our two variables – it is easy to visualize a positive relationship going from Oklahoma in the bottom left to Vermont in the top right. However, what if we wanted to ask R to fit a line to this data? In other words, what if we wanted R to find the line that is closest to all of the points on this graph? To do that, we can add a single line to our code from above:</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="pearsons-r.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
+<span id="cb267-2"><a href="pearsons-r.html#cb267-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb267-3"><a href="pearsons-r.html#cb267-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">formula=</span> y<span class="sc">~</span>x)<span class="sc">+</span> <span class="co">#this is the line of code we add here</span></span>
+<span id="cb267-4"><a href="pearsons-r.html#cb267-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb267-5"><a href="pearsons-r.html#cb267-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
+<span id="cb267-6"><a href="pearsons-r.html#cb267-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_text_repel).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p>The line on this graph is called a regression line, and it is the line that is as close as possible to all of the dots on this graph. The shaded region around it is a 95% confidence interval. Visualize drawing a line from the top left corner of that region to the bottom right corner. If that line that you are visualizing was horizontal or sloping down, then we could not rule out the possibility that there was no relationship or a negative relationship between the two variables that we are looking at there. But even that imaginary line slopes upwards, which is good evidence for our hypothesis.</p>
+</div>
+<div id="bivariate-linear-regression" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Bivariate linear regression<a href="pearsons-r.html#bivariate-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As I mentioned in the last section, the line that goes through the graph that we just generated is called a regression line. Let’s now spend a few minutes reviewing some of what we know about lines from algebra. This is the formula for a line:</p>
+<p>Y=MX+B</p>
+<p>X is our independent variable, and Y is our dependent variable. M is the slope of our line. In other words, a one unit increase in X leads to an M unit increase in Y (or, if M is negative, a one unit increase in Y leads to an M unit decrease in Y). B is the Y intercept of our line. When X is zero, B will be the value of our line.</p>
+<p>When we ask R to draw a regression line on a scatterplot, we are asking R to first find the line that most closely fits all of the points in our scatterplot, and then generate a formula for that line. To generate that formula, R needs to find the slope and the intercept. To ask R to report what slope and intercept it found, we can use this command:</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="pearsons-r.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = pctfemaleleg ~ citi6013, data = states2010)
+## 
+## Coefficients:
+## (Intercept)     citi6013  
+##     13.2388       0.2326</code></pre>
+<p><strong>In this code, we must put the dependent variable first, and then the independent variable second.</strong> The “lm” stands for “linear model” (because we are asking R to generate the formula for a line). This is the most basic form of regression, an extremely powerful family of statistical techniques that are used across the social and natural sciences. This most basic form of regression is called “Ordinary Least Squared,” or OLS regression, because calculating it involves find the line with the minimum squared distance between each point in a scatterplot and that line.</p>
+<p>Looking at the output, R is giving us two numbers: they are R’s estimates for the slop and the intercept in the formula Y=MX+B. Recall that our independent variable is the ideology of a state’s population, and our dependent variable is the percent of female legislatures in a state. So, we can rewrite the Y=MX+B formula with those variables, like this:</p>
+<p>%female legislators=M(state ideology) + B</p>
+<p>And now we can replace M with the slope (which is right under citi6013, the ideology measure on our output) and B with the intercept (which is right number the world “intercept” in our output):</p>
+<p>%female legislators=0.23(state ideology) + 13.24</p>
+<p>This formula is telling us two things. First, it is telling us that for every one unit increase in our independent variable (our state ideology scale with higher numbers meaning more liberal), the percent of female legislators increases by 0.23. Second, it is telling us that in a state where our state ideology scale was 0 (meaning the residents were as conservative as possible), 13.24% of the state legislators would be women.</p>
+<p>Now we know, looking at the second graph in section 8.3, that this line doesn’t perfectly fit the data. Some points are right on the line, like Florida, but others are far above the line, like Colorado, or far below the line, like South Carolina. In order to get a sense of how well our regression actually fits the data, we can ask R to summarize our regression, like this:</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="pearsons-r.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = pctfemaleleg ~ citi6013, data = states2010)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13.5990  -3.7725  -0.5453   3.0920  14.0931 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 13.23882    2.69136   4.919 1.06e-05 ***
+## citi6013     0.23255    0.05423   4.288 8.66e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 5.904 on 48 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.277,  Adjusted R-squared:  0.2619 
+## F-statistic: 18.39 on 1 and 48 DF,  p-value: 8.655e-05</code></pre>
+<p>There is a lot in this output, but there are a few things that you should focus on. First, look at the estimated slope and intercept. Those are the same as above, when we just did the lm() command without summary(). Second, look at the column that says “Pr(&gt;|t|).” That is the significance level of the coefficient and the intercept. In other words, that is the probability that we would see a sample like this from a population where the intercept was 0 and where the slope was 0. The significance level of the intercept is less important, but let’s think about the significance level of the slope. If the slope were 0, then whatever happened to X, Y would not change. Let’s look at the formula to remember why:</p>
+<p>%female legislators=M(state ideology) + B</p>
+<p>If our slope (M) were 0, then the estimated percent of female legislators would be B whatever the state’s ideology was. And thus, there would be no relationship between state ideology and percent of female legislators.</p>
+<p>So, if we can say that it is unlikely that the true slope of our line is 0 (because the p-value is below the level of risk of error that we are willing to take, usually set to .05 in political science), then we can conclude that there is likely to be a relationship between our two variables. Since the p-value of our slope is 8.66*10-5, we can conclude that we are pretty unlikely to get this kind of data from a population with no relationship between our independent and dependent variables. Therefore, we can conclude that this relationship is statistically significant.</p>
+<p>There is one final aspect of this output that we should discuss: the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> values. <span class="math inline">\(R^2\)</span> is a Proportional Reduction in Error (PRE) measure of the strength of a regression relationship. It ranges from 0 to 1, and it tells us the proportion of variation in our dependent variable that is explained by our independent variable. Because <span class="math inline">\(R^2\)</span> values are often a little bit inflated for some statistical reasons that we don’t need to get into in this chapter, it is generally better to use the adjusted <span class="math inline">\(R^2\)</span> to interpret regression results. So, in this case, an adjusted <span class="math inline">\(R^2\)</span> of .2619 tells us that variation in ideology can account for about 26.19% of variation in the percent of female legislators in a state.</p>
+</div>
+<div id="review-of-this-chapters-commands-7" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Review of this chapter’s commands<a href="pearsons-r.html#review-of-this-chapters-commands-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="81%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Purpose</th>
+<th align="left">Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cor.test()</td>
+<td align="left">Generates a Pearson’s R statistic for the relationship between two variables. Variables can be listed in any order and should be written dataframe$variable.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">lm(formula = DV ~ IV, data = DATAFRAME)</td>
+<td align="left">Generates the slope and intercept for a regression line. Replace DV with the dependent variable you are interested in, the IV with the independent variable, and DATAFRAME with the dataframe that you are using.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="odd">
+<td align="left">summary(lm(…))</td>
+<td align="left">Generates much more data about a regression relationship than the above command. Replace the “…” with the IV, DV, and DATAFRAME the same way that you would with the above command.</td>
+<td align="left">Base R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="review-exercises-7" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Review exercises<a href="pearsons-r.html#review-exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s practice some of the things that we learned in this chapter.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new R script called “Chapter 8 Exercises,” and save it to your R scripts folder. Make a header for the script based on the description from section <a href="tidyverse.html#org-script">2.3</a>. Use the library() command to load the tidyverse and ggrepel libraries.</li>
+<li>Choose an interval variable from either states2010 or world (<strong>NOT ANES</strong>) that you want to think about as a dependent variable (don’t choose one of the variables that we used as an example in this chapter). Generate a histogram and statistics to help you visualize and discuss the central tendency and dispersion of this variable.</li>
+<li>Create a new file in your word processor. Paste the graphic that you generated from #2 into your word processor file. In a few sentences, discuss the central tendency and dispersion of that variable.</li>
+<li>Choose a second interval variable from the same dataset that you used for #2. In your word processor file, briefly generate and discuss a null and research hypothesis. What do you expect to see in this relationship and why?</li>
+<li>Use <code>cor.test()</code> to calculate a Pearson’s R value for this relationship. Paste the output into your word processor file, and interpret it in a few sentences. What can you conclude about this relationship and why?</li>
+<li>Make a scatterplot of the relationship between these two variables using the techniques that you learned in section <a href="pearsons-r.html#scatterplot">8.3</a>. Make sure that your your graph has a regression line and that the points are labelled. Paste your graph into your word processor.</li>
+<li>Run a linear regression of the relationship between the two variables that you are looking at in today’s analysis. Paste the output into your word processor.</li>
+<li>In a few sentences, interpret the estimated intercept, coefficient, significance levels, and adjusted <span class="math inline">\(R^2\)</span>.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chi-squared-etc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-pearsonsr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Graphing and describing variables | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <meta name="description" content="This is the preface of the workbook" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Graphing and describing variables | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the preface of the workbook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Graphing and describing variables | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  
+  <meta name="twitter:description" content="This is the preface of the workbook" />
+  
+
+<meta name="author" content="Michael Strausz" />
+
+
+<meta name="date" content="2023-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="tidyverse.html"/>
+<link rel="next" href="recoding.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#class-project"><i class="fa fa-check"></i><b>1.2</b> Create a project for this class</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.3</b> Using the Console</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.3.1</b> Rules about naming objects</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.3.2</b> Common practices when naming objects</a></li>
+<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.3.3</b> About vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.4</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.5</b> What do to if the “load” command doesn’t load the dataframe</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#install-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#exploring"><i class="fa fa-check"></i><b>2.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphing.html"><a href="graphing.html"><i class="fa fa-check"></i><b>3</b> Graphing and describing variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphing.html"><a href="graphing.html#getting-started-tidyverse"><i class="fa fa-check"></i><b>3.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="3.6" data-path="graphing.html"><a href="graphing.html#review-exercises-2"><i class="fa fa-check"></i><b>3.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="recoding.html"><a href="recoding.html"><i class="fa fa-check"></i><b>4</b> Recoding and comparing values of variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
+<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
+<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html"><i class="fa fa-check"></i><b>5</b> Making controlled comparisons</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#getting-started-comparisons"><i class="fa fa-check"></i><b>5.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#stacked"><i class="fa fa-check"></i><b>5.2</b> Representing crosstabs with stacked bar graphs</a></li>
+<li class="chapter" data-level="5.3" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#representing-mean-comparison-tables-with-boxplots"><i class="fa fa-check"></i><b>5.3</b> Representing mean comparison tables with boxplots</a></li>
+<li class="chapter" data-level="5.4" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab"><i class="fa fa-check"></i><b>5.4</b> Adding a control to a crosstab</a></li>
+<li class="chapter" data-level="5.5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table"><i class="fa fa-check"></i><b>5.5</b> Adding a control to a mean comparison table</a></li>
+<li class="chapter" data-level="5.6" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-of-this-chapters-commands-4"><i class="fa fa-check"></i><b>5.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="5.7" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-exercises-4"><i class="fa fa-check"></i><b>5.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferences.html"><a href="inferences.html"><i class="fa fa-check"></i><b>6</b> Making inferences from sample means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inferences.html"><a href="inferences.html#getting-started-inferences"><i class="fa fa-check"></i><b>6.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="6.2" data-path="inferences.html"><a href="inferences.html#constructing-a-confidence-interval-around-a-mean"><i class="fa fa-check"></i><b>6.2</b> Constructing a confidence interval around a mean</a></li>
+<li class="chapter" data-level="6.3" data-path="inferences.html"><a href="inferences.html#ci-around-proportion"><i class="fa fa-check"></i><b>6.3</b> Constructing a confidence interval around a proportion</a></li>
+<li class="chapter" data-level="6.4" data-path="inferences.html"><a href="inferences.html#ci-around-proportions"><i class="fa fa-check"></i><b>6.4</b> Constructing confidence intervals around several proportions at once</a></li>
+<li class="chapter" data-level="6.5" data-path="inferences.html"><a href="inferences.html#t-test-ind-means"><i class="fa fa-check"></i><b>6.5</b> T-test of independent means</a></li>
+<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.6</b> T-test of independent proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-exercises-5"><i class="fa fa-check"></i><b>6.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html"><i class="fa fa-check"></i><b>7</b> From chi-squared to somers’ d</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#getting-started-chi"><i class="fa fa-check"></i><b>7.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Caculating chi-squared</a></li>
+<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda-and-the-pres"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
+<li class="chapter" data-level="7.4" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#cramers-v"><i class="fa fa-check"></i><b>7.4</b> Cramer’s V</a></li>
+<li class="chapter" data-level="7.5" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#somers-d"><i class="fa fa-check"></i><b>7.5</b> Somers’ D</a></li>
+<li class="chapter" data-level="7.6" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-of-this-chapters-commands-6"><i class="fa fa-check"></i><b>7.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="7.7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-exercises-6"><i class="fa fa-check"></i><b>7.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="pearsons-r.html"><a href="pearsons-r.html"><i class="fa fa-check"></i><b>8</b> From Pearson’s r and linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pearsons-r.html"><a href="pearsons-r.html#getting-started-pearsons-r"><i class="fa fa-check"></i><b>8.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="pearsons-r.html"><a href="pearsons-r.html#pearsons-r-1"><i class="fa fa-check"></i><b>8.2</b> Pearson’s R</a></li>
+<li class="chapter" data-level="8.3" data-path="pearsons-r.html"><a href="pearsons-r.html#scatterplot"><i class="fa fa-check"></i><b>8.3</b> The scatterplot</a></li>
+<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-linear-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
+<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-exercises-7"><i class="fa fa-check"></i><b>8.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>9</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression.html"><a href="regression.html#getting-started-multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="9.2" data-path="regression.html"><a href="regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple regression</a></li>
+<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.3</b> Stargazer output</a></li>
+<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.4</b> Dummy variables in multiple regression</a></li>
+<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Graphing multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="regression.html"><a href="regression.html#facets"><i class="fa fa-check"></i><b>9.5.1</b> Facets</a></li>
+<li class="chapter" data-level="9.5.2" data-path="regression.html"><a href="regression.html#color-coding-dots"><i class="fa fa-check"></i><b>9.5.2</b> Color coding dots</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#review-exercises-8"><i class="fa fa-check"></i><b>9.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wild.html"><a href="wild.html"><i class="fa fa-check"></i><b>10</b> R in the wild</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="wild.html"><a href="wild.html#todays-lab-as-a-reference"><i class="fa fa-check"></i><b>10.1</b> Today’s lab as a reference</a></li>
+<li class="chapter" data-level="10.2" data-path="wild.html"><a href="wild.html#importing-data-into-r"><i class="fa fa-check"></i><b>10.2</b> Importing data into R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="wild.html"><a href="wild.html#importing-csv-files"><i class="fa fa-check"></i><b>10.2.1</b> Importing CSV files</a></li>
+<li class="chapter" data-level="10.2.2" data-path="wild.html"><a href="wild.html#importing-excel-files"><i class="fa fa-check"></i><b>10.2.2</b> Importing Excel files</a></li>
+<li class="chapter" data-level="10.2.3" data-path="wild.html"><a href="wild.html#importing-other-files"><i class="fa fa-check"></i><b>10.2.3</b> Importing other files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="wild.html"><a href="wild.html#cleaning-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Cleaning data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="wild.html"><a href="wild.html#resources"><i class="fa fa-check"></i><b>10.4</b> Online R resources</a></li>
+<li class="chapter" data-level="10.5" data-path="wild.html"><a href="wild.html#the-last-command-how-to-get-help"><i class="fa fa-check"></i><b>10.5</b> The last command: how to get help</a></li>
+<li class="chapter" data-level="10.6" data-path="wild.html"><a href="wild.html#the-strausz-method-for-improving-in-r"><i class="fa fa-check"></i><b>10.6</b> The Strausz method for improving in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphing" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Graphing and describing variables<a href="graphing.html#graphing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-started-tidyverse" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Getting started with this chapter<a href="graphing.html#getting-started-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section <a href="tidyverse.html#exploring">2.2</a>.</p>
+<p>We are going to install three new packages to use today. One is called “epiDisplay” and the other is called “Hmisc.” Enter these two commands into your Console one by one:</p>
+<pre><code>install.packages(&quot;epiDisplay&quot;)
+install.packages(&quot;scales&quot;)</code></pre>
+<pre><code>## Warning: package &#39;epiDisplay&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Loading required package: foreign</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Loading required package: MASS</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<pre><code>## Loading required package: nnet</code></pre>
+<pre><code>## 
+## Attaching package: &#39;epiDisplay&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     alpha</code></pre>
+<pre><code>## Warning: package &#39;scales&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:epiDisplay&#39;:
+## 
+##     alpha</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<p>Now, open a new script file and save it in your scripts folder as “chapter 3 practice.” Copy and paste this onto the page (updating the text so that it is about you):</p>
+<pre><code>####################################
+# Your name
+# 20093 Chapter 3, Practice exercises
+# Date started : Date last modified
+####################################
+
+#libraries------------------------------------------
+library(tidyverse)
+library(epiDisplay) #the tab1 command helps us make nice frequency tables
+library(scales)        #this helps us to put more readable scales on our graphs
+
+Now select all the text on this page, run it, and then save it. </code></pre>
+</div>
+<div id="start-graphing" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Getting started with ggplot and graphing<a href="graphing.html#start-graphing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R has some nice graphic abilities built in, but the ggplot2 package that comes with the tidyverse is even more powerful. In this lab, we will learn to make bar graphs of nominal and ordinal variables and histograms of interval variables.</p>
+<p><strong>NOTE: You can find templates to reproduce all of the graphs from this workbook in the script file “20093 ggplot2 templates” which is among files that you should have downloaded in section <a href="getting-started.html#class-project">1.2</a>, step 7. If you can’t find it, you can download it <a href="https://www.dropbox.com/sh/5lqedowui2cnb7x/AABqUP1C2K2bIGef2VyMQOHwa?dl=0">here</a>. Download it and save it to your R Scripts folder for future use.</strong></p>
+<div id="bar-graph-nominal" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Bar graphing a nominal variable<a href="graphing.html#bar-graph-nominal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A nominal variable is a variable where the distance between the values does not give us any information, and the possible values can be listed in any order without confusing us. R does not have a single way to represent nominal variables, but on the three datasets that I have uploaded for this book I have classified the nominal variables as character variables. R sometimes abbreviates this <chr>. If you type this into the console:</p>
+<pre><code>glimpse(anes2020)</code></pre>
+<p>you can see that several of the variables in the ANES dataset are classified as characters, including “marital,” “military”, and “lgbtq”.</p>
+<p>If you ever want to know how R has classified a variable, you can us the class() command. For example, if you type</p>
+<pre><code>class(anes2020$marital) </code></pre>
+<p>you can see that R calls the “marital” variable a character variable.</p>
+<p>Bar graphs give us a sense of how the cases that we studied are distributed across possible values for a nominal variable. To generate a bar graph using ggplot, you begin with the command ggplot(), and then the first thing you type into the parenthesis is the name of the dataframe that you will be working with. The ggplot package is similar to the dplyr package that uses the pipe (%&gt;%) to mean “and then”, but instead of a pipe ggplot uses a plus sign. This code will generate a bar graph of that marital variable (if you enter and run the code, you will see the graph that follows it):</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="graphing.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020, <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
+<span id="cb49-2"><a href="graphing.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb49-3"><a href="graphing.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb49-4"><a href="graphing.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where “marital” is NA. Like this:</p>
+<pre><code>ggplot(anes2020 %&gt;% filter(!is.na(marital), aes(x=marital))+
+  geom_bar(fill = &quot;purple&quot;, colour = &quot;black&quot;)+
+  ggtitle(&quot;Marital status of respondents&quot;)+
+xlab(&quot;Marital status&quot;)</code></pre>
+<p>If you execute that command, you will see that now the NA bar is missing.</p>
+<p>While “Marital status of respondents” is not a very long title, sometimes you will have graphs with longer titles that you want r to put on two or more lines. To tell R to move to a new line, just insert “\n” where you want the line break to go, like this:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="graphing.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(marital)), <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
+<span id="cb51-2"><a href="graphing.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb51-3"><a href="graphing.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status</span><span class="sc">\n</span><span class="st">of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb51-4"><a href="graphing.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="saving-a-graph" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Saving a graph<a href="graphing.html#saving-a-graph" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To save a graph, you can click the export plot menu right above it:
+<img src="images/graphing_1_saving.png" width="60%" /></p>
+<p>You can either save it as an image, which you will later be able to import into word or other software, or you can copy it to clipboard and immediately paste it into another piece of software. Either of those work.</p>
+</div>
+<div id="bar-graph-ordinal" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Bar graphing an ordinal variable<a href="graphing.html#bar-graph-ordinal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An ordinal variable is a variable where the distance between the values does not give us any information, but the possible values must be listed in a particular order to make sense. R is most willing to treat a variable as ordinal when it is listed as an ordered factor, which R sometimes abbreviates as <ord>. If you type this into the console:</p>
+<pre><code>glimpse(anes2020)</code></pre>
+<p>you can see that several of the variables in the ANES dataset are classified as ordered factors, including “edu”, “partyid”, and “religimp”</p>
+<p>Reminder: if you ever want to know how R has classified a variable, you can use the class() command. For example, if you type this:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="graphing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(anes2020<span class="sc">$</span>edu) </span></code></pre></div>
+<pre><code>## [1] &quot;ordered&quot; &quot;factor&quot;</code></pre>
+<p>you can see from the output R calls the “edu” variable “ordered” “factor”.</p>
+<p>“Partisanship” is often measured in an ordinal way, including on the anes2020 dataframe. To generate a bar graph of the partyid variable (an ordinal measure of partisanship), we can use this code:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="graphing.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
+<span id="cb55-2"><a href="graphing.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb55-3"><a href="graphing.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb55-4"><a href="graphing.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="what-to-do-about-overlapping-labels" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> What to do about overlapping labels<a href="graphing.html#what-to-do-about-overlapping-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you look at the previous graph, you might notice that the labels at the bottom overlap. This makes it hard to read! To deal with overlapping labels like this, you can add this line to your code (please note that R will not understand this code if you did not install the scales package in section <a href="graphing.html#getting-started-tidyverse">3.1</a> and then run the command “library(scales)”):</p>
+<pre><code>scale_x_discrete(guide = guide_axis(n.dodge=2))+</code></pre>
+<p>This is how our new code looks:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="graphing.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
+<span id="cb57-2"><a href="graphing.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb57-3"><a href="graphing.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb57-4"><a href="graphing.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))<span class="sc">+</span></span>
+<span id="cb57-5"><a href="graphing.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="histogram" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Generating a histogram<a href="graphing.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>An interval variable is a variable where the distance between the values gives us useful information and where the possible values must be listed in a particular order to make sense.. In this class, it is generally safe to assume that a variable that is neither an ordered factor nor a character variable is interval. <em>However, variables with only two values (such as 0 and 1) should not be treated as interval.</em></p>
+<p>You can, in theory, make a bar graph of an interval variable. However, since there are so many values to most interval variables, those bar graphs become very difficult to read. Instead, we often generate histograms of interval variables. Histograms are bar graphs where each bar represents a range of values of the variable of interest instead of a single bar. For example, here is how we can make a histogram of the population variable in our world dataset:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="graphing.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb58-2"><a href="graphing.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb58-3"><a href="graphing.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb58-4"><a href="graphing.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="removing-scientific-notation-from-axes" class="section level3 hasAnchor" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Removing scientific notation from axes<a href="graphing.html#removing-scientific-notation-from-axes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The above graph is ok, but because the population numbers are so big, R has converted them to scientific notation. To force R not to do this, we can use a command made possible by the scales package that we installed in section <a href="graphing.html#getting-started-tidyverse">3.1</a>:</p>
+<pre><code>scale_x_continuous(labels = label_comma())</code></pre>
+<p>Combined with the rest of our code, we can generate the graph like this:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="graphing.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="graphing.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb60-3"><a href="graphing.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span>       <span class="co">#gets rid of scientific notation</span></span>
+<span id="cb60-4"><a href="graphing.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb60-5"><a href="graphing.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="adjusting-bin-width-on-a-histogram" class="section level3 hasAnchor" number="3.2.7">
+<h3><span class="header-section-number">3.2.7</span> Adjusting bin width on a histogram<a href="graphing.html#adjusting-bin-width-on-a-histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The bars on a histogram are called “bins.” Looking at this graph, we can see that R has chosen to set the bins at around 50,000,000. What if we wanted to make the bins narrower? We can set the bin width like this:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="graphing.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb61-2"><a href="graphing.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">10000000</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb61-3"><a href="graphing.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span></span>
+<span id="cb61-4"><a href="graphing.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb61-5"><a href="graphing.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Those narrower bins let us see more of the variation in the variable – we can see that the biggest group of countries, by far, has a population of 10,000,000 or less.</p>
+</div>
+</div>
+<div id="central-tendancy-and-dispersion" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Central tendancy and dispersion<a href="graphing.html#central-tendancy-and-dispersion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>With all variables, it is helpful to both you and your readers to make observations about their central tendency—what a typical case looks like, and dispersion—how the actual values are spread out across possible cases.</p>
+<div id="central-tendency-and-dispersion-of-nominal-variables" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Central tendency and dispersion of nominal variables<a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With nominal variables, there are two useful techniques to help us discuss central tendancy and dispersion. One is covered above, in section <a href="graphing.html#bar-graph-nominal">3.2.1</a>: you can make a bar graph. Second, you can also make a frequency table. To make a frequency table, you can use the table() command to produce a simple one in base R, but the tab1 command that is available through the epiDisplay library that we installed in section <a href="graphing.html#getting-started-tidyverse">3.1</a> is more flexible. So, let’s try to look at the region variable from the states2010 dataset. Enter the following into today’s practice R script file, and run it:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="graphing.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
+<span id="cb62-2"><a href="graphing.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre><code>## states2010$region : 
+##           Frequency Percent
+## midwest          12    23.5
+## northeast         9    17.6
+## south            17    33.3
+## west             13    25.5
+##   Total          51   100.0</code></pre>
+<p>You can see that this command generates two sets of output: a graph that you can see if you click the “plots” tab in the bottom right, and some information in the Console.</p>
+<p>The graph is ok, but the graphs that we generated above are nicer, so we will use those instead.</p>
+<p>The information in the Console tells you that there are 12 states in the dataframe that are classified as being in the midwest, 9 that are classified as being in the northeast, 17 in the south, and 13 in the west. The next column to the right tells you what percent of states are in each category.</p>
+<p>There is only one meaningful way to measure the central tendency of a nominal variable: the mode. However, R does not have a direct way of measuring the mode. In this case, that is not a problem, as there are only four possible regions in the dataset, and you can clearly see that the largest number of states are in the south. However, sometimes there will be a lot more values than this! In that kind of situation, you can add the qualifier sort.group=“decreasing” to the tab1 command, like this:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="graphing.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
+<span id="cb64-2"><a href="graphing.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co">#adding sort.group=&quot;decreasing&quot; to list the values in reverse order of frequency</span></span>
+<span id="cb64-3"><a href="graphing.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">#this is useful for finding the mode</span></span>
+<span id="cb64-4"><a href="graphing.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>, <span class="at">sort.group=</span><span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre><code>## states2010$region : 
+##           Frequency Percent
+## south            17    33.3
+## west             13    25.5
+## midwest          12    23.5
+## northeast         9    17.6
+##   Total          51   100.0</code></pre>
+<p>You can see from this output that the mode has come to the top. So, between the bar graph and the frequency table, we can observe that the modal state is in the South. 17, or 33.3% of states, are in that region. That is the central tendency of our region variable.</p>
+<p>Regarding the dispersion of this variable, we can note that no region has a majority of states, and the states seem to be reasonably evenly distributed across regions, with 33.3% of states in the modal region (the south) and 17.6% of states in the least common region (the northeast).</p>
+</div>
+<div id="central-tendency-and-dispersion-of-ordinal-variables" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Central tendency and dispersion of ordinal variables<a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With ordinal variables, we can use the same techniques that we use for nominal variables but with one exception: since the order of the possible values does give us important information for ordinal variables, the cumulative percent also gives us useful information. Thus, we can ask R to report the cumulative percent too. Let’s try it with the results of the question “how important is religion to you?” that was asked in the 2020 ANES survey. We can use this command (notice how we are now writing cum.percent=TRUE because we are dealing with an ordinal variable):</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="graphing.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre><code>## anes2020$religimp : 
+##                      Frequency   %(NA+) cum.%(NA+)   %(NA-) cum.%(NA-)
+## extremely important       2277     27.5       27.5     27.6       27.6
+## very important            1585     19.1       46.6     19.2       46.8
+## moderately important      1596     19.3       65.9     19.3       66.2
+## a little important        1066     12.9       78.8     12.9       79.1
+## not important at all      1725     20.8       99.6     20.9      100.0
+## NA&#39;s                        31      0.4      100.0      0.0      100.0
+##   Total                   8280    100.0      100.0    100.0      100.0</code></pre>
+<p>R is giving us a lot of information here!</p>
+<p>The first column on the left is the possible values, ranging from “extremely important” to “not important at all.” There are also some NAs – cases for which we do not have data on this question.</p>
+<p>The second column is how frequently each answer is given. Looking at that column, we can already tell that the modal value is “extremely important”; 2277 of the 8280 people surveyed answered that religion is extremely important to them.</p>
+<p>The third column is the percent of cases with each value, including the NAs for which we have no information.</p>
+<p>The fourth column is the cumulative percent including NAs. This is the percentage of cases that got the value of interest or a lower value. So, 27.5% answered “extremely important,” 46.6% answered “extremely important” or “very important”, 65.9% answered “extremely important”, “very important”,” “moderately important”, etc.</p>
+<p>The fifth and sixth column repeat the third and fourth column, but they exclude the NAs. <strong>In general, you should use the columns that exclude NAs when interpreting your data.</strong></p>
+<p>Regarding the central tendency of this variable, we can again ask R to calculate the mode like we did with our nominal variable, but since this is an ordinal variable, we can also ask R to calculate the median.</p>
+<p>To calculate the mode, we can add the “sort group: decreasing” qualifier that we used in section 3.3, and the mode will rise to the top.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="graphing.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>, <span class="at">sort.group =</span> <span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre><code>## anes2020$religimp : 
+##                      Frequency   %(NA+) cum.%(NA+)   %(NA-) cum.%(NA-)
+## extremely important       2277     27.5       27.5     27.6       27.6
+## not important at all      1725     20.8       99.6     20.9      100.0
+## moderately important      1596     19.3       65.9     19.3       66.2
+## very important            1585     19.1       46.6     19.2       46.8
+## a little important        1066     12.9       78.8     12.9       79.1
+## NA&#39;s                        31      0.4      100.0      0.0      100.0
+##   Total                   8280    100.0      100.0    100.0      100.0</code></pre>
+<p>Our output tells us what we already know – the “extremely important” group is the largest, but it is not the majority.</p>
+<p>R has a median() command that we will be able to use with interval data. However, unfortunately we can’t use it with ordinal data. <strong>There is a nice trick to finding the median of an ordinal variable, though.</strong> Take a look at those cumulative percents in the output that we generated without the sort.group= “decreasing” qualifier. Focus on the column with NAs excluded – the right-most column. The first value for which the cumulative percent is 50 or higher is the median value of that variable. So, we can say that the median person in our sample says that religion is “moderately important” to them.</p>
+<p>So, now we can make two observations about the central tendency of our religion variable – the mode is “extremely important” and the median is “moderately important.”</p>
+<p>What can we say about the dispersion? To discuss the dispersion it is helpful to generate a bar graph. We ca look at the one automatically generated by tab1, but I prefer the look of the ones that we generate with ggplot. So, we can use the same code from section <a href="graphing.html#bar-graph-ordinal">3.2.3</a> to generate a bar graph of this variable (Note that we make the x-axis table disappear with “NULL” because the graph title already explained what the x-axis means):</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="graphing.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(religimp)), <span class="fu">aes</span>(<span class="at">x=</span>religimp))<span class="sc">+</span></span>
+<span id="cb70-2"><a href="graphing.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb70-3"><a href="graphing.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;How important is religion to ANES respondents in 2020?&quot;</span>)<span class="sc">+</span></span>
+<span id="cb70-4"><a href="graphing.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>What can we say about the dispersion of this variable? Well, based on the frequency table we can note that there is no value where the majority of cases lie – the cases are reasonably well spread out across possible values, ranging from 27.6 percent at “extremely important” to 12.9 percent at “a little important.”</p>
+<p>We can also note that the distribution of this variable is u-shaped: the two highest values are “extremely important” and “not important at all.”</p>
+</div>
+<div id="central-tendancy-and-dispersion-of-interval-variables" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Central tendancy and dispersion of interval variables<a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When we look at interval variables, we can use the mean, median, and mode to discuss the central tendency. R makes it easy to calculate the mean and median, with the command summary() that we learned in section <a href="tidyverse.html#exploring">2.2</a> (you can also use the commands mean() and median() with the same result). So, for example, let’s look at the variable x_tax_burden in the states2010 dataset. This is a state’s per capita taxes divided by that state’s per capita income. In other words, it tells us the proportion of their income that the average citizen pays in state taxes in each state. We can use the summary command:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="graphing.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.07000 0.08650 0.09400 0.09465 0.10100 0.12800</code></pre>
+<p>Here, we see that the mean and median, .09465 and .094, are quite close to each other. This is generally a sign that the variable is not skewed. How about the mode? To generate the mode, we can use the same command that we used for nominal and ordinal variables:</p>
+<pre><code>tab1(states2010$x_tax_burden, sort.group = &quot;decreasing&quot;)</code></pre>
+<p>If you enter that command into the Console, you will see a lot of output, but if you scroll to the top you will see that the most common value for the x_tax_burden variable, the mode, is .093; it occurs 5 times.</p>
+<p>Now we have three measures of the central tendency of our x_tax_burden variable: the mean is 09465, the median is .094, and the mode is .093.</p>
+<p>How about the dispersion? With interval variables, we can use a number of strategies to represent the dispersion. We can have R calculate the standard deviation and the interquartile range (the 3rd quartile minus the 1st quartile), and we can generate a histogram. To generate the standard deviation, we can use sd(), and to generate the interquartile range, we can use IQR():</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="graphing.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<pre><code>## [1] 0.01221282</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="graphing.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<pre><code>## [1] 0.0145</code></pre>
+<p>We can also use the code from section <a href="graphing.html#histogram">3.2.5</a> to visually display the central tendancy of our variable, like this:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="graphing.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> x_tax_burden)) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="graphing.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb78-3"><a href="graphing.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of US states&#39; tax burden, 2010&quot;</span>)<span class="sc">+</span></span>
+<span id="cb78-4"><a href="graphing.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>This histogram shows us that this variable is relatively bell-shaped with no outliers that really stand out.</p>
+</div>
+<div id="standard-deviation-and-iqr-when-you-have-nas" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Standard deviation and IQR when you have NAs<a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One issue with the sd and IQR commands is that if there is one case in the dataframe that you are looking at with missing data (i.e. coded as na), then R will give “NA” as the output. You can see this if you type:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="graphing.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>To address this, just add “,na.rm=TRUE” after the variable with the NAs, like this:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="graphing.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 17.20718</code></pre>
+<p>That just tells R to ignore the NAs when calculating the standard deviation (and you can do the same thing with the interquartile range).</p>
+</div>
+</div>
+<div id="states-world" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> A note on using the states2010 and world dataframes<a href="graphing.html#states-world" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When looking at the states2010 and world dataset, there are times when we might want to know which values of a variable come from which states or countries. When we want to know this, the select and arrange commands from the tidyverse can be helpful. For example, this code can help us learn about which states have which tax burdens:</p>
+<pre><code>states2010 %&gt;% 
+  select(state, x_tax_burden) %&gt;% #focusing in on a few variables
+  arrange(x_tax_burden) #sorting this variable from smallest to largest
+                #to sort from largest to smallest, you would write
+                #arrange(desc(x_tax_burden))</code></pre>
+<p>When you execute this code, what do you learn about the states with the largest and smallest tax burdens?</p>
+</div>
+<div id="review-of-this-chapters-commands-2" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Review of this chapter’s commands<a href="graphing.html#review-of-this-chapters-commands-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="84%" />
+<col width="10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Command</th>
+<th align="left">Purpose</th>
+<th align="left">Library</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">class()</td>
+<td align="left">Tells us how a specific vector is categorized. Is it a character vector, an ordered factor, etc.?</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">ggplot()</td>
+<td align="left">Begins a ggplot graphic. Feel free to refer to the “20093 ggplot2 templates” script file to find templates for all graphs you will make using this workbook</td>
+<td align="left">ggplot2 (tidyverse)</td>
+</tr>
+<tr class="odd">
+<td align="left">mean()</td>
+<td align="left">Calculates the mean of a variable.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">median()</td>
+<td align="left">Calculates the median of a variable.</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="odd">
+<td align="left">sd()</td>
+<td align="left">Calculates the standard deviation of a variable. Use na.rm=TRUE if there is some missing data, like this: sd(dataframe$variable, na.rm=TRUE).</td>
+<td align="left">Base R</td>
+</tr>
+<tr class="even">
+<td align="left">IQR()</td>
+<td align="left">Calculates the interquartile range of a variable. Use na.rm=TRUE if there is some missing data, like this: IQR(dataframe$variable, na.rm=TRUE).</td>
+<td align="left">Base R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="review-exercises-2" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Review exercises<a href="graphing.html#review-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s practice some of the things that we learned in this chapter.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new R script called “Chapter 3 Exercises,” and save it to your R scripts folder. Make a header for the script based on the description from section <a href="tidyverse.html#org-script">2.3</a>. Use the library() command to load the tidyverse, epiDisplay, and scales.</li>
+<li>Choose a nominal variable from either anes2020, states2010, or world. Generate an appropriate graph and calculate the relevant statistics to make observations about this variable’s central tendency and dispersion. Create a new file in your word processor, and paste your graph in. Also list all relevant statistics to help you make observations about this variable’s central tendency and dispersion.</li>
+<li>Make some observations about the variable from #2’s central tendency and dispersion. Is there anything that surprises you about it? What?</li>
+<li>Choose an ordinal variable from either anes2020, states2010, or world. Generate an appropriate graph and calculate the relevant statistics to make observations about this variable’s central tendency and dispersion. Paste your graph into the word processor file that you generated for #2. Also list all relevant statistics to help you make observations about this variable’s central tendency and dispersion.</li>
+<li>Make some observations about the variable from #4’s central tendency and dispersion. Is there anything that surprises you about it? What?</li>
+<li>Choose an interval variable from either states2010 or world. Generate an appropriate graph and calculate the relevant statistics to make observations about this variable’s central tendency and dispersion. Paste your graph into the word processor file that you generated for #2. Also list all relevant statistics to help you make observations about this variable’s central tendency and dispersion.</li>
+<li>Discuss the countries or states that have the highest and lowest values on your variable of interest (see the note at the bottom of section <a href="graphing.html#states-world">3.4</a> for help with this). Are there any countries or states that surprise you on this list?</li>
+<li>Make some observations about the variable from #6’s central tendency and dispersion. Is there anything that surprises you about it? What?</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="recoding.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-graphing.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

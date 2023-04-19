@@ -1,0 +1,24 @@
+---
+title: "Are you ready for R? A Workbook for R for Political Science and Beyond"
+toc-title: "Are you ready for R?"
+author: "Michael Strausz"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [references.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is the preface of the workbook"
+---
+
+# Preface {.unnumbered}
+
+I decided to learn R in late 2020 for a variety of reasons, including the reasons that I lay out in section \@ref(why-r): R is open source, free, and powerful. Early on in my studies, I decided that going forward I would also teach my introductory undergraduate course "Scope and Methods of Political Science" using R instead of SPSS (which I had used in the past), for those same reasons -- it would be great for my students to get some experience with this powerful piece of software.
+
+As I reviewed the available workbooks, I did not find one that I was satisfied with. <a href="https://www.carlypotznielsen.com/">Carly Potz-Nielsen</a> has written a terrific workbook with a colleague of hers which she shared with me. I considered using that, but ultimately, I decided to write my own workbook to fit the way that I have come to teach Scope and Methods. I also wanted to write an R workbook that uses the <a href="https://www.tidyverse.org/">tidyverse</a> package, because I think that is a great way to use R.
+
+I decided to make my workbook available for free online because that is consistent with the open source spirit of R. This workbook might be helpful to you if you are trying to teach yourself R, and you are also welcome to use it to teach students R in non-profit high schools and non-profit collegiate settings. Those wishing to use it for commercial reasons outside of non-profit educational uses should contact me for permission.
+
+I'd like to thank my spouse Kate for coming up with the great title and for putting up with my (admittedly annoying) regular, enthusiastic discussion of the new things that I had learned to do and make in R over these last few years.

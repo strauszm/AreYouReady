@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <meta name="description" content="This is the preface of the workbook" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is the preface of the workbook" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  
+  <meta name="twitter:description" content="This is the preface of the workbook" />
+  
+
+<meta name="author" content="Michael Strausz" />
+
+
+<meta name="date" content="2023-04-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regression.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
+<li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#class-project"><i class="fa fa-check"></i><b>1.2</b> Create a project for this class</a></li>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.3</b> Using the Console</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.3.1</b> Rules about naming objects</a></li>
+<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.3.2</b> Common practices when naming objects</a></li>
+<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.3.3</b> About vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.4</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.5</b> What do to if the “load” command doesn’t load the dataframe</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tidyverse.html"><a href="tidyverse.html#install-tidyverse"><i class="fa fa-check"></i><b>2.1</b> Installing packages</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse.html"><a href="tidyverse.html#exploring"><i class="fa fa-check"></i><b>2.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="graphing.html"><a href="graphing.html"><i class="fa fa-check"></i><b>3</b> Graphing and describing variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="graphing.html"><a href="graphing.html#getting-started-tidyverse"><i class="fa fa-check"></i><b>3.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="3.6" data-path="graphing.html"><a href="graphing.html#review-exercises-2"><i class="fa fa-check"></i><b>3.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="recoding.html"><a href="recoding.html"><i class="fa fa-check"></i><b>4</b> Recoding and comparing values of variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
+<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
+<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html"><i class="fa fa-check"></i><b>5</b> Making controlled comparisons</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#getting-started-comparisons"><i class="fa fa-check"></i><b>5.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#stacked"><i class="fa fa-check"></i><b>5.2</b> Representing crosstabs with stacked bar graphs</a></li>
+<li class="chapter" data-level="5.3" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#representing-mean-comparison-tables-with-boxplots"><i class="fa fa-check"></i><b>5.3</b> Representing mean comparison tables with boxplots</a></li>
+<li class="chapter" data-level="5.4" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab"><i class="fa fa-check"></i><b>5.4</b> Adding a control to a crosstab</a></li>
+<li class="chapter" data-level="5.5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table"><i class="fa fa-check"></i><b>5.5</b> Adding a control to a mean comparison table</a></li>
+<li class="chapter" data-level="5.6" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-of-this-chapters-commands-4"><i class="fa fa-check"></i><b>5.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="5.7" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-exercises-4"><i class="fa fa-check"></i><b>5.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inferences.html"><a href="inferences.html"><i class="fa fa-check"></i><b>6</b> Making inferences from sample means</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inferences.html"><a href="inferences.html#getting-started-inferences"><i class="fa fa-check"></i><b>6.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="6.2" data-path="inferences.html"><a href="inferences.html#constructing-a-confidence-interval-around-a-mean"><i class="fa fa-check"></i><b>6.2</b> Constructing a confidence interval around a mean</a></li>
+<li class="chapter" data-level="6.3" data-path="inferences.html"><a href="inferences.html#ci-around-proportion"><i class="fa fa-check"></i><b>6.3</b> Constructing a confidence interval around a proportion</a></li>
+<li class="chapter" data-level="6.4" data-path="inferences.html"><a href="inferences.html#ci-around-proportions"><i class="fa fa-check"></i><b>6.4</b> Constructing confidence intervals around several proportions at once</a></li>
+<li class="chapter" data-level="6.5" data-path="inferences.html"><a href="inferences.html#t-test-ind-means"><i class="fa fa-check"></i><b>6.5</b> T-test of independent means</a></li>
+<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.6</b> T-test of independent proportions</a></li>
+<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-exercises-5"><i class="fa fa-check"></i><b>6.8</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html"><i class="fa fa-check"></i><b>7</b> From chi-squared to somers’ d</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#getting-started-chi"><i class="fa fa-check"></i><b>7.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Caculating chi-squared</a></li>
+<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda-and-the-pres"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
+<li class="chapter" data-level="7.4" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#cramers-v"><i class="fa fa-check"></i><b>7.4</b> Cramer’s V</a></li>
+<li class="chapter" data-level="7.5" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#somers-d"><i class="fa fa-check"></i><b>7.5</b> Somers’ D</a></li>
+<li class="chapter" data-level="7.6" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-of-this-chapters-commands-6"><i class="fa fa-check"></i><b>7.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="7.7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-exercises-6"><i class="fa fa-check"></i><b>7.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="pearsons-r.html"><a href="pearsons-r.html"><i class="fa fa-check"></i><b>8</b> From Pearson’s r and linear regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pearsons-r.html"><a href="pearsons-r.html#getting-started-pearsons-r"><i class="fa fa-check"></i><b>8.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="8.2" data-path="pearsons-r.html"><a href="pearsons-r.html#pearsons-r-1"><i class="fa fa-check"></i><b>8.2</b> Pearson’s R</a></li>
+<li class="chapter" data-level="8.3" data-path="pearsons-r.html"><a href="pearsons-r.html#scatterplot"><i class="fa fa-check"></i><b>8.3</b> The scatterplot</a></li>
+<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-linear-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
+<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.5</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-exercises-7"><i class="fa fa-check"></i><b>8.6</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>9</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression.html"><a href="regression.html#getting-started-multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Getting started with this chapter</a></li>
+<li class="chapter" data-level="9.2" data-path="regression.html"><a href="regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple regression</a></li>
+<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.3</b> Stargazer output</a></li>
+<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.4</b> Dummy variables in multiple regression</a></li>
+<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Graphing multiple regression</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="regression.html"><a href="regression.html#facets"><i class="fa fa-check"></i><b>9.5.1</b> Facets</a></li>
+<li class="chapter" data-level="9.5.2" data-path="regression.html"><a href="regression.html#color-coding-dots"><i class="fa fa-check"></i><b>9.5.2</b> Color coding dots</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.6</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#review-exercises-8"><i class="fa fa-check"></i><b>9.7</b> Review exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="wild.html"><a href="wild.html"><i class="fa fa-check"></i><b>10</b> R in the wild</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="wild.html"><a href="wild.html#todays-lab-as-a-reference"><i class="fa fa-check"></i><b>10.1</b> Today’s lab as a reference</a></li>
+<li class="chapter" data-level="10.2" data-path="wild.html"><a href="wild.html#importing-data-into-r"><i class="fa fa-check"></i><b>10.2</b> Importing data into R</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="wild.html"><a href="wild.html#importing-csv-files"><i class="fa fa-check"></i><b>10.2.1</b> Importing CSV files</a></li>
+<li class="chapter" data-level="10.2.2" data-path="wild.html"><a href="wild.html#importing-excel-files"><i class="fa fa-check"></i><b>10.2.2</b> Importing Excel files</a></li>
+<li class="chapter" data-level="10.2.3" data-path="wild.html"><a href="wild.html#importing-other-files"><i class="fa fa-check"></i><b>10.2.3</b> Importing other files</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="wild.html"><a href="wild.html#cleaning-data-in-r"><i class="fa fa-check"></i><b>10.3</b> Cleaning data in R</a></li>
+<li class="chapter" data-level="10.4" data-path="wild.html"><a href="wild.html#resources"><i class="fa fa-check"></i><b>10.4</b> Online R resources</a></li>
+<li class="chapter" data-level="10.5" data-path="wild.html"><a href="wild.html#the-last-command-how-to-get-help"><i class="fa fa-check"></i><b>10.5</b> The last command: how to get help</a></li>
+<li class="chapter" data-level="10.6" data-path="wild.html"><a href="wild.html#the-strausz-method-for-improving-in-r"><i class="fa fa-check"></i><b>10.6</b> The Strausz method for improving in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wild" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> R in the wild<a href="wild.html#wild" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="todays-lab-as-a-reference" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Today’s lab as a reference<a href="wild.html#todays-lab-as-a-reference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Unlike the previous chapters, I am not going to ask you to start a practice document and follow along. Just read the chapter, know that this a resource that you have available as you become more advanced in your R skills and need more guidance.</p>
+</div>
+<div id="importing-data-into-r" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Importing data into R<a href="wild.html#importing-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importing-csv-files" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Importing CSV files<a href="wild.html#importing-csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For this workbook, you have been able to access our three dataframes—world, states2010, and ane2020—as .Rda files. In other words, these files were already formatted for use with R. However, if you keep using, you will regularly run into data that has not been formatted for use with R.</p>
+<p>For example, when I wanted to generate the ANES dataframe, I went to the ANES website: <a href="https://electionstudies.org/data-center/2020-time-series-study/">https://electionstudies.org/data-center/2020-time-series-study/</a>. I had to create a log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. “CSV” stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.</p>
+<p>I next created a folder called anes2020, and in that folder, I made three new folders: one called rscripts, one called data, and one called notes (where I keep my codebooks and other reference materials related to that data). I then moved the cvs file that I had downloaded (which downloaded as anes_timeseries_2020_csv_20210719.cvs) into the data folder.</p>
+<p>After that, I made a new R project which I set to be in that anes2020 folder. Next, I imported the data with this command:</p>
+<pre><code>anes2020&lt;-read.csv(&quot;data/anes_timeseries_2020_csv_20210719.csv&quot;)</code></pre>
+<p>That dataset is huge: 1,771 variables! I read over the codebook (which I had also downloaded from the same webpage) and chose the variables that I wanted to keep for this class. I used this command to make a simplified version of that dataset (you need to have the tidyverse package loaded to use this command).</p>
+<pre><code>anes2020.simplified&lt;-anes2020 %&gt;% 
+select(V201005, V201103, V201115,V201117, V201151,V201152,V201156,V201157, V201200,V201217, V201225x,         V201231x,V201233,V201234,V201237,V201262, V201324, V201336,V201337,V201345x,V201351,V201356x,V201366,V201368, V201369,V201377,  V201392x,V201401,V201405x,V201414x,V201433, V201434,V201435,V201453,V201507x,V201508,V201510,V201516,V201544,
+V201549x,V201567, V201600,V201601,V201617x,V201628,V201644, V202159,V202160,V202161,V202162, V202163,V202164,V202165,V202166,
+V202167,V202168,V202169,V202170, V202171,V202172,V202173,V202174,
+V202175,V202178,V202181,V202182,V202183,V202187,V202073)</code></pre>
+<p>That command looks like a lot, but all it is doing is telling R to make a new dataframe called anes2020.simplified and then selecting “only” that list of variables (instead of the 1,771 variables in the original dataframe).</p>
+</div>
+<div id="importing-excel-files" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Importing Excel files<a href="wild.html#importing-excel-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes you will find an excel file that you want to import. There is a very useful package that you can install to help with that called “readxl.” Once you have installed it, you can use the “read_excel” command to bring Excel files into R.</p>
+<p>After I downloaded the Excel version of the “DEMOCRACY CROSS-NATIONAL DATA, RELEASE 4.0 FALL 2015” from Dr. Pippa Norris’s webpage, <a href="https://www.pippanorris.com/data">https://www.pippanorris.com/data</a>. I read it into R with this command:</p>
+<pre><code>world &lt;- read_excel(&quot;data/Democracy Cross-National Data V4.1 09092015.xlsx&quot;)</code></pre>
+</div>
+<div id="importing-other-files" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Importing other files<a href="wild.html#importing-other-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When dealing with data that is not formatted as a Rda, Excel, or CSV file, the package “foreign” is often helpful. Here is an example of how I have used the <code>read.spss</code> command from the package “foreign” command to read in an SPSS-generated .sav file:</p>
+<pre><code>df &lt;- read.spss(&quot;data/previous semester data.sav&quot;, use.value.label=TRUE, to.data.frame=TRUE) </code></pre>
+</div>
+</div>
+<div id="cleaning-data-in-r" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Cleaning data in R<a href="wild.html#cleaning-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One you have imported data, there are a number of things that you want to do to do before you do analysis. It always helps to glimpse() your new dataframe and look at the codebook, if you can find one. When I was first looking at the ANES data for this lab workbook, I noticed that many of the variables had long names that were difficult to interpret, like this: V201005. I renamed them with this tidyverse command (note that the real command was longer because it included all the variables in the dataframe):</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;% 
+  rename(attention=V201005,
+         v2016=V201103,
+         hope=V201115,
+         outrage=V201117,
+         ft_biden=V201151,
+         ft_trump=V201152,
+         ft_dems=V201156,
+         ft_reps=V201157)</code></pre>
+<p>You might find that are ordinal or nominal variables that are coded as numeric which you want to recode as factors, using the as.factor command, which you can do like this:</p>
+<pre><code>df$variable&lt;-as.factor(df.variable)</code></pre>
+<p>You can also use the codebook and/or the table() command to figure out how data is coded. Often missing data is coded as 8, 9, 99, or negative numbers. You want to make sure to recode that as NAs or R will treat those values as numbers and mess up your analysis. I used the tidyverse command <code>mutate(na_if())</code> to do that. Here is how I accomplished that with the age variable in ANES:</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;%
+mutate(age=na_if(age, &#39;-9&#39;))</code></pre>
+<p>And here is how I recoded the marital variable to exclude NAs and to give the numeric variables values that made sense:</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;%
+  mutate(marital=na_if(marital, &#39;-9&#39;)) %&gt;% 
+  mutate(marital=na_if(marital, &#39;-8&#39;)) %&gt;% 
+  mutate(marital=recode(marital, &#39;1&#39;=&quot;married&quot;,&#39;2&#39;=&quot;married&quot;,&#39;3&#39;=&quot;widowed&quot;,
+                        &#39;4&#39;=&quot;divorced&quot;,&#39;5&#39;=&quot;separated&quot;,&#39;6&#39;=&quot;never married&quot;))</code></pre>
+</div>
+<div id="resources" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Online R resources<a href="wild.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you want to know how to do something in R, you can always google it. There are many, many excellent free resources online. In addition, here are nice free online R resources:</p>
+<p><a href="https://stackoverflow.com/">https://stackoverflow.com/</a> This is a community of people that ask and answer questions about lots of different software packages including R. You can search all of the questions for free as a non-member, or you can join (also free) and ask and answer questions. I have figured out how to do many things in R thanks to the community at this site.</p>
+<p><a href="https://bookdown.org/ndphillips/YaRrr/">https://bookdown.org/ndphillips/YaRrr/</a> This is a very fun, free, online introduction to R, called <em>YaRrr! The Pirate’s Guide to R</em>, by Nathaniel D. Phillips. Actually, Dr. Phillips claims that he discovered the book and translated it from “pirate-speak” into English.</p>
+<p><a href="https://suzanbaert.netlify.app/2018/01/dplyr-tutorial-1/">https://suzanbaert.netlify.app/2018/01/dplyr-tutorial-1/</a> This is part one of a four-part series of blog posts on “Data Wrangling,” by Suzan Baert. All four parts are very helpful in learning to manage data in R.</p>
+<p><a href="https://r-graphics.org/">https://r-graphics.org/</a> This is the <em>R Graphics Cookbook</em>, by Winston Chang. It is an extremely useful resource when using ggplot. It shows you how to make many, many kinds of graphs, and also how to modify the graphs that you have already made.</p>
+<p><a href="https://www.apreshill.com/project/ohsu-dataviz/">https://www.apreshill.com/project/ohsu-dataviz/</a> This is a really nicely done, free, asynchronous online class called ” Principles &amp; Practice of Data Visualization” taught by Alison Hill. This class teaches you about data visualization in R with ggplot.</p>
+<p><a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a> This textbook, R for Data Science, by Hadley Wickham and Garrett Grolemund is a terrific resource, available for free online.</p>
+<p><a href="https://isabella-b.com/blog/ggplot2-theme-elements-reference/">https://isabella-b.com/blog/ggplot2-theme-elements-reference/</a> This is a really helpful guide to theme elements in ggplot2 by Isabella Benabaye.</p>
+<p><a href="https://henrywang.nl/ggplot2-theme-elements-demonstration/">https://henrywang.nl/ggplot2-theme-elements-demonstration/</a> This is a nice ggplot2 theme elements demonstration by Henry Wang.</p>
+<p><a href="http://mattwaite.github.io/sports/">http://mattwaite.github.io/sports/</a> This textbook, <em>Sports Data Analysis and Visualization</em> by Matt Waite is a great resource for using R to analyze sports.</p>
+</div>
+<div id="the-last-command-how-to-get-help" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> The last command: how to get help<a href="wild.html#the-last-command-how-to-get-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As you continue with R, you will often find yourself in a situation where you want to know what a command is for, or the specifics of how to use it. When you are in this situation, you can type a “?” followed by that command, like this:</p>
+<pre><code>?table</code></pre>
+<p>R will pull up documentation on the command. R’s documentation is sometimes hard to read (and reading it takes practice) but it can be a good place to start, before looking at the online resources in the previous section.</p>
+<p>If the command is from a package that you don’t have installed at that time, you can type two question marks, and R will look through all of the packages in its online libraries, like this:</p>
+<pre><code>??cut2</code></pre>
+</div>
+<div id="the-strausz-method-for-improving-in-r" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> The Strausz method for improving in R<a href="wild.html#the-strausz-method-for-improving-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After taking this class and working through this workbook, you may decide that you want to keep using and improving at R for the reasons that I laid out in section <a href="getting-started.html#why-r">1.1</a>: because R is free, powerful, professional-grade software and skills in R will really impress potential employers (and your friends and family!). Below is the method that I used to learn R.</p>
+<p>Every day, I set a timer for 15 minutes, and spent that time doing something in R. I began with though Nathaniel D. Phillips’ <a href="https://bookdown.org/ndphillips/YaRrr/">Pirate’s Guide</a> and then I worked my way through the other resources in section <a href="wild.html#resources">10.4</a>. I also spent that time figuring out how to use R to solve problems in my own research; I made a vow to myself that from now on, I would do all analysis for my own research in R.</p>
+<p>You can also use that 15 minutes to do anything in R. Maybe you want to use R to analyze your favorite sport. Maybe you want to use R to learn about knitting patterns, or to keep track of data regarding your other hobbies or interests. There is even a package available called sourrr that is useful when generating recipes for sourdough bread (although I have found my favorite sourdough bread recipes in <a href="https://www.penguinrandomhouse.com/books/249870/sourdough-by-sarah-owens-photographs-by-ngoc-minh-ngo/">this book</a>). Maybe you want to use R to gather and analyze data relating to games that you play or debates that you have with your friends. Or, maybe you want to use R to help you with research projects for other classes. Just choose something to do in those 15 minutes, and do it. If you do that for a while, you will surprise yourself with how much R you can do.</p>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Hlavac, Marek. 2022. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. Bratislava, Slovakia: Social Policy Institute. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>.
+</div>
+<div class="csl-entry">
+Pollock, Philip H, and Barry C Edwards. 2019. <em>The Essentials of Political Analysis</em>. Book. 6th ed. Sage.
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-wild.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
