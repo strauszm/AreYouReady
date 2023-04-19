@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Welcome to the tidyverse | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <title>Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
   <meta name="description" content="This is the preface of the workbook" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Welcome to the tidyverse | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:title" content="Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the preface of the workbook" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Welcome to the tidyverse | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta name="twitter:title" content="Chapter 10 R in the wild | Are you ready for R? A Workbook for R for Political Science and Beyond" />
   
   <meta name="twitter:description" content="This is the preface of the workbook" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-started.html"/>
-<link rel="next" href="graphing.html"/>
+<link rel="prev" href="regression.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -309,219 +309,100 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tidyverse" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Welcome to the tidyverse<a href="tidyverse.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Here is a review of existing methods.</p>
-<div id="install-tidyverse" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Installing packages<a href="tidyverse.html#install-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>One of the nice things about R is that users can create their own libraries of commands. These can be extremely powerful and useful tools. There is an excellent set of tools that are in a library called the “tidyverse.” To install the tidyverse on your local computer, first, make sure that your computer is attached to the internet. Second, enter this command into the Console of RStudio and press Enter:</p>
-<pre><code>install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>Once you hit enter, you should see some action in your Console (what it says will depend on what version of R you are using). Some of it might be in red, but don’t worry about it. Now you have installed the tidyverse set of libraries of commands! We will regularly work with the tools that this library makes possible for us.</p>
+<div id="wild" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> R in the wild<a href="wild.html#wild" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="todays-lab-as-a-reference" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Today’s lab as a reference<a href="wild.html#todays-lab-as-a-reference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Unlike the previous chapters, I am not going to ask you to start a practice document and follow along. Just read the chapter, know that this a resource that you have available as you become more advanced in your R skills and need more guidance.</p>
 </div>
-<div id="exploring" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Exploring dataframes<a href="tidyverse.html#exploring" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To begin exploring dataframes, open the project that you made in the last lab. There are two ways that you can do this:</p>
-<ol style="list-style-type: decimal">
-<li>You can open RStudio, go to File, open project, and navigate to the file called Scope and Methods labs.</li>
-<li>You can navigate to the folders that you made last lab and double click the file called “Scope and Methods Labs,” like the circled file below:</li>
-</ol>
-<p><img src="images/tidyverse_1_openproject.png" width="60%" /></p>
-<p>When the project opens up, you should see three objects in the Environment: anes2020, states2010, and world. If you don’t see those files, follow the instructions in section <a href="getting-started.html#wont-load">1.5</a>, to load them.</p>
-<p>Those files are the dataframes that we will be doing most of our analysis of in this class. As I mentioned in the last chapter, a dataframe is essentially a group of vectors attached to one another, and is an extremely useful way of storing data for analysis. Here is a quick summary of those three dataframes:</p>
-<ul>
-<li>anes2020 is a snippet of the American National Election Survey, a survey that has been conducted at every election since 1948 by scholars based out of the University of Michigan and Stanford. This snippet that I created only looks at the 2020 election. You can find more information about ANES at their website, <a href="https://electionstudies.org/">https://electionstudies.org/</a></li>
-<li>states2010 is a dataframe with information about US states. It is a snippet of a large dataset produced by scholars at Michigan State University. You can find more information here: <a href="http://ippsr.msu.edu/public-policy/correlates-state-policy">http://ippsr.msu.edu/public-policy/correlates-state-policy</a></li>
-<li>world is a snippet of a dataset about most of the countries of the world gathered from different sources by the great Harvard political scientist Pippa Norris. You can find the whole dataset here: <a href="https://www.pippanorris.com/data">https://www.pippanorris.com/data</a></li>
-</ul>
-<p>To begin, let’s take a look at the anes2020 dataset using the “View()” command (note that “View” is capitalized, unlike many R commands). Enter this command into the Console and then hit Enter:</p>
-<pre><code>View(anes2020)</code></pre>
-<p>When you hit enter, the following should come up on your screen:
-<img src="images/tidyverse_2_view.png" width="90%" /></p>
-<p>This is a neat visualization of the ANES survey. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 46 years old, divorced, with a bachelor’s degree, who never served in the military, etc. If you want to see what all of the variables mean, you can look at the file anes2020 codebook, which you should have downloaded in chapter <a href="getting-started.html#class-project">1.2</a> and put in your Codebooks folder.</p>
-<p>Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the “$” and the command “summary.” The “$” command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:</p>
-<pre><code>anes2020$age</code></pre>
-<p>When you do this, you will see that R gives you the age of every single person who took the survey. Kind of interesting, but not all that useful. So, let’s try something else. Type summary(anes2020$age) into the Console, and you get these results:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tidyverse.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anes2020<span class="sc">$</span>age)</span></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-##   18.00   37.00   52.00   51.59   66.00   80.00     348</code></pre>
-<p>This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80. If you look in the codebook, you will see that the survey takers coded everyone 80 and over as 80. You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. “NA” is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.</p>
-<p>The “summary” command is very useful with numeric data, like age. However, what if you have a variable like “marital,” which measures the marital status of individuals? The mean and median of this variable would not be meaningful, but we might want to know how many married, single, divorced, etc. people there are in our dataframe. To get this information, we can use the “table” command, like this:</p>
-<pre><code>table(anes2020$marital)</code></pre>
-<p>That command generates this output</p>
-<pre><code>## 
-##      divorced       married never married     separated       widowed 
-##          1221          4322          1951           163           567</code></pre>
-<p>In other words, our dataframe has 1221 divorced people, 4322 married people, 1951 never married people, etc. Useful stuff!</p>
+<div id="importing-data-into-r" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Importing data into R<a href="wild.html#importing-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importing-csv-files" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Importing CSV files<a href="wild.html#importing-csv-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For this workbook, you have been able to access our three dataframes—world, states2010, and ane2020—as .Rda files. In other words, these files were already formatted for use with R. However, if you keep using, you will regularly run into data that has not been formatted for use with R.</p>
+<p>For example, when I wanted to generate the ANES dataframe, I went to the ANES website: <a href="https://electionstudies.org/data-center/2020-time-series-study/">https://electionstudies.org/data-center/2020-time-series-study/</a>. I had to create a log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. “CSV” stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.</p>
+<p>I next created a folder called anes2020, and in that folder, I made three new folders: one called rscripts, one called data, and one called notes (where I keep my codebooks and other reference materials related to that data). I then moved the cvs file that I had downloaded (which downloaded as anes_timeseries_2020_csv_20210719.cvs) into the data folder.</p>
+<p>After that, I made a new R project which I set to be in that anes2020 folder. Next, I imported the data with this command:</p>
+<pre><code>anes2020&lt;-read.csv(&quot;data/anes_timeseries_2020_csv_20210719.csv&quot;)</code></pre>
+<p>That dataset is huge: 1,771 variables! I read over the codebook (which I had also downloaded from the same webpage) and chose the variables that I wanted to keep for this class. I used this command to make a simplified version of that dataset (you need to have the tidyverse package loaded to use this command).</p>
+<pre><code>anes2020.simplified&lt;-anes2020 %&gt;% 
+select(V201005, V201103, V201115,V201117, V201151,V201152,V201156,V201157, V201200,V201217, V201225x,         V201231x,V201233,V201234,V201237,V201262, V201324, V201336,V201337,V201345x,V201351,V201356x,V201366,V201368, V201369,V201377,  V201392x,V201401,V201405x,V201414x,V201433, V201434,V201435,V201453,V201507x,V201508,V201510,V201516,V201544,
+V201549x,V201567, V201600,V201601,V201617x,V201628,V201644, V202159,V202160,V202161,V202162, V202163,V202164,V202165,V202166,
+V202167,V202168,V202169,V202170, V202171,V202172,V202173,V202174,
+V202175,V202178,V202181,V202182,V202183,V202187,V202073)</code></pre>
+<p>That command looks like a lot, but all it is doing is telling R to make a new dataframe called anes2020.simplified and then selecting “only” that list of variables (instead of the 1,771 variables in the original dataframe).</p>
 </div>
-<div id="org-script" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Organizing your scripts<a href="tidyverse.html#org-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As you use R you will generate a lot of script files, and if you are not careful you might find yourself forgetting what some of your scripts are for. This is where the # characters can be really helpful. You can leave notes to yourself.</p>
-<p>This is a nice way to add headers to R script files:</p>
-<pre><code>####################################
-# Your name
-# Project, Purpose of R file
-# Date started : Date last modified
-####################################</code></pre>
-<p>Then, when you open a script file, you can see right away when you made it and what it is for. You can customize this header as is helpful to you.</p>
+<div id="importing-excel-files" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Importing Excel files<a href="wild.html#importing-excel-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes you will find an excel file that you want to import. There is a very useful package that you can install to help with that called “readxl.” Once you have installed it, you can use the “read_excel” command to bring Excel files into R.</p>
+<p>After I downloaded the Excel version of the “DEMOCRACY CROSS-NATIONAL DATA, RELEASE 4.0 FALL 2015” from Dr. Pippa Norris’s webpage, <a href="https://www.pippanorris.com/data">https://www.pippanorris.com/data</a>. I read it into R with this command:</p>
+<pre><code>world &lt;- read_excel(&quot;data/Democracy Cross-National Data V4.1 09092015.xlsx&quot;)</code></pre>
 </div>
-<div id="welcome-to-the-tidyverse" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Welcome to the tidyverse<a href="tidyverse.html#welcome-to-the-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Perhaps the code package that has had the biggest impact on how people do R in the last few years had been the “tidyverse”. To take advantage of this great library which you installed in section <a href="tidyverse.html#install-tidyverse">2.1</a>, you first have to activate it. You will have to do this step every time that you open R, so I often put it at the top of my script files.</p>
-<p>To follow along, open a new script file and save it in your scripts folder as “chapter 2 practice.” Copy and paste this onto the page:</p>
-<pre><code>####################################
-# Your name
-# 20093 Chapter 2, Practice exercises
-# Date started : Date last modified
-####################################
+<div id="importing-other-files" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Importing other files<a href="wild.html#importing-other-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When dealing with data that is not formatted as a Rda, Excel, or CSV file, the package “foreign” is often helpful. Here is an example of how I have used the <code>read.spss</code> command from the package “foreign” command to read in an SPSS-generated .sav file:</p>
+<pre><code>df &lt;- read.spss(&quot;data/previous semester data.sav&quot;, use.value.label=TRUE, to.data.frame=TRUE) </code></pre>
+</div>
+</div>
+<div id="cleaning-data-in-r" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Cleaning data in R<a href="wild.html#cleaning-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One you have imported data, there are a number of things that you want to do to do before you do analysis. It always helps to glimpse() your new dataframe and look at the codebook, if you can find one. When I was first looking at the ANES data for this lab workbook, I noticed that many of the variables had long names that were difficult to interpret, like this: V201005. I renamed them with this tidyverse command (note that the real command was longer because it included all the variables in the dataframe):</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;% 
+  rename(attention=V201005,
+         v2016=V201103,
+         hope=V201115,
+         outrage=V201117,
+         ft_biden=V201151,
+         ft_trump=V201152,
+         ft_dems=V201156,
+         ft_reps=V201157)</code></pre>
+<p>You might find that are ordinal or nominal variables that are coded as numeric which you want to recode as factors, using the as.factor command, which you can do like this:</p>
+<pre><code>df$variable&lt;-as.factor(df.variable)</code></pre>
+<p>You can also use the codebook and/or the table() command to figure out how data is coded. Often missing data is coded as 8, 9, 99, or negative numbers. You want to make sure to recode that as NAs or R will treat those values as numbers and mess up your analysis. I used the tidyverse command <code>mutate(na_if())</code> to do that. Here is how I accomplished that with the age variable in ANES:</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;%
+mutate(age=na_if(age, &#39;-9&#39;))</code></pre>
+<p>And here is how I recoded the marital variable to exclude NAs and to give the numeric variables values that made sense:</p>
+<pre><code>anes2020.simplified&lt;-anes2020.simplified %&gt;%
+  mutate(marital=na_if(marital, &#39;-9&#39;)) %&gt;% 
+  mutate(marital=na_if(marital, &#39;-8&#39;)) %&gt;% 
+  mutate(marital=recode(marital, &#39;1&#39;=&quot;married&quot;,&#39;2&#39;=&quot;married&quot;,&#39;3&#39;=&quot;widowed&quot;,
+                        &#39;4&#39;=&quot;divorced&quot;,&#39;5&#39;=&quot;separated&quot;,&#39;6&#39;=&quot;never married&quot;))</code></pre>
+</div>
+<div id="resources" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Online R resources<a href="wild.html#resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you want to know how to do something in R, you can always google it. There are many, many excellent free resources online. In addition, here are nice free online R resources:</p>
+<p><a href="https://stackoverflow.com/">https://stackoverflow.com/</a> This is a community of people that ask and answer questions about lots of different software packages including R. You can search all of the questions for free as a non-member, or you can join (also free) and ask and answer questions. I have figured out how to do many things in R thanks to the community at this site.</p>
+<p><a href="https://bookdown.org/ndphillips/YaRrr/">https://bookdown.org/ndphillips/YaRrr/</a> This is a very fun, free, online introduction to R, called <em>YaRrr! The Pirate’s Guide to R</em>, by Nathaniel D. Phillips. Actually, Dr. Phillips claims that he discovered the book and translated it from “pirate-speak” into English.</p>
+<p><a href="https://suzanbaert.netlify.app/2018/01/dplyr-tutorial-1/">https://suzanbaert.netlify.app/2018/01/dplyr-tutorial-1/</a> This is part one of a four-part series of blog posts on “Data Wrangling,” by Suzan Baert. All four parts are very helpful in learning to manage data in R.</p>
+<p><a href="https://r-graphics.org/">https://r-graphics.org/</a> This is the <em>R Graphics Cookbook</em>, by Winston Chang. It is an extremely useful resource when using ggplot. It shows you how to make many, many kinds of graphs, and also how to modify the graphs that you have already made.</p>
+<p><a href="https://www.apreshill.com/project/ohsu-dataviz/">https://www.apreshill.com/project/ohsu-dataviz/</a> This is a really nicely done, free, asynchronous online class called ” Principles &amp; Practice of Data Visualization” taught by Alison Hill. This class teaches you about data visualization in R with ggplot.</p>
+<p><a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a> This textbook, R for Data Science, by Hadley Wickham and Garrett Grolemund is a terrific resource, available for free online.</p>
+<p><a href="https://isabella-b.com/blog/ggplot2-theme-elements-reference/">https://isabella-b.com/blog/ggplot2-theme-elements-reference/</a> This is a really helpful guide to theme elements in ggplot2 by Isabella Benabaye.</p>
+<p><a href="https://henrywang.nl/ggplot2-theme-elements-demonstration/">https://henrywang.nl/ggplot2-theme-elements-demonstration/</a> This is a nice ggplot2 theme elements demonstration by Henry Wang.</p>
+<p><a href="http://mattwaite.github.io/sports/">http://mattwaite.github.io/sports/</a> This textbook, <em>Sports Data Analysis and Visualization</em> by Matt Waite is a great resource for using R to analyze sports.</p>
+</div>
+<div id="the-last-command-how-to-get-help" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> The last command: how to get help<a href="wild.html#the-last-command-how-to-get-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As you continue with R, you will often find yourself in a situation where you want to know what a command is for, or the specifics of how to use it. When you are in this situation, you can type a “?” followed by that command, like this:</p>
+<pre><code>?table</code></pre>
+<p>R will pull up documentation on the command. R’s documentation is sometimes hard to read (and reading it takes practice) but it can be a good place to start, before looking at the online resources in the previous section.</p>
+<p>If the command is from a package that you don’t have installed at that time, you can type two question marks, and R will look through all of the packages in its online libraries, like this:</p>
+<pre><code>??cut2</code></pre>
+</div>
+<div id="the-strausz-method-for-improving-in-r" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> The Strausz method for improving in R<a href="wild.html#the-strausz-method-for-improving-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>After taking this class and working through this workbook, you may decide that you want to keep using and improving at R for the reasons that I laid out in section <a href="getting-started.html#why-r">1.1</a>: because R is free, powerful, professional-grade software and skills in R will really impress potential employers (and your friends and family!). Below is the method that I used to learn R.</p>
+<p>Every day, I set a timer for 15 minutes, and spent that time doing something in R. I began with though Nathaniel D. Phillips’ <a href="https://bookdown.org/ndphillips/YaRrr/">Pirate’s Guide</a> and then I worked my way through the other resources in section <a href="wild.html#resources">10.4</a>. I also spent that time figuring out how to use R to solve problems in my own research; I made a vow to myself that from now on, I would do all analysis for my own research in R.</p>
+<p>You can also use that 15 minutes to do anything in R. Maybe you want to use R to analyze your favorite sport. Maybe you want to use R to learn about knitting patterns, or to keep track of data regarding your other hobbies or interests. There is even a package available called sourrr that is useful when generating recipes for sourdough bread (although I have found my favorite sourdough bread recipes in <a href="https://www.penguinrandomhouse.com/books/249870/sourdough-by-sarah-owens-photographs-by-ngoc-minh-ngo/">this book</a>). Maybe you want to use R to gather and analyze data relating to games that you play or debates that you have with your friends. Or, maybe you want to use R to help you with research projects for other classes. Just choose something to do in those 15 minutes, and do it. If you do that for a while, you will surprise yourself with how much R you can do.</p>
 
-#libraries------------------------------------------
-library(tidyverse)</code></pre>
-<p>Now select all the text on this page, run it, and then save it. You should see something like this in your Console:</p>
-<pre><code>Warning: package &#39;tidyverse&#39; was built under R version 4.1.2
-v ggplot2 3.3.5     v purrr   0.3.4
-v tibble  3.1.3     v dplyr   1.0.7
-v tidyr   1.1.3     v stringr 1.4.0
-v readr   2.0.0     v forcats 0.5.1</code></pre>
-<p>Don’t worry about the error messages. The list of packages are the libraries of commands that come with the tidyverse library. The two that we will be using the most are <strong>ggplot2</strong>, which is terrific for graphing, and <strong>dplyr</strong>, which is great for managing data. Since you have installed the tidyverse, you will not have to install those packages separately – you already have them.</p>
-<p>Now that we have access to the tidyverse, we will use a few of the commands that are available to us through the dplyr package to get a better look at some of our data. Before we can do that, however, we need to learn about the somewhat strange feature of dplyr, the “pipe.” The pipe is this set of characters:</p>
-<pre><code>%&gt;%</code></pre>
-<p>You can always type those three characters to build a pipe, but you can also type Ctrl-Shift-M on a Windows machine or Cmd + Shift + M on a Mac.</p>
-<p>The pipe means “and then.” Let’s try an example, using the glimpse() command that is available in the tidyverse.</p>
-<p>Try entering this command into your script file:</p>
-<pre><code>anes2020 %&gt;% 
-  glimpse() #taking a different kind of look at our dataframe</code></pre>
-<p>Highlight that text and run that command. You should see a lot of output in the Console. If you scroll up a bit in the Console, you should see something like this (this is just the first 12 variables in this dataframe; you will have access to more on your screen):</p>
-<pre><code>## Rows: 8,280
-## Columns: 12
-## $ age      &lt;int&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 37, 55, 30, 38, 41, 66, 54, 55, 62, 80, 31, 80, 24, 55, 59, 73, 72,~
-## $ marital  &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;widowed&quot;, &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;separ~
-## $ edu      &lt;ord&gt; &quot;ba&quot;, &quot;some college&quot;, &quot;high school&quot;, &quot;associate degree&quot;, &quot;md, phd, or jd&quot;, &quot;some college&quot;, &quot;associate degre~
-## $ military &lt;chr&gt; &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never serv~
-## $ union    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,~
-## $ race     &lt;chr&gt; &quot;Hispanic&quot;, &quot;Asian or Pacific Islander&quot;, &quot;White&quot;, &quot;Asian or Pacific Islander&quot;, &quot;Native American&quot;, &quot;White&quot;, ~
-## $ children &lt;int&gt; 0, 1, 2, 1, 0, 0, 3, 0, 0, 0, 2, 2, 1, 2, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 0, 0, 3, 0, 0, 2, 2, 2, 0, 0, 0, 0,~
-## $ sex      &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1,~
-## $ lgbtq    &lt;chr&gt; &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;,~
-## $ income   &lt;ord&gt; &quot;$110,000 or more&quot;, &quot;$65,000-$109,999&quot;, &quot;$65,000-$109,999&quot;, &quot;$25,000-64,999&quot;, &quot;$110,000 or more&quot;, &quot;under $2~
-## $ guns     &lt;int&gt; 3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 0, 2, 0, 0, 4, 1, 0, 4, 1, 0, 0, 0, 0, 0, 4,~
-## $ partyid  &lt;ord&gt; strong republican, independent, independent democrat, not very strong republican, independent, independent ~</code></pre>
-<p>This is giving us information about the dataframe anes2020. At the top, you can see that the dataframe has 8,280 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2020 dataframe represents a survey of 8,280 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 68 columns, which means that the dataframe measures 68 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (<int>, <chr>, <ord>, etc.). We will learn a bit more about those classifications in future chapters To the right of those classifications you can see the first set of values of each variable.</p>
-<p>Many dataframes are quite large, and you might find yourselves wanting to focus on a few variables at a time. The command select() can be helpful for this. Let’s say that you want to focus in on how many guns people have in their homes and their feelings about the NRA. In that case, you would want to select the variables “ft_nra” and “guns”, which you can do like this:</p>
-<pre><code>anes2020 %&gt;% 
-  select(guns, ft_nra) #focusing in on a few variables</code></pre>
-<div id="a-warning-about-the-select-command" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> A warning about the select() command<a href="tidyverse.html#a-warning-about-the-select-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Unfortunately, some of the packages that we will be installing in future labs also use the command select. If you ever run “select” and have more than one of these packages installed, R will give an error. When you get that error, you can add “dplyr::” before select(), to tell R to look at the select() in the dplyr library (which comes with the tidyverse). Here is how the above command would look with that modification:</p>
-<pre><code>anes2020 %&gt;% 
-  dplyr::select(guns, ft_nra) #focusing in on a few variables</code></pre>
-<p>If you run either of these commands (with or without the dplyr::), and scroll up a bit in the Console, you will see output that begins like this:</p>
-<pre><code>##    guns ft_nra
-## 1     3     50
-## 2     0     50
-## 3     0      0
-## 4     0     NA
-## 5     0     70
-## 6     0     15
-## 7     0     85
-## 8     0     50
-## 9     1     NA
-## 10    2     50</code></pre>
-<p>This is a way of displaying dataframes that is unique to the tidyverse called a “tibble.” Each row represents a case, and each column represents a variable (except for the leftmost column, which is just the case number. Looking at case #1, you can see that that person owns 3 guns, and rates the NRA 50 out of 100. Case #2 also rates the NRA 50, but owns no guns.</p>
-<p>Notice that the dataframe that had been so large before, with 68 columns, now only has 2 columns. If you want to use that glimpse() command from above to just get summary information about each of our variables, you can use a second pipe (%&gt;%) like this:</p>
-<pre><code>anes2020 %&gt;% 
-  select(guns, ft_nra) #focusing in on a few variables%&gt;%
-  glimpse() #taking a different kind of look at our dataframe</code></pre>
-<p>What if we want to see what the people in our sample with the most and fewest guns thought about the NRA? To do that, we can arrange our dataframe from smallest to largest or from largest to smallest on any of our variables. Or, with variables that include text, we can sort according to alphabetic or reverse alphabetic order. We can use the arrange() command to do that:</p>
-<pre><code>anes2020 %&gt;% 
-  select(guns, ft_nra) %&gt;% #focusing in on a few variables
-  arrange(guns) #sorting this variable from smallest to largest</code></pre>
-<p>When we run the above command, the Console shows us the feeling about the NRA by the people with the fewest guns first, and then on to the people with more guns. But what if we want to see the largest values on the “guns” variable first? To do that, we need to use desc() to modify arrange() like this:</p>
-<pre><code>anes2020 %&gt;% 
-  select(guns, ft_nra) %&gt;% #focusing in on a few variables
-  arrange(desc(guns)) #sorting this variable from largest to smallest</code></pre>
-<p>Finally, combining all of the commands that we learned today, we can use glimpse() to see information about each of our variables in this simplified version of our dataframe. To do that, we will need a third pipe:</p>
-<pre><code>anes2020 %&gt;% 
-  select(guns, ft_nra) %&gt;% #focusing in on a few variables
-  arrange(desc(guns)) %&gt;% #sorting this variable from largest to smallest
-  glimpse() #taking a different kind of look at our dataframe</code></pre>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Hlavac, Marek. 2022. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. Bratislava, Slovakia: Social Policy Institute. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>.
+</div>
+<div class="csl-entry">
+Pollock, Philip H, and Barry C Edwards. 2019. <em>The Essentials of Political Analysis</em>. Book. 6th ed. Sage.
 </div>
 </div>
-<div id="review-of-this-chapters-commands-1" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Review of this chapter’s commands<a href="tidyverse.html#review-of-this-chapters-commands-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<colgroup>
-<col width="7%" />
-<col width="85%" />
-<col width="6%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Command</th>
-<th align="left">Purpose</th>
-<th align="left">Library</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">install.packages(““)</td>
-<td align="left">To install new packages, or libraries of R commands. You have to do this only once on your computer per library when your computer is connected to the internet so that it will download the relevant library.</td>
-<td align="left">Base R</td>
-</tr>
-<tr class="even">
-<td align="left">View()</td>
-<td align="left">Displays a dataframe as a spreadsheet. Notice that the word “View” is capitalized.</td>
-<td align="left">Base R</td>
-</tr>
-<tr class="odd">
-<td align="left">summary()</td>
-<td align="left">Displays summary information (like mean and median) about a numeric variable. To call a variable, use a dollar sign. So, like this: “summary(dataframe$variable)”</td>
-<td align="left">Base R</td>
-</tr>
-<tr class="even">
-<td align="left">table()</td>
-<td align="left">Displays the number of times each value of a variable appears in a dataframe. Most useful for variables with a relatively small number of possible values. To call a variable, use a dollar sign. So, like this: “table(dataframe$variable)”</td>
-<td align="left">Base R</td>
-</tr>
-<tr class="odd">
-<td align="left">library()</td>
-<td align="left">To ask R to load a library into your session. You must use this command every time that you open R if you want it to use a particular library.</td>
-<td align="left">Base R</td>
-</tr>
-<tr class="even">
-<td align="left">%&gt;%</td>
-<td align="left">The “pipe.” Useful with manipulating data in the tidyverse.</td>
-<td align="left">dplry (tidyverse)</td>
-</tr>
-<tr class="odd">
-<td align="left">glimpse()</td>
-<td align="left">Display general information about a dataset, including looking at the variable names, types, and a few values in rows. Often preceded by a pipe.</td>
-<td align="left">dplyr (tidyverse)</td>
-</tr>
-<tr class="even">
-<td align="left">select()</td>
-<td align="left">Allows you to select a few variables to focus on. Often preceded by a pipe. You can use the variable names without dollar signs.</td>
-<td align="left">dplyr (tidyverse)</td>
-</tr>
-<tr class="odd">
-<td align="left">arrange(desc())</td>
-<td align="left">Sorts a dataframe from largest to smallest values of a particular variable (or in reverse-alphabetical order). Often preceded by a pipe. You can use the variable names without dollar signs.</td>
-<td align="left">dplyr (tidyverse)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="review-exercises-1" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Review exercises<a href="tidyverse.html#review-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let’s practice some of the things that we learned in this chapter.</p>
-<ol style="list-style-type: decimal">
-<li>Create a new R script called “Chapter 2 Exercises,” and save it to your R scripts folder. Make a header for the script based on the description from section <a href="tidyverse.html#org-script">2.3</a>. Use the library() command to load the tidyverse.</li>
-<li>Look over the codebooks from our three datasets: anes2020, states2010, and world, and choose a variable that you are interested in. Using either the table() or the summary() command, generate some information about the values of that variable. If you the summary() command does not give you useful information, use the table() command, and vice versa.</li>
-<li>Make one or more observations about that variable from question 2.</li>
-<li>Choose a second variable from the same dataframe. Use a pipe (%&gt;%) and the select() command, select only the variable from question 2 and the variable from this question.</li>
-<li>Use a pipe to modify the command from step 4, and using the arrange() command (with or without desc()), arrange the dataframe by one of the two variables.</li>
-<li>Make one or more observations about that output from question 5.</li>
-</ol>
-
 </div>
 </div>
             </section>
@@ -529,8 +410,8 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -561,7 +442,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-tidyverse.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-wild.Rmd",
 "text": "Edit"
 },
 "history": {
