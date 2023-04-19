@@ -93,6 +93,8 @@ When you want to know how to do something in R, you can always google it. There 
 
 [http://mattwaite.github.io/sports/](http://mattwaite.github.io/sports/) This textbook, *Sports Data Analysis and Visualization* by Matt Waite is a great resource for using R to analyze sports.
 
+[https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/) I used this textbook, *bookdown: Authoring Books and Technical Documents with R Markdown*, by Yihui Xie, to learn how to put this workbook online.
+
 ## The last command: how to get help
 As you continue with R, you will often find yourself in a situation where you want to know what a command is for, or the specifics of how to use it. When you are in this situation, you can type a "?" followed by that command, like this:
 ```
