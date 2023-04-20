@@ -22,3 +22,9 @@ As I reviewed the available workbooks, I did not find one that I was satisfied w
 I decided to make my workbook available for free online because that is consistent with the open source spirit of R. This workbook might be helpful to you if you are trying to teach yourself R, and you are also welcome to use it to teach students R in non-profit high schools and non-profit collegiate settings. Those wishing to use it for commercial reasons outside of non-profit educational uses should contact me for permission.
 
 I'd like to thank my spouse Kate for coming up with the great title and for putting up with my (admittedly annoying) regular, enthusiastic discussion of the new things that I had learned to do and make in R over these last few years.
+
+# About the author {.unnumbered}
+
+I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a professor of political science at Texas Christian University. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies. 
+
+I graduated from Michigan State University’s James Madison College and earned my Ph.D. in political science from the University of Washington in Seattle. I live just outside of Fort Worth, Texas with my spouse and our two children. In my free time, I enjoy cooking, hiking, and schmoozing.
