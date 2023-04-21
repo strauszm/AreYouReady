@@ -21,7 +21,7 @@ Now select all the text on this page, run it, and save it.
 
 ## Representing crosstabs with stacked bar graphs {#stacked}
 
-In chapter \@ref(recoding) we learned how to generate crosstabs (and, crucially for interpretation, crosstabs with percents in columns). Crosstabs themselves have a lot of numbers on them, and can thus be difficult to interpret on their own. Many social scientists address this problem by generating graphs. A "stacked bar graph" is a really nice tool for visually depicting relationships in a bar graph. The code to generate stacked bar graphs is a little bit long and complex, so just feel free to copy and paste the below or the code from the "20093 ggplot2 templates" file that you should ahve downloaded in section \@ref(class-project), step 7. Let’s return to the relationship that we were looking at in section \@ref(cross-tabs), between education (our independent variable) and income (our dependent variable).
+In chapter \@ref(recoding) we learned how to generate crosstabs (and, crucially for interpretation, crosstabs with percents in columns). Crosstabs themselves have a lot of numbers on them, and can thus be difficult to interpret on their own. Many social scientists address this problem by generating graphs. A "stacked bar graph" is a really nice tool for visually depicting relationships in a bar graph. The code to generate stacked bar graphs is a little bit long and complex, so just feel free to copy and paste the below or the code from the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files). Let’s return to the relationship that we were looking at in section \@ref(cross-tabs), between education (our independent variable) and income (our dependent variable).
 
 Here is the code:
 
@@ -51,7 +51,7 @@ If it bothers you having that "plotting.data" object in your environment, you ca
 ```
 rm(plotting.data).
 ```
-Another thing to note: the "scale_fill_viridis_d()+" line of code asks R to use a color palette that is easy to read for people that are colorblind. There are many, many choices of color palette in R, and you are welcome to play around with colors, but it is also fine to just stick to this palette. If you’d rather have a black and white graph, there is code for that in the "20093 ggplot2 templates" file.
+Another thing to note: the "scale_fill_viridis_d()+" line of code asks R to use a color palette that is easy to read for people that are colorblind. There are many, many choices of color palette in R, and you are welcome to play around with colors, but it is also fine to just stick to this palette. If you’d rather have a black and white graph, there is code for that in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
 
 Looking at the graph, we can see that our X-axis is our independent variable, education, and our Y-axis is the column percentages of our dependent variable, income. Focusing on the yellow region, we can clearly see that each increase in education seems to correspond to an increase in the percent of people in the highest income earning category (with the possible exception of the movement between some college and associate degree). Focusing on the dark blue region, we can clearly see that, as level of education increases, the percent of people in the lowest income category decreases. In short, this graph has all of the same information that we got when looking at the crosstab that we generated with:
 ```
@@ -60,7 +60,7 @@ colPerc(xtabs(~income+edu, data=anes2020))
 from our previous lab, but it is much easier to take in a bunch of that information at the same time.
 
 ## Representing mean comparison tables with boxplots
-In addition to the histogram that we introduced in chapter 3, another useful way of representing the distribution of a single interval variable is with a boxplot. Here is the code for a boxplot of the variable (you can also find this code in the "20093 ggplot2 templates" file):
+In addition to the histogram that we introduced in chapter 3, another useful way of representing the distribution of a single interval variable is with a boxplot. Here is the code for a boxplot of the variable (you can also find this code in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files)):
 ```{r}
 #make a boxplot of evangelicals
 ggplot(states2010, aes(y = evangelical_pop)) +
@@ -215,7 +215,7 @@ Let’s look at this output. First, focus on the first two rows. They tell us th
 
 In other words, the relationship between outrage in 2020 and feelings about President Trump is very different at different levels of partisanship. We thus call this an **interactive relationship**. 
 
-To graphically represent this relationship, we can use this code (which you can also find in the "20093 ggplot2 templates" file):
+To graphically represent this relationship, we can use this code (which you can also find in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files)):
 ```{r}
 ggplot(anes2020 %>% filter(!is.na(partyid3) & (!is.na(outrage2))), 
        aes(x = partyid3, y = ft_trump, fill=outrage2)) +

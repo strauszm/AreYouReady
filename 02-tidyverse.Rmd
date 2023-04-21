@@ -38,7 +38,7 @@ When you hit enter, the following should come up on your screen:
 knitr::include_graphics("images/tidyverse_2_view.png")
 ```
 
-This is a neat visualization of the ANES survey. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 46 years old, divorced, with a bachelor’s degree, who never served in the military, etc. If you want to see what all of the variables mean, you can look at the file anes2020 codebook, which you should have downloaded in chapter \@ref(class-project) and put in your Codebooks folder.
+This is a neat visualization of the ANES survey. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 46 years old, divorced, with a bachelor’s degree, who never served in the military, etc. If you want to see what all of the variables mean, you can look at the file anes2020 codebook, which you should have downloaded in section \@ref(add-files) as part of the "codebooks" folder.
 
 Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the "\$" and the command "summary." The "\$" command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:
 

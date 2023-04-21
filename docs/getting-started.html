@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2023-04-19" />
+<meta name="date" content="2023-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -164,16 +164,17 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
 <li class="chapter" data-level="1.2" data-path="getting-started.html"><a href="getting-started.html#class-project"><i class="fa fa-check"></i><b>1.2</b> Create a project for this class</a></li>
-<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.3</b> Using the Console</a>
+<li class="chapter" data-level="1.3" data-path="getting-started.html"><a href="getting-started.html#add-files"><i class="fa fa-check"></i><b>1.3</b> Add the course files to your project</a></li>
+<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#using-the-console"><i class="fa fa-check"></i><b>1.4</b> Using the Console</a>
 <ul>
-<li class="chapter" data-level="1.3.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.3.1</b> Rules about naming objects</a></li>
-<li class="chapter" data-level="1.3.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.3.2</b> Common practices when naming objects</a></li>
-<li class="chapter" data-level="1.3.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.3.3</b> About vectors</a></li>
+<li class="chapter" data-level="1.4.1" data-path="getting-started.html"><a href="getting-started.html#rules-about-naming-objects"><i class="fa fa-check"></i><b>1.4.1</b> Rules about naming objects</a></li>
+<li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.4.2</b> Common practices when naming objects</a></li>
+<li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.4.3</b> About vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.4</b> Writing your first R script</a></li>
-<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.5</b> What do to if the “load” command doesn’t load the dataframe</a></li>
-<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.6</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.7</b> Review exercises</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.5</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.6</b> What do to if the “load” command doesn’t load the dataframe</a></li>
+<li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.7</b> Review of this chapter’s commands</a></li>
+<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.8</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
 <ul>
@@ -338,7 +339,7 @@ div.csl-indent {
 <li>You can find the second piece of software, RStudio, here: <a href="https://www.rstudio.com/products/rstudio/" class="uri">https://www.rstudio.com/products/rstudio/</a>. Be sure to download RStudio Desktop open source edition.</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder “Scope and Methods Labs.” (or another title that you would prefer). Inside that folder, make three other folders. Call one “Data”, one “Codebooks”, and one “R Scripts.”</li>
+<li>Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder “Scope and Methods Labs.” (or another title that you would prefer).</li>
 <li>Open RStudio on your computer.</li>
 <li>Click on the “File” menu at the top, and then select “New Project.”</li>
 </ol>
@@ -356,39 +357,39 @@ div.csl-indent {
 <li>Select “Create Project.”</li>
 </ol>
 <p><img src="images/gettingstarted_4_create.png" width="60%" /></p>
-<p>You should see something like this on your screen:
-<img src="images/gettingstarted_5_environ.png" width="90%" /></p>
-<p>There is a lot on this screen! Please don’t be intimidated. For now, just make sure that you see something like the circled portion on your screen.</p>
+</div>
+<div id="add-files" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Add the course files to your project<a href="getting-started.html#add-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol start="7" style="list-style-type: decimal">
-<li>Go to <a href="https://www.dropbox.com/sh/5lqedowui2cnb7x/AABqUP1C2K2bIGef2VyMQOHwa?dl=0">this website</a>. There, you will see three folders whose names match the three folders that you created earlier. Download the contents of each folder and move it to the corresponding folder that you made earlier. So, the “Codebooks” folder that you made should now have three files in it: anes2020 codebook.pdf, states2010 codebook.pdf, and world codebook.pdf. The “Data” file that you made should also have three files in it, and the R Scripts file that you made should have one file in it.</li>
+<li>Go to this website: <a href="https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles">https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles</a>. Click on the words “Supplemental Workbook Files.zip.” That will take you to a new screen where there is a link to the right that says “download.” Click that link to download the file. On your computer, unzip the file, and you should see three folders inside: “codebooks”, “Data”, and “rscripts”. Copy the three folders and their contents to the project folder that you made before called “Scope and Methods Labs” (in section <a href="getting-started.html#class-project">1.2</a>.</li>
 </ol>
 <p>Congratulations! You have set up R for this workbook (and for other uses too!)</p>
 </div>
-<div id="using-the-console" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Using the Console<a href="getting-started.html#using-the-console" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="using-the-console" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Using the Console<a href="getting-started.html#using-the-console" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In order to use R we must use commands to tell R what to do. One way you can write commands is in the Console, here:</p>
 <p><img src="images/gettingstarted_6_console.png" width="90%" /></p>
 <p>At its most basic, you might think of R as a very, very fancy calculator. So, for example, I can type 45*21 in the Console (after the “&gt;”) and hit enter, and I have done my first R operation:</p>
 <p><img src="images/gettingstarted_7_firstop.png" width="90%" /></p>
 <p>What if we want to R remember that value? Then we can use this notation “&lt;-” to assign that value to an object. You will soon see that programming in R often involves creating objects, modifying objects, and analyzing objects. There are a few rules about object names.</p>
-<div id="rules-about-naming-objects" class="section level3 hasAnchor" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> Rules about naming objects<a href="getting-started.html#rules-about-naming-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="rules-about-naming-objects" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Rules about naming objects<a href="getting-started.html#rules-about-naming-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Object names cannot begin with a number.</li>
 <li>Object names cannot have a space in them.</li>
 <li>R notices whether object names use capital or lower-case letters, so be careful with this. To avoid errors, copy and paste object names rather than typing them out.</li>
 </ol>
 </div>
-<div id="common-practices-when-naming-objects" class="section level3 hasAnchor" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> Common practices when naming objects<a href="getting-started.html#common-practices-when-naming-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="common-practices-when-naming-objects" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Common practices when naming objects<a href="getting-started.html#common-practices-when-naming-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Common practices in naming objects are to use a “.” between words, a “_” between words, or to capitalize each word after the first. So either: an.object, an_object, or anObject. You can choose which style you prefer. Let’s make our first object, using this command (you can copy and paste this command into your Console):</p>
 <pre><code>my.first.object&lt;-45*21</code></pre>
 <p>When you copy and paste that code into your Console, you should see something like this:
 <img src="images/gettingstarted_8_firstobject.png" width="90%" />
 Notice what happened when we created this object. R did not give us the answer to our math problem in the Console, but instead put the object that we created in the Environment pane. This kind of object, a single value, is called a scalar. You won’t deal with these very frequently.</p>
 </div>
-<div id="about-vectors" class="section level3 hasAnchor" number="1.3.3">
-<h3><span class="header-section-number">1.3.3</span> About vectors<a href="getting-started.html#about-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="about-vectors" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> About vectors<a href="getting-started.html#about-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A more commonly used kind of object is a vector – a list of two or more values. What if I want to create a vector that includes the my.first.object scalar and another number? One way that I can build a vector is with the c() function. The c here stands for concatenate, which means “bring together.” Here is how I would use c() to build such a vector:</p>
 <pre><code>my.second.object&lt;-c(my.first.object, 2)</code></pre>
 <p>If you enter that into the Console, you will see in the Environment pane there are now two objects in your Environment: my.first object (a scalar with a value of 945) and my.second.object (a vector with two values: 945 and 2). But you actually don’t need to remember these objects, right? No need to have it gunking up your Environment. So you can use the rm() command to remove them (rm() means remove). Just type this into the Console, and you will see the first object, the scalar, disappear:</p>
@@ -397,8 +398,8 @@ Notice what happened when we created this object. R did not give us the answer t
 <pre><code>rm(my.second.object)</code></pre>
 </div>
 </div>
-<div id="writing-your-first-r-script" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Writing your first R script<a href="getting-started.html#writing-your-first-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="writing-your-first-r-script" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Writing your first R script<a href="getting-started.html#writing-your-first-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You will often want to write a series of commands in R that you will be able to refer back to and modify. In that case, instead of writing them in the Console, you can write them in a script file.</p>
 <p>Let’s write our first R script! Go to the File menu at the top of your screen, select “New File” and then select R Script. Before starting to write it, save it in the R scripts section of the folders that you made (click “File” then “Save As” and then give it a name, like “my first script”).</p>
 <p>One thing to know about R is that R ignores hashtags (like “#”). Once R reads a hashtag, it stops reading the rest of that line. So, we can use # to insert our comments to remind us what we are doing with specific chunks of code.</p>
@@ -408,10 +409,10 @@ Notice what happened when we created this object. R did not give us the answer t
 <pre><code>load(&quot;Data/anes2020.Rda&quot;) #This is how I am loading some data that I will use later.</code></pre>
 <p><strong>Be sure to include the “” around the name and location of the dataset.</strong> The comment is not necessary, but it is there for your reference. So, at this point you should have two lines of script. To run this script, you must first select it, by highlighting it with your cursor. Then, you can either click the little run button circled below or you can hit Cntl-Enter in a PC or Command-Enter on a Mac.</p>
 <p><img src="images/gettingstarted_9_run.png" width="90%" /></p>
-<p>Once you run this script, you should see a new object in your environment: anes2020 (if that didn’t work for you, see section <a href="getting-started.html#wont-load">1.5</a>. This is a dataframe – a collection of vectors that are combined to give us a lot of interesting information. In this case, this dataframe tells us about a survey of residents of the United States from 2020. We will look more at this in future weeks. Save your R script, and be sure that you save changes to this project.</p>
+<p>Once you run this script, you should see a new object in your environment: anes2020 (if that didn’t work for you, see section <a href="getting-started.html#wont-load">1.6</a>. This is a dataframe – a collection of vectors that are combined to give us a lot of interesting information. In this case, this dataframe tells us about a survey of residents of the United States from 2020. We will look more at this in future weeks. Save your R script, and be sure that you save changes to this project.</p>
 </div>
-<div id="wont-load" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> What do to if the “load” command doesn’t load the dataframe<a href="getting-started.html#wont-load" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="wont-load" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> What do to if the “load” command doesn’t load the dataframe<a href="getting-started.html#wont-load" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Click on the folder called “Data” in the bottom right of your screen.</li>
 </ol>
@@ -422,8 +423,8 @@ Notice what happened when we created this object. R did not give us the answer t
 <p><img src="images/gettingstarted_11_warning.png" width="90%" /></p>
 <p>Click “Yes,” and anes2020 should appear in your environment.</p>
 </div>
-<div id="review-of-this-chapters-commands" class="section level2 hasAnchor" number="1.6">
-<h2><span class="header-section-number">1.6</span> Review of this chapter’s commands<a href="getting-started.html#review-of-this-chapters-commands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-of-this-chapters-commands" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Review of this chapter’s commands<a href="getting-started.html#review-of-this-chapters-commands" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="6%" />
@@ -459,8 +460,8 @@ Notice what happened when we created this object. R did not give us the answer t
 </tbody>
 </table>
 </div>
-<div id="review-exercises" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> Review exercises<a href="getting-started.html#review-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-exercises" class="section level2 hasAnchor" number="1.8">
+<h2><span class="header-section-number">1.8</span> Review exercises<a href="getting-started.html#review-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s practice some of the things that we learned in this chapter. You can number each of your answers with comments (beginning with the # sign).</p>
 <ol style="list-style-type: decimal">
 <li>Create a new R script called “Chapter <a href="getting-started.html#getting-started">1</a> Exercises,” and save it to the R scripts folder that you created earlier. Make the first line in the script a comment (using #) that includes your name and the phrase “Chapter 1 Exercises.”</li>

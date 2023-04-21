@@ -30,7 +30,7 @@ Now select all the text on this page, run it, and then save it.
 ## Getting started with ggplot and graphing {#start-graphing}
 R has some nice graphic abilities built in, but the ggplot2 package that comes with the tidyverse is even more powerful. In this lab, we will learn to make bar graphs of nominal and ordinal variables and histograms of interval variables.
 
-**NOTE: You can find templates to reproduce all of the graphs from this workbook in the script file "20093 ggplot2 templates" which is among files that you should have downloaded in section \@ref(class-project), step 7. If you can't find it, you can download it <a href="https://www.dropbox.com/sh/5lqedowui2cnb7x/AABqUP1C2K2bIGef2VyMQOHwa?dl=0">here</a>. Download it and save it to your R Scripts folder for future use.**
+**NOTE: You can find templates to reproduce all of the graphs from this workbook in the script file "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
 
 ### Bar graphing a nominal variable {#bar-graph-nominal}
 

@@ -1,6 +1,7 @@
 getting-started
 why-r
 class-project
+add-files
 using-the-console
 rules-about-naming-objects
 common-practices-when-naming-objects

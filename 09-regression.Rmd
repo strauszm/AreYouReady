@@ -183,7 +183,7 @@ We could also represent this same kind of relationship by color coding the dots.
 anes2020<-anes2020 %>% 
   mutate(sex2=recode(sex, '0'="male",'1'="female"))
 ```
-Now, we can generate a graph with this code (which you can also find in the "20093 ggplot2 templates" file that you downloaded in Lab 1 or that you can access here):
+Now, we can generate a graph with this code (which you can also find in the file "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
 ```{r, message=FALSE, warning=FALSE}
 ggplot(data=anes2020 %>% filter(!is.na(sex2)), aes(x=ft_dems, y=ft_ice,color=sex2)) +
   geom_point(size=2, alpha=.5) +
