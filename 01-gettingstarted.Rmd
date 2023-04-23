@@ -82,6 +82,7 @@ When you copy and paste that code into your Console, you should see something li
 ```{r firstobject, echo = FALSE, out.width='90%'}
 knitr::include_graphics("images/gettingstarted_8_firstobject.png")
 ```
+
 Notice what happened when we created this object. R did not give us the answer to our math problem in the Console, but instead put the object that we created in the Environment pane. This kind of object, a single value, is called a scalar. You won’t deal with these very frequently.
 
 ### About vectors

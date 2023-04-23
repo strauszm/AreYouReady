@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2023-04-21" />
+<meta name="date" content="2023-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -320,6 +320,33 @@ div.csl-indent {
 <p>We are going to install three new packages to use today. One is called “epiDisplay” and the other is called “Hmisc.” Enter these two commands into your Console one by one:</p>
 <pre><code>install.packages(&quot;epiDisplay&quot;)
 install.packages(&quot;scales&quot;)</code></pre>
+<pre><code>## Warning: package &#39;epiDisplay&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Loading required package: foreign</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
+<pre><code>## Loading required package: MASS</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<pre><code>## Loading required package: nnet</code></pre>
+<pre><code>## 
+## Attaching package: &#39;epiDisplay&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     alpha</code></pre>
+<pre><code>## Warning: package &#39;scales&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:epiDisplay&#39;:
+## 
+##     alpha</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
 <p>Now, open a new script file and save it in your scripts folder as “chapter 3 practice.” Copy and paste this onto the page (updating the text so that it is about you):</p>
 <pre><code>####################################
 # Your name
@@ -347,10 +374,10 @@ Now select all the text on this page, run it, and then save it. </code></pre>
 <pre><code>class(anes2020$marital) </code></pre>
 <p>you can see that R calls the “marital” variable a character variable.</p>
 <p>Bar graphs give us a sense of how the cases that we studied are distributed across possible values for a nominal variable. To generate a bar graph using ggplot, you begin with the command ggplot(), and then the first thing you type into the parenthesis is the name of the dataframe that you will be working with. The ggplot package is similar to the dplyr package that uses the pipe (%&gt;%) to mean “and then”, but instead of a pipe ggplot uses a plus sign. This code will generate a bar graph of that marital variable (if you enter and run the code, you will see the graph that follows it):</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="graphing.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020, <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
-<span id="cb31-2"><a href="graphing.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb31-3"><a href="graphing.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status of respondents&quot;</span>)<span class="sc">+</span></span>
-<span id="cb31-4"><a href="graphing.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="graphing.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020, <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
+<span id="cb49-2"><a href="graphing.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb49-3"><a href="graphing.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb49-4"><a href="graphing.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where “marital” is NA. Like this:</p>
 <pre><code>ggplot(anes2020 %&gt;% filter(!is.na(marital), aes(x=marital))+
@@ -359,10 +386,10 @@ Now select all the text on this page, run it, and then save it. </code></pre>
 xlab(&quot;Marital status&quot;)</code></pre>
 <p>If you execute that command, you will see that now the NA bar is missing.</p>
 <p>While “Marital status of respondents” is not a very long title, sometimes you will have graphs with longer titles that you want r to put on two or more lines. To tell R to move to a new line, just insert “\n” where you want the line break to go, like this:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="graphing.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(marital)), <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
-<span id="cb33-2"><a href="graphing.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb33-3"><a href="graphing.html#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status</span><span class="sc">\n</span><span class="st">of respondents&quot;</span>)<span class="sc">+</span></span>
-<span id="cb33-4"><a href="graphing.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="graphing.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(marital)), <span class="fu">aes</span>(<span class="at">x=</span>marital))<span class="sc">+</span></span>
+<span id="cb51-2"><a href="graphing.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb51-3"><a href="graphing.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Marital status</span><span class="sc">\n</span><span class="st">of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb51-4"><a href="graphing.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Marital status&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="saving-a-graph" class="section level3 hasAnchor" number="3.2.2">
@@ -377,14 +404,14 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <pre><code>glimpse(anes2020)</code></pre>
 <p>you can see that several of the variables in the ANES dataset are classified as ordered factors, including “edu”, “partyid”, and “religimp”</p>
 <p>Reminder: if you ever want to know how R has classified a variable, you can use the class() command. For example, if you type this:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="graphing.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(anes2020<span class="sc">$</span>edu) </span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="graphing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(anes2020<span class="sc">$</span>edu) </span></code></pre></div>
 <pre><code>## [1] &quot;ordered&quot; &quot;factor&quot;</code></pre>
 <p>you can see from the output R calls the “edu” variable “ordered” “factor”.</p>
 <p>“Partisanship” is often measured in an ordinal way, including on the anes2020 dataframe. To generate a bar graph of the partyid variable (an ordinal measure of partisanship), we can use this code:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="graphing.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
-<span id="cb37-2"><a href="graphing.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb37-3"><a href="graphing.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
-<span id="cb37-4"><a href="graphing.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="graphing.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
+<span id="cb55-2"><a href="graphing.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb55-3"><a href="graphing.html#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb55-4"><a href="graphing.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="what-to-do-about-overlapping-labels" class="section level3 hasAnchor" number="3.2.4">
@@ -392,21 +419,21 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>If you look at the previous graph, you might notice that the labels at the bottom overlap. This makes it hard to read! To deal with overlapping labels like this, you can add this line to your code (please note that R will not understand this code if you did not install the scales package in section <a href="graphing.html#getting-started-tidyverse">3.1</a> and then run the command “library(scales)”):</p>
 <pre><code>scale_x_discrete(guide = guide_axis(n.dodge=2))+</code></pre>
 <p>This is how our new code looks:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="graphing.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
-<span id="cb39-2"><a href="graphing.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb39-3"><a href="graphing.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
-<span id="cb39-4"><a href="graphing.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb39-5"><a href="graphing.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="graphing.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(partyid)), <span class="fu">aes</span>(<span class="at">x=</span>partyid))<span class="sc">+</span></span>
+<span id="cb57-2"><a href="graphing.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb57-3"><a href="graphing.html#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Strength of party identification of respondents&quot;</span>)<span class="sc">+</span></span>
+<span id="cb57-4"><a href="graphing.html#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))<span class="sc">+</span></span>
+<span id="cb57-5"><a href="graphing.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;Party&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="histogram" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> Generating a histogram<a href="graphing.html#histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>An interval variable is a variable where the distance between the values gives us useful information and where the possible values must be listed in a particular order to make sense.. In this class, it is generally safe to assume that a variable that is neither an ordered factor nor a character variable is interval. <em>However, variables with only two values (such as 0 and 1) should not be treated as interval.</em></p>
 <p>You can, in theory, make a bar graph of an interval variable. However, since there are so many values to most interval variables, those bar graphs become very difficult to read. Instead, we often generate histograms of interval variables. Histograms are bar graphs where each bar represents a range of values of the variable of interest instead of a single bar. For example, here is how we can make a histogram of the population variable in our world dataset:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="graphing.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="graphing.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb40-3"><a href="graphing.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
-<span id="cb40-4"><a href="graphing.html#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="graphing.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb58-2"><a href="graphing.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb58-3"><a href="graphing.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb58-4"><a href="graphing.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 <div id="removing-scientific-notation-from-axes" class="section level3 hasAnchor" number="3.2.6">
@@ -414,21 +441,21 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>The above graph is ok, but because the population numbers are so big, R has converted them to scientific notation. To force R not to do this, we can use a command made possible by the scales package that we installed in section <a href="graphing.html#getting-started-tidyverse">3.1</a>:</p>
 <pre><code>scale_x_continuous(labels = label_comma())</code></pre>
 <p>Combined with the rest of our code, we can generate the graph like this:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="graphing.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
-<span id="cb42-2"><a href="graphing.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb42-3"><a href="graphing.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span>       <span class="co">#gets rid of scientific notation</span></span>
-<span id="cb42-4"><a href="graphing.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
-<span id="cb42-5"><a href="graphing.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="graphing.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb60-2"><a href="graphing.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb60-3"><a href="graphing.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span>       <span class="co">#gets rid of scientific notation</span></span>
+<span id="cb60-4"><a href="graphing.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb60-5"><a href="graphing.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
 <div id="adjusting-bin-width-on-a-histogram" class="section level3 hasAnchor" number="3.2.7">
 <h3><span class="header-section-number">3.2.7</span> Adjusting bin width on a histogram<a href="graphing.html#adjusting-bin-width-on-a-histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The bars on a histogram are called “bins.” Looking at this graph, we can see that R has chosen to set the bins at around 50,000,000. What if we wanted to make the bins narrower? We can set the bin width like this:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="graphing.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
-<span id="cb43-2"><a href="graphing.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">10000000</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb43-3"><a href="graphing.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span></span>
-<span id="cb43-4"><a href="graphing.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
-<span id="cb43-5"><a href="graphing.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="graphing.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world, <span class="fu">aes</span>(<span class="at">x =</span> UNDP_pop)) <span class="sc">+</span></span>
+<span id="cb61-2"><a href="graphing.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="dv">10000000</span>, <span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb61-3"><a href="graphing.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>())<span class="sc">+</span></span>
+<span id="cb61-4"><a href="graphing.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of countries&#39; populations&quot;</span>)<span class="sc">+</span></span>
+<span id="cb61-5"><a href="graphing.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="st">&quot;population&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Those narrower bins let us see more of the variation in the variable – we can see that the biggest group of countries, by far, has a population of 10,000,000 or less.</p>
 </div>
@@ -439,8 +466,8 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <div id="central-tendency-and-dispersion-of-nominal-variables" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Central tendency and dispersion of nominal variables<a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With nominal variables, there are two useful techniques to help us discuss central tendancy and dispersion. One is covered above, in section <a href="graphing.html#bar-graph-nominal">3.2.1</a>: you can make a bar graph. Second, you can also make a frequency table. To make a frequency table, you can use the table() command to produce a simple one in base R, but the tab1 command that is available through the epiDisplay library that we installed in section <a href="graphing.html#getting-started-tidyverse">3.1</a> is more flexible. So, let’s try to look at the region variable from the states2010 dataset. Enter the following into today’s practice R script file, and run it:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="graphing.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
-<span id="cb44-2"><a href="graphing.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="graphing.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
+<span id="cb62-2"><a href="graphing.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <pre><code>## states2010$region : 
 ##           Frequency Percent
@@ -453,10 +480,10 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>The graph is ok, but the graphs that we generated above are nicer, so we will use those instead.</p>
 <p>The information in the Console tells you that there are 12 states in the dataframe that are classified as being in the midwest, 9 that are classified as being in the northeast, 17 in the south, and 13 in the west. The next column to the right tells you what percent of states are in each category.</p>
 <p>There is only one meaningful way to measure the central tendency of a nominal variable: the mode. However, R does not have a direct way of measuring the mode. In this case, that is not a problem, as there are only four possible regions in the dataset, and you can clearly see that the largest number of states are in the south. However, sometimes there will be a lot more values than this! In that kind of situation, you can add the qualifier sort.group=“decreasing” to the tab1 command, like this:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="graphing.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
-<span id="cb46-2"><a href="graphing.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#adding sort.group=&quot;decreasing&quot; to list the values in reverse order of frequency</span></span>
-<span id="cb46-3"><a href="graphing.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#this is useful for finding the mode</span></span>
-<span id="cb46-4"><a href="graphing.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>, <span class="at">sort.group=</span><span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="graphing.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a frequency table and bar graph of the region variable in states2010</span></span>
+<span id="cb64-2"><a href="graphing.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co">#adding sort.group=&quot;decreasing&quot; to list the values in reverse order of frequency</span></span>
+<span id="cb64-3"><a href="graphing.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">#this is useful for finding the mode</span></span>
+<span id="cb64-4"><a href="graphing.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(states2010<span class="sc">$</span>region, <span class="at">cum.percent=</span><span class="cn">FALSE</span>, <span class="at">sort.group=</span><span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <pre><code>## states2010$region : 
 ##           Frequency Percent
@@ -471,7 +498,7 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <div id="central-tendency-and-dispersion-of-ordinal-variables" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Central tendency and dispersion of ordinal variables<a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With ordinal variables, we can use the same techniques that we use for nominal variables but with one exception: since the order of the possible values does give us important information for ordinal variables, the cumulative percent also gives us useful information. Thus, we can ask R to report the cumulative percent too. Let’s try it with the results of the question “how important is religion to you?” that was asked in the 2020 ANES survey. We can use this command (notice how we are now writing cum.percent=TRUE because we are dealing with an ordinal variable):</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="graphing.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="graphing.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <pre><code>## anes2020$religimp : 
 ##                      Frequency   %(NA+) cum.%(NA+)   %(NA-) cum.%(NA-)
@@ -490,7 +517,7 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>The fifth and sixth column repeat the third and fourth column, but they exclude the NAs. <strong>In general, you should use the columns that exclude NAs when interpreting your data.</strong></p>
 <p>Regarding the central tendency of this variable, we can again ask R to calculate the mode like we did with our nominal variable, but since this is an ordinal variable, we can also ask R to calculate the median.</p>
 <p>To calculate the mode, we can add the “sort group: decreasing” qualifier that we used in section 3.3, and the mode will rise to the top.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="graphing.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>, <span class="at">sort.group =</span> <span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="graphing.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab1</span>(anes2020<span class="sc">$</span>religimp, <span class="at">cum.percent=</span><span class="cn">TRUE</span>, <span class="at">sort.group =</span> <span class="st">&quot;decreasing&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <pre><code>## anes2020$religimp : 
 ##                      Frequency   %(NA+) cum.%(NA+)   %(NA-) cum.%(NA-)
@@ -505,10 +532,10 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>R has a median() command that we will be able to use with interval data. However, unfortunately we can’t use it with ordinal data. <strong>There is a nice trick to finding the median of an ordinal variable, though.</strong> Take a look at those cumulative percents in the output that we generated without the sort.group= “decreasing” qualifier. Focus on the column with NAs excluded – the right-most column. The first value for which the cumulative percent is 50 or higher is the median value of that variable. So, we can say that the median person in our sample says that religion is “moderately important” to them.</p>
 <p>So, now we can make two observations about the central tendency of our religion variable – the mode is “extremely important” and the median is “moderately important.”</p>
 <p>What can we say about the dispersion? To discuss the dispersion it is helpful to generate a bar graph. We ca look at the one automatically generated by tab1, but I prefer the look of the ones that we generate with ggplot. So, we can use the same code from section <a href="graphing.html#bar-graph-ordinal">3.2.3</a> to generate a bar graph of this variable (Note that we make the x-axis table disappear with “NULL” because the graph title already explained what the x-axis means):</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="graphing.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(religimp)), <span class="fu">aes</span>(<span class="at">x=</span>religimp))<span class="sc">+</span></span>
-<span id="cb52-2"><a href="graphing.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb52-3"><a href="graphing.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;How important is religion to ANES respondents in 2020?&quot;</span>)<span class="sc">+</span></span>
-<span id="cb52-4"><a href="graphing.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="graphing.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(religimp)), <span class="fu">aes</span>(<span class="at">x=</span>religimp))<span class="sc">+</span></span>
+<span id="cb70-2"><a href="graphing.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb70-3"><a href="graphing.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;How important is religion to ANES respondents in 2020?&quot;</span>)<span class="sc">+</span></span>
+<span id="cb70-4"><a href="graphing.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>What can we say about the dispersion of this variable? Well, based on the frequency table we can note that there is no value where the majority of cases lie – the cases are reasonably well spread out across possible values, ranging from 27.6 percent at “extremely important” to 12.9 percent at “a little important.”</p>
 <p>We can also note that the distribution of this variable is u-shaped: the two highest values are “extremely important” and “not important at all.”</p>
@@ -516,7 +543,7 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <div id="central-tendancy-and-dispersion-of-interval-variables" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Central tendancy and dispersion of interval variables<a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When we look at interval variables, we can use the mean, median, and mode to discuss the central tendency. R makes it easy to calculate the mean and median, with the command summary() that we learned in section <a href="tidyverse.html#exploring">2.2</a> (you can also use the commands mean() and median() with the same result). So, for example, let’s look at the variable x_tax_burden in the states2010 dataset. This is a state’s per capita taxes divided by that state’s per capita income. In other words, it tells us the proportion of their income that the average citizen pays in state taxes in each state. We can use the summary command:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="graphing.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="graphing.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## 0.07000 0.08650 0.09400 0.09465 0.10100 0.12800</code></pre>
 <p>Here, we see that the mean and median, .09465 and .094, are quite close to each other. This is generally a sign that the variable is not skewed. How about the mode? To generate the mode, we can use the same command that we used for nominal and ordinal variables:</p>
@@ -524,15 +551,15 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <p>If you enter that command into the Console, you will see a lot of output, but if you scroll to the top you will see that the most common value for the x_tax_burden variable, the mode, is .093; it occurs 5 times.</p>
 <p>Now we have three measures of the central tendency of our x_tax_burden variable: the mean is 09465, the median is .094, and the mode is .093.</p>
 <p>How about the dispersion? With interval variables, we can use a number of strategies to represent the dispersion. We can have R calculate the standard deviation and the interquartile range (the 3rd quartile minus the 1st quartile), and we can generate a histogram. To generate the standard deviation, we can use sd(), and to generate the interquartile range, we can use IQR():</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="graphing.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="graphing.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
 <pre><code>## [1] 0.01221282</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="graphing.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="graphing.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(states2010<span class="sc">$</span>x_tax_burden)</span></code></pre></div>
 <pre><code>## [1] 0.0145</code></pre>
 <p>We can also use the code from section <a href="graphing.html#histogram">3.2.5</a> to visually display the central tendancy of our variable, like this:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="graphing.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> x_tax_burden)) <span class="sc">+</span></span>
-<span id="cb60-2"><a href="graphing.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
-<span id="cb60-3"><a href="graphing.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of US states&#39; tax burden, 2010&quot;</span>)<span class="sc">+</span></span>
-<span id="cb60-4"><a href="graphing.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="graphing.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> x_tax_burden)) <span class="sc">+</span></span>
+<span id="cb78-2"><a href="graphing.html#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>)<span class="sc">+</span></span>
+<span id="cb78-3"><a href="graphing.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Histogram of US states&#39; tax burden, 2010&quot;</span>)<span class="sc">+</span></span>
+<span id="cb78-4"><a href="graphing.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">xlab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>This histogram shows us that this variable is relatively bell-shaped with no outliers that really stand out.</p>
@@ -540,10 +567,10 @@ xlab(&quot;Marital status&quot;)</code></pre>
 <div id="standard-deviation-and-iqr-when-you-have-nas" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Standard deviation and IQR when you have NAs<a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One issue with the sd and IQR commands is that if there is one case in the dataframe that you are looking at with missing data (i.e. coded as na), then R will give “NA” as the output. You can see this if you type:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="graphing.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="graphing.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>To address this, just add “,na.rm=TRUE” after the variable with the NAs, like this:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="graphing.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="graphing.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(anes2020<span class="sc">$</span>age, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 17.20718</code></pre>
 <p>That just tells R to ignore the NAs when calculating the standard deviation (and you can do the same thing with the interquartile range).</p>
 </div>
