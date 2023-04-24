@@ -427,10 +427,10 @@ library(tigerstats) #colPerc can also be useful with crosstabs </code></pre>
 <p>To confirm that our recode worked, we can run “table” on both our old and our new variable, like this:</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="recoding.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(anes2020<span class="sc">$</span>ideology)</span></code></pre></div>
 <pre><code>## 
-##      extremely liberal                liberal       slightly liberal               moderate  slightly conservative 
-##                    369                   1210                    918                   1818                    821 
-##           conservative extremely conservative 
-##                   1492                    428</code></pre>
+##      extremely liberal                liberal       slightly liberal               moderate  slightly conservative           conservative 
+##                    369                   1210                    918                   1818                    821                   1492 
+## extremely conservative 
+##                    428</code></pre>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="recoding.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(anes2020<span class="sc">$</span>ideology3)</span></code></pre></div>
 <pre><code>## 
 ##      liberal     moderate conservative 

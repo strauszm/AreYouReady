@@ -25,7 +25,7 @@ In chapter \@ref(recoding) we learned how to generate crosstabs (and, crucially 
 
 Here is the code:
 
-```{r}
+```{r, message=FALSE}
 #first, generate a dataframe called "plotting.data" based on grouped variables from #anes2020
 plotting.data<-anes2020 %>%
   filter(!is.na(edu)&!is.na(income)) %>% 
@@ -49,7 +49,7 @@ One thing to note in this code: it begins by creating a new dataframe called "pl
 
 If it bothers you having that "plotting.data" object in your environment, you can always remove it with the command 
 ```
-rm(plotting.data).
+rm(plotting.data)
 ```
 Another thing to note: the "scale_fill_viridis_d()+" line of code asks R to use a color palette that is easy to read for people that are colorblind. There are many, many choices of color palette in R, and you are welcome to play around with colors, but it is also fine to just stick to this palette. If you’d rather have a black and white graph, there is code for that in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
 

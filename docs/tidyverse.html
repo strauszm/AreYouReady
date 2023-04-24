@@ -343,12 +343,12 @@ div.csl-indent {
 <p>This is a neat visualization of the ANES survey. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 46 years old, divorced, with a bachelor’s degree, who never served in the military, etc. If you want to see what all of the variables mean, you can look at the file anes2020 codebook, which you should have downloaded in section <a href="getting-started.html#add-files">1.3</a> as part of the “codebooks” folder.</p>
 <p>Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the “$” and the command “summary.” The “$” command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:</p>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## -- Attaching packages ------------------------------------------------------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------------------------------------------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>## v ggplot2 3.3.5     v purrr   0.3.4
 ## v tibble  3.1.3     v dplyr   1.0.7
 ## v tidyr   1.1.3     v stringr 1.4.0
 ## v readr   2.0.0     v forcats 0.5.1</code></pre>
-<pre><code>## -- Conflicts ---------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ---------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre><code>anes2020$age</code></pre>
@@ -405,18 +405,18 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
 <p>Highlight that text and run that command. You should see a lot of output in the Console. If you scroll up a bit in the Console, you should see something like this (this is just the first 12 variables in this dataframe; you will have access to more on your screen):</p>
 <pre><code>## Rows: 8,280
 ## Columns: 12
-## $ age      &lt;int&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 37, 55, 30, 38, 41, 66, 54, 55, 62, 80, 31, 80, 24, 55, 59, 73, 72,~
-## $ marital  &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;widowed&quot;, &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;separ~
-## $ edu      &lt;ord&gt; &quot;ba&quot;, &quot;some college&quot;, &quot;high school&quot;, &quot;associate degree&quot;, &quot;md, phd, or jd&quot;, &quot;some college&quot;, &quot;associate degre~
-## $ military &lt;chr&gt; &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never serv~
-## $ union    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,~
-## $ race     &lt;chr&gt; &quot;Hispanic&quot;, &quot;Asian or Pacific Islander&quot;, &quot;White&quot;, &quot;Asian or Pacific Islander&quot;, &quot;Native American&quot;, &quot;White&quot;, ~
-## $ children &lt;int&gt; 0, 1, 2, 1, 0, 0, 3, 0, 0, 0, 2, 2, 1, 2, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 0, 0, 3, 0, 0, 2, 2, 2, 0, 0, 0, 0,~
-## $ sex      &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1,~
-## $ lgbtq    &lt;chr&gt; &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;,~
-## $ income   &lt;ord&gt; &quot;$110,000 or more&quot;, &quot;$65,000-$109,999&quot;, &quot;$65,000-$109,999&quot;, &quot;$25,000-64,999&quot;, &quot;$110,000 or more&quot;, &quot;under $2~
-## $ guns     &lt;int&gt; 3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 0, 2, 0, 0, 4, 1, 0, 4, 1, 0, 0, 0, 0, 0, 4,~
-## $ partyid  &lt;ord&gt; strong republican, independent, independent democrat, not very strong republican, independent, independent ~</code></pre>
+## $ age      &lt;int&gt; 46, 37, 40, 41, 72, 71, 37, 45, 70, 43, 37, 55, 30, 38, 41, 66, 54, 55, 62, 80, 31, 80, 24, 55, 59, 73, 72, 50, 66, 41,~
+## $ marital  &lt;chr&gt; &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;widowed&quot;, &quot;divorced&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;separated&quot;, &quot;marr~
+## $ edu      &lt;ord&gt; &quot;ba&quot;, &quot;some college&quot;, &quot;high school&quot;, &quot;associate degree&quot;, &quot;md, phd, or jd&quot;, &quot;some college&quot;, &quot;associate degree&quot;, &quot;high sc~
+## $ military &lt;chr&gt; &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;never ~
+## $ union    &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,~
+## $ race     &lt;chr&gt; &quot;Hispanic&quot;, &quot;Asian or Pacific Islander&quot;, &quot;White&quot;, &quot;Asian or Pacific Islander&quot;, &quot;Native American&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Wh~
+## $ children &lt;int&gt; 0, 1, 2, 1, 0, 0, 3, 0, 0, 0, 2, 2, 1, 2, 1, 0, 2, 2, 0, 0, 0, 1, 0, 3, 0, 0, 3, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ sex      &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0,~
+## $ lgbtq    &lt;chr&gt; &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;,~
+## $ income   &lt;ord&gt; &quot;$110,000 or more&quot;, &quot;$65,000-$109,999&quot;, &quot;$65,000-$109,999&quot;, &quot;$25,000-64,999&quot;, &quot;$110,000 or more&quot;, &quot;under $24,999&quot;, &quot;und~
+## $ guns     &lt;int&gt; 3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 0, 2, 0, 0, 4, 1, 0, 4, 1, 0, 0, 0, 0, 0, 4, 0, 0, 6, NA~
+## $ partyid  &lt;ord&gt; strong republican, independent, independent democrat, not very strong republican, independent, independent democrat, no~</code></pre>
 <p>This is giving us information about the dataframe anes2020. At the top, you can see that the dataframe has 8,280 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2020 dataframe represents a survey of 8,280 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 68 columns, which means that the dataframe measures 68 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (<int>, <chr>, <ord>, etc.). We will learn a bit more about those classifications in future chapters To the right of those classifications you can see the first set of values of each variable.</p>
 <p>Many dataframes are quite large, and you might find yourselves wanting to focus on a few variables at a time. The command select() can be helpful for this. Let’s say that you want to focus in on how many guns people have in their homes and their feelings about the NRA. In that case, you would want to select the variables “ft_nra” and “guns”, which you can do like this:</p>
 <pre><code>anes2020 %&gt;% 
