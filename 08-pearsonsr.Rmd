@@ -39,7 +39,7 @@ The p-value noted at the top ofthe output is 8.655e-05, which is R's shorthand f
 
 ## The scatterplot {#scatterplot}
 To visualize a relationship between two interval variables, we can generate a scatterplot, one of my favorite graphs to generate. Here is the code that we can use to visualize the relationship between those two variables above. In general, consistent with other graphs you have made, remember to put your independent variable on the x-axis and your dependent variable on the y-axis (as always, you can find a template for this graph in the file "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
-```{r}
+```{r, warning=FALSE}
 ggplot(states2010, aes(x = citi6013, y = pctfemaleleg)) +
   geom_point(alpha=.3)+
   geom_text_repel(aes(label = state), size=3)+	#if you don’t have data that you want to 
@@ -55,7 +55,7 @@ The neat thing about scatterplots is that they display the values of all of the 
 We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling dots usually doesn't make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously.
 
 The above graph alone tells a pretty clear story about the relationship between our two variables – it is easy to visualize a positive relationship going from Oklahoma in the bottom left to Vermont in the top right. However, what if we wanted to ask R to fit a line to this data? In other words, what if we wanted R to find the line that is closest to all of the points on this graph? To do that, we can add a single line to our code from above: 
-```{r}
+```{r, warning=FALSE}
 ggplot(states2010, aes(x = citi6013, y = pctfemaleleg)) +
   geom_point(alpha=.3)+
   geom_smooth(method='lm', formula= y~x)+ #this is the line of code we add here
