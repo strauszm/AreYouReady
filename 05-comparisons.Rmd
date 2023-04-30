@@ -61,7 +61,7 @@ from our previous lab, but it is much easier to take in a bunch of that informat
 
 ## Representing mean comparison tables with boxplots
 In addition to the histogram that we introduced in chapter 3, another useful way of representing the distribution of a single interval variable is with a boxplot. Here is the code for a boxplot of the variable (you can also find this code in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files)):
-```{r}
+```{r, warning=FALSE}
 #make a boxplot of evangelicals
 ggplot(states2010, aes(y = evangelical_pop)) +
   geom_boxplot(color="black", fill="purple", alpha=0.2)+
@@ -85,7 +85,7 @@ knitr::include_graphics("images/comparisons_1_boxplot.png")
 So, in other words, we can learn a lot about a variable from a single graph! 
 
 Boxplots are also a useful way to look at the properties of an interval variable across several values of a nominal or ordinal variable, which is what we were doing with our mean comparison table in chapter \@ref(recoding). Let’s take a graphical look at the relationship between the region that a state is in and the percent of evangelicals that live in that state. We can set up that kind of graph with the following code:
-```{r}
+```{r, warning=FALSE}
 #make boxplots of regions and evangelicals
 ggplot(states2010, aes(x = region, y = evangelical_pop)) +
   geom_boxplot(color="black", fill="purple", alpha=0.2)+
@@ -179,7 +179,7 @@ anes2020 %>%
 This suggests that our hypothesis is true. People who were outraged in 2020 gave President Trump an average score of 28.4 on a feeling thermometer, while people who were not outraged gave President Trump an average score of 56.6 on a feeling thermometer: a difference of 28.4. That seems like a pretty substantial difference!
 
 To graph this relationship, we can use this code:
-```{r}
+```{r, warning=FALSE}
 ggplot(anes2020 %>% filter(!is.na(outrage2)), aes(x = outrage2, y = ft_trump)) +
   geom_boxplot(color="black", fill="purple", alpha=0.2)+
   ggtitle("ANES 2020, Feelings about President Trump by level of outrage")+
@@ -216,7 +216,7 @@ Let’s look at this output. First, focus on the first two rows. They tell us th
 In other words, the relationship between outrage in 2020 and feelings about President Trump is very different at different levels of partisanship. We thus call this an **interactive relationship**. 
 
 To graphically represent this relationship, we can use this code (which you can also find in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files)):
-```{r}
+```{r, warning=FALSE}
 ggplot(anes2020 %>% filter(!is.na(partyid3) & (!is.na(outrage2))), 
        aes(x = partyid3, y = ft_trump, fill=outrage2)) +
   geom_boxplot()+
