@@ -42,7 +42,7 @@ This is a neat visualization of the ANES survey. Each row represents one case. S
 
 Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the "\$" and the command "summary." The "\$" command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 load("Data/anes2020.Rda")
 load("Data/states2010.Rda")
 load("Data/world.Rda")
