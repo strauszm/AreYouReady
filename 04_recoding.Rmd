@@ -8,7 +8,7 @@ We are going to install three new packages to use today. One is called "epiDispl
 install.packages("Hmisc")
 install.packages("tigerstats")
 ```
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE,warning=FALSE}
 library(Hmisc)
 library(tigerstats)
 ```
