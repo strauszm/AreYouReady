@@ -5,7 +5,7 @@ R is a powerful, customizable, open source piece of software that is extremely u
 
 1. R is free! In the past, I have taught this class with SPSS. As of this writing, the professional version of SPSS costs $99 per month for a subscription. 
 2. Because R is open source, users are regularly writing custom programs to improve it, which they tend to share for free.
-3. Because R is open source, there are many, many great resources available for free online, and there is a thriving community of people that ask and answer questions about how to use R.
+3. Because R is open source, there are great resources available for free online (see section \@ref(resources) for some of my favorites), and there is a thriving community of people that ask and answer questions about how to use R.
 4. R is more powerful than SPSS. It can conduct statistical analyses and generate graphics that SPSS is not capable of (including maps with GIS data).
 5. R is professional-grade software, extremely commonly used by professional analysts.
 6. Familiarity with R will look great on your resume. It will show potential employers that you have some serious data skills and are capable of learning to code.
