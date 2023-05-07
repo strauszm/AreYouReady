@@ -73,7 +73,7 @@ anes2020.simplified<-anes2020.simplified %>%
                         '4'="divorced",'5'="separated",'6'="never married"))
 ```
 ## Online R resources {#resources}
-When you want to know how to do something in R, you can always google it. There are many, many excellent free resources online. In addition, here are nice free online R resources:
+There are excellent free resources for using R online. Here are some of my favorites:
 
 [https://stackoverflow.com/](https://stackoverflow.com/) This is a community of people that ask and answer questions about lots of different software packages including R. You can search all of the questions for free as a non-member, or you can join (also free) and ask and answer questions. I have figured out how to do many things in R thanks to the community at this site.
 
