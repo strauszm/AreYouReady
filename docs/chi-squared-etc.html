@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2023-09-03" />
+<meta name="date" content="2023-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -391,8 +391,8 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 <p>Clearly, there are differences in the distribution of economic equality in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the Chi-squared value that is associated with this relationship. To do this, we can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the value produced by the test will not be accurate.</p>
 <p>Here is how we would generate a chi-squared value for the relationship between dominant religion of a country and degree of economic equality:</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chi-squared-etc.html#cb175-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may
-## be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may be
+## incorrect</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -408,8 +408,8 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 ##   Sum                  9     1      1     40       11     9         17         47 135</code></pre>
 <p>Look at top left cell: countries where “Eastern” religions are dominant and that have economic equality. There is one country in that category. If there were no relationship at all between a country’s religion, we would expect that cell to be the row total*the column total/the total number of cases in the table. So, (45*9)/135, which is 3. As a general rule, if some cells in a crosstab have an expected value of less than 5, value of the chi-squared test will be artificially high, and we will be more likely to make Type I error (rejecting a true null hypothesis). In this case, we can actually look at the expected values of all of our cells with this command:</p>
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chi-squared-etc.html#cb179-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))<span class="sc">$</span>expected</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may
-## be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may be
+## incorrect</code></pre>
 <pre><code>##                 Religion
 ## gini3             Eastern     Hindu    Jewish   Muslim Orthodox    Other Protestant Roman Cath
 ##   equal          3.000000 0.3333333 0.3333333 13.33333 3.666667 3.000000   5.666667   15.66667

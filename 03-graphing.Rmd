@@ -58,7 +58,7 @@ xlab("Marital status")
 The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where "marital" is NA. Like this:
 
 ```
-ggplot(anes2020 %>% filter(!is.na(marital), aes(x=marital))+
+ggplot(anes2020 %>% filter(!is.na(marital), aes(x=marital)))+
   geom_bar(fill = "purple", colour = "black")+
   ggtitle("Marital status of respondents")+
 xlab("Marital status")
@@ -268,7 +268,7 @@ That just tells R to ignore the NAs when calculating the standard deviation (and
 When looking at the states2010 and world dataset, there are times when we might want to know which values of a variable come from which states or countries. When we want to know this, the select and arrange commands from the tidyverse can be helpful. For example, this code can help us learn about which states have which tax burdens:
 ```
 states2010 %>% 
-  select(state, x_tax_burden) %>% #focusing in on a few variables
+  dplyr::select(state, x_tax_burden) %>% #focusing in on a few variables
   arrange(x_tax_burden) #sorting this variable from smallest to largest
 				#to sort from largest to smallest, you would write
 				#arrange(desc(x_tax_burden))
