@@ -151,7 +151,7 @@ ggplot(plotting.data, aes(x = edu, y = freq, fill=income)) +
   scale_y_continuous(labels=percent)+
   scale_x_discrete(guide = guide_axis(n.dodge=2))+
   scale_fill_viridis_d()+
-  ggtitle("Education and income for men in the 2020 ANES")+
+  ggtitle("Education and income for women in the 2020 ANES")+
   xlab("Education")+
   ylab(NULL)
 ```
