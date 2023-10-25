@@ -6,7 +6,7 @@ To get started in today’s chapter, open the project that you made in lab 1. If
 Now type ```install.packages("DescTools")``` into the Console. This new package will help us calculate Cramer's V, Lambda, and Somers' D.
 
 Now, open a new script file and save it in your scripts folder as "chapter \@ref(chi-squared) practice." Copy and paste this onto the page (updating the text so that it is about you):
-```{r, warning=FALSE, message=FALSE}
+```
 ####################################
 # Your name
 # 20093 Chapter 7, Practice exercises
@@ -22,7 +22,7 @@ library(DescTools)	#this has tools to calculate Cramer's V, Lambda and
                     #Somers' D
 
 ```
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(DescTools)
 ```
 Now select all the text on this page, run it, and save it.

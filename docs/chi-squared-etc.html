@@ -319,19 +319,20 @@ div.csl-indent {
 <p>To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section <a href="tidyverse.html#exploring">2.2</a>.</p>
 <p>Now type <code>install.packages("DescTools")</code> into the Console. This new package will help us calculate Cramer’s V, Lambda, and Somers’ D.</p>
 <p>Now, open a new script file and save it in your scripts folder as “chapter <a href="chi-squared-etc.html#chi-squared">7.2</a> practice.” Copy and paste this onto the page (updating the text so that it is about you):</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="chi-squared-etc.html#cb161-1" tabindex="-1"></a><span class="do">####################################</span></span>
-<span id="cb161-2"><a href="chi-squared-etc.html#cb161-2" tabindex="-1"></a><span class="co"># Your name</span></span>
-<span id="cb161-3"><a href="chi-squared-etc.html#cb161-3" tabindex="-1"></a><span class="co"># 20093 Chapter 7, Practice exercises</span></span>
-<span id="cb161-4"><a href="chi-squared-etc.html#cb161-4" tabindex="-1"></a><span class="co"># Date started : Date last modified</span></span>
-<span id="cb161-5"><a href="chi-squared-etc.html#cb161-5" tabindex="-1"></a><span class="do">####################################</span></span>
-<span id="cb161-6"><a href="chi-squared-etc.html#cb161-6" tabindex="-1"></a></span>
-<span id="cb161-7"><a href="chi-squared-etc.html#cb161-7" tabindex="-1"></a><span class="co">#libraries------------------------------------------</span></span>
-<span id="cb161-8"><a href="chi-squared-etc.html#cb161-8" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb161-9"><a href="chi-squared-etc.html#cb161-9" tabindex="-1"></a><span class="fu">library</span>(Hmisc)          <span class="co">#the cut2 command helps us simplify interval variables</span></span>
-<span id="cb161-10"><a href="chi-squared-etc.html#cb161-10" tabindex="-1"></a><span class="fu">library</span>(scales) <span class="co">#this is useful when the labels on our axes overlap</span></span>
-<span id="cb161-11"><a href="chi-squared-etc.html#cb161-11" tabindex="-1"></a><span class="fu">library</span>(tigerstats) <span class="co">#colPerc can also be useful with crosstabs </span></span>
-<span id="cb161-12"><a href="chi-squared-etc.html#cb161-12" tabindex="-1"></a><span class="fu">library</span>(DescTools)  <span class="co">#this has tools to calculate Cramer&#39;s V, Lambda and</span></span>
-<span id="cb161-13"><a href="chi-squared-etc.html#cb161-13" tabindex="-1"></a>                    <span class="co">#Somers&#39; D</span></span></code></pre></div>
+<pre><code>####################################
+# Your name
+# 20093 Chapter 7, Practice exercises
+# Date started : Date last modified
+####################################
+
+#libraries------------------------------------------
+library(tidyverse)
+library(Hmisc)          #the cut2 command helps us simplify interval variables
+library(scales) #this is useful when the labels on our axes overlap
+library(tigerstats) #colPerc can also be useful with crosstabs 
+library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
+                    #Somers&#39; D
+</code></pre>
 <p>Now select all the text on this page, run it, and save it.</p>
 </div>
 <div id="chi-squared" class="section level2 hasAnchor" number="7.2">
@@ -377,7 +378,7 @@ div.csl-indent {
 <span id="cb170-7"><a href="chi-squared-etc.html#cb170-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Countries&#39; major religion and degree of economic equality&quot;</span>)<span class="sc">+</span></span>
 <span id="cb170-8"><a href="chi-squared-etc.html#cb170-8" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb170-9"><a href="chi-squared-etc.html#cb170-9" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 <p>Clearly, there are differences in the distribution of economic equality in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the Chi-squared value that is associated with this relationship. To do this, we can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the value produced by the test will not be accurate.</p>
 <p>Here is how we would generate a chi-squared value for the relationship between dominant religion of a country and degree of economic equality:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chi-squared-etc.html#cb171-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
@@ -536,7 +537,7 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 <span id="cb190-18"><a href="chi-squared-etc.html#cb190-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb190-19"><a href="chi-squared-etc.html#cb190-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;How important is press freedom?&quot;</span>)<span class="sc">+</span></span>
 <span id="cb190-20"><a href="chi-squared-etc.html#cb190-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion with no trust in media&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <p>Notice that the bars are going in the way our theory predicted – people that think that press freedom is less important also seem to trust the press less. The error bars on these columns do not seem to overlap with the exception of the upper bar on the “moderately important” column and the lower bar in the “a little important” column. In other words, most of these differences seem to be statistically significant, and the relationship is heading in the direction that we predicted.</p>
 <p>However, what are we to make of those overlapping error bars? And what about all of the data that is not on this graph (i.e. all four other values on media trust)? We can run the tests that we learned about earlier this chapter on our crosstab with the following commands.</p>
 <p>First, if you didn’t generate the crosstab object before, you can do that now like this:</p>
