@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 From Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 From Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2023-10-25" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -335,7 +339,7 @@ library(ggrepel)</code></pre>
 <p>What happens when we are interested in the relationship between two interval variables? Up into now, our solution has been to convert those variables into ordinal variables and use chi-squared, Lambda, Cramer’s V, and/or Somers’ D. However, when we do that, we are throwing out information. For example, if we convert an interval measure of respondent’s age into an ordinal variable coded “young”, “middle aged”, and “old”, we are throwing out the distinctions between, for example, 30 and 31-year-olds (assuming that they both fall into our young category) and between 80 and 81-year-olds (assuming that they both fall into our old category).</p>
 <p>Pearson’s R is a test that lets us look at the relationship between two interval variables. It produces a statistic that ranges from -1 to 1, with negative numbers indicating a negative relationship and positive numbers indicating a positive relationship. Although, unlike Lambda and Somers’ D, it is not a Proportional Reduction in Error (PRE) statistic, values farther from 0 indicate stronger relationships, and values closer to 0 indicate weaker relationships (with 0 meaning no relationship).</p>
 <p>R makes it very easy to calculate Pearson’s R. You can simply use the command <code>cor.test()</code>. Below, I test the relationship between two variables that I have found in the states2010 dataframe: citi6013, which is a measure of citizen ideology ranging from 0 to 100 (with higher numbers meaning more liberal and lower numbers being more conservative) and pctfemaleleg (a measure of the percent of a state’s legislators that are women). My hypothesis is that in states where the population is more liberal, there will be more female legislators. In other words, I am hypothesizing that Pearson’s R will be positive. Here is the command:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="pearsons-r.html#cb206-1" tabindex="-1"></a><span class="fu">cor.test</span>(states2010<span class="sc">$</span>pctfemaleleg, states2010<span class="sc">$</span>citi6013)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="pearsons-r.html#cb207-1" tabindex="-1"></a><span class="fu">cor.test</span>(states2010<span class="sc">$</span>pctfemaleleg, states2010<span class="sc">$</span>citi6013)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -354,24 +358,24 @@ library(ggrepel)</code></pre>
 <div id="scatterplot" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> The scatterplot<a href="pearsons-r.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To visualize a relationship between two interval variables, we can generate a scatterplot, one of my favorite graphs to generate. Here is the code that we can use to visualize the relationship between those two variables above. In general, consistent with other graphs you have made, remember to put your independent variable on the x-axis and your dependent variable on the y-axis (as always, you can find a template for this graph in the file “Strausz ggplot2 templates” which is in the “rscripts” folder that was in the zipped filed that you should have downloaded in section <a href="getting-started.html#add-files">1.3</a>.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="pearsons-r.html#cb208-1" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
-<span id="cb208-2"><a href="pearsons-r.html#cb208-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb208-3"><a href="pearsons-r.html#cb208-3" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span>  <span class="co">#if you don’t have data that you want to </span></span>
-<span id="cb208-4"><a href="pearsons-r.html#cb208-4" tabindex="-1"></a>                                                <span class="co">#use to name your dots, leave this line </span></span>
-<span id="cb208-5"><a href="pearsons-r.html#cb208-5" tabindex="-1"></a>                                                <span class="co">#off.</span></span>
-<span id="cb208-6"><a href="pearsons-r.html#cb208-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
-<span id="cb208-7"><a href="pearsons-r.html#cb208-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)<span class="sc">+</span></span>
-<span id="cb208-8"><a href="pearsons-r.html#cb208-8" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;Citizen ideology and female representation in state legislatures, 2010&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="pearsons-r.html#cb209-1" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
+<span id="cb209-2"><a href="pearsons-r.html#cb209-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb209-3"><a href="pearsons-r.html#cb209-3" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span>  <span class="co">#if you don’t have data that you want to </span></span>
+<span id="cb209-4"><a href="pearsons-r.html#cb209-4" tabindex="-1"></a>                                                <span class="co">#use to name your dots, leave this line </span></span>
+<span id="cb209-5"><a href="pearsons-r.html#cb209-5" tabindex="-1"></a>                                                <span class="co">#off.</span></span>
+<span id="cb209-6"><a href="pearsons-r.html#cb209-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
+<span id="cb209-7"><a href="pearsons-r.html#cb209-7" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)<span class="sc">+</span></span>
+<span id="cb209-8"><a href="pearsons-r.html#cb209-8" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;Citizen ideology and female representation in state legislatures, 2010&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p>The neat thing about scatterplots is that they display the values of all of the cases of the two variables that you are interested in for all of your data. So, looking at this graph, we can see dots representing all 50 states. How far each dot is along the x-axis tells us how liberal their citizenry is, and how far each dot is along the y-axis tells us the percent of their state legislators that are women.</p>
 <p>We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling dots usually doesn’t make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously.</p>
 <p>The above graph alone tells a pretty clear story about the relationship between our two variables – it is easy to visualize a positive relationship going from Oklahoma in the bottom left to Vermont in the top right. However, what if we wanted to ask R to fit a line to this data? In other words, what if we wanted R to find the line that is closest to all of the points on this graph? To do that, we can add a single line to our code from above:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="pearsons-r.html#cb209-1" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
-<span id="cb209-2"><a href="pearsons-r.html#cb209-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb209-3"><a href="pearsons-r.html#cb209-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">formula=</span> y<span class="sc">~</span>x)<span class="sc">+</span> <span class="co">#this is the line of code we add here</span></span>
-<span id="cb209-4"><a href="pearsons-r.html#cb209-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
-<span id="cb209-5"><a href="pearsons-r.html#cb209-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
-<span id="cb209-6"><a href="pearsons-r.html#cb209-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="pearsons-r.html#cb210-1" tabindex="-1"></a><span class="fu">ggplot</span>(states2010, <span class="fu">aes</span>(<span class="at">x =</span> citi6013, <span class="at">y =</span> pctfemaleleg)) <span class="sc">+</span></span>
+<span id="cb210-2"><a href="pearsons-r.html#cb210-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span>.<span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb210-3"><a href="pearsons-r.html#cb210-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">formula=</span> y<span class="sc">~</span>x)<span class="sc">+</span> <span class="co">#this is the line of code we add here</span></span>
+<span id="cb210-4"><a href="pearsons-r.html#cb210-4" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> state), <span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb210-5"><a href="pearsons-r.html#cb210-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ideology of citizenry (higher numbers mean more liberal)&quot;</span>, </span>
+<span id="cb210-6"><a href="pearsons-r.html#cb210-6" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Percent of state legislators that are women&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 <p>The line on this graph is called a regression line, and it is the line that is as close as possible to all of the dots on this graph. The shaded region around it is a 95% confidence interval. Visualize drawing a line from the top left corner of that region to the bottom right corner. If that line that you are visualizing was horizontal or sloping down, then we could not rule out the possibility that there was no relationship or a negative relationship between the two variables that we are looking at there. But even that imaginary line slopes upwards, which is good evidence for our hypothesis.</p>
 </div>
@@ -381,7 +385,7 @@ library(ggrepel)</code></pre>
 <p>Y=MX+B</p>
 <p>X is our independent variable, and Y is our dependent variable. M is the slope of our line. In other words, a one unit increase in X leads to an M unit increase in Y (or, if M is negative, a one unit increase in Y leads to an M unit decrease in Y). B is the Y intercept of our line. When X is zero, B will be the value of our line.</p>
 <p>When we ask R to draw a regression line on a scatterplot, we are asking R to first find the line that most closely fits all of the points in our scatterplot, and then generate a formula for that line. To generate that formula, R needs to find the slope and the intercept. To ask R to report what slope and intercept it found, we can use this command:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="pearsons-r.html#cb210-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="pearsons-r.html#cb211-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = pctfemaleleg ~ citi6013, data = states2010)
@@ -396,7 +400,7 @@ library(ggrepel)</code></pre>
 <p>%female legislators=0.23(state ideology) + 13.24</p>
 <p>This formula is telling us two things. First, it is telling us that for every one unit increase in our independent variable (our state ideology scale with higher numbers meaning more liberal), the percent of female legislators increases by 0.23. Second, it is telling us that in a state where our state ideology scale was 0 (meaning the residents were as conservative as possible), 13.24% of the state legislators would be women.</p>
 <p>Now we know, looking at the second graph in section 8.3, that this line doesn’t perfectly fit the data. Some points are right on the line, like Florida, but others are far above the line, like Colorado, or far below the line, like South Carolina. In order to get a sense of how well our regression actually fits the data, we can ask R to summarize our regression, like this:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="pearsons-r.html#cb212-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010))</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="pearsons-r.html#cb213-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="at">formula =</span> pctfemaleleg <span class="sc">~</span> citi6013, <span class="at">data =</span> states2010))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = pctfemaleleg ~ citi6013, data = states2010)

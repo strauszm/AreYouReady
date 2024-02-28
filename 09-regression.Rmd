@@ -150,7 +150,7 @@ Now R is using the dummy variable for "white" as our reference category. So, int
 ## Graphing multiple regression
 When you ask R to calculate a bivariate OLS regression, you are actually asking R to estimate the formula for a line. This is relatively easy to represent on a two-dimensional scatterplot. You can have R plot all of the points that it is using to estimate the line, as well as the line itself (like we did in Chapter 8). When you add a second independent variable, you are asking R to estimate the formula for a plane, which becomes harder to graph, and when you add a third, you are asking R to estimate the formula for a three-dimensional object, which is even harder to graph. Adding four or more independent variable makes it impossible to graph the whole relationship about which you are asking R to theorize. However, there are still ways to represent part of the relationship. For example, let's say that we have asked R to run this regression:
 ```
-summary(lm(ft_ice~ft_dem+race.factor, data=anes2020))
+summary(lm(ft_ice~ft_dems+race.factor, data=anes2020))
 ```
 When we do this, we are asking R to estimate the intercept and coefficients in this equation:
 

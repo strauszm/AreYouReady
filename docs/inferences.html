@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2023-10-25" />
+<meta name="date" content="2024-02-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -119,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -413,7 +417,7 @@ library(scales) #this is useful when the labels on our axes overlap</code></pre>
 <span id="cb145-7"><a href="inferences.html#cb145-7" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb145-8"><a href="inferences.html#cb145-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(group.n, total.n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
 <span id="cb145-9"><a href="inferences.html#cb145-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(group.n, total.n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>])  </span></code></pre></div>
-<pre><code>## # A tibble: 5 x 6
+<pre><code>## # A tibble: 5 × 6
 ## # Rowwise: 
 ##   marital       group.n total.n proportion lower_ci upper_ci
 ##   &lt;chr&gt;           &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
@@ -440,7 +444,7 @@ library(scales) #this is useful when the labels on our axes overlap</code></pre>
 <span id="cb151-3"><a href="inferences.html#cb151-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(UNDP_Gini2014)) <span class="sc">%&gt;%</span> </span>
 <span id="cb151-4"><a href="inferences.html#cb151-4" tabindex="-1"></a>  <span class="fu">group_by</span>(democ3) <span class="sc">%&gt;%</span> </span>
 <span id="cb151-5"><a href="inferences.html#cb151-5" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(UNDP_Gini2014), <span class="at">sd=</span><span class="fu">sd</span>(UNDP_Gini2014), <span class="at">n=</span><span class="fu">n</span>())</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 4
+<pre><code>## # A tibble: 3 × 4
 ##   democ3             mean    sd     n
 ##   &lt;fct&gt;             &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
 ## 1 non-democracy      38.8  6.77    51
@@ -483,6 +487,10 @@ library(scales) #this is useful when the labels on our axes overlap</code></pre>
 <span id="cb155-16"><a href="inferences.html#cb155-16" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb155-17"><a href="inferences.html#cb155-17" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb155-18"><a href="inferences.html#cb155-18" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">&quot;Gini coefficient in 2014 (lower numbers mean more equality)&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 Here we can see the overlapping 95% confidence intervals on each bar, reminding us that the difference that we observe is not statistically significant.</p>
 </div>
@@ -497,19 +505,19 @@ Here we can see the overlapping 95% confidence intervals on each bar, reminding 
 <p>For the following example, I am interested in the relationship between whether or not a voter thought that the 2020 government response to COVID was appropriate or not and whether or not the person voted for Trump in the 2020 election. To generate a table that displays that information, I will use the following code. Please note that this is very similar to the code that we used in section (ci-around-proportions). When using this code to generate your own table, you can replace anes2020 with the dataframe that you want to look at, “v2020” with your dependent variable, “covid” with your independent variable, and v2020==“Donald Trump” with:</p>
 <pre><code>DV==&quot;the value that you are interested in&quot;</code></pre>
 <p>Here is the code:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="inferences.html#cb157-1" tabindex="-1"></a>anes2020 <span class="sc">%&gt;%</span> </span>
-<span id="cb157-2"><a href="inferences.html#cb157-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-3"><a href="inferences.html#cb157-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-4"><a href="inferences.html#cb157-4" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-5"><a href="inferences.html#cb157-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb157-6"><a href="inferences.html#cb157-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb157-7"><a href="inferences.html#cb157-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-8"><a href="inferences.html#cb157-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-9"><a href="inferences.html#cb157-9" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb157-10"><a href="inferences.html#cb157-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
-<span id="cb157-11"><a href="inferences.html#cb157-11" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb157-12"><a href="inferences.html#cb157-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>])</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 6
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="inferences.html#cb158-1" tabindex="-1"></a>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb158-2"><a href="inferences.html#cb158-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-3"><a href="inferences.html#cb158-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-4"><a href="inferences.html#cb158-4" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-5"><a href="inferences.html#cb158-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb158-6"><a href="inferences.html#cb158-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb158-7"><a href="inferences.html#cb158-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-8"><a href="inferences.html#cb158-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-9"><a href="inferences.html#cb158-9" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb158-10"><a href="inferences.html#cb158-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb158-11"><a href="inferences.html#cb158-11" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb158-12"><a href="inferences.html#cb158-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 6
 ## # Rowwise: 
 ##   covid                  n numerat proportion lower_ci upper_ci
 ##   &lt;ord&gt;              &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
@@ -519,31 +527,31 @@ Here we can see the overlapping 95% confidence intervals on each bar, reminding 
 ## 4 Somewhat too slow    595     325     0.546    0.505     0.587
 ## 5 Much too slow       3169     286     0.0902   0.0806    0.101</code></pre>
 <p>This output has a bunch of great information. The first row, “much too quick”, for example, tells us that a total of 93 people in the ANES study in 2020 thought that the government’s COVID response moved much too quick. And of those 93, the second number tells us that 63 of them voted for President Trump. The third number tells us that 67.7% of people that thought that the government’s response was much too quick voted for President Trump. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of Trump voters who thought that the COVID response was much too quick is between .571 (or 57.1%) and .769 (or 76.9%). If we read down the rows, we will see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the proportion of Trump votes that thought that the government’s COVID response was somewhat too quick and the proportion that thought that it was about right overlap. The upper limit of the somewhat too quick interval is .95, which is higher than the lower limit of the about right interval (.897). This is easier to see on a graph. We can generate a graph with code similar to what we used in section (t-test-ind-means):</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="inferences.html#cb159-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
-<span id="cb159-2"><a href="inferences.html#cb159-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-3"><a href="inferences.html#cb159-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-4"><a href="inferences.html#cb159-4" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-5"><a href="inferences.html#cb159-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb159-6"><a href="inferences.html#cb159-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb159-7"><a href="inferences.html#cb159-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-8"><a href="inferences.html#cb159-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-9"><a href="inferences.html#cb159-9" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb159-10"><a href="inferences.html#cb159-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
-<span id="cb159-11"><a href="inferences.html#cb159-11" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb159-12"><a href="inferences.html#cb159-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]) </span>
-<span id="cb159-13"><a href="inferences.html#cb159-13" tabindex="-1"></a>  </span>
-<span id="cb159-14"><a href="inferences.html#cb159-14" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
-<span id="cb159-15"><a href="inferences.html#cb159-15" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">y=</span>proportion), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)  <span class="sc">+</span></span>
-<span id="cb159-16"><a href="inferences.html#cb159-16" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">ymin=</span>lower_ci, <span class="at">ymax=</span>upper_ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb159-17"><a href="inferences.html#cb159-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Assessment of Gov&#39;t covid response and proportion voting for Trump, ANES 2020&quot;</span>,</span>
-<span id="cb159-18"><a href="inferences.html#cb159-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
-<span id="cb159-19"><a href="inferences.html#cb159-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb159-20"><a href="inferences.html#cb159-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion voting for Trump&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="inferences.html#cb160-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb160-2"><a href="inferences.html#cb160-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(v2020)) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-3"><a href="inferences.html#cb160-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(covid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-4"><a href="inferences.html#cb160-4" tabindex="-1"></a>  <span class="fu">group_by</span>(covid) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-5"><a href="inferences.html#cb160-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb160-6"><a href="inferences.html#cb160-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb160-7"><a href="inferences.html#cb160-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(v2020<span class="sc">==</span><span class="st">&quot;Donald Trump&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-8"><a href="inferences.html#cb160-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-9"><a href="inferences.html#cb160-9" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb160-10"><a href="inferences.html#cb160-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb160-11"><a href="inferences.html#cb160-11" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb160-12"><a href="inferences.html#cb160-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]) </span>
+<span id="cb160-13"><a href="inferences.html#cb160-13" tabindex="-1"></a>  </span>
+<span id="cb160-14"><a href="inferences.html#cb160-14" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
+<span id="cb160-15"><a href="inferences.html#cb160-15" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">y=</span>proportion), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)  <span class="sc">+</span></span>
+<span id="cb160-16"><a href="inferences.html#cb160-16" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">x=</span>covid, <span class="at">ymin=</span>lower_ci, <span class="at">ymax=</span>upper_ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb160-17"><a href="inferences.html#cb160-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Assessment of Gov&#39;t covid response and proportion voting for Trump, ANES 2020&quot;</span>,</span>
+<span id="cb160-18"><a href="inferences.html#cb160-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
+<span id="cb160-19"><a href="inferences.html#cb160-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb160-20"><a href="inferences.html#cb160-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion voting for Trump&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p>This graph shows us that most of the differences between these bars are statistically significant. In other words, people’s assessment of the government’s response to COVID in 2020 does seem to be pretty strongly correlated with whether or not they voted for President Trump.</p>
 <p>Now when looking at this graph, we might be tempted to observe that it certainly seems like the vast majority of our sample voted for President Trump. After all, more than 50% of respondents in every category, from “much too quick” to “somewhat too slow” voted for President Trump. In only the final category, “much too slow,” were Trump voters a minority. What is going on here?</p>
 <p>To get a clue, we can look at those bars around the 95% confidence intervals. Notice that the narrowest interval is around “much too slow.” This is because that was, by far, the biggest group of people that we surveyed, which means that our estimate can be more precise (and thus the bars can be closer together). To see that even more clearly, let’s take another look at that table that we generated above:</p>
-<pre><code>## # A tibble: 5 x 6
+<pre><code>## # A tibble: 5 × 6
 ## # Rowwise: 
 ##   covid                  n numerat proportion lower_ci upper_ci
 ##   &lt;ord&gt;              &lt;int&gt;   &lt;int&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
