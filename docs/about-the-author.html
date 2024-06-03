@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-02-28" />
+<meta name="date" content="2024-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -128,6 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -187,7 +188,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
 <li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#introducing-the-pipe-in-tidyverse"><i class="fa fa-check"></i><b>2.4.1</b> Introducing the ‘pipe’ in tidyverse</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tidyverse.html"><a href="tidyverse.html#select-in-tidyverse"><i class="fa fa-check"></i><b>2.4.2</b> select() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.3</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.4" data-path="tidyverse.html"><a href="tidyverse.html#arrange-in-tidyverse"><i class="fa fa-check"></i><b>2.4.4</b> arrange() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#glimpse-in-tidyverse"><i class="fa fa-check"></i><b>2.4.5</b> glimpse() in tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
@@ -198,19 +203,20 @@ div.csl-indent {
 <li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
-<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
-<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
-<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
-<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
-<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
-<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#remove-na"><i class="fa fa-check"></i><b>3.2.2</b> Removing the NA bar</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#add-return"><i class="fa fa-check"></i><b>3.2.3</b> Adding a second line to a graph’s title</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.4</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.5</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.6</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.7</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.8" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.8</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.9" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.9</b> Adjusting bin width on a histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
-<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
-<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
-<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation and IQR when you have NAs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
 <li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
@@ -221,8 +227,18 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
 <li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
-<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
-<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-using-cut2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-with-case_when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="recoding.html"><a href="recoding.html#generating-cross-tabs"><i class="fa fa-check"></i><b>4.5.1</b> Generating cross-tabs</a></li>
+<li class="chapter" data-level="4.5.2" data-path="recoding.html"><a href="recoding.html#adding-column-totals-to-cross-tabs"><i class="fa fa-check"></i><b>4.5.2</b> Adding column totals to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.3" data-path="recoding.html"><a href="recoding.html#column-percents"><i class="fa fa-check"></i><b>4.5.3</b> Adding column percents to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.4" data-path="recoding.html"><a href="recoding.html#export-crosstabs"><i class="fa fa-check"></i><b>4.5.4</b> Exporting cross-tabs for your word processor</a></li>
+</ul></li>
 <li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
 <li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
@@ -318,7 +334,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="about-the-author" class="section level1 unnumbered hasAnchor">
 <h1>About the author<a href="about-the-author.html#about-the-author" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a professor of political science at Texas Christian University. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies.</p>
+<p>I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a professor of political science at Texas Christian University. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a> and the editor of the forthcoming book <a href= "https://uhpress.hawaii.edu/title/no-island-is-an-island-perspectives-on-immigration-to-japan/">No Island is an Island: Perspectives on Immigration to Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies.</p>
 <p>I graduated from Michigan State University’s James Madison College and earned my Ph.D. in political science from the University of Washington in Seattle. I live just outside of Fort Worth, Texas with my spouse and our two children. In my free time, I enjoy cooking, hiking, and schmoozing.</p>
 
 </div>

@@ -10,5 +10,3 @@ render_book(input = ".", clean = TRUE,
             output_dir = NULL, new_session = NA, preview = FALSE,
             config_file = "_bookdown.yml",)
 
-options(knitr.graphics.auto_pdf = TRUE)
-

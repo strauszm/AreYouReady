@@ -3,7 +3,7 @@
 ## Getting started with this chapter {#getting-started-inferences}
 To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section \@ref(exploring).
 
-Now, open a new script file and save it in your scripts folder as "chapter \@ref(inferences) practice." Copy and paste this onto the page (updating the text so that it is about you):
+Now, open a new script file and save it in your scripts folder as "chapter 6 practice." Copy and paste this onto the page (updating the text so that it is about you):
 ```
 ####################################
 # Your name
@@ -13,13 +13,15 @@ Now, open a new script file and save it in your scripts folder as "chapter \@ref
 
 #libraries------------------------------------------
 library(tidyverse)
-library(Hmisc)        #the cut2 command helps us simplify interval variables
-library(scales)	#this is useful when the labels on our axes overlap
+library(Hmisc)    #the cut2 command helps us simplify interval variables
+library(scales)   #this is useful when the labels on our axes overlap
+library(flextable)#this makes tables that we can easily export into a word processor
+
 ```
 Now select all the text on this page, run it, and save it.
 
 ## Constructing a confidence interval around a mean
-The fundamental task of much statistical analysis is to make mathematically informed inferences about populations from samples. We can see this most clearly when looking at data like the ANES, which is a sample of Americans from which we want to make inferences about all Americans. But even when looking at our states or world dataset, in which our dataframe includes data about all states and (almost) all countries in the world, it is still helpful to think about making inferences about populations. In this case, we might think of the population as states or countries that we cannot observe because they are hypothetical, they have not yet come into existence (because they are in the future) or they existed in the past. In other words, we are studying our group of states and countries to make inferences about hypothetical states and countries, states and countries in the future, states and countries in the past, or state and countries that we cannot observe for some other reason.
+The fundamental task of much statistical analysis is to make mathematically informed inferences about populations from samples. We can see this most clearly when looking at data like the ANES, which is a sample of Americans from which we want to make inferences about all Americans. But even when looking at our states or world dataset, in which our dataframe includes data about all states in the US and (almost) all countries in the world, it is still helpful to think about making inferences about populations. In this case, we might think of the population as states or countries that we cannot observe because they are hypothetical, they have not yet come into existence (because they exist in the future) or they existed in the past. In other words, we are studying our group of states or countries to make inferences about hypothetical states or countries, states or countries in the future, states or countries in the past, or state or countries that we cannot observe for some other reason.
 
 One inference that we often want to make about a population is the mean of some variable. Given the mean that we observe in sample, what is the range of outcomes for the population mean that we might reasonably expect to observe?
 
@@ -43,10 +45,10 @@ Looking at the output, after the title, "One Sample t-test" the next three lines
 ```{r}
 t.test(ft_cdc~1, data=anes2020, conf.level=.99)
 ```
-When you run this command, notice that if we want to be more confident that our interval contains the true population mean, the margin between our lower and upper estimate gets larger. Similarly, if we set the confidence interval to 90%, or 80%, the interval gets smaller.
+When you run this command, notice that if we want to be more confident that our interval contains the true population mean, the margin between our lower and upper estimate gets larger. Similarly, if we set the confidence interval to 90% (using ```conf.level=.9```), or 80% (using ```conf.level=.8```), the interval gets smaller.
 
 ## Constructing a confidence interval around a proportion {#ci-around-proportion}
-For nominal and ordinal variables, it does not make sense to calculate a mean, but we still often want to make inferences about a population from a sample. In fact, these are one of the most commonly reported kinds of inferences that we who follow politics hear: 54.2% of people support this policy, 32.1% of people support that politician, etc. To ask R to calculate a confidence interval around a proportion, we first need two pieces of information: how many cases got the value that we are interested in, and how many cases are there total. So, for example, let’s say that we want to use our anes2020 dataset to estimate the proportion of Americans that are married. We can first run the table command, like this:
+For nominal and ordinal variables, it does not make sense to calculate a mean, but we still often want to make inferences about a population from a sample. In fact, these are one of the most commonly reported kinds of inferences that we who follow politics hear: 54.2% of people support this policy, 32.1% of people support that politician, etc. To ask R to calculate a confidence interval around a proportion, we first to answer two questions: how many cases got the value that we are interested in, and how many cases are there total? So, for example, let’s say that we want to use our anes2020 dataset to estimate the proportion of Americans that are married. We can first run the table command, like this:
 ```{r}
 table(anes2020$marital)
 ```
@@ -89,6 +91,20 @@ group_by(marital) %>%
 ```
 Reading down this output, we can see that a proportion of .148 (or 14.8%) of our sample is divorced. The next two columns tell us that there is a 95% chance that the true population proportion of divorced people is between 14.1% and 15.6%. We can see the married values on the second line, with a familiar confidence interval, and each additional line clearly displays the confidence interval around the proportion that we are interested in. And as we continue to read down, we can see the remaining proportions with their associated confidence intervals.
 
+To save this table of confidence intervals in a format that we can easily pull into a word processor, we can use the flextable technique that we learned in Section \@ref(export-crosstabs), which will create a file in our project folder called "maritalProps.docx":
+```{r}
+marital.props<-anes2020 %>% 
+  filter(!is.na(marital)) %>%  
+group_by(marital) %>%     
+  summarise(group.n=n()) %>%
+  mutate(total.n=sum(group.n)) %>% 
+  mutate(proportion=group.n/total.n) %>% 
+  rowwise() %>%
+  mutate(lower_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[1]) %>% 
+  mutate(upper_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[2])
+flextable(marital.props) %>% save_as_docx(path="maritalProps.docx")
+```
+
 ## T-test of independent means {#t-test-ind-means}
 We often find ourselves in a situation where we want to compare the means of two different groups in our sample, and make inferences about the population. So, for example, we might want to compare men and women, Democrats and Republicans, voters and non-voters, etc. For the purposes of this example, we will be comparing democracies and non-democracies in our world dataframe. Before we can start with this comparison, though, we have to do a bit of housekeeping. The democracy variable that we have in the world dataframe is an interval variable, with values ranging from 14.3 (a value shared by countries including Equatorial Guinea, Eritrea, North Korea, and Saudi Arabia) to 100 (a value shared by Andorra, Australia, the Bahamas, Canada, and the United States).
 
@@ -119,7 +135,7 @@ Before conducting a significance test, it is important to specify our null and r
 t.test(UNDP_Gini2014 ~ democ3, data=world %>% 
          filter(democ3=="democracy"|democ3=="non-democracy"))
 ```
-Notice how the first thing in the parentheses after t.test is the dependent variable (i.e. the variable that we are calculating the mean of), followed by a ~ and then our independent variable (democ3). One thing that is a little tricky is that R does not like to do a t-test when the independent variable has more than two values. To address this, I have used the dplyr filter command to set it so that I am only looking at cases of democ2 coded "democracy" or "non-democracy" (i.e. I am filtering out the NAs and partial democracies). The "|" between the two conditions (it is the character above the "\" on your keyboard) means "or." 
+Notice how the first thing in the parentheses after t.test is the dependent variable (i.e. the variable that we are calculating the mean of), followed by a ~ and then our independent variable (democ3). One thing that is a little tricky is that R does not like to do a t-test when the independent variable has more than two values. To address this, I have used the dplyr filter command to tell R to only look at cases of democ2 coded "democracy" or "non-democracy" (i.e. I am filtering out the NAs and partial democracies). The "|" between the two conditions (it is the character above the "\" on your keyboard) means "or." 
 
 Now take a look at the output. There are a few things to note here. First of all, we could see that the reported p-value is .3852. That tells us that, if we accept the research hypothesis that democracies have more equality than non-democracies, there is a probability of .3852, or a 38.5% chance, that we are making Type I error (rejecting a true null hypothesis). Since the critical value for p is generally set to .05 (meaning we are not willing to take more than a 5% risk of Type I error), we would fail to reject the null hypothesis.
 
@@ -140,12 +156,13 @@ plotting.data<-world %>%
 
 ggplot(plotting.data) +
   geom_bar(aes(x=democ3, y=mean), stat="identity", fill="purple", alpha=0.5) +
-  geom_errorbar( aes(x=democ3, ymin=mean-ci, ymax=mean+ci), width=0.4, colour="black", alpha=0.9, size=1.5) +
+  geom_errorbar( aes(x=democ3, ymin=mean-ci, ymax=mean+ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
   ggtitle("Equality in democracies and non-democracies", 
           subtitle="Error bars represent 95% confidence intervals")+
   xlab(NULL)+
 ylab("Gini coefficient in 2014 (lower numbers mean more equality)")
 ```
+
 Here we can see the overlapping 95% confidence intervals on each bar, reminding us that the difference that we observe is not statistically significant.
 
 ## T-test of independent proportions {#t-test-ind-props}
@@ -153,7 +170,7 @@ There are times when we want to compare two or more proportions to examine wheth
 
 1. What is the nominal or ordinal independent variable that we are interested in examining? 
 2. What is the nominal or ordinal dependent variable that we are interested in examining? 
-3. For our dependent variable, what is the value that we want to focus on?
+3. For our dependent variable, what is the **value** that we want to focus on?
 
 For the following example, I am interested in the relationship between whether or not a voter thought that the 2020 government response to COVID was appropriate or not and whether or not the person voted for Trump in the 2020 election. To generate a table that displays that information, I will use the following code. Please note that this is very similar to the code that we used in section \ref(ci-around-proportions).  When using this code to generate your own table, you can replace anes2020 with the dataframe that you want to look at, "v2020" with your dependent variable, "covid" with your independent variable, and v2020=="Donald Trump" with:
 ```
@@ -175,7 +192,7 @@ anes2020 %>%
   mutate(upper_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[2])
 ```
 
-This output has a bunch of great information. The first row, "much too quick", for example, tells us that a total of 93 people in the ANES study in 2020 thought that the government’s COVID response moved much too quick. And of those 93, the second number tells us that 63 of them voted for President Trump. The third number tells us that 67.7% of people that thought that the government’s response was much too quick voted for President Trump. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of Trump voters who thought that the COVID response was much too quick is between .571 (or 57.1%) and .769 (or 76.9%). If we read down the rows, we will see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the proportion of Trump votes that thought that the government’s COVID response was somewhat too quick and the proportion that thought that it was about right overlap. The upper limit of the somewhat too quick interval is .95, which is higher than the lower limit of the about right interval (.897). This is easier to see on a graph. We can generate a graph with code similar to what we used in section \ref(t-test-ind-means):
+This output has a bunch of great information. The first row, "much too quick", for example, tells us that a total of 93 people in the ANES study in 2020 thought that the government’s COVID response moved much too quickly. And of those 93, the second number tells us that 63 of them voted for President Trump. The third number tells us that 67.7% of people that thought that the government’s response was much too quick voted for President Trump. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of Trump voters who thought that the COVID response was much too quick is between .571 (or 57.1%) and .769 (or 76.9%). As we read down the rows, we see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the proportion of Trump votes that thought that the government’s COVID response was somewhat too quick and the proportion that thought that it was about right overlap. The upper limit of the somewhat too quick interval is .95, which is higher than the lower limit of the about right interval (.897). This is easier to see on a graph. We can generate a graph with code similar to what we used in section \ref(t-test-ind-means):
 ```{r}
 plotting.data<-anes2020 %>% 
   filter(!is.na(v2020)) %>% 
@@ -192,7 +209,7 @@ plotting.data<-anes2020 %>%
   
 ggplot(plotting.data) +
   geom_bar(aes(x=covid, y=proportion), stat="identity", fill="purple", alpha=0.5)  +
-  geom_errorbar(aes(x=covid, ymin=lower_ci, ymax=upper_ci), width=0.4, colour="black", alpha=0.9, size=1.5) +
+  geom_errorbar(aes(x=covid, ymin=lower_ci, ymax=upper_ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
   ggtitle("Assessment of Gov't covid response and proportion voting for Trump, ANES 2020",
           subtitle="Error bars represent 95% confidence intervals")+
   xlab(NULL)+
@@ -201,7 +218,7 @@ ggplot(plotting.data) +
 
 This graph shows us that most of the differences between these bars are statistically significant. In other words, people’s assessment of the government’s response to COVID in 2020 does seem to be pretty strongly correlated with whether or not they voted for President Trump.
 
-Now when looking at this graph, we might be tempted to observe that it certainly seems like the vast majority of our sample voted for President Trump. After all, more than 50% of respondents in every category, from "much too quick" to "somewhat too slow" voted for President Trump. In only the final category, "much too slow," were Trump voters a minority. What is going on here?
+Now when looking at this graph, we might be tempted to observe that it seems like the vast majority of our sample voted for President Trump. After all, more than 50% of respondents in every category from "much too quick" to "somewhat too slow" voted for President Trump. In only the final category, "much too slow," were Trump voters a minority. What is going on here?
 
 To get a clue, we can look at those bars around the 95% confidence intervals. Notice that the narrowest interval is around "much too slow." This is because that was, by far, the biggest group of people that we surveyed, which means that our estimate can be more precise (and thus the bars can be closer together). To see that even more clearly, let’s take another look at that table that we generated above:
 ```{r, echo=FALSE}

@@ -7,6 +7,7 @@ We are going to install three new packages to use today. One is called "epiDispl
 ```
 install.packages("epiDisplay")
 install.packages("scales")
+
 ```
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(epiDisplay)
@@ -22,11 +23,11 @@ Now, open a new script file and save it in your scripts folder as "chapter 3 pra
 
 #libraries------------------------------------------
 library(tidyverse)
-library(epiDisplay) #the tab1 command helps us make nice frequency tables
-library(scales)        #this helps us to put more readable scales on our graphs
-
-Now select all the text on this page, run it, and then save it. 
+library(epiDisplay)   #the tab1 command helps us make nice frequency tables
+library(scales)       #this helps us to put more readable scales on our graphs
 ```
+Now select all the text on this page, run it, and then save it. 
+
 ## Getting started with ggplot and graphing {#start-graphing}
 R has some nice graphic abilities built in, but the ggplot2 package that comes with the tidyverse is even more powerful. In this lab, we will learn to make bar graphs of nominal and ordinal variables and histograms of interval variables.
 
@@ -34,7 +35,7 @@ R has some nice graphic abilities built in, but the ggplot2 package that comes w
 
 ### Bar graphing a nominal variable {#bar-graph-nominal}
 
-A nominal variable is a variable where the distance between the values does not give us any information, and the possible values can be listed in any order without confusing us. R does not have a single way to represent nominal variables, but on the three datasets that I have uploaded for this book I have classified the nominal variables as character variables. R sometimes abbreviates this <chr>. If you type this into the console:
+A nominal variable is a variable where the magnitude of differences between the values does not give us any information, and the possible values can be listed in any order without confusing us. R does not have a single way to represent nominal variables, but on the three datasets that I have uploaded for this book I have classified the nominal variables as character variables. R sometimes abbreviates this <chr>. If you type this into the console:
 ```
 glimpse(anes2020)
 ```
@@ -55,6 +56,7 @@ ggplot(anes2020, aes(x=marital))+
 xlab("Marital status")
 ```
 
+### Removing the NA bar {#remove-na}
 The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where "marital" is NA. Like this:
 
 ```
@@ -65,6 +67,7 @@ xlab("Marital status")
 ```
 If you execute that command, you will see that now the NA bar is missing.
 
+### Adding a second line to a graph's title {#add-return}
 While "Marital status of respondents" is not a very long title, sometimes you will have graphs with longer titles that you want r to put on two or more lines. To tell R to move to a new line, just insert "\\n" where you want the line break to go, like this:
 ```{r}
 ggplot(anes2020 %>% filter(!is.na(marital)), aes(x=marital))+
@@ -82,7 +85,7 @@ knitr::include_graphics("images/graphing_1_saving.png")
 You can either save it as an image, which you will later be able to import into word or other software, or you can copy it to clipboard and immediately paste it into another piece of software. Either of those work.
 
 ### Bar graphing an ordinal variable {#bar-graph-ordinal}
-An ordinal variable is a variable where the distance between the values does not give us any information, but the possible values must be listed in a particular order to make sense. R is most willing to treat a variable as ordinal when it is listed as an ordered factor, which R sometimes abbreviates as <ord>. If you type this into the console:
+An ordinal variable is a variable where the magnitude of the difference between the values does not give us any information, but the possible values must be listed in a particular order to make sense. R is most willing to treat a variable as ordinal when it is listed as an ordered factor, which R sometimes abbreviates as <ord>. If you type this into the console:
 ```
 glimpse(anes2020)
 ```
@@ -117,9 +120,9 @@ xlab("Party")
 ```
 
 ### Generating a histogram {#histogram}
-An interval variable is a variable where the distance between the values gives us useful information and where the possible values must be listed in a particular order to make sense.. In this class, it is generally safe to assume that a variable that is neither an ordered factor nor a character variable is interval. *However, variables with only two values (such as 0 and 1) should not be treated as interval.*
+An interval variable is a variable where the magnitude of difference between the values gives us useful information and where the possible values must be listed in a particular order to make sense. In this class, it is generally safe to assume that a variable that is neither an ordered factor nor a character variable is interval. *However, variables with only two values (such as 0 and 1) should not be treated as interval.*
 
-You can, in theory, make a bar graph of an interval variable. However, since there are so many values to most interval variables, those bar graphs become very difficult to read. Instead, we often generate histograms of interval variables.  Histograms are bar graphs where each bar represents a range of values of the variable of interest instead of a single bar. For example, here is how we can make a histogram of the population variable in our world dataset:
+You can, in theory, make a bar graph of an interval variable. However, since interval variables generally have many possible values, those bar graphs become very difficult to read. Instead, we often generate histograms of interval variables.  Histograms are bar graphs where each bar represents a range of values of the variable of interest instead of a single bar. For example, here is how we can make a histogram of the population variable in our world dataset:
 ```{r, warning=FALSE, message=FALSE}
 ggplot(world, aes(x = UNDP_pop)) +
   geom_histogram(fill = "purple", colour = "black")+
@@ -152,11 +155,10 @@ ggplot(world, aes(x = UNDP_pop)) +
 xlab("population")
 ```
 
-Those narrower bins let us see more of the variation in the variable – we can see that the biggest group of countries, by far, has a population of 10,000,000 or less.
+Those narrower bins let us see more of the variation in the variable – we can see that the largest group of countries, by far, has a population of 10,000,000 or less.
 
 ## Central tendancy and dispersion
 With all variables, it is helpful to both you and your readers to make observations about their central tendency—what a typical case looks like, and dispersion—how the actual values are spread out across possible cases. 
-
 ### Central tendency and dispersion of nominal variables
 With nominal variables, there are two useful techniques to help us discuss central tendancy and dispersion. One is covered above, in section \@ref(bar-graph-nominal): you can make a bar graph. Second, you can also make a frequency table. To make a frequency table, you can use the table() command to produce a simple one in base R, but the tab1 command that is available through the epiDisplay library that we installed in section \@ref(getting-started-tidyverse) is more flexible. So, let’s try to look at the region variable from the states2010 dataset. Enter the following into today’s practice R script file, and run it:
 
@@ -211,7 +213,7 @@ R has a median() command that we will be able to use with interval data. However
 
 So, now we can make two observations about the central tendency of our religion variable – the mode is "extremely important" and the median is "moderately important." 
 
-What can we say about the dispersion? To discuss the dispersion it is helpful to generate a bar graph. We ca look at the one automatically generated by tab1, but I prefer the look of the ones that we generate with ggplot. So, we can use the same code from section \@ref(bar-graph-ordinal) to generate a bar graph of this variable (Note that we make the x-axis table disappear with "NULL" because the graph title already explained what the x-axis means):
+What can we say about the dispersion? To discuss the dispersion it is helpful to generate a bar graph. We can look at the one automatically generated by tab1, but I prefer the look of the ones that we generate with ggplot. So, we can use the same code from section \@ref(bar-graph-ordinal) to generate a bar graph of this variable (Note that we make the x-axis table disappear with "NULL" because the graph title already explained what the x-axis means):
 ```{r}
 ggplot(anes2020 %>% filter(!is.na(religimp)), aes(x=religimp))+
   geom_bar(fill = "purple", colour = "black")+

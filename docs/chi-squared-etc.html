@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-02-28" />
+<meta name="date" content="2024-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -128,6 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -187,7 +188,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
 <li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#introducing-the-pipe-in-tidyverse"><i class="fa fa-check"></i><b>2.4.1</b> Introducing the ‘pipe’ in tidyverse</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tidyverse.html"><a href="tidyverse.html#select-in-tidyverse"><i class="fa fa-check"></i><b>2.4.2</b> select() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.3</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.4" data-path="tidyverse.html"><a href="tidyverse.html#arrange-in-tidyverse"><i class="fa fa-check"></i><b>2.4.4</b> arrange() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#glimpse-in-tidyverse"><i class="fa fa-check"></i><b>2.4.5</b> glimpse() in tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
@@ -198,19 +203,20 @@ div.csl-indent {
 <li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
-<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
-<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
-<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
-<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
-<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
-<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#remove-na"><i class="fa fa-check"></i><b>3.2.2</b> Removing the NA bar</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#add-return"><i class="fa fa-check"></i><b>3.2.3</b> Adding a second line to a graph’s title</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.4</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.5</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.6</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.7</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.8" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.8</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.9" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.9</b> Adjusting bin width on a histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
-<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
-<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
-<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation and IQR when you have NAs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
 <li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
@@ -221,8 +227,18 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
 <li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
-<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
-<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-using-cut2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-with-case_when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="recoding.html"><a href="recoding.html#generating-cross-tabs"><i class="fa fa-check"></i><b>4.5.1</b> Generating cross-tabs</a></li>
+<li class="chapter" data-level="4.5.2" data-path="recoding.html"><a href="recoding.html#adding-column-totals-to-cross-tabs"><i class="fa fa-check"></i><b>4.5.2</b> Adding column totals to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.3" data-path="recoding.html"><a href="recoding.html#column-percents"><i class="fa fa-check"></i><b>4.5.3</b> Adding column percents to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.4" data-path="recoding.html"><a href="recoding.html#export-crosstabs"><i class="fa fa-check"></i><b>4.5.4</b> Exporting cross-tabs for your word processor</a></li>
+</ul></li>
 <li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
 <li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
@@ -331,35 +347,33 @@ div.csl-indent {
 
 #libraries------------------------------------------
 library(tidyverse)
-library(Hmisc)          #the cut2 command helps us simplify interval variables
-library(scales) #this is useful when the labels on our axes overlap
-library(tigerstats) #colPerc can also be useful with crosstabs 
-library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
-                    #Somers&#39; D
-</code></pre>
+library(Hmisc)        #the cut2 command helps us simplify interval variables
+library(scales)       #this is useful when the labels on our axes overlap
+library(tigerstats)   #colPerc can also be useful with crosstabs 
+library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and Somers&#39; D</code></pre>
 <p>Now select all the text on this page, run it, and save it.</p>
 </div>
 <div id="chi-squared" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Caculating chi-squared<a href="chi-squared-etc.html#chi-squared" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In chapter <a href="inferences.html#inferences">6</a>, we learned two tools to think about relationships between variables: a t-test of independent means and a t-test of independent proportions. These tests let us compare two groups and see whether their means or proportions differ in a statistically significant way. However, what if we want to compare more than two groups at the same time? And, in the case of proportions, what if we want to look at several different proportions at once? For example, the proportion of people that voted for Trump, Biden, Jo Jorgeson, and the other candidates as well?</p>
 <p>In other words, to return to a concept from chapter <a href="recoding.html#recoding">4</a>, what if we wanted to look at a whole cross tabulation table (a crosstab) and decide whether the values that we observe are likely due to random sampling error, or due to a correlation at the population level?</p>
-<p>The most basic way to do that is by calculating chi-squared. That statistic tells us whether the values that we observe in a crosstab are so different from what we would expect to observe if there was no association between at the population level that we can conclude that there likely is such a relationship. For this example, we will think about the relationship between the dominant religion of a country and the degree of economic equality in that country. We will think through that question with help from our world dataframe, using the “Religion” variable and the “UNDP_Gini2014” variable.</p>
-<p>Before we generate our crosstab, we first have to deal with an issue: the UNDP_Gini2014 variable is interval. If we generate a crosstab with that variable as the DV, that crosstab will have one row for each value of that variable, which would likely give us hundreds of rows. We don’t want that! Instead, let’s use the technique that we learned in chapter 4 section 4 and simplify that variable into a new variable called “gini3.” First, we will use the cut2 command to generate a variable with three groups:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chi-squared-etc.html#cb163-1" tabindex="-1"></a>world<span class="sc">$</span>gini3<span class="ot">&lt;-</span><span class="fu">cut2</span>(world<span class="sc">$</span>UNDP_Gini2014, <span class="at">g=</span><span class="dv">3</span>)</span></code></pre></div>
+<p>The most basic way to do that is by calculating chi-squared. That statistic tells us whether the values of variables that we observe in a crosstab are so different from what we would expect to observe if there was no association between the variables at the population level that we can conclude that there likely is such a relationship. For this example, we will think about the relationship between the dominant religion of a country and the degree of economic equality in that country. We will think through that question with help from our world dataframe, using the “Religion” variable and the “UNDP_Gini2014” variable.</p>
+<p>Before we generate our crosstab, we first have to deal with an issue: the UNDP_Gini2014 variable is interval. If we generate a crosstab with that variable as the DV, that crosstab will have one row for each value of that variable, which would give us more than a hundred rows. We don’t want that! Instead, let’s use the technique that we learned in chapter 4 section 4 and simplify that variable into a new variable called “gini3.” First, we will use the cut2 command to generate a variable with three groups:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chi-squared-etc.html#cb169-1" tabindex="-1"></a>world<span class="sc">$</span>gini3<span class="ot">&lt;-</span><span class="fu">cut2</span>(world<span class="sc">$</span>UNDP_Gini2014, <span class="at">g=</span><span class="dv">3</span>)</span></code></pre></div>
 <p>Next, we can look at the levels of our new ordinal variable, like this:
 <code>levels(world$gini3)</code></p>
 <p>Finally, we can rename those levels, like this:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="chi-squared-etc.html#cb164-1" tabindex="-1"></a><span class="fu">levels</span>(world<span class="sc">$</span>gini3)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;equal&quot;</span>,<span class="st">&quot;somewhat equal&quot;</span>,<span class="st">&quot;not equal&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="chi-squared-etc.html#cb170-1" tabindex="-1"></a><span class="fu">levels</span>(world<span class="sc">$</span>gini3)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;equal&quot;</span>,<span class="st">&quot;somewhat equal&quot;</span>,<span class="st">&quot;not equal&quot;</span>)</span></code></pre></div>
 <p>Now, we can generate a crosstab, with this command (remember when generating a crosstab we put our dependent variable first):</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="chi-squared-etc.html#cb165-1" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chi-squared-etc.html#cb171-1" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>##                 Religion
 ## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
 ##   equal                1     1      0     16        8     0          7         12  45
 ##   somewhat equal       8     0      1     20        2     3          5          7  46
 ##   not equal            0     0      0      4        1     6          5         28  44
 ##   Sum                  9     1      1     40       11     9         17         47 135</code></pre>
-<p>This crosstab gives us raw numbers, which are interesting to look at. It also foreshadows a potential limitation to our conclusions, because we only have one predominantly Jewish state (Israel) and one predominantly Hindu state (India) in our sample, which means that we will be attempting to generalize about those two kinds of states from a tiny sample. We will discuss that more later. To better interpret this crosstab, we need to look at column percents, which we can do with this command:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="chi-squared-etc.html#cb167-1" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
+<p>This crosstab gives us raw numbers, which are interesting to look at. It also foreshadows a potential limitation to our conclusions, because we only have one predominantly Jewish state (Israel) and one predominantly Hindu state (India) in our sample, which means that we will be attempting to generalize about those two kinds of states from a tiny sample. We discuss that issue more below. To better interpret this crosstab, we need to look at column percents, which we can do with this command:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chi-squared-etc.html#cb173-1" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>##                 Religion
 ## gini3            Eastern Hindu Jewish Muslim Orthodox  Other Protestant Roman Cath
 ##   equal            11.11   100      0     40    72.73   0.00      41.18      25.53
@@ -367,32 +381,32 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 ##   not equal         0.00     0      0     10     9.09  66.67      29.41      59.57
 ##   Total           100.00   100    100    100   100.00 100.00     100.00     100.00</code></pre>
 <p>Take a look at that table. You can see that there are some pretty noticeable differences in the way that economic inequality is distributed across states with different major religions. For example, the religion with the largest percentage of equal states is Eastern Orthodox, and the religious with the largest percent of not equal states is “Other”, followed by “Roman Catholic.” To help us visualize these differences, we can generate a stacked bar graph using the technique that we learned in section <a href="making-controlled-comparisons.html#stacked">5.2</a>:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="chi-squared-etc.html#cb169-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>world <span class="sc">%&gt;%</span></span>
-<span id="cb169-2"><a href="chi-squared-etc.html#cb169-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Religion)<span class="sc">&amp;!</span><span class="fu">is.na</span>(gini3)) <span class="sc">%&gt;%</span> </span>
-<span id="cb169-3"><a href="chi-squared-etc.html#cb169-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Religion, gini3) <span class="sc">%&gt;%</span> </span>
-<span id="cb169-4"><a href="chi-squared-etc.html#cb169-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb169-5"><a href="chi-squared-etc.html#cb169-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">freq =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code></pre></div>
-<pre><code>## `summarise()` has grouped output by &#39;Religion&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chi-squared-etc.html#cb171-1" tabindex="-1"></a><span class="co">#second, make the graph</span></span>
-<span id="cb171-2"><a href="chi-squared-etc.html#cb171-2" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data, <span class="fu">aes</span>(<span class="at">x =</span> Religion, <span class="at">y =</span> freq, <span class="at">fill=</span>gini3)) <span class="sc">+</span></span>
-<span id="cb171-3"><a href="chi-squared-etc.html#cb171-3" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
-<span id="cb171-4"><a href="chi-squared-etc.html#cb171-4" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>percent)<span class="sc">+</span></span>
-<span id="cb171-5"><a href="chi-squared-etc.html#cb171-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))<span class="sc">+</span> </span>
-<span id="cb171-6"><a href="chi-squared-etc.html#cb171-6" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">name=</span><span class="st">&quot;Economic equality&quot;</span>)<span class="sc">+</span> </span>
-<span id="cb171-7"><a href="chi-squared-etc.html#cb171-7" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Countries&#39; major religion and degree of economic equality&quot;</span>)<span class="sc">+</span></span>
-<span id="cb171-8"><a href="chi-squared-etc.html#cb171-8" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb171-9"><a href="chi-squared-etc.html#cb171-9" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
-<p>Clearly, there are differences in the distribution of economic equality in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the Chi-squared value that is associated with this relationship. To do this, we can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the value produced by the test will not be accurate.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chi-squared-etc.html#cb175-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>world <span class="sc">%&gt;%</span></span>
+<span id="cb175-2"><a href="chi-squared-etc.html#cb175-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Religion)<span class="sc">&amp;!</span><span class="fu">is.na</span>(gini3)) <span class="sc">%&gt;%</span> </span>
+<span id="cb175-3"><a href="chi-squared-etc.html#cb175-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Religion, gini3) <span class="sc">%&gt;%</span> </span>
+<span id="cb175-4"><a href="chi-squared-etc.html#cb175-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb175-5"><a href="chi-squared-etc.html#cb175-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">freq =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb175-6"><a href="chi-squared-etc.html#cb175-6" tabindex="-1"></a></span>
+<span id="cb175-7"><a href="chi-squared-etc.html#cb175-7" tabindex="-1"></a><span class="co">#second, make the graph</span></span>
+<span id="cb175-8"><a href="chi-squared-etc.html#cb175-8" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data, <span class="fu">aes</span>(<span class="at">x =</span> Religion, <span class="at">y =</span> freq, <span class="at">fill=</span>gini3)) <span class="sc">+</span></span>
+<span id="cb175-9"><a href="chi-squared-etc.html#cb175-9" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="sc">+</span></span>
+<span id="cb175-10"><a href="chi-squared-etc.html#cb175-10" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels=</span>percent)<span class="sc">+</span></span>
+<span id="cb175-11"><a href="chi-squared-etc.html#cb175-11" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))<span class="sc">+</span> </span>
+<span id="cb175-12"><a href="chi-squared-etc.html#cb175-12" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">name=</span><span class="st">&quot;Economic equality&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb175-13"><a href="chi-squared-etc.html#cb175-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Countries&#39; major religion and degree of economic equality&quot;</span>)<span class="sc">+</span></span>
+<span id="cb175-14"><a href="chi-squared-etc.html#cb175-14" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb175-15"><a href="chi-squared-etc.html#cb175-15" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p>Clearly, there are differences in the distribution of economic equality in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the chi-squared value that is associated with this relationship. We can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. <em>Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the test will not be accurate.</em></p>
 <p>Here is how we would generate a chi-squared value for the relationship between dominant religion of a country and degree of economic equality:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="chi-squared-etc.html#cb172-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="chi-squared-etc.html#cb176-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may be incorrect</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  xtabs(~gini3 + Religion, data = world)
 ## X-squared = 56.827, df = 14, p-value = 4.191e-07</code></pre>
-<p>Look at what R tells us here. First, it reports that it will be giving us the results of a Pearson’s Chi-squared test. Second, it repeats the command that we entered. Third, it reports the value for chi-squared (which it writes as X-squared), tells us our degrees of freedom (calculated by (number of rows-1)*(number of columns-1)) and reports our p-value. Lower p values mean that the relationship that we are observing is more likely to be statistically significant (i.e. not due to random sampling error). In this case, our p-value is very low: 4.191*10-7, or .0000004191, which means that, according to the chi-squared test, this relationship is statistically significant (because 4.191*10-7 is lower than .05, our conventional benchmark).</p>
+<p>Look at what R tells us in this output (the text just above this passage, beginning with <code>##  Pearson's Chi-squared test</code>). First, R reports that it will be giving us the results of a Pearson’s Chi-squared test. Second, it repeats the command that we entered. Third, it reports the value for chi-squared (which it writes as X-squared), tells us our degrees of freedom (calculated by (number of rows-1)*(number of columns-1)) and reports our p-value. Lower p values mean that the relationship that we are observing is more likely to be statistically significant (i.e. not due to random sampling error). In this case, our p-value is very low: <span class="math inline">\(4.191*10^{-7}\)</span>, or .0000004191, which means that, according to the chi-squared test, this relationship is statistically significant (because <span class="math inline">\(4.191*10^{-7}\)</span> is lower than .05, our conventional benchmark).</p>
 <p>However, look at warning at the top: R is warning us that this estimate may be wrong. Why? This has to do with the expected values of the cells in our crosstab. Let’s take another look at the crosstab that we generated earlier:</p>
 <pre><code>##                 Religion
 ## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
@@ -400,8 +414,8 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 ##   somewhat equal       8     0      1     20        2     3          5          7  46
 ##   not equal            0     0      0      4        1     6          5         28  44
 ##   Sum                  9     1      1     40       11     9         17         47 135</code></pre>
-<p>Look at top left cell: countries where “Eastern” religions are dominant and that have economic equality. There is one country in that category. If there were no relationship at all between a country’s religion, we would expect that cell to be the row total*the column total/the total number of cases in the table. So, (45*9)/135, which is 3. As a general rule, if some cells in a crosstab have an expected value of less than 5, value of the chi-squared test will be artificially high, and we will be more likely to make Type I error (rejecting a true null hypothesis). In this case, we can actually look at the expected values of all of our cells with this command:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="chi-squared-etc.html#cb176-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))<span class="sc">$</span>expected</span></code></pre></div>
+<p>Look at top left cell: countries where “Eastern” religions are dominant and that have economic equality. There is only one country in that category. If there were no relationship at all between a country’s religion, we would expect that cell to be the row total*the column total/the total number of cases in the table. So, (45*9)/135, which is 3. As a general rule, if some cells in a crosstab have an expected value of less than 5, value of the chi-squared test will be artificially high, and we will be more likely to make Type I error (rejecting a true null hypothesis). In this case, we can actually look at the expected values of all of our cells with this command:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="chi-squared-etc.html#cb180-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))<span class="sc">$</span>expected</span></code></pre></div>
 <pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation may be incorrect</code></pre>
 <pre><code>##                 Religion
 ## gini3             Eastern     Hindu    Jewish   Muslim Orthodox    Other Protestant Roman Cath
@@ -454,10 +468,10 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 </tbody>
 </table>
 <p>We can ask R to calculate Lambda in a way similar to the way that we had R calculate chi-square:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="chi-squared-etc.html#cb179-1" tabindex="-1"></a><span class="fu">Lambda</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chi-squared-etc.html#cb183-1" tabindex="-1"></a><span class="fu">Lambda</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>## [1] 0.2824859</code></pre>
 <p>In other words, R is telling us that knowing the religion of a country improves the probability that we will correctly guess the level of economic equality in that country by about .28 (or 28%). That is a moderately strong relationship. However, that statistic alone does not tell us about statistical significance (or the chance that the relationship that we observe is due to random sampling error). To fix that, we can add “conf.level=.95” to our command from above (we could also set the confidence level to .99, or .9, or something else, but .95 is the standard in political science). This is our new command:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="chi-squared-etc.html#cb181-1" tabindex="-1"></a><span class="fu">Lambda</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="chi-squared-etc.html#cb185-1" tabindex="-1"></a><span class="fu">Lambda</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##    lambda    lwr.ci    upr.ci 
 ## 0.2824859 0.1715779 0.3933939</code></pre>
 <p>While this output does not directly report a significance level, unlike the t-tests and chi-squared tests that we ran earlier, the confidence interval that it reports is extremely helpful. This tells is that there is a 95% chance that the true value of Lambda is somewhere between .17 and .39 (which would be a very strong relationship). In other words, we are pretty confident that this relationship is moderate or moderately strong. <strong>If this reported interval had included 0, we would have concluded that the relationship was not statistically significant.</strong></p>
@@ -466,7 +480,7 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 <h2><span class="header-section-number">7.4</span> Cramer’s V<a href="chi-squared-etc.html#cramers-v" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lambda sometimes underestimates the strength of a relationship when there is little variation between the overall mode of a sample and the modes of each of our groups. In that case, we can use Cramer’s V instead. Or, given how easy it is to ask R to calculate these statistics, we can actually ask R to calculate chi-squared, lambda, and Cramer’s V, and if they provide similar information, that is a good sign that there might be something to our hypothesis.</p>
 <p>Unlike Lambda, Cramer’s V is not a PRE statistic, which means that we can’t interpret it in terms of improved probability of guessing our dependent variable with knowledge of our independent variable. However, like Lambda, it reports a statistic between 0 and 1, and higher values mean that we have a stronger relationship. We can also use the same ” conf.level=.95” qualifier to get a confidence interval around our estimate, like this:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="chi-squared-etc.html#cb183-1" tabindex="-1"></a><span class="fu">CramerV</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="chi-squared-etc.html#cb187-1" tabindex="-1"></a><span class="fu">CramerV</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##  Cramer V    lwr.ci    upr.ci 
 ## 0.4587703 0.2721846 0.5290952</code></pre>
 <p>Seeing this confidence interval with a lower bound nowhere near zero gives us additional evidence that there is likely a relationship between religion and economic equality at the population level.</p>
@@ -482,9 +496,9 @@ library(DescTools)  #this has tools to calculate Cramer&#39;s V, Lambda and
 <pre><code>xtabs(~trustmedia+freedomofpress, data=anes2020)
 colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 <p>One tip before we move on: R is almost always willing to create an object so that you don’t have to keep typing the same things over and over. So, in this case, you can make your crosstab an object called media.table like this:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chi-squared-etc.html#cb186-1" tabindex="-1"></a>media.table<span class="ot">&lt;-</span><span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="chi-squared-etc.html#cb190-1" tabindex="-1"></a>media.table<span class="ot">&lt;-</span><span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020)</span></code></pre></div>
 <p>Then, to see what that table looks like, you can run this line of code:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="chi-squared-etc.html#cb187-1" tabindex="-1"></a>media.table</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chi-squared-etc.html#cb191-1" tabindex="-1"></a>media.table</span></code></pre></div>
 <pre><code>##               freedomofpress
 ## trustmedia     extremely important very important moderately important a little important not important at all
 ##   none                         594            449                  579                231                  527
@@ -493,7 +507,7 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 ##   a lot                        804            245                  115                 27                   18
 ##   a great deal                 326             59                   41                 19                   18</code></pre>
 <p>After that, to generate the table with column percents, you can go like this:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="chi-squared-etc.html#cb189-1" tabindex="-1"></a><span class="fu">colPerc</span>(media.table)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chi-squared-etc.html#cb193-1" tabindex="-1"></a><span class="fu">colPerc</span>(media.table)</span></code></pre></div>
 <pre><code>##               freedomofpress
 ## trustmedia     extremely important very important moderately important a little important not important at all
 ##   none                       18.31          26.04                32.20              37.81                62.89
@@ -504,55 +518,55 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 ##   Total                     100.00         100.00               100.00             100.00               100.00</code></pre>
 <p>Let’s look at the second table, with the percents. This is telling us that among those who think that freedom of the press is extremely important, 18.31% have no trust in the media. However, among those who do not think that freedom of the press is important at all, 62.89% have no trust in the media. That seems like a pretty strong piece of evidence for our theory!</p>
 <p>We have a number of choices for how to represent this relationship graphically. Since we reviewed a stacked area graph earlier in this chapter (which would be a cool way of looking at this relationship), for this section let’s generate a bar graph with error bars around the 95% confidence interval for one of the values of our dependent variable. We already did this in section <a href="inferences.html#t-test-ind-props">6.6</a>, but here is the code that will help us generate a graph for this data:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chi-squared-etc.html#cb191-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
-<span id="cb191-2"><a href="chi-squared-etc.html#cb191-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(trustmedia)) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-3"><a href="chi-squared-etc.html#cb191-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(freedomofpress)) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-4"><a href="chi-squared-etc.html#cb191-4" tabindex="-1"></a>  <span class="fu">group_by</span>(freedomofpress) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-5"><a href="chi-squared-etc.html#cb191-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb191-6"><a href="chi-squared-etc.html#cb191-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
-<span id="cb191-7"><a href="chi-squared-etc.html#cb191-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(trustmedia<span class="sc">==</span><span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-8"><a href="chi-squared-etc.html#cb191-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-9"><a href="chi-squared-etc.html#cb191-9" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb191-10"><a href="chi-squared-etc.html#cb191-10" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
-<span id="cb191-11"><a href="chi-squared-etc.html#cb191-11" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb191-12"><a href="chi-squared-etc.html#cb191-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]) </span>
-<span id="cb191-13"><a href="chi-squared-etc.html#cb191-13" tabindex="-1"></a>  </span>
-<span id="cb191-14"><a href="chi-squared-etc.html#cb191-14" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
-<span id="cb191-15"><a href="chi-squared-etc.html#cb191-15" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>freedomofpress, <span class="at">y=</span>proportion), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)  <span class="sc">+</span></span>
-<span id="cb191-16"><a href="chi-squared-etc.html#cb191-16" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">x=</span>freedomofpress, <span class="at">ymin=</span>lower_ci, <span class="at">ymax=</span>upper_ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb191-17"><a href="chi-squared-etc.html#cb191-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Importance of press freedom and trust in the media, ANES 2020&quot;</span>,</span>
-<span id="cb191-18"><a href="chi-squared-etc.html#cb191-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
-<span id="cb191-19"><a href="chi-squared-etc.html#cb191-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;How important is press freedom?&quot;</span>)<span class="sc">+</span></span>
-<span id="cb191-20"><a href="chi-squared-etc.html#cb191-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion with no trust in media&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chi-squared-etc.html#cb195-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
+<span id="cb195-2"><a href="chi-squared-etc.html#cb195-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(trustmedia)) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-3"><a href="chi-squared-etc.html#cb195-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(freedomofpress)) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-4"><a href="chi-squared-etc.html#cb195-4" tabindex="-1"></a>  <span class="fu">group_by</span>(freedomofpress) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-5"><a href="chi-squared-etc.html#cb195-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb195-6"><a href="chi-squared-etc.html#cb195-6" tabindex="-1"></a>    <span class="at">n=</span><span class="fu">n</span>(),</span>
+<span id="cb195-7"><a href="chi-squared-etc.html#cb195-7" tabindex="-1"></a>    <span class="at">numerat=</span><span class="fu">sum</span>(trustmedia<span class="sc">==</span><span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-8"><a href="chi-squared-etc.html#cb195-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">proportion=</span>numerat<span class="sc">/</span>n) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-9"><a href="chi-squared-etc.html#cb195-9" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb195-10"><a href="chi-squared-etc.html#cb195-10" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lower_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">1</span>]) <span class="sc">%&gt;%</span> </span>
+<span id="cb195-11"><a href="chi-squared-etc.html#cb195-11" tabindex="-1"></a>    <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb195-12"><a href="chi-squared-etc.html#cb195-12" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">upper_ci =</span> <span class="fu">prop.test</span>(numerat, n, <span class="at">conf.level=</span><span class="fl">0.95</span>)<span class="sc">$</span>conf.int[<span class="dv">2</span>]) </span>
+<span id="cb195-13"><a href="chi-squared-etc.html#cb195-13" tabindex="-1"></a>  </span>
+<span id="cb195-14"><a href="chi-squared-etc.html#cb195-14" tabindex="-1"></a><span class="fu">ggplot</span>(plotting.data) <span class="sc">+</span></span>
+<span id="cb195-15"><a href="chi-squared-etc.html#cb195-15" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x=</span>freedomofpress, <span class="at">y=</span>proportion), <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="at">fill=</span><span class="st">&quot;purple&quot;</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)  <span class="sc">+</span></span>
+<span id="cb195-16"><a href="chi-squared-etc.html#cb195-16" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">x=</span>freedomofpress, <span class="at">ymin=</span>lower_ci, <span class="at">ymax=</span>upper_ci), <span class="at">width=</span><span class="fl">0.4</span>, <span class="at">colour=</span><span class="st">&quot;black&quot;</span>, <span class="at">alpha=</span><span class="fl">0.9</span>, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb195-17"><a href="chi-squared-etc.html#cb195-17" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Importance of press freedom and trust in the media, ANES 2020&quot;</span>,</span>
+<span id="cb195-18"><a href="chi-squared-etc.html#cb195-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
+<span id="cb195-19"><a href="chi-squared-etc.html#cb195-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;How important is press freedom?&quot;</span>)<span class="sc">+</span></span>
+<span id="cb195-20"><a href="chi-squared-etc.html#cb195-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion with no trust in media&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Notice that the bars are going in the way our theory predicted – people that think that press freedom is less important also seem to trust the press less. The error bars on these columns do not seem to overlap with the exception of the upper bar on the “moderately important” column and the lower bar in the “a little important” column. In other words, most of these differences seem to be statistically significant, and the relationship is heading in the direction that we predicted.</p>
 <p>However, what are we to make of those overlapping error bars? And what about all of the data that is not on this graph (i.e. all four other values on media trust)? We can run the tests that we learned about earlier this chapter on our crosstab with the following commands.</p>
 <p>First, if you didn’t generate the crosstab object before, you can do that now like this:</p>
 <pre><code>media.table&lt;-xtabs(~trustmedia+freedomofpress, data=anes2020)</code></pre>
 <p>Now you can simply execute these three commands:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chi-squared-etc.html#cb193-1" tabindex="-1"></a><span class="fu">chisq.test</span>(media.table)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chi-squared-etc.html#cb197-1" tabindex="-1"></a><span class="fu">chisq.test</span>(media.table)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  media.table
 ## X-squared = 1350.3, df = 16, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chi-squared-etc.html#cb195-1" tabindex="-1"></a><span class="fu">Lambda</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="chi-squared-etc.html#cb199-1" tabindex="-1"></a><span class="fu">Lambda</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##     lambda     lwr.ci     upr.ci 
 ## 0.04627059 0.03725581 0.05528537</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chi-squared-etc.html#cb197-1" tabindex="-1"></a><span class="fu">CramerV</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="chi-squared-etc.html#cb201-1" tabindex="-1"></a><span class="fu">CramerV</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##  Cramer V    lwr.ci    upr.ci 
 ## 0.2027150 0.1907419 0.2124269</code></pre>
 <p>These three tests all show a statistically significant relationship. The reported Lambda is pretty weak, but this could be because of the tendency of Lambda to sometimes underestimate the strength of relationships when the subgroup modes are too similar to the sample mode (if you look at the crosstab with percents above you will see that at four of the five levels of our independent variable, the modal respondent reports no trust in the media, which is also the sample mode).</p>
 <p>The statistics that we just calculated let us discuss the strength (in the case of Lambda) and significance (in the case of Cramer’s V and chi-squared) of the relationship that we are interested in, but how about the direction? To examine the direction of a relationship between two ordinal variables, we can use a Somers’ D test. Somers D is a Proportional Reduction in Error (PRE) statistic like Lambda. Unlike Lambda, however, which ranges from 0 to 1, Somers’ D can range from 0 to 1 OR -1. A perfect negative relationship, where knowledge of the independent variable lets us guess the value of the dependent variable with absolute certainty, would generate a Somers’ D score of -1, while a perfect positive relationship would generate a Somers’ D score of 1. A Somers’ D score of 0 means that knowing the independent variable gives us no insight at all in predicting the dependent variable.</p>
 <p>Before we run Somers’ D, we need to see whether our hypothesis is predicting a positive or a negative relationship. What does it mean to “increase” or “decrease” on those two variables? For this, we can use the levels() command, like this:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="chi-squared-etc.html#cb199-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>freedomofpress)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chi-squared-etc.html#cb203-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>freedomofpress)</span></code></pre></div>
 <pre><code>## [1] &quot;extremely important&quot;  &quot;very important&quot;       &quot;moderately important&quot; &quot;a little important&quot;   &quot;not important at all&quot;</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="chi-squared-etc.html#cb201-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>trustmedia)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chi-squared-etc.html#cb205-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>trustmedia)</span></code></pre></div>
 <pre><code>## [1] &quot;none&quot;         &quot;a little&quot;     &quot;some&quot;         &quot;a lot&quot;        &quot;a great deal&quot;</code></pre>
 <p>The levels() command only works with ordered factors (which is how R treats ordinal variables), and the output lists the scores of the variable from low to high. So, the lowest value on freedomofpress mean that the respondent thinks that freedom of the press is “extremely important”, while the highest value means that the respondent thinks that freedom of the press is “not important at all.” Increasing values means less respect for freedom of the press. With “trustmedia”, the lowest value means that the respondent has no trust in the media, while the highest value means that the respondent has “a great deal” of trust in the media. Increasing values means more trust in the media.</p>
 <p>Since our hypothesis is that more respect for freedom of the press leads to more trust of the media, we thus hypothesize a negative relationship between our two variables.</p>
 <p>We run Somers’ D just like how we ran Cramer’s V, Lambda, and chi-squared, above:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chi-squared-etc.html#cb203-1" tabindex="-1"></a><span class="fu">SomersDelta</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chi-squared-etc.html#cb207-1" tabindex="-1"></a><span class="fu">SomersDelta</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##     somers     lwr.ci     upr.ci 
 ## -0.3069552 -0.3239353 -0.2899751</code></pre>
 <p>If you made the media.table crosstab object above, you can also run Somers’ D on that, like this:</p>
@@ -617,7 +631,7 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-pollock-edwards" class="csl-entry">
 Pollock, Philip H, and Barry C Edwards. 2019. <em>The Essentials of Political Analysis</em>. Book. 6th ed. Sage.
 </div>

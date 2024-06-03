@@ -3,14 +3,16 @@
 ## Getting started with this chapter {#getting-started-recoding}
 To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section \@ref(exploring).
 
-We are going to install three new packages to use today. One is called "epiDisplay" and the other is called "Hmisc." Enter these two commands into your Console one by one:
+We are going to install three new packages to use today.They are called "epiDisplay", "Hmisc", and "flextable." Enter these three commands into your Console one by one:
 ```
 install.packages("Hmisc")
 install.packages("tigerstats")
+install.packages("flextable")
 ```
 ```{r, echo=FALSE, message=FALSE,warning=FALSE}
 library(Hmisc)
 library(tigerstats)
+library(flextable)
 ```
 Now, open a new script file and save it in your scripts folder as "chapter 4 practice." Copy and paste this onto the page (updating the text so that it is about you):
 ```
@@ -22,9 +24,10 @@ Now, open a new script file and save it in your scripts folder as "chapter 4 pra
 
 #libraries------------------------------------------
 library(tidyverse)
-library(epiDisplay) #the tab1 command helps us make nice frequency tables
+library(epiDisplay)   #the tab1 command helps us make nice frequency tables
 library(Hmisc)        #the cut2 command helps us simplify interval variables
-library(tigerstats)	#colPerc can also be useful with crosstabs 
+library(tigerstats)   #colPerc can also be useful with crosstabs
+library(flextable)    #this makes tables that we can easily export into a word processor
 ```
 Now select all the text on this page, run it, and save it.
 
@@ -47,7 +50,9 @@ anes2020<-anes2020 %>%
 There is a lot going on in the above command, so let’s try to break it down:
 ```
 POST OPERATION DATAFRAME<-PRE OPERATION DATAFRAME %>%
-  mutate(NEW VARIABLE NAME=recode(OLD VARIABLE NAME, ‘OLD VARIABLE VALUE #1’="NEW VARIABLE VALUE #1", ‘OLD VARIABLE VALUE    #2’="NEW VARIABLE VALUE #2",…)) 
+  mutate(NEW VARIABLE NAME=recode(OLD VARIABLE NAME, 
+  ‘OLD VARIABLE VALUE #1’="NEW VARIABLE VALUE #1", 
+  ‘OLD VARIABLE VALUE    #2’="NEW VARIABLE VALUE #2",…)) 
 ```
 Using mutate and recode together, we are generating a new version of our dataframe that has a new variable whose values are based on another variable. I have an important piece of advice when using this kind of command: **be sure to copy and paste variable names and values from your Console screen to your script file, because it is very easy to make a typographical error when transcribing variable names and values.** Even if you are careful, there will be times when you make an error in your code and R sends you an error message. Most of the time, you will be able to quickly figure out the source of your error, but if you ever cannot, please feel free to ask your instructor! Sometimes, you will realize that your error modified the dataframe in ways that you don’t like. In that case, you can go back to the original dataframe. If you were using anes2020, you can use this command to restore that dataframe: 
 ```
@@ -88,7 +93,8 @@ table(anes2020$sex)
 table(anes2020$sex2)
 ```
 
-## Simplifying interval variables
+## Simplifying interval variables {#simp-int}
+### Simplifying interval variables using cut2()
 Interval variables give us a lot of information, and it is sometimes too much! For example, we might want to generate a graph comparing age groups, rather than a graph of individuals at each age between 18 and 80. This is where the cut2() command from the Hmisc package can come in handy. Let’s say we want to create three roughly evenly distributed age groups. We can use cut2 like this:
 ```{r}
 anes2020$age3<-cut2(anes2020$age, g=3)
@@ -113,7 +119,35 @@ table(anes2020$age3)
 ```
 and you should see your new labels.
 
+### Simplifying interval variables with case_when
+In section \@ref(simp-int) we learned how to use the cut2 command to divide interval variables into groups of roughly the same size. But what if we are interested in separating interval variables into groups above or below specific values? For example. we might be interested in looking at people in their teens, in their 20s, in their 30s, etc. To do that, we can write the following:
+```{r}
+anes2020<-anes2020 %>% 
+  mutate(age_groups=case_when(age %in% 18:19 ~ "teens",
+          age %in% 20:29  ~ "20s",
+          age %in% 30:39  ~ "30s", 
+          age %in% 40:49  ~ "40s", 
+          age %in% 50:59  ~ "50s", 
+          age %in% 60:69  ~ "60s", 
+          age %in% 70:80  ~ "over 70"))
+```
+This code uses mutate, which we first saw in section \@ref(recode-nom), to create a new variable called age_groups. We set the values for our new variable with a new command that is available through the tidyverse package, case_when(). This command lets us create variable values based on ranges of numbers from our old variable (which we identify with the %in% and colons between the values).
+
+We can take a look at our new variable using table, as follows:
+```{r}
+table(anes2020$age_groups)
+```
+You might notice that the values for our new variable are listed in a strange order, with 20s first and teens last. This is because our new variable is a character variable, and the values are thus listed in in alphabetical order. 
+
+To fix this, we can make our new variale into an ordered factors and set the levels from youngest to oldest like this:
+```{r}
+anes2020$age_groups<-ordered(anes2020$age_groups, 
+        levels=c("teens","20s","30s","40s","50s","60s","over 70"))
+```
+Now when we enter ```table(anes2020$age_groups)``` into the Console we can see the variable values listed in a way that makes more sense. This will also be useful when making tables and graphs.
+
 ## Cross-tabulation tables {#cross-tabs}
+### Generating cross-tabs
 Up until now, we have focused on single variables at a time. This is an essential component of social scientific analysis. However, many (perhaps most?) of the questions that we are interested in are about the relationship between two or more variables. Most of the rest of the new work that we will do in R from this point forward will be geared toward helping us to make observations and inferences about the relationship between more than one variable. 
 
 One way that we can start to examine the relationship between more than one variable is by making cross-tabulation tables (often called crosstabs).  These are essentially two frequency tables presented in a table. Crosstabs are most useful when looking at the relationship between an ordinal or nominal variable and another ordinal or nominal variable.  For example, let’s look at the relationship between education and income in the anes2020 dataframe. We can hypothesize that people with more education will make more income. To test this, we can first use the xtabs() command, like this:
@@ -122,18 +156,37 @@ xtabs(~income+edu, data=anes2020)
 ```
 Let’s break down how we used this command: we put the **dependent variable**, income, first, and then the **independent variable**, edu, second. Crosstabs generally have the independent variable in columns and the dependent variable in rows. This setup lets us to that.
 
+### Adding column totals to cross-tabs
 The output that our command generated is a basic crosstab. It tells us that 160 people with less than a high school education make under \$24,999 per year, 122 people with less than a high school education make \$25,000-64,999, etc. Now we might be tempted to look at this and say: "Graduate school is a waste of time! Only 203 people from our sample with MDs, PhDs, and JDs make \$110,000 or more, while 270 people with some college education make \$110,000 or more." However, that would be a mistake! To understand why, we should look at the column totals from our crosstab, which we can produce with this command: 
 ```{r}
 addmargins(xtabs(~income+edu, data=anes2020)) 
 ```
 
-Take a look at those column totals. Our anes2020 dataframe has 380 people that got MAs, PhDs, or JDs, while it has 1575 people that have some college. So, returning to those two numbers from above, the 203 MDs, PhDs, and JDs in the highest salary category make up 53.4% of all of the MDs, PhDs, and JDs in our sample (because 203/380=.534), while the 270 people with some college making the highest salary category make up only 17.1% of all of the people with some college in our sample (because 270/1575=.171). 
-
+### Adding column percents to cross-tabs {#column-percents}
+Take a look at the above column totals. Our anes2020 dataframe has 380 people that got MAs, PhDs, or JDs, while it has 1575 people that have some college. So, returning to those two numbers from above, the 203 MDs, PhDs, and JDs in the highest salary category make up 53.4% of all of the MDs, PhDs, and JDs in our sample (because 203/380=.534), while the 270 people with some college making the highest salary category make up only 17.1% of all of the people with some college in our sample (because 270/1575=.171). 
 **Thus, when interpreting crosstabs it is important to look at the column percents, and not just the raw numbers.** To make R generate all of the column percents in a crosstab at the same time, we can use the colPerc() command from the tigerstats package that we installed for today. We can enter this command:
 ```{r}
 colPerc(xtabs(~income+edu, data=anes2020))
 ```
+You will notice when looking at the output that the new variable that we have generated is 
 **Remember when interpreting this output that the numbers are now the column percents, not the raw numbers.** If you take a look at this output, you will see that people with more education seem to make more money.
+
+### Exporting cross-tabs for your word processor {#export-crosstabs}
+If you have been following along, the cross-tabs that you have generated have shown up reasonably neatly in the Console of R-Studio. But often, you will want to export those tables into a format that you can easily bring into your word processor so that you can refer to it in papers that you are writing. To do this, you first want to give the cross tab you want to export a name as an object, like this:
+```{r}
+income.edu.table<-colPerc(xtabs(~income+edu, data=anes2020))
+```
+That command creates a new object called "income.edu.table." If you paste ```income.edu.table``` into your Console and hit enter, you will see that same crosstab that you made in section \@ref(column-percents).
+
+Before exporting this crosstab, you have to make two changes to it in order for the export command that we will use to work. You need to change it to a dataframe, and you need to set the row names (which are currently the different income levels) as a column. To do both of those things, you can run this command:
+```{r}
+income.edu.table<-as.data.frame(income.edu.table)%>%rownames_to_column("income")
+```
+Now your "income.edu.table" is formatted to be exported nicely (when you use this with other tables, just rename the text in quotes after "rownames_to_columns" to fit what you'd like to call your rownames). To export this, run this command:
+```{r}
+flextable(income.edu.table) %>% save_as_docx(path="firstcrosstab.docx")
+```
+This has created a file called "firstcrosstab.docx" in the main folder where you have your Scope and Methods labs (the folder that you created in section \@ref(class-project)). You can open that file in Microsoft Word, or you can pull it into a Pages file or a Google Document. If you'd rather export your table into a rich text format file, you can use ```save_as_rtf``` instead of ```save_as_docx``` in the above command.
 
 ## Mean comparison tables
 Crosstabs are useful when we have two nominal or ordinal variables. But what if we want to look at the relationship between a nominal or ordinal variable and an interval variable? In that case, a mean comparison table can be helpful. The tidyverse has some commands that we can use to generate such a table. To demonstrate, let’s look at our states2010 dataframe, and the relationship between the region variable and the evangelical_pop variable (which measure the percentage of the population of a state that identifies as evangelical). The first thing that we need to learn is the group_by() command. This tells R: "make groups based on the variable that we tell you." In our case, we want to make groups based on our independent variable (which, for now, must be ordinal or nominal). Once we have done that, we can use the summarise() command to get the mean. For good measure, we can also use the summarise() command to calculate the standard deviation as well as the size of each group. Here is what that command looks like:
@@ -151,22 +204,34 @@ summarise(mean=mean(evangelical_pop), sd=sd(evangelical_pop), n=n())
 ```
 Now we can see that, perhaps not surprisingly, that regions appear to differ a lot in the percentage of evangelicals living in a typical state.
 
+To export this table so that we can easily pull it into our word processor, we can do something similar to what we did in section \@ref(export-crosstabs). However, it is easier to export a mean comparison table because we don't have to first tell R to treat it as a dataframe. You can export the file with the following code:
+```{r}
+region.evangelical.table<-states2010 %>% 
+  group_by(region) %>% 
+  summarise(mean=mean(evangelical_pop), sd=sd(evangelical_pop), n=n())
+flextable(region.evangelical.table) %>% save_as_docx(path="firstmeancomparison.docx")
+```
+Now you should see a file called "firstmeancomparison.docx" in the main folder where you have your Scope and Methods labs (the folder that you created in section \@ref(class-project)). 
+
 ## Review of this chapter's commands
 ```{r, echo=FALSE}
 r1<-c("mutate(recode())","A set of commands to rename the values of variables.", "dplyr (tidyverse)")
 r2<-c("cut2()","Turn an interval variable into an ordinal variable. Remember to specify \"g=\" to tell R how many groups to split your variable into.","Hmisc")
 r3<-c("levels()","You can use this command to see the levels of an ordered factor, or you can also use it to assign new levels to an ordered factor, like this: levels(df\\$variable<-c(\"new level1\",\"new level2\",…)","Base R")
-r4<-c("xtabs()","Makes a crosstab table with raw values. Remember to define variables like this: xtabs(~DV+IV, data=DATAFRAME)","Base R")
-r5<-c("addmargins(xtabs())","Makes a crosstab table with row and column totals.","Base R")
-r6<-c("colPerc(xtabs())","Makes a crosstab table with column percents. Useful for making comparisons.","tigerstats")
-r7<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-r8<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8)
+r4<-c("case_when()","You can use this command along with mutate() and %in% to assign ranges of an interval variable to a new value of a new variable","dplyr (tidyverse)")
+r5<-c("ordered","you can use this command to make a variable into an ordered factor", "Base R")
+r6<-c("xtabs()","Makes a crosstab table with raw values. Remember to define variables like this: xtabs(~DV+IV, data=DATAFRAME)","Base R")
+r7<-c("addmargins(xtabs())","Makes a crosstab table with row and column totals.","Base R")
+r8<-c("colPerc(xtabs())","Makes a crosstab table with column percents. Useful for making comparisons.","tigerstats")
+r9<-c("flextable", "You can use this with %>% save_as_docx(path=\"...\") to export your tables for word processors", "flextable")
+r10<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+r11<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8, r9, r10, r11)
 colnames(df)<-c("Command","Purpose","Library")
 df<-as.data.frame(df)
 rownames(df)<-NULL
 knitr::kable(df, row.names=NA)
-rm(r1,r2,r3,r4,r5,r6,r7,r8,df)
+rm(r1,r2,r3,r4,r5,r6,r7,r8,r9, r10, r11, df)
 ```
 
 ## Review exercises

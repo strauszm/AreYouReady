@@ -1,7 +1,5 @@
 # Welcome to the tidyverse {#tidyverse}
 
-Here is a review of existing methods.
-
 ## Installing packages {#install-tidyverse}
 
 One of the nice things about R is that users can create their own libraries of commands. These can be extremely powerful and useful tools. There is an excellent set of tools that are in a library called the "tidyverse." To install the tidyverse on your local computer, first, make sure that your computer is attached to the internet. Second, enter this command into the Console of RStudio and press Enter:
@@ -47,6 +45,7 @@ load("Data/anes2020.Rda")
 load("Data/states2010.Rda")
 load("Data/world.Rda")
 library(tidyverse)
+options(dplyr.summarise.inform = FALSE)
 ```
 
 ```
@@ -56,7 +55,7 @@ When you do this, you will see that R gives you the age of every single person w
 ```{r}
 summary(anes2020$age)
 ```
-This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80. If you look in the codebook, you will see that the survey takers coded everyone 80 and over as 80. You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. "NA" is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.
+This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.^[If you look in the codebook, you will see that the survey codes everyone 80 and over as 80.] You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. "NA" is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.
 
 The "summary" command is very useful with numeric data, like age. However, what if you have a variable like "marital," which measures the marital status of individuals? The mean and median of this variable would not be meaningful, but we might want to know how many married, single, divorced, etc. people there are in our dataframe. To get this information, we can use the "table" command, like this:
 ```
@@ -105,6 +104,7 @@ v readr   2.0.0     v forcats 0.5.1
 ```
 Don’t worry about the warning messages. The list of packages are the libraries of commands that come with the tidyverse library. The two that we will be using the most are **ggplot2**, which is terrific for graphing, and **dplyr**, which is great for managing data. Since you have installed the tidyverse, you will not have to install those packages separately – you already have them.
 
+### Introducing the 'pipe' in tidyverse
 Now that we have access to the tidyverse, we will use a few of the commands that are available to us through the dplyr package to get a better look at some of our data. Before we can do that, however, we need to learn about the somewhat strange feature of dplyr, the "pipe." The pipe is this set of characters:
 ```
 %>%
@@ -126,6 +126,7 @@ anes2020 %>%
 ```
 This is giving us information about the dataframe anes2020. At the top, you can see that the dataframe has 8,280 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2020 dataframe represents a survey of 8,280 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 68 columns, which means that the dataframe measures 68 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (<int>, <chr>, <ord>, etc.). We will learn a bit more about those classifications in future chapters To the right of those classifications you can see the first set of values of each variable.
 
+### select() in tidyverse
 Many dataframes are quite large, and you might find yourselves wanting to focus on a few variables at a time. The command select() can be helpful for this. Let’s say that you want to focus in on how many guns people have in their homes and their feelings about the NRA. In that case, you would want to select the variables "ft_nra" and "guns", which you can do like this:
 ```
 anes2020 %>% 
@@ -151,6 +152,7 @@ anes2020 %>%
   select(guns, ft_nra) #focusing in on a few variables%>%
   glimpse() #taking a different kind of look at our dataframe
 ```
+### arrange() in tidyverse
 What if we want to see what the people in our sample with the most and fewest guns thought about the NRA? To do that, we can arrange our dataframe from smallest to largest or from largest to smallest on any of our variables. Or, with variables that include text, we can sort according to alphabetic or reverse alphabetic order. We can use the arrange() command to do that:
 
 ```
@@ -164,6 +166,7 @@ anes2020 %>%
   select(guns, ft_nra) %>% #focusing in on a few variables
   arrange(desc(guns)) #sorting this variable from largest to smallest
 ```
+### glimpse() in tidyverse
 Finally, combining all of the commands that we learned today, we can use glimpse() to see information about each of our variables in this simplified version of our dataframe. To do that, we will need a third pipe:
 ```
 anes2020 %>% 

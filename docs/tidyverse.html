@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-02-28" />
+<meta name="date" content="2024-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -128,6 +128,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -187,7 +188,11 @@ div.csl-indent {
 <li class="chapter" data-level="2.3" data-path="tidyverse.html"><a href="tidyverse.html#org-script"><i class="fa fa-check"></i><b>2.3</b> Organizing your scripts</a></li>
 <li class="chapter" data-level="2.4" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.4</b> Welcome to the tidyverse</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.1</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.1" data-path="tidyverse.html"><a href="tidyverse.html#introducing-the-pipe-in-tidyverse"><i class="fa fa-check"></i><b>2.4.1</b> Introducing the ‘pipe’ in tidyverse</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tidyverse.html"><a href="tidyverse.html#select-in-tidyverse"><i class="fa fa-check"></i><b>2.4.2</b> select() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.3" data-path="tidyverse.html"><a href="tidyverse.html#a-warning-about-the-select-command"><i class="fa fa-check"></i><b>2.4.3</b> A warning about the select() command</a></li>
+<li class="chapter" data-level="2.4.4" data-path="tidyverse.html"><a href="tidyverse.html#arrange-in-tidyverse"><i class="fa fa-check"></i><b>2.4.4</b> arrange() in tidyverse</a></li>
+<li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#glimpse-in-tidyverse"><i class="fa fa-check"></i><b>2.4.5</b> glimpse() in tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
@@ -198,19 +203,20 @@ div.csl-indent {
 <li class="chapter" data-level="3.2" data-path="graphing.html"><a href="graphing.html#start-graphing"><i class="fa fa-check"></i><b>3.2</b> Getting started with ggplot and graphing</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="graphing.html"><a href="graphing.html#bar-graph-nominal"><i class="fa fa-check"></i><b>3.2.1</b> Bar graphing a nominal variable</a></li>
-<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.2</b> Saving a graph</a></li>
-<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.3</b> Bar graphing an ordinal variable</a></li>
-<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.4</b> What to do about overlapping labels</a></li>
-<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.5</b> Generating a histogram</a></li>
-<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.6</b> Removing scientific notation from axes</a></li>
-<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.7</b> Adjusting bin width on a histogram</a></li>
+<li class="chapter" data-level="3.2.2" data-path="graphing.html"><a href="graphing.html#remove-na"><i class="fa fa-check"></i><b>3.2.2</b> Removing the NA bar</a></li>
+<li class="chapter" data-level="3.2.3" data-path="graphing.html"><a href="graphing.html#add-return"><i class="fa fa-check"></i><b>3.2.3</b> Adding a second line to a graph’s title</a></li>
+<li class="chapter" data-level="3.2.4" data-path="graphing.html"><a href="graphing.html#saving-a-graph"><i class="fa fa-check"></i><b>3.2.4</b> Saving a graph</a></li>
+<li class="chapter" data-level="3.2.5" data-path="graphing.html"><a href="graphing.html#bar-graph-ordinal"><i class="fa fa-check"></i><b>3.2.5</b> Bar graphing an ordinal variable</a></li>
+<li class="chapter" data-level="3.2.6" data-path="graphing.html"><a href="graphing.html#what-to-do-about-overlapping-labels"><i class="fa fa-check"></i><b>3.2.6</b> What to do about overlapping labels</a></li>
+<li class="chapter" data-level="3.2.7" data-path="graphing.html"><a href="graphing.html#histogram"><i class="fa fa-check"></i><b>3.2.7</b> Generating a histogram</a></li>
+<li class="chapter" data-level="3.2.8" data-path="graphing.html"><a href="graphing.html#removing-scientific-notation-from-axes"><i class="fa fa-check"></i><b>3.2.8</b> Removing scientific notation from axes</a></li>
+<li class="chapter" data-level="3.2.9" data-path="graphing.html"><a href="graphing.html#adjusting-bin-width-on-a-histogram"><i class="fa fa-check"></i><b>3.2.9</b> Adjusting bin width on a histogram</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
-<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
-<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
-<li class="chapter" data-level="3.3.4" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.4</b> Standard deviation and IQR when you have NAs</a></li>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendancy and dispersion of interval variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation and IQR when you have NAs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
 <li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
@@ -221,8 +227,18 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
 <li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
-<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a></li>
-<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-using-cut2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-with-case_when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="recoding.html"><a href="recoding.html#generating-cross-tabs"><i class="fa fa-check"></i><b>4.5.1</b> Generating cross-tabs</a></li>
+<li class="chapter" data-level="4.5.2" data-path="recoding.html"><a href="recoding.html#adding-column-totals-to-cross-tabs"><i class="fa fa-check"></i><b>4.5.2</b> Adding column totals to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.3" data-path="recoding.html"><a href="recoding.html#column-percents"><i class="fa fa-check"></i><b>4.5.3</b> Adding column percents to cross-tabs</a></li>
+<li class="chapter" data-level="4.5.4" data-path="recoding.html"><a href="recoding.html#export-crosstabs"><i class="fa fa-check"></i><b>4.5.4</b> Exporting cross-tabs for your word processor</a></li>
+</ul></li>
 <li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
 <li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
 <li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
@@ -318,7 +334,6 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="tidyverse" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Welcome to the tidyverse<a href="tidyverse.html#tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Here is a review of existing methods.</p>
 <div id="install-tidyverse" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Installing packages<a href="tidyverse.html#install-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the nice things about R is that users can create their own libraries of commands. These can be extremely powerful and useful tools. There is an excellent set of tools that are in a library called the “tidyverse.” To install the tidyverse on your local computer, first, make sure that your computer is attached to the internet. Second, enter this command into the Console of RStudio and press Enter:</p>
@@ -351,7 +366,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tidyverse.html#cb10-1" tabindex="-1"></a><span class="fu">summary</span>(anes2020<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##   18.00   37.00   52.00   51.59   66.00   80.00     348</code></pre>
-<p>This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80. If you look in the codebook, you will see that the survey takers coded everyone 80 and over as 80. You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. “NA” is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.</p>
+<p>This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. “NA” is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.</p>
 <p>The “summary” command is very useful with numeric data, like age. However, what if you have a variable like “marital,” which measures the marital status of individuals? The mean and median of this variable would not be meaningful, but we might want to know how many married, single, divorced, etc. people there are in our dataframe. To get this information, we can use the “table” command, like this:</p>
 <pre><code>table(anes2020$marital)</code></pre>
 <p>That command generates this output</p>
@@ -390,6 +405,8 @@ v tibble  3.1.3     v dplyr   1.0.7
 v tidyr   1.1.3     v stringr 1.4.0
 v readr   2.0.0     v forcats 0.5.1</code></pre>
 <p>Don’t worry about the warning messages. The list of packages are the libraries of commands that come with the tidyverse library. The two that we will be using the most are <strong>ggplot2</strong>, which is terrific for graphing, and <strong>dplyr</strong>, which is great for managing data. Since you have installed the tidyverse, you will not have to install those packages separately – you already have them.</p>
+<div id="introducing-the-pipe-in-tidyverse" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Introducing the ‘pipe’ in tidyverse<a href="tidyverse.html#introducing-the-pipe-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that we have access to the tidyverse, we will use a few of the commands that are available to us through the dplyr package to get a better look at some of our data. Before we can do that, however, we need to learn about the somewhat strange feature of dplyr, the “pipe.” The pipe is this set of characters:</p>
 <pre><code>%&gt;%</code></pre>
 <p>You can always type those three characters to build a pipe, but you can also type Ctrl-Shift-M on a Windows machine or Cmd + Shift + M on a Mac.</p>
@@ -413,11 +430,15 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
 ## $ guns     &lt;int&gt; 3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 1, 0, 2, 0, 0, 4, 1, 0, 4, 1, 0, 0, 0, 0, …
 ## $ partyid  &lt;ord&gt; strong republican, independent, independent democrat, not very strong republican, independent, indepen…</code></pre>
 <p>This is giving us information about the dataframe anes2020. At the top, you can see that the dataframe has 8,280 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2020 dataframe represents a survey of 8,280 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 68 columns, which means that the dataframe measures 68 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (<int>, <chr>, <ord>, etc.). We will learn a bit more about those classifications in future chapters To the right of those classifications you can see the first set of values of each variable.</p>
+</div>
+<div id="select-in-tidyverse" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> select() in tidyverse<a href="tidyverse.html#select-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Many dataframes are quite large, and you might find yourselves wanting to focus on a few variables at a time. The command select() can be helpful for this. Let’s say that you want to focus in on how many guns people have in their homes and their feelings about the NRA. In that case, you would want to select the variables “ft_nra” and “guns”, which you can do like this:</p>
 <pre><code>anes2020 %&gt;% 
   select(guns, ft_nra) #focusing in on a few variables</code></pre>
-<div id="a-warning-about-the-select-command" class="section level3 hasAnchor" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> A warning about the select() command<a href="tidyverse.html#a-warning-about-the-select-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="a-warning-about-the-select-command" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> A warning about the select() command<a href="tidyverse.html#a-warning-about-the-select-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Unfortunately, some of the packages that we will be installing in future labs also use the command select. If you ever run “select” and have more than one of these packages installed, R will give an error. When you get that error, you can add “dplyr::” before select(), to tell R to look at the select() in the dplyr library (which comes with the tidyverse). Here is how the above command would look with that modification:</p>
 <pre><code>anes2020 %&gt;% 
   dplyr::select(guns, ft_nra) #focusing in on a few variables</code></pre>
@@ -438,6 +459,9 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
 <pre><code>anes2020 %&gt;% 
   select(guns, ft_nra) #focusing in on a few variables%&gt;%
   glimpse() #taking a different kind of look at our dataframe</code></pre>
+</div>
+<div id="arrange-in-tidyverse" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> arrange() in tidyverse<a href="tidyverse.html#arrange-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What if we want to see what the people in our sample with the most and fewest guns thought about the NRA? To do that, we can arrange our dataframe from smallest to largest or from largest to smallest on any of our variables. Or, with variables that include text, we can sort according to alphabetic or reverse alphabetic order. We can use the arrange() command to do that:</p>
 <pre><code>anes2020 %&gt;% 
   select(guns, ft_nra) %&gt;% #focusing in on a few variables
@@ -446,6 +470,9 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
 <pre><code>anes2020 %&gt;% 
   select(guns, ft_nra) %&gt;% #focusing in on a few variables
   arrange(desc(guns)) #sorting this variable from largest to smallest</code></pre>
+</div>
+<div id="glimpse-in-tidyverse" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> glimpse() in tidyverse<a href="tidyverse.html#glimpse-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, combining all of the commands that we learned today, we can use glimpse() to see information about each of our variables in this simplified version of our dataframe. To do that, we will need a third pipe:</p>
 <pre><code>anes2020 %&gt;% 
   select(guns, ft_nra) %&gt;% #focusing in on a few variables
@@ -530,6 +557,12 @@ v readr   2.0.0     v forcats 0.5.1</code></pre>
 </ol>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>If you look in the codebook, you will see that the survey codes everyone 80 and over as 80.<a href="tidyverse.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

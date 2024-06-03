@@ -15,16 +15,15 @@ Now, open a new script file and save it in your scripts folder as "chapter 5 pra
 library(tidyverse)
 library(Hmisc)      #the cut2 command helps us simplify interval variables
 library(scales)	    #this is useful when the labels on our axes overlap
-library(tigerstats)	#colPerc can also be useful with crosstabs 
+library(tigerstats)	#colPerc can also be useful with crosstabs
+library(flextable)  #this makes tables that we can easily export into a word processor
 ```
 Now select all the text on this page, run it, and save it.
 
 ## Representing crosstabs with stacked bar graphs {#stacked}
-
 In chapter \@ref(recoding) we learned how to generate crosstabs (and, crucially for interpretation, crosstabs with percents in columns). Crosstabs themselves have a lot of numbers on them, and can thus be difficult to interpret on their own. Many social scientists address this problem by generating graphs. A "stacked bar graph" is a really nice tool for visually depicting relationships in a bar graph. The code to generate stacked bar graphs is a little bit long and complex, so just feel free to copy and paste the below or the code from the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files). Let’s return to the relationship that we were looking at in section \@ref(cross-tabs), between education (our independent variable) and income (our dependent variable).
 
-Here is the code:
-
+Here is the code to generate a stacked bar graph of this relationship:
 ```{r, message=FALSE}
 #first, generate a dataframe called "plotting.data" based on grouped variables from #anes2020
 plotting.data<-anes2020 %>%
@@ -37,14 +36,12 @@ plotting.data<-anes2020 %>%
 ggplot(plotting.data, aes(x = edu, y = freq, fill=income)) +
   geom_col(position = "fill") +
   scale_y_continuous(labels=percent)+
-  scale_x_discrete(guide = guide_axis(n.dodge=2))+ #this line is in here because
-#without it the x-axis labels #overlap. You can remove it if #that isn’t a problem 
-  scale_fill_viridis_d(name="income")+ #this color palate is made to be readable for #colorblind people
+  scale_x_discrete(guide = guide_axis(n.dodge=2))+ #this line is in here because without it the x-axis labels overlap. You can remove it if that isn’t a problem 
+  scale_fill_viridis_d(name="income")+ #this color palate is made to be readable for colorblind people
   ggtitle("Education and income in the 2020 ANES")+
   xlab("Education")+
   ylab(NULL)
 ```
-
 One thing to note in this code: it begins by creating a new dataframe called "plotting.data." When you run it, that dataframe will show up in your RStudio environment. If you run it again with new variables, the new "plotting data" that you make will overwrite the old one. 
 
 If it bothers you having that "plotting.data" object in your environment, you can always remove it with the command 
@@ -97,13 +94,14 @@ ggplot(states2010, aes(x = region, y = evangelical_pop)) +
 This graph shows us a lot of cool things. We can see that the states with the smallest percentages of evangelicals in the South appear to have roughly the same percent as the highest outlier in the Northeast. We can also see that, despite the existence of an extreme outlier (which we learned above is Utah), the states in the West still seems to have a smaller percent of evangelicals than states in the South. 
 
 ## Adding a control to a crosstab
-So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. In other words, we often want to know whether the correlation that we observe is **spurious**. If the relationship between the independent and dependent variable is the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, **additive**. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an **interaction**.
+So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. If we look at the relationship between our independent and dependent variable at different values of a control variable and there no longer seems to be a relationship, then we can say that the correlation that we observe between our independent and dependent variable is **spurious**. If the relationship between the independent and dependent variable is roughly the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, **additive**. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an **interaction**.
 
 Let’s return to the relationship that we looked at earlier, between education and income. Here is the crosstab that we generated in chapter \@ref(recoding):
 ```{r, echo=FALSE}
 colPerc(xtabs(~income+edu, data=anes2020))
 ```
 Let’s look at the row representing the people who make $110,000 or more per year. As we move from the lowest level of education to the highest, we can see that the percent of people in the highest income category moves from 6.4% to 43.84%. We can actually subtract 6.4 from 43.84 to say that the effect size is roughly 37.44%. In other words, 37.44% more people with the highest degree of education are in the highest income category than are people in the lowest education category.  
+
 Do we think that this result would be roughly the same for men and women? To answer this question, we can use a neat tool that we have actually played with a bit in previous chapters: the "filter" command that is a part of the dplyr package (and thus works with pipes). The ANES dataset has a variable called sex, where 0 means "men" and 1 means "women." Let’s have R make that crosstab again, but only for men, and then again, but only for women. To do that, we can use this code:
 ```{r}
 #men only
@@ -111,12 +109,31 @@ colPerc(xtabs(~income+edu, data=anes2020 %>% filter(sex==0)))
 ```
 **A quick note**: if we wanted to use filter with a variable whose values are defined by text, such as our income variable, we must put the text in quotation marks. Here, we do not have to use quotation marks because sex is defined numerically.
 
-If we do the same comparison that we did above, we can see that as men more from the lowest to the highest education category, the percent in the highest income category increases from 8.33% to 48.42%. The total effect size is about 40.09%, which is a few percent higher than the 37.44% overall effect size that we witnessed above. Now let’s look at women only:
+If we do the same comparison that we did above, we can see that as men more from the lowest to the highest education category, the percent in the highest income category increases from 8.33% to 48.42%. The total effect size is about 40.09%, which is a few percent higher than the 37.44% overall effect size that we witnessed above. 
+
+To save this crosstab as in a word file that we can easily pull into various word processors, we can use this code, based on what we did in Section \@ref(export-crosstabs).
+```{r}
+income.edu.men<-colPerc(xtabs(~income+edu, data=anes2020 
+                              %>% filter(sex==0)))
+income.edu.men<-as.data.frame(income.edu.men)%>%rownames_to_column("income")
+flextable(income.edu.table) %>% save_as_docx(path="incomeEduMen.docx")
+
+```
+
+Now let’s look at women only:
 ```{r}
 #women only
 colPerc(xtabs(~income+edu, data=anes2020 %>% filter(sex==1)))
 ```
-Applying the same analysis that we did above, we can see that as women’s education level increases from the lowest to the highest level, the percent of people in the highest income bracket moves from 4.55% to 40.32%; a total effect size of 35.77% (compared with 40.09 for men). In other words, this data suggests that both men and women are economically rewarded for more education, but that men seem to be rewarded a bit more. If we were to write up these results, at this point we would have to use our own judgment to decide whether the effect size differs enough to call the relationship between education and income controlling for gender an interaction, or whether it makes more sense to call it additive. We can use more advanced statistical tools to make that determination with more rigor, but for now, we will rely on our judgment.
+Applying the same analysis that we did above, we can see that as women’s education level increases from the lowest to the highest level, the percent of people in the highest income bracket moves from 4.55% to 40.32%; a total effect size of 35.77% (compared with 40.09% for men). In other words, this data suggests that both men and women are economically rewarded for more education, but that men seem to be rewarded a bit more. If we were to write up these results, at this point we would have to use our own judgment to decide whether the effect size differs enough to call the relationship between education and income controlling for gender an interaction, or whether it makes more sense to call it additive. We can use more advanced statistical tools to make that determination with more rigor, but for now, we will rely on our judgment.
+
+We can also save this table as a Word document, using the following code:
+```{r}
+income.edu.women<-colPerc(xtabs(~income+edu, data=anes2020 
+                              %>% filter(sex==1)))
+income.edu.women<-as.data.frame(income.edu.women)%>%rownames_to_column("income")
+flextable(income.edu.table) %>% save_as_docx(path="incomeEduWomen.docx")
+```
 
 There is not a single tool to graph relationships between three ordinal or nominal variables in an easy to interpret way. Instead, we can use the filter%>% command from above to make two graphs, and then use insert table in our word processor to nearly display them side by side.
 
@@ -158,7 +175,6 @@ ggplot(plotting.data, aes(x = edu, y = freq, fill=income)) +
 
 ## Adding a control to a mean comparison table
 The ANES survey has a number of "feeling thermometer" questions, where respondents were asked how warmly or coldly they felt toward institutions, individuals, and groups of people. These questions all range from 0 (meaning that the respondent feel very negatively toward the subject), to 100 (meaning that the respondent feels very positively about the subject). 
-
 For this section, I am going to treat the feeling thermometer about Donald Trump as my dependent variable. For my independent variable, I am going to look at a question that respondents were asked about how outraged they feel about how things are going in the country these days, which is coded as "outrage" in the anes2020 dataframe. My hypothesis will be this: when comparing individuals, those that were outraged about how things are going will be more likely to feel negatively about Donald Trump than will those who were not outraged about how things are going.
 
 If you run```table(anes2020$outrage)```, you will see that the variable is coded ordinally with five values ranging from "not at all" to "extremely." Before running the analysis, I am going to simplify this variable so that we are comparing people who are "very" or "extremely" outraged with everyone else. I am going to call my new variable "outrage2." Here is the code that I will use to simplify this variable:
@@ -179,7 +195,7 @@ anes2020 %>%
 This suggests that our hypothesis is true. People who were outraged in 2020 gave President Trump an average score of 28.4 on a feeling thermometer, while people who were not outraged gave President Trump an average score of 56.6 on a feeling thermometer: a difference of 28.4. That seems like a pretty substantial difference!
 
 To graph this relationship, we can use this code:
-```{r, warning=FALSE}
+```{r, warning=FALSE, messages=FALSE}
 ggplot(anes2020 %>% filter(!is.na(outrage2)), aes(x = outrage2, y = ft_trump)) +
   geom_boxplot(color="black", fill="purple", alpha=0.2)+
   ggtitle("ANES 2020, Feelings about President Trump by level of outrage")+
@@ -199,7 +215,7 @@ anes2020<-anes2020 %>%
                          .default="republican"))
 ```
 Now let’s add our control variable to our mean comparison table. It is easier to add a control variable into a mean comparison table than it was to add a control variable into our cross tab. To do so, we can use the following code:
-```{r}
+```{r, warning=FALSE, messages=FALSE}
 anes2020 %>% 
   #first I filter out the NAs for all 3 variables
   filter(!is.na(ft_trump)&!is.na(partyid3)&!is.na(outrage2)) %>%
@@ -213,8 +229,17 @@ The comments explain what is happening in the code. It is almost the same as the
 
 Let’s look at this output. First, focus on the first two rows. They tell us that Democrats who were outraged in 2020 felt about 16.24 points more coldly toward President Trump than Democrats who were not outraged (because 20.8-4.56=16.24). For independents, the effect of outrage was even larger. Independents who were outraged felt 21.2 points more coldly toward President Trump than independents who were not outraged (because 45.7-24.5=21.2). For Republicans, there seemed to be very little relationship at all between outraged and feeling about President Trump. In fact, people who were outraged felt -0.5 points more coldly toward President Trump because 76.8-77.3=-0.5). Or, put another way, outraged Republicans felt 0.5 points more **warmly** toward President Trump than did non-outraged Republicans.
 
-In other words, the relationship between outrage in 2020 and feelings about President Trump is very different at different levels of partisanship. We thus call this an **interactive relationship**. 
+In other words, the relationship between outrage in 2020 and feelings about President Trump is very different at different levels of partisanship. We thus call this an **interactive relationship**.
 
+We can save this three variable mean comparison table like this:
+```{r, messages=FALSE, warning=FALSE}
+ft_trump.3var<-anes2020 %>% 
+  filter(!is.na(ft_trump)&!is.na(partyid3)&!is.na(outrage2)) %>%
+  group_by(partyid3, outrage2) %>% 
+  summarise(mean=mean(ft_trump), sd=sd(ft_trump), n=n())
+flextable(ft_trump.3var)%>% 
+  save_as_docx(path="ft_trump.3var.docx")
+```
 To graphically represent this relationship, we can use this code (which you can also find in the "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files)):
 ```{r, warning=FALSE}
 ggplot(anes2020 %>% filter(!is.na(partyid3) & (!is.na(outrage2))), 

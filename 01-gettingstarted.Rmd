@@ -5,21 +5,21 @@ R is a powerful, customizable, open source piece of software that is extremely u
 
 1. R is free! In the past, I have taught this class with SPSS. As of this writing, the professional version of SPSS costs $99 per month for a subscription. 
 2. Because R is open source, users are regularly writing custom programs to improve it, which they tend to share for free.
-3. Because R is open source, there are great resources available for free online (see section \@ref(resources) for some of my favorites), and there is a thriving community of people that ask and answer questions about how to use R.
+3. Because R is open source, there are great resources available for free online (see section \@ref(resources) for some of my favorites).
 4. R is more powerful than SPSS. It can conduct statistical analyses and generate graphics that SPSS is not capable of (including maps with GIS data).
 5. R is professional-grade software, extremely commonly used by professional analysts.
 6. Familiarity with R will look great on your resume. It will show potential employers that you have some serious data skills and are capable of learning to code.
 7. Learning R will help you learn to code in other pieces of software as well, which will be an important skill in the future.
 
-In this course, I have **no expectation** that you have any background in coding or in statistical analysis. So, if you have no such experience, please do not worry! *You are not alone*. I would be surprised if more than a few of you have experience with coding or statistical analysis, and I will teach the class as if none of you do. If some parts of the class are review for you, that won’t hurt you either!
+In this course, I have **no expectation** that you have any background in coding or in statistical analysis. So, if you have no such experience, please do not worry! *You are not alone*. I would be surprised if more than a few of you have coding experience, and I will teach the class as if none of you do. If some parts of the class are review for you, that won’t hurt you either!
 
 ## Create a project for this class {#class-project}
 Follow the following instructions to get your computer set up for this class.
 
 1. First, you will have to download and install two pieces of software on your computer. NOTE: You can install these programs on a Mac or a PC, but not on an iPad or a tablet that is not running Windows or the Mac OS. 
-  - You can find the first piece of software, R, here: https://www.r-project.org/. Be sure to download a version of R that starts with a 4. (like 4.1.3 or 4.0.5). 
+  - You can find the first piece of software, R, here: [https://www.r-project.org/](https://www.r-project.org/){target="_blank"}. Download the most recent version of R for your system (the one with the highest number) that is not listed as a test or beta test version.  
   - You can find the second piece of software, RStudio, here: https://www.rstudio.com/products/rstudio/. Be sure to download RStudio Desktop open source edition.
-2. Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder "Scope and Methods Labs." (or another title that you would prefer). 
+2. Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder "Scope and Methods Labs" (or another title that you would prefer). 
 3. Open RStudio on your computer. 
 4. Click on the "File" menu at the top, and then select "New Project."
 
@@ -83,7 +83,7 @@ When you copy and paste that code into your Console, you should see something li
 knitr::include_graphics("images/gettingstarted_8_firstobject.png")
 ```
 
-Notice what happened when we created this object. R did not give us the answer to our math problem in the Console, but instead put the object that we created in the Environment pane. This kind of object, a single value, is called a scalar. You won’t deal with these very frequently.
+Notice what happened when we created this object. R did not give us the answer to our math problem in the Console, but instead put the object that we created in the Environment pane. This kind of object, a single value, is called a scalar. You won’t deal with these very frequently in this class.
 
 ### About vectors
 A more commonly used kind of object is a vector – a list of two or more values. What if I want to create a vector that includes the my.first.object scalar and another number? One way that I can build a vector is with the c() function. The c here stands for concatenate, which means "bring together." Here is how I would use c() to build such a vector:
@@ -91,11 +91,11 @@ A more commonly used kind of object is a vector – a list of two or more values
 ```
 my.second.object<-c(my.first.object, 2)
 ```
-If you enter that into the Console, you will see in the Environment pane there are now two objects in your Environment: my.first object (a scalar with a value of 945) and my.second.object (a vector with two values: 945 and 2). But you actually don’t need to remember these objects, right? No need to have it gunking up your Environment. So you can use the rm() command to remove them (rm() means remove). Just type this into the Console, and you will see the first object, the scalar, disappear:
+If you enter that into the Console, you will see in the Environment pane there are now two objects in your Environment: my.first object (a scalar with a value of 945) and my.second.object (a vector with two values: 945 and 2). But you actually don’t need to remember these objects, right? No need to have it gunking up your Environment. So you can use the rm() command to remove them (rm() means remove). Just type this into the Console, and you will see the first object, the scalar, disappear from the Environment:
 ```
 rm(my.first.object)
 ```
-hen type this into the Console and you will see the second object, the vector, disappear:
+Then type this into the Console and you will see the second object, the vector, disappear:
 ```
 rm(my.second.object)
 ```
@@ -159,8 +159,8 @@ rm(r1,r2,r3,r4,r5,df)
 Let’s practice some of the things that we learned in this chapter. You can number each of your answers with comments (beginning with the # sign).
 
 1. Create a new R script called "Chapter \@ref(getting-started) Exercises," and save it to the R scripts folder that you created earlier. Make the first line in the script a comment (using #) that includes your name and the phrase "Chapter 1 Exercises."
-2. In 2021, TCU had 10,222 undergraduate students and 1,716 graduate students. Generate a scalar called "tcu.students" that is the total population of TCU students. **NOTE: leave the commas out of the numbers when entering them into R.**
-3. In 2020 SMU had 6,827 undergraduate students and 5,546 graduate students. Generate a scalar called "smu.students" that is the total population of SMU students.
+2. In 2023, TCU had 10,915 undergraduate students and 1,870 graduate students. Generate a scalar called "tcu.students" that is the total population of TCU students. **NOTE: leave the commas out of the numbers when entering them into R.**
+3. In 2023 SMU had 7,115 undergraduate students and 4,727 graduate students. Generate a scalar called "smu.students" that is the total population of SMU students.
 4. Use the c() command to generate a vector called dfw.area.students. This vector should have two values: the total number of students at TCU, and the total number of students at SMU.
 5. Remove all three of these objects you created using three different rm() commands.
 6. Use the load() command to load both states2010 (which you can find at "Data/states2010.Rda") and world (which you can find at "Data/world.Rda"). If you didn’t already load anes2020 when following along with this chapter, use the load() command to load that too). If the load command isn't working, follow the instructions at the end of section 1.5 to load all three dataframes. You will need these for future labs.
