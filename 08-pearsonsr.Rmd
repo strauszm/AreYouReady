@@ -33,15 +33,16 @@ cor.test(states2010$pctfemaleleg, states2010$citi6013)
 ```
 Pearson's R is a symmetrical test, which means that it produces the same value regardless of which variable you treat as independent or dependent. So, it does not matter which order you enter the variables into a cor.test() command. 
 
-This is R's Pearson's R output. R calls this Pearson's product-moment correlation, which is just another way of saying Pearson's R. Look at the bottom number of this output: 0.527. That number is positive, which is consistent with my hypothesis. It also seems relatively far for zero, although as I noted above, that is more difficult to interpret with Pearson's R because it is not a Proportional Reduction in Error statistic. 
+Look at R's Pearson's R output. R calls this Pearson's product-moment correlation, which is just another way of saying Pearson's R. Look at the bottom number of this output: 0.527. That number is positive, which is consistent with my hypothesis. It also seems relatively far for zero, although as I noted above, that is more difficult to interpret with Pearson's R because it is not a Proportional Reduction in Error statistic. 
 
-The p-value noted at the top ofthe output is 8.655e-05, which is R's shorthand for 8.655x10-5, which is another way of saying 0.00008655. That is the probability that we would get a sample like this from a population where there was not correlation between our two variables. Since it is (much) lower than 0.05, we can conclude that this relationship is statistically significant. We can also conclude that by looking at the 95% confidence interval around our estimated Pearson's R value. R reports a confidence interval of 0.29 to 0.7, which does not include 0. Thus, we are 95% confident that there is a positive correlation between our two variables at the population level.
+The p-value noted at the top ofthe output is 8.655e-05, which is R's shorthand for $8.655*10^{-5}$, which is another way of saying 0.00008655. That is the probability that we would get a sample like this from a population where there was not correlation between our two variables. Since it is (much) lower than 0.05, we can conclude that this relationship is statistically significant. We can also conclude that by looking at the 95% confidence interval around our estimated Pearson's R value. R reports a confidence interval of 0.29 to 0.7, which does not include 0. Thus, we are 95% confident that there is a positive correlation between our two variables at the population level.
 
 ## The scatterplot {#scatterplot}
 To visualize a relationship between two interval variables, we can generate a scatterplot, one of my favorite graphs to generate. Here is the code that we can use to visualize the relationship between those two variables above. In general, consistent with other graphs you have made, remember to put your independent variable on the x-axis and your dependent variable on the y-axis (as always, you can find a template for this graph in the file "Strausz ggplot2 templates" which is in the "rscripts" folder that was in the zipped filed that you should have downloaded in section \@ref(add-files).
 ```{r, warning=FALSE}
 ggplot(states2010, aes(x = citi6013, y = pctfemaleleg)) +
-  geom_point(alpha=.3)+
+  geom_point(alpha=.3)+     #if you'd rather leave off the dots and just 
+                            #include the labels, you can exclude this line
   geom_text_repel(aes(label = state), size=3)+	#if you don’t have data that you want to 
                                                 #use to name your dots, leave this line 
                                                 #off.
@@ -52,7 +53,7 @@ ggtitle("Citizen ideology and female representation in state legislatures, 2010"
 
 The neat thing about scatterplots is that they display the values of all of the cases of the two variables that you are interested in for all of your data. So, looking at this graph, we can see dots representing all 50 states. How far each dot is along the x-axis tells us how liberal their citizenry is, and how far each dot is along the y-axis tells us the percent of their state legislators that are women.
 
-We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling dots usually doesn't make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously.
+We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling individual dots usually doesn't make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously (although we might want to color code the dots for additional variables not captured on the X and Y axes).
 
 The above graph alone tells a pretty clear story about the relationship between our two variables – it is easy to visualize a positive relationship going from Oklahoma in the bottom left to Vermont in the top right. However, what if we wanted to ask R to fit a line to this data? In other words, what if we wanted R to find the line that is closest to all of the points on this graph? To do that, we can add a single line to our code from above: 
 ```{r, warning=FALSE}
@@ -64,7 +65,7 @@ ggplot(states2010, aes(x = citi6013, y = pctfemaleleg)) +
        y = "Percent of state legislators that are women")
 ```
 
-The line on this graph is called a regression line, and it is the line that is as close as possible to all of the dots on this graph. The shaded region around it is a 95% confidence interval. Visualize drawing a line from the top left corner of that region to the bottom right corner. If that line that you are visualizing was horizontal or sloping down, then we could not rule out the possibility that there was no relationship or a negative relationship between the two variables that we are looking at there. But even that imaginary line slopes upwards, which is good evidence for our hypothesis.
+The line on this graph is called a regression line, and it is the line that is as close as possible to all of the dots on this graph. The shaded region around it is a 95% confidence interval. Visualize drawing a line from the top left corner of that region to the bottom right corner. If that line that visualize was horizontal or sloping down, then we could not rule out the possibility that there was no relationship or a negative relationship between the two variables that we are looking at there. But looking at the above graph, even that imaginary line slopes upwards, which is good evidence for our hypothesis.
 
 ## Bivariate linear regression
 As I mentioned in the last section, the line that goes through the graph that we just generated is called a regression line. Let's now spend a few minutes reviewing some of what we know about lines from algebra. This is the formula for a line:
@@ -88,8 +89,7 @@ And now we can replace M with the slope (which is right under citi6013, the ideo
 %female legislators=0.23(state ideology) + 13.24
 
 This formula is telling us two things. First, it is telling us that for every one unit increase in our independent variable (our state ideology scale with higher numbers meaning more liberal), the percent of female legislators increases by 0.23. Second, it is telling us that in a state where our state ideology scale was 0 (meaning the residents were as conservative as possible), 13.24% of the state legislators would be women. 
-
-Now we know, looking at the second graph in section 8.3, that this line doesn't perfectly fit the data. Some points are right on the line, like Florida, but others are far above the line, like Colorado, or far below the line, like South Carolina. In order to get a sense of how well our regression actually fits the data, we can ask R to summarize our regression, like this:
+Now we know, looking at the second graph in section \@ref(scatterplot), that this line doesn't perfectly fit the data. Some points are right on the line, like Florida, but others are far above the line, like Colorado, or far below the line, like South Carolina. In order to get a sense of how well our regression actually fits the data, we can ask R to summarize our regression, like this:
 ```{r}
 summary(lm(formula = pctfemaleleg ~ citi6013, data = states2010))
 ```
@@ -99,9 +99,9 @@ There is a lot in this output, but there are a few things that you should focus 
  
 If our slope (M) were 0, then the estimated percent of female legislators would be B whatever the state's ideology was. And thus, there would be no relationship between state ideology and percent of female legislators. 
 
-So, if we can say that it is unlikely that the true slope of our line is 0 (because the p-value is below the level of risk of error that we are willing to take, usually set to .05 in political science), then we can conclude that there is likely to be a relationship between our two variables. Since the p-value of our slope is 8.66*10-5, we can conclude that we are pretty unlikely to get this kind of data from a population with no relationship between our independent and dependent variables. Therefore, we can conclude that this relationship is statistically significant.
+So, if we can say that it is unlikely that the true slope of our line is 0 (because the p-value is below the level of risk of error that we are willing to take, usually set to .05 in political science), then we can conclude that there is likely to be a relationship between our two variables. Since the p-value of our slope is $8.66*10^{-5}$, we can conclude that we are pretty unlikely to get this kind of data from a population with no relationship between our independent and dependent variables. Therefore, we can conclude that this relationship is statistically significant.
 
-There is one final aspect of this output that we should discuss: the $R^2$ and adjusted $R^2$ values. $R^2$ is a Proportional Reduction in Error (PRE) measure of the strength of a regression relationship. It ranges from 0 to 1, and it tells us the proportion of variation in our dependent variable that is explained by our independent variable. Because $R^2$ values are often a little bit inflated for some statistical reasons that we don't need to get into in this chapter, it is generally better to use the adjusted $R^2$ to interpret regression results. So, in this case, an adjusted $R^2$ of .2619 tells us that variation in ideology can account for about 26.19% of variation in the percent of female legislators in a state.
+There is one final aspect of this output that we should discuss: the $R^2$ and adjusted $R^2$ values. $R^2$ is a Proportional Reduction in Error (PRE) measure of the strength of a regression relationship. It ranges from 0 to 1, and it tells us the proportion of variation in our dependent variable that is explained by our independent variable. Because $R^2$ values are often a little bit inflated for some statistical reasons that we won't get into in this chapter, it is generally better to use the adjusted $R^2$ to interpret regression results. So, in this case, an adjusted $R^2$ of .2619 tells us that variation in ideology can account for about 26.19% of variation in the percent of female legislators in a state.
 
 ## Review of this chapter's commands
 ```{r, echo=FALSE}
