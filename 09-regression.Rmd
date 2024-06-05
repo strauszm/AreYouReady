@@ -22,7 +22,6 @@ Now select all the text on this page, run it, and then save it.
 ```{r, echo=FALSE}
 library(stargazer)
 ```
-Finally, select all the text on this page, run it, and then save it. 
 
 ## Multiple regression
 In the last chapter, we learned how to do bivariate ordinary least squared (OLS) regression. This is an extremely powerful tool for statistical inference because it both provides a proportional reduction in error estimate ($R^2$), which tells us exactly how much of the variation in our dependent variable is explained by variation in our independent variable, and it provides us with a coefficient estimate, which tells us exactly what we expect to happen to our dependent variable with every one unit increase in our independent variable.
@@ -121,7 +120,7 @@ summary(lm(ft_ice~union+nonunion, data=anes2020))
 ```
 R essentially says "no thank you." If you look at the row labeled nonunion, you will see 4 NAs. That is because R noticed that the union and nonunion variables were redundant with one another and left the nonunion variable out. Aside from that row, the rest of the output is the same as when we ran the regression with only the union variable.
 
-The union variable is a nominal variable with only two values: either each respondent is a union member or not. But it is still important to avoid including redundant variables in regression even when we are dealing with nominal independent variables with more than two values, such as race. If we enter table(anes2020$race), we can see that the race variable in ANES has six values: Asian or Pacific Islander, Black, Hispanic, Multiple Races, Native American, and White. Let's see what happens when we include that variable in a regression analysis with ft_ice as our dependent variable, like this:
+The union variable is a nominal variable with only two values: either each respondent is a union member or not. But it is still important to avoid including redundant variables in regression even when we are dealing with nominal independent variables with more than two values, such as race. If we enter ```table(anes2020$race)```, we can see that the race variable in ANES has six values: Asian or Pacific Islander, Black, Hispanic, Multiple Races, Native American, and White. Let's see what happens when we include that variable in a regression analysis with ft_ice as our dependent variable, like this:
 ```{r}
 summary(lm(ft_ice~race, data=anes2020))
 ```
@@ -129,7 +128,9 @@ What R has done here is converted our race variable into six dummy variables: on
 
 ft_ice=$β_0$+ $β_1$Black + $β_2$Hispanic + $β_3$MultipleRaces + $β_4$NativeAmerican + $β_5$White
 
-Notice that our original race variable had six categories, but there are only five dummy variables in the model. That is because if R included the sixth value—Asian or Pacific Islander—then R would have put itself in a position where it was trying to estimate the ft_ice for a person would cannot exist in our data – someone with 0s on all 0 possible values for race. Thus, R chooses one category to be the "reference category," and leaves that one out. Look back and the equation just before this paragraph. The intercept that R estimated (47.35) is the predicted value of feelings about ICE for someone who identified themselves as Asian or Pacific Islander. Since that is the reference category, that did not show up in our model, that is what R expects to find when all of the other dummy variables that it generated are set to 0.
+Notice that our original race variable had six categories, but there are only five dummy variables in the model. That is because if R included the sixth value—Asian or Pacific Islander—then R would have put itself in a position where it was trying to estimate the ft_ice for a person would cannot exist in our data – someone with 0s on all 0 possible values for race. Thus, R chooses one category to be the "reference category," and leaves that one out. 
+
+In the case of the race variable in ANES, R chose to leave out the first category in alphabetical order which is regression analysis, which is "Asian or Pacific Islander." Thus, the intercept that R estimated in the above regression (47.35) is the predicted value of feelings about ICE for someone who identified themselves as Asian or Pacific Islander (because their values on all of the other possible race dummy variables are 0). 
 
 -5.281 is the expected differences between someone who is an Asian or Pacific Islander and someone who is Black; in other words, Blacks seem to have a lower estimation of ICE, on average, than Asians or Pacific Islanders. And the rest of the coefficients estimate the differences between the groups that they identify and Asian Pacific Islanders.
 
@@ -156,10 +157,10 @@ When we do this, we are asking R to estimate the intercept and coefficients in t
 
 ft_ice=$β_0$+ $β_1$ft_dem + $β_2$AsianPacificIslander + $β_3$Black + $β_4$Hispanic + $β_5$MultipleRaces + $β_6$NativeAmerican
 
-with "white" as the reference category for race.
+with "white" as the reference category for race. There are a few different ways that we can represent this relationship in a graph.
 
 ### Facets
-We can actually ask R to make a different scatterplot for every value of our nominal race variable, using the following code.
+We can ask R to make a different scatterplot for every value of our nominal race variable, using the following code.
 ```{r, message=FALSE, warning=FALSE}
 ggplot(data=anes2020 %>% filter(!is.na(sex2)), aes(x=ft_dems, y=ft_ice)) +
   geom_point(size=2, alpha=.5, color="purple") +
@@ -178,7 +179,7 @@ ggplot(data=anes2020 %>% filter(!is.na(sex2)), aes(x=ft_dems, y=ft_ice)) +
 This graph shows us the relationship between feelings about the Democratic Party and feelings about ICE at all values of our race variable. Note that the relationship that we observe in the zero-order regression persists for all values of our control except for Blacks, for whom feelings about the Democratic Party do not appear correlated with feelings about ICE.
 
 ### Color coding dots
-We could also represent this same kind of relationship by color coding the dots. This would be a little bit difficult to read with the race variable, since there are six different races in the dataframe, but let's try with a variable with only two value: the sex variable. The sex variable is currently coded as a dummy variable, with 0 meaning male and 1 meaning female. Since R will use those labels on the graph that we generate, let's make a new variable called sex2 which is labeled "male" and "female," like this:
+We could also represent this same kind of relationship by color coding the dots. This would be a little bit difficult to read with the race variable, since there are six different races in the dataframe, but let's try with a variable with only two values: the sex variable. The sex variable is currently coded as a dummy variable, with 0 meaning male and 1 meaning female. Since R will use those labels on the graph that we generate, let's make a new variable called sex2 which is labeled "male" and "female," like this:
 ```{r}
 anes2020<-anes2020 %>% 
   mutate(sex2=recode(sex, '0'="male",'1'="female"))
