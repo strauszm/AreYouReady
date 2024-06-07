@@ -579,36 +579,41 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 <span id="cb195-18"><a href="chi-squared-etc.html#cb195-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb195-19"><a href="chi-squared-etc.html#cb195-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;How important is press freedom?&quot;</span>)<span class="sc">+</span></span>
 <span id="cb195-20"><a href="chi-squared-etc.html#cb195-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion with no trust in media&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Notice that the bars are going in the way our theory predicted – people that think that press freedom is less important also seem to trust the press less. The error bars on these columns do not seem to overlap with the exception of the upper bar on the “moderately important” column and the lower bar in the “a little important” column. In other words, most of these differences seem to be statistically significant, and the relationship is heading in the direction that we predicted.</p>
 <p>However, what are we to make of those overlapping error bars? And what about all of the data that is not on this graph (i.e. all four other values on media trust)? We can run the tests that we learned about earlier this chapter on our crosstab with the following commands.</p>
 <p>First, if you didn’t generate the crosstab object before, you can do that now like this:</p>
 <pre><code>media.table&lt;-xtabs(~trustmedia+freedomofpress, data=anes2020)</code></pre>
 <p>Now you can simply execute these three commands:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="chi-squared-etc.html#cb197-1" tabindex="-1"></a><span class="fu">chisq.test</span>(media.table)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chi-squared-etc.html#cb198-1" tabindex="-1"></a><span class="fu">chisq.test</span>(media.table)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  media.table
 ## X-squared = 1350.3, df = 16, p-value &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="chi-squared-etc.html#cb199-1" tabindex="-1"></a><span class="fu">Lambda</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="chi-squared-etc.html#cb200-1" tabindex="-1"></a><span class="fu">Lambda</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##     lambda     lwr.ci     upr.ci 
 ## 0.04627059 0.03725581 0.05528537</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="chi-squared-etc.html#cb201-1" tabindex="-1"></a><span class="fu">CramerV</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="chi-squared-etc.html#cb202-1" tabindex="-1"></a><span class="fu">CramerV</span>(media.table, <span class="at">conf.level =</span> .<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##  Cramer V    lwr.ci    upr.ci 
 ## 0.2027150 0.1907419 0.2124269</code></pre>
 <p>These three tests all show a statistically significant relationship. The reported Lambda is pretty weak, but this could be because of the tendency of Lambda to sometimes underestimate the strength of relationships when the subgroup modes are too similar to the sample mode (if you look at the crosstab with percents above you will see that at four of the five levels of our independent variable, the modal respondent reports no trust in the media, which is also the sample mode).</p>
 <p>The statistics that we just calculated let us discuss the strength (in the case of Lambda) and significance (in the case of Cramer’s V and chi-squared) of the relationship that we are interested in, but how about the direction? To examine the direction of a relationship between two ordinal variables, we can use a Somers’ D test. Somers D is a Proportional Reduction in Error (PRE) statistic like Lambda. Unlike Lambda, however, which ranges from 0 to 1, Somers’ D can range from 0 to 1 OR -1. A perfect negative relationship, where knowledge of the independent variable lets us guess the value of the dependent variable with absolute certainty, would generate a Somers’ D score of -1, while a perfect positive relationship would generate a Somers’ D score of 1. A Somers’ D score of 0 means that knowing the independent variable gives us no insight at all in predicting the dependent variable.</p>
 <p>Before we run Somers’ D, we need to see whether our hypothesis is predicting a positive or a negative relationship. What does it mean to “increase” or “decrease” on those two variables? For this, we can use the levels() command, like this:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="chi-squared-etc.html#cb203-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>freedomofpress)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="chi-squared-etc.html#cb204-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>freedomofpress)</span></code></pre></div>
 <pre><code>## [1] &quot;extremely important&quot;  &quot;very important&quot;       &quot;moderately important&quot;
 ## [4] &quot;a little important&quot;   &quot;not important at all&quot;</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="chi-squared-etc.html#cb205-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>trustmedia)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="chi-squared-etc.html#cb206-1" tabindex="-1"></a><span class="fu">levels</span>(anes2020<span class="sc">$</span>trustmedia)</span></code></pre></div>
 <pre><code>## [1] &quot;none&quot;         &quot;a little&quot;     &quot;some&quot;         &quot;a lot&quot;        &quot;a great deal&quot;</code></pre>
 <p>The levels() command only works with ordered factors (which is how R treats ordinal variables), and the output lists the scores of the variable from low to high. So, the lowest value on freedomofpress mean that the respondent thinks that freedom of the press is “extremely important”, while the highest value means that the respondent thinks that freedom of the press is “not important at all.” Increasing values means less respect for freedom of the press. With “trustmedia”, the lowest value means that the respondent has no trust in the media, while the highest value means that the respondent has “a great deal” of trust in the media. Increasing values means more trust in the media.</p>
 <p>Since our hypothesis is that more respect for freedom of the press leads to more trust of the media, we thus hypothesize a negative relationship between our two variables.</p>
 <p>We run Somers’ D just like how we ran Cramer’s V, Lambda, and chi-squared, above:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="chi-squared-etc.html#cb207-1" tabindex="-1"></a><span class="fu">SomersDelta</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="chi-squared-etc.html#cb208-1" tabindex="-1"></a><span class="fu">SomersDelta</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>trustmedia<span class="sc">+</span>freedomofpress, <span class="at">data=</span>anes2020), <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>
 <pre><code>##     somers     lwr.ci     upr.ci 
 ## -0.3069552 -0.3239353 -0.2899751</code></pre>
 <p>If you made the media.table crosstab object above, you can also run Somers’ D on that, like this:</p>
