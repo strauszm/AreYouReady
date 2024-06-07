@@ -94,7 +94,7 @@ table(anes2020$sex2)
 ```
 
 ## Simplifying interval variables {#simp-int}
-### Simplifying interval variables using cut2()
+### Simplifying interval variables using cut2() {#cut-2}
 Interval variables give us a lot of information, and it is sometimes too much! For example, we might want to generate a graph comparing age groups, rather than a graph of individuals at each age between 18 and 80. This is where the cut2() command from the Hmisc package can come in handy. Let’s say we want to create three roughly evenly distributed age groups. We can use cut2 like this:
 ```{r}
 anes2020$age3<-cut2(anes2020$age, g=3)
@@ -119,7 +119,7 @@ table(anes2020$age3)
 ```
 and you should see your new labels.
 
-### Simplifying interval variables with case_when
+### Simplifying interval variables with case_when {#case-when}
 In section \@ref(simp-int) we learned how to use the cut2 command to divide interval variables into groups of roughly the same size. But what if we are interested in separating interval variables into groups above or below specific values? For example. we might be interested in looking at people in their teens, in their 20s, in their 30s, etc. To do that, we can write the following:
 ```{r}
 anes2020<-anes2020 %>% 

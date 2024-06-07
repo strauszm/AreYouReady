@@ -46,8 +46,8 @@ getting-started-recoding
 recode-nom
 dealing-with-variables-coded-01
 simp-int
-simplifying-interval-variables-using-cut2
-simplifying-interval-variables-with-case_when
+cut-2
+case-when
 cross-tabs
 generating-cross-tabs
 adding-column-totals-to-cross-tabs

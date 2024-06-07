@@ -1,18 +1,18 @@
 # R in the wild {#wild}
 
 ## Today's lab as a reference
-Unlike the previous chapters, I am not going to ask you to start a practice document and follow along. Just read the chapter, know that this a resource that you have available as you become more advanced in your R skills and need more guidance.
+Unlike the previous chapters, I am not going to ask you to start a practice document and follow along. Just read the chapter and know that this a resource that you have available as you become more advanced in your R skills and need more advanced guidance.
 
 ## Importing data into R
 
 ### Importing CSV files
 For this workbook, you have been able to access our three dataframes—world, states2010, and ane2020—as .Rda files. In other words, these files were already formatted for use with R. However, if you keep using, you will regularly run into data that has not been formatted for use with R. 
 
-For example, when I wanted to generate the ANES dataframe, I went to the ANES website: [https://electionstudies.org/data-center/2020-time-series-study/](https://electionstudies.org/data-center/2020-time-series-study/). I had to create a log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. "CSV" stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.
+For example, when I wanted to generate the ANES dataframe, I went to the ANES website: <a href="https://electionstudies.org/data-center/2020-time-series-study/" target="_blank">https://electionstudies.org/data-center/2020-time-series-study/</a>. I had to create a log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. "CSV" stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.
 
 I next created a folder called anes2020, and in that folder, I made three new folders: one called rscripts, one called data, and one called notes (where I keep my codebooks and other reference materials related to that data). I then moved the cvs file that I had downloaded (which downloaded as anes_timeseries_2020_csv_20210719.cvs) into the data folder. 
 
-After that, I made a new R project which I set to be in that anes2020 folder. Next, I imported the data with this command:
+After that, I made a new R project which I set to be located in that anes2020 folder. Next, I imported the data with this command:
 ```
 anes2020<-read.csv("data/anes_timeseries_2020_csv_20210719.csv")
 ```
@@ -28,11 +28,13 @@ V202175,V202178,V202181,V202182,V202183,V202187,V202073)
 That command looks like a lot, but all it is doing is telling R to make a new dataframe called anes2020.simplified and then selecting "only" that list of variables (instead of the 1,771 variables in the original dataframe).
 
 ### Importing Excel files
-Sometimes you will find an excel file that you want to import. There is a very useful package that you can install to help with that called "readxl." Once you have installed it, you can use the "read_excel" command to bring Excel files into R. 
+Sometimes you will find an Excel file that you want to import. There is a very useful package that you can install to help with that called "readxl." Once you have installed it, you can use the "read_excel" command to bring Excel files into R. 
 
 After I downloaded the Excel version of the "DEMOCRACY CROSS-NATIONAL DATA, RELEASE 4.0 FALL 2015" from Dr. Pippa Norris's webpage, [https://www.pippanorris.com/data](https://www.pippanorris.com/data). I read it into R with this command:
 ```
 world <- read_excel("data/Democracy Cross-National Data V4.1 09092015.xlsx")
+#remember, this command only works if you have installed and called 
+#up the readxl library
 ```
 
 ### Importing other files
@@ -111,4 +113,4 @@ After taking this class and working through this workbook, you may decide that y
 
 Every day, I set a timer for 15 minutes, and spent that time doing something in R. I began with though Nathaniel D. Phillips' <a href="https://bookdown.org/ndphillips/YaRrr/">Pirate's Guide</a> and then I worked my way through the other resources in section \@ref(resources). I also spent that time figuring out how to use R to solve problems in my own research; I made a vow to myself that from now on, I would do all analysis for my own research in R. 
 
-You can also use that 15 minutes to do anything in R. Maybe you want to use R to analyze your favorite sport. Maybe you want to use R to learn about knitting patterns, or to keep track of data regarding your other hobbies or interests. There is even a package available called sourrr that is useful when generating recipes for sourdough bread (although I have found my favorite sourdough bread recipes in <a href="https://www.penguinrandomhouse.com/books/249870/sourdough-by-sarah-owens-photographs-by-ngoc-minh-ngo/">this book</a>). Maybe you want to use R to gather and analyze data relating to games that you play or debates that you have with your friends. Or, maybe you want to use R to help you with research projects for other classes. Just choose something to do in those 15 minutes, and do it. If you do that for a while, you will surprise yourself with how much R you can do.
+You can also use that 15 minutes to do anything in R. Maybe you want to use R to analyze your favorite sport. Maybe you want to use R to learn about knitting patterns, or to keep track of data regarding your other hobbies or interests. There is even a package available called sourrr that is useful when generating recipes for sourdough bread (although I have found my favorite sourdough bread recipes in <a href="https://www.penguinrandomhouse.com/books/249870/sourdough-by-sarah-owens-photographs-by-ngoc-minh-ngo/">these</a> <a href="https://www.theperfectloaf.com/cookbooks/">books</a>). Maybe you want to use R to gather and analyze data relating to games that you play or debates that you have with your friends. Or, maybe you want to use R to help you with research projects for other classes. Just choose something to do in those 15 minutes, and do it. If you do that for a while, you will surprise yourself with how much R you can do.

@@ -1,5 +1,5 @@
 ---
-title: "Are you ready for R? A Workbook for R for Political Science and Beyond"
+title: "Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0"
 toc-title: "Are you ready for R?"
 author: "Michael Strausz"
 date: "`r Sys.Date()`"
@@ -25,6 +25,14 @@ I'd like to thank my spouse Kate for coming up with the great title and for putt
 
 # About the author {.unnumbered}
 
-I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a professor of political science at Texas Christian University. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a> and the editor of the forthcoming book <a href= "https://uhpress.hawaii.edu/title/no-island-is-an-island-perspectives-on-immigration-to-japan/">No Island is an Island: Perspectives on Immigration to Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies. 
+I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a Professor and the Chair of the <a href="https://addran.tcu.edu/political-science/index.php">Political Science Department at Texas Christian University</a>. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a> and the editor of the forthcoming book <a href= "https://uhpress.hawaii.edu/title/no-island-is-an-island-perspectives-on-immigration-to-japan/">No Island is an Island: Perspectives on Immigration to Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies. 
 
 I graduated from Michigan State University’s James Madison College and earned my Ph.D. in political science from the University of Washington in Seattle. I live just outside of Fort Worth, Texas with my spouse and our two children. In my free time, I enjoy cooking, hiking, and schmoozing.
+
+# What's new in version 2.0? {.unnumbered}
+
+The first version of this workbook was a series of PDFs that I uploaded to <a href="https://www.michaelstrausz.com/">my website</a> in April 2022. Those were a bit clunky. They were difficult for students to copy code chunks out of (the formatting would get strange) and they were also difficult for me to update. In April 2023, I created the first version of this workbook as a single website (like this). I actually did this as I was teaching a class that used the workbook, so the students switched from PDFs to website in the middle of the class. It was very dramatic!
+
+I continued to make small updates and corrections to the website version of the workbook regularly, but for Version 2.0 I read over the whole workbook, I added section \@ref(case-when), which explains a more precise way of simplifying interval variables than was in the first version of the workbook (although the other ways of simplifying interval variables are still there, in section \@ref(cut-2)). I also added section \@ref(export-crosstabs), which explains how to export cross-tabulation tables and other tables generated in R in a format that is easy to bring into word processors. Finally, I added a voter turnout variable to the ANES dataset, as many of my students are interested in the question of "who votes?" 
+
+If you have suggestions and/or notice errors, please <a href="https://www.michaelstrausz.com/contact">let me know!</a>

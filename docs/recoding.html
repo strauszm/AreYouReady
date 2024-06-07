@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond</title>
+  <title>Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0</title>
   <meta name="description" content="This is the preface of the workbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta property="og:title" content="Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the preface of the workbook" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond" />
+  <meta name="twitter:title" content="Chapter 4 Recoding and comparing values of variables | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0" />
   
   <meta name="twitter:description" content="This is the preface of the workbook" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-06-05" />
+<meta name="date" content="2024-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,6 +165,7 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the author</a></li>
+<li class="chapter" data-level="" data-path="whats-new-in-version-2.html"><a href="whats-new-in-version-2.html"><i class="fa fa-check"></i>What’s new in version 2.0?</a></li>
 <li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
@@ -229,8 +230,8 @@ div.csl-indent {
 <li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
 <li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-using-cut2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
-<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#simplifying-interval-variables-with-case_when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
+<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#cut-2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
+<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#case-when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a>
 <ul>
@@ -324,7 +325,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0</a>
           </h1>
         </div>
 
@@ -431,8 +432,8 @@ library(flextable)    #this makes tables that we can easily export into a word p
 </div>
 <div id="simp-int" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Simplifying interval variables<a href="recoding.html#simp-int" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="simplifying-interval-variables-using-cut2" class="section level3 hasAnchor" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Simplifying interval variables using cut2()<a href="recoding.html#simplifying-interval-variables-using-cut2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cut-2" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Simplifying interval variables using cut2()<a href="recoding.html#cut-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Interval variables give us a lot of information, and it is sometimes too much! For example, we might want to generate a graph comparing age groups, rather than a graph of individuals at each age between 18 and 80. This is where the cut2() command from the Hmisc package can come in handy. Let’s say we want to create three roughly evenly distributed age groups. We can use cut2 like this:</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="recoding.html#cb86-1" tabindex="-1"></a>anes2020<span class="sc">$</span>age3<span class="ot">&lt;-</span><span class="fu">cut2</span>(anes2020<span class="sc">$</span>age, <span class="at">g=</span><span class="dv">3</span>)</span></code></pre></div>
 <p>The g=3 is telling R to divide age into three roughly equal groups and make them into a new variable called age3. If we wanted 4 groups, or 2 groups, or 5 groups, we could just change that number. Now let’s run table() on our new variable:</p>
@@ -450,8 +451,8 @@ library(flextable)    #this makes tables that we can easily export into a word p
 <pre><code>table(anes2020$age3)</code></pre>
 <p>and you should see your new labels.</p>
 </div>
-<div id="simplifying-interval-variables-with-case_when" class="section level3 hasAnchor" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Simplifying interval variables with case_when<a href="recoding.html#simplifying-interval-variables-with-case_when" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="case-when" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Simplifying interval variables with case_when<a href="recoding.html#case-when" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In section <a href="recoding.html#simp-int">4.4</a> we learned how to use the cut2 command to divide interval variables into groups of roughly the same size. But what if we are interested in separating interval variables into groups above or below specific values? For example. we might be interested in looking at people in their teens, in their 20s, in their 30s, etc. To do that, we can write the following:</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="recoding.html#cb93-1" tabindex="-1"></a>anes2020<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
 <span id="cb93-2"><a href="recoding.html#cb93-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_groups=</span><span class="fu">case_when</span>(age <span class="sc">%in%</span> <span class="dv">18</span><span class="sc">:</span><span class="dv">19</span> <span class="sc">~</span> <span class="st">&quot;teens&quot;</span>,</span>
