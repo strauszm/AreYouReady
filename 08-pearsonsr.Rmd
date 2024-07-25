@@ -1,4 +1,4 @@
-# From Pearson's r and linear regression {#pearsons-r}
+# Pearson's r and linear regression {#pearsons-r}
 
 ## Getting started with this chapter {#getting-started-pearsons-r}
 To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section \@ref(exploring).
