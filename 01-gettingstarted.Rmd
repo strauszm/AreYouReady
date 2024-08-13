@@ -47,7 +47,12 @@ knitr::include_graphics("images/gettingstarted_4_create.png")
 ```
 
 ## Add the course files to your project {#add-files}
-7. Go to this website: [https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles](https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles). Click on the words "Supplemental Workbook Files.zip." That will take you to a new screen where there is a link to the right that says "download." Click that link to download the file. On your computer, unzip the file, and you should see three folders inside: "codebooks", "Data", and "rscripts". Copy the three folders and their contents to the project folder that you made before called "Scope and Methods Labs" (in section \@ref(class-project)).
+7. Go to this website: [https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles](https://github.com/strauszm/AreYouReady/tree/main/SupplementalWorkbookFiles). Click on the words "Supplemental Workbook Files.zip." That will take you to a new screen where there is a link to the right with a little picture of an arrow pointing into a tray, like this:
+```{r download, echo = FALSE, out.width='40%'}
+knitr::include_graphics("images/gettingstarted_4_5_download.png")
+```
+
+Click that link to download the file. On your computer, unzip the file, and you should see three folders inside: "codebooks", "Data", and "rscripts". Copy the three folders and their contents to the project folder that you made before called "Scope and Methods Labs" (in section \@ref(class-project)).
 
 Congratulations! You have set up R for this workbook (and for other uses too!)
 
