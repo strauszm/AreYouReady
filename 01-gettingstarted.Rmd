@@ -121,7 +121,7 @@ Now we are going to enter a command. We are going to use the load() command to l
 load("Data/anes2020.Rda") #This is how I am loading some data that I will use later.
 ```
 
-**Be sure to include the "" around the name and location of the dataset.** The comment is not necessary, but it is there for your reference. So, at this point you should have two lines of script. To run this script, you must first select it, by highlighting it with your cursor.  Then, you can either click the little run button circled below or you can hit Cntl-Enter in a PC or Command-Enter on a Mac.
+**Be sure to include the ```""``` around the name and location of the dataset.** The comment (following the ```#```) is not necessary, but it is there for your reference. So, at this point you should have two lines of script. To run this script, you must first select it, by highlighting it with your cursor.  Then, you can either click the little run button circled below or you can hit Cntl-Enter in a PC or Command-Enter on a Mac.
 
 ```{r run, echo = FALSE, out.width='90%'}
 knitr::include_graphics("images/gettingstarted_9_run.png")
