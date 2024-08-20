@@ -17,7 +17,7 @@ In this course, I have **no expectation** that you have any background in coding
 Follow the following instructions to get your computer set up for this class.
 
 1. First, you will have to download and install two pieces of software on your computer. NOTE: You can install these programs on a Mac or a PC, but not on an iPad or a tablet that is not running Windows or the Mac OS. 
-  - You can find the first piece of software, R, here: [https://www.r-project.org/](https://www.r-project.org/){target="_blank"}. Download the most recent version of R for your system (the one with the highest number) that is not listed as a test or beta test version.  
+  - You can find the first piece of software, R, [here](https://mirrors.nics.utk.edu/cran/){target="_blank"}. If you aren't in the US, you can choose the mirror that is closest to you [here](https://cran.r-project.org/mirrors.html){target="_blank"}.  
   - You can find the second piece of software, RStudio, here: https://www.rstudio.com/products/rstudio/. Be sure to download RStudio Desktop open source edition.
 2. Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder "Scope and Methods Labs" (or another title that you would prefer). 
 3. Open RStudio on your computer. 
