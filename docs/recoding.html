@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2024-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -392,12 +392,10 @@ library(flextable)    #this makes tables that we can easily export into a word p
 <p>To confirm that our recode worked, we can run “table” on both our old and our new variable, like this:</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="recoding.html#cb74-1" tabindex="-1"></a><span class="fu">table</span>(anes2020<span class="sc">$</span>ideology)</span></code></pre></div>
 <pre><code>## 
-##      extremely liberal                liberal       slightly liberal 
-##                    369                   1210                    918 
-##               moderate  slightly conservative           conservative 
-##                   1818                    821                   1492 
-## extremely conservative 
-##                    428</code></pre>
+##      extremely liberal                liberal       slightly liberal               moderate 
+##                    369                   1210                    918                   1818 
+##  slightly conservative           conservative extremely conservative 
+##                    821                   1492                    428</code></pre>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="recoding.html#cb76-1" tabindex="-1"></a><span class="fu">table</span>(anes2020<span class="sc">$</span>ideology3)</span></code></pre></div>
 <pre><code>## 
 ##      liberal     moderate conservative 
@@ -469,7 +467,7 @@ library(flextable)    #this makes tables that we can easily export into a word p
 ##     20s     30s     40s     50s     60s over 70   teens 
 ##     916    1381    1199    1335    1562    1452      87</code></pre>
 <p>You might notice that the values for our new variable are listed in a strange order, with 20s first and teens last. This is because our new variable is a character variable, and the values are thus listed in in alphabetical order.</p>
-<p>To fix this, we can make our new variale into an ordered factors and set the levels from youngest to oldest like this:</p>
+<p>To fix this, we can make our new variable into an ordered factors and set the levels from youngest to oldest like this:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="recoding.html#cb96-1" tabindex="-1"></a>anes2020<span class="sc">$</span>age_groups<span class="ot">&lt;-</span><span class="fu">ordered</span>(anes2020<span class="sc">$</span>age_groups, </span>
 <span id="cb96-2"><a href="recoding.html#cb96-2" tabindex="-1"></a>        <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;teens&quot;</span>,<span class="st">&quot;20s&quot;</span>,<span class="st">&quot;30s&quot;</span>,<span class="st">&quot;40s&quot;</span>,<span class="st">&quot;50s&quot;</span>,<span class="st">&quot;60s&quot;</span>,<span class="st">&quot;over 70&quot;</span>))</span></code></pre></div>
 <p>Now when we enter <code>table(anes2020$age_groups)</code> into the Console we can see the variable values listed in a way that makes more sense. This will also be useful when making tables and graphs.</p>
@@ -483,17 +481,17 @@ library(flextable)    #this makes tables that we can easily export into a word p
 <p>One way that we can start to examine the relationship between more than one variable is by making cross-tabulation tables (often called crosstabs). These are essentially two frequency tables presented in a table. Crosstabs are most useful when looking at the relationship between an ordinal or nominal variable and another ordinal or nominal variable. For example, let’s look at the relationship between education and income in the anes2020 dataframe. We can hypothesize that people with more education will make more income. To test this, we can first use the xtabs() command, like this:</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="recoding.html#cb97-1" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>edu, <span class="at">data=</span>anes2020)</span></code></pre></div>
 <pre><code>##                   edu
-## income             less than high school high school some college
-##   under $24,999                      160         409          390
-##   $25,000-64,999                     122         442          569
-##   $65,000-$109,999                    40         255          346
-##   $110,000 or more                    22         130          270
+## income             less than high school high school some college associate degree  ba  ma
+##   under $24,999                      160         409          390              208 221  96
+##   $25,000-64,999                     122         442          569              364 490 190
+##   $65,000-$109,999                    40         255          346              277 550 329
+##   $110,000 or more                    22         130          270              180 652 480
 ##                   edu
-## income             associate degree  ba  ma md, phd, or jd
-##   under $24,999                 208 221  96             31
-##   $25,000-64,999                364 490 190             50
-##   $65,000-$109,999              277 550 329             96
-##   $110,000 or more              180 652 480            203</code></pre>
+## income             md, phd, or jd
+##   under $24,999                31
+##   $25,000-64,999               50
+##   $65,000-$109,999             96
+##   $110,000 or more            203</code></pre>
 <p>Let’s break down how we used this command: we put the <strong>dependent variable</strong>, income, first, and then the <strong>independent variable</strong>, edu, second. Crosstabs generally have the independent variable in columns and the dependent variable in rows. This setup lets us to that.</p>
 </div>
 <div id="adding-column-totals-to-cross-tabs" class="section level3 hasAnchor" number="4.5.2">
@@ -501,19 +499,19 @@ library(flextable)    #this makes tables that we can easily export into a word p
 <p>The output that our command generated is a basic crosstab. It tells us that 160 people with less than a high school education make under $24,999 per year, 122 people with less than a high school education make $25,000-64,999, etc. Now we might be tempted to look at this and say: “Graduate school is a waste of time! Only 203 people from our sample with MDs, PhDs, and JDs make $110,000 or more, while 270 people with some college education make $110,000 or more.” However, that would be a mistake! To understand why, we should look at the column totals from our crosstab, which we can produce with this command:</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="recoding.html#cb99-1" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>edu, <span class="at">data=</span>anes2020)) </span></code></pre></div>
 <pre><code>##                   edu
-## income             less than high school high school some college
-##   under $24,999                      160         409          390
-##   $25,000-64,999                     122         442          569
-##   $65,000-$109,999                    40         255          346
-##   $110,000 or more                    22         130          270
-##   Sum                                344        1236         1575
+## income             less than high school high school some college associate degree   ba
+##   under $24,999                      160         409          390              208  221
+##   $25,000-64,999                     122         442          569              364  490
+##   $65,000-$109,999                    40         255          346              277  550
+##   $110,000 or more                    22         130          270              180  652
+##   Sum                                344        1236         1575             1029 1913
 ##                   edu
-## income             associate degree   ba   ma md, phd, or jd  Sum
-##   under $24,999                 208  221   96             31 1515
-##   $25,000-64,999                364  490  190             50 2227
-##   $65,000-$109,999              277  550  329             96 1893
-##   $110,000 or more              180  652  480            203 1937
-##   Sum                          1029 1913 1095            380 7572</code></pre>
+## income               ma md, phd, or jd  Sum
+##   under $24,999      96             31 1515
+##   $25,000-64,999    190             50 2227
+##   $65,000-$109,999  329             96 1893
+##   $110,000 or more  480            203 1937
+##   Sum              1095            380 7572</code></pre>
 </div>
 <div id="column-percents" class="section level3 hasAnchor" number="4.5.3">
 <h3><span class="header-section-number">4.5.3</span> Adding column percents to cross-tabs<a href="recoding.html#column-percents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -521,19 +519,19 @@ library(flextable)    #this makes tables that we can easily export into a word p
 <strong>Thus, when interpreting crosstabs it is important to look at the column percents, and not just the raw numbers.</strong> To make R generate all of the column percents in a crosstab at the same time, we can use the colPerc() command from the tigerstats package that we installed for today. We can enter this command:</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="recoding.html#cb101-1" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>edu, <span class="at">data=</span>anes2020))</span></code></pre></div>
 <pre><code>##                   edu
-## income             less than high school high school some college
-##   under $24,999                    46.51       33.09        24.76
-##   $25,000-64,999                   35.47       35.76        36.13
-##   $65,000-$109,999                 11.63       20.63        21.97
-##   $110,000 or more                  6.40       10.52        17.14
-##   Total                           100.00      100.00       100.00
+## income             less than high school high school some college associate degree     ba
+##   under $24,999                    46.51       33.09        24.76            20.21  11.55
+##   $25,000-64,999                   35.47       35.76        36.13            35.37  25.61
+##   $65,000-$109,999                 11.63       20.63        21.97            26.92  28.75
+##   $110,000 or more                  6.40       10.52        17.14            17.49  34.08
+##   Total                           100.00      100.00       100.00           100.00 100.00
 ##                   edu
-## income             associate degree     ba     ma md, phd, or jd
-##   under $24,999               20.21  11.55   8.77           8.16
-##   $25,000-64,999              35.37  25.61  17.35          13.16
-##   $65,000-$109,999            26.92  28.75  30.05          25.26
-##   $110,000 or more            17.49  34.08  43.84          53.42
-##   Total                      100.00 100.00 100.00         100.00</code></pre>
+## income                 ma md, phd, or jd
+##   under $24,999      8.77           8.16
+##   $25,000-64,999    17.35          13.16
+##   $65,000-$109,999  30.05          25.26
+##   $110,000 or more  43.84          53.42
+##   Total            100.00         100.00</code></pre>
 <p>You will notice when looking at the output that the new variable that we have generated is
 <strong>Remember when interpreting this output that the numbers are now the column percents, not the raw numbers.</strong> If you take a look at this output, you will see that people with more education seem to make more money.</p>
 </div>

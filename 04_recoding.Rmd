@@ -139,7 +139,7 @@ table(anes2020$age_groups)
 ```
 You might notice that the values for our new variable are listed in a strange order, with 20s first and teens last. This is because our new variable is a character variable, and the values are thus listed in in alphabetical order. 
 
-To fix this, we can make our new variale into an ordered factors and set the levels from youngest to oldest like this:
+To fix this, we can make our new variable into an ordered factors and set the levels from youngest to oldest like this:
 ```{r}
 anes2020$age_groups<-ordered(anes2020$age_groups, 
         levels=c("teens","20s","30s","40s","50s","60s","over 70"))
