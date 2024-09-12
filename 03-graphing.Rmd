@@ -60,7 +60,6 @@ xlab("Marital status")
 The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where "marital" is NA. Like this:
 
 ```
-library(tidyverse)
 ggplot(anes2020 %>% filter(!is.na(marital)), aes(x=marital))+
   geom_bar(fill = "purple", colour = "black")+
   ggtitle("Marital status of respondents")+
