@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-09-07" />
+<meta name="date" content="2024-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -377,7 +377,8 @@ library(scales)       #this helps us to put more readable scales on our graphs</
 <div id="remove-na" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Removing the NA bar<a href="graphing.html#remove-na" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The NA bar represents the number of cases where there is missing data for this question. Often you will not want to include that bar in your graph. To get rid of it, you can use a pipe when you call the dataset and tell R to filter out the cases where “marital” is NA. Like this:</p>
-<pre><code>ggplot(anes2020 %&gt;% filter(!is.na(marital), aes(x=marital)))+
+<pre><code>library(tidyverse)
+ggplot(anes2020 %&gt;% filter(!is.na(marital)), aes(x=marital))+
   geom_bar(fill = &quot;purple&quot;, colour = &quot;black&quot;)+
   ggtitle(&quot;Marital status of respondents&quot;)+
 xlab(&quot;Marital status&quot;)</code></pre>

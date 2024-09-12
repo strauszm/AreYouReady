@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2024-09-07" />
+<meta name="date" content="2024-09-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -368,19 +368,31 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Now, we can generate a crosstab, with this command (remember when generating a crosstab we put our dependent variable first):</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="chi-squared-etc.html#cb171-1" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>##                 Religion
-## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
-##   equal                1     1      0     16        8     0          7         12  45
-##   somewhat equal       8     0      1     20        2     3          5          7  46
-##   not equal            0     0      0      4        1     6          5         28  44
-##   Sum                  9     1      1     40       11     9         17         47 135</code></pre>
+## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant
+##   equal                1     1      0     16        8     0          7
+##   somewhat equal       8     0      1     20        2     3          5
+##   not equal            0     0      0      4        1     6          5
+##   Sum                  9     1      1     40       11     9         17
+##                 Religion
+## gini3            Roman Cath Sum
+##   equal                  12  45
+##   somewhat equal          7  46
+##   not equal              28  44
+##   Sum                    47 135</code></pre>
 <p>This crosstab gives us raw numbers, which are interesting to look at. It also foreshadows a potential limitation to our conclusions, because we only have one predominantly Jewish state (Israel) and one predominantly Hindu state (India) in our sample, which means that we will be attempting to generalize about those two kinds of states from a tiny sample. We discuss that issue more below. To better interpret this crosstab, we need to look at column percents, which we can do with this command:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="chi-squared-etc.html#cb173-1" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
 <pre><code>##                 Religion
-## gini3            Eastern Hindu Jewish Muslim Orthodox  Other Protestant Roman Cath
-##   equal            11.11   100      0     40    72.73   0.00      41.18      25.53
-##   somewhat equal   88.89     0    100     50    18.18  33.33      29.41      14.89
-##   not equal         0.00     0      0     10     9.09  66.67      29.41      59.57
-##   Total           100.00   100    100    100   100.00 100.00     100.00     100.00</code></pre>
+## gini3            Eastern Hindu Jewish Muslim Orthodox  Other Protestant
+##   equal            11.11   100      0     40    72.73   0.00      41.18
+##   somewhat equal   88.89     0    100     50    18.18  33.33      29.41
+##   not equal         0.00     0      0     10     9.09  66.67      29.41
+##   Total           100.00   100    100    100   100.00 100.00     100.00
+##                 Religion
+## gini3            Roman Cath
+##   equal               25.53
+##   somewhat equal      14.89
+##   not equal           59.57
+##   Total              100.00</code></pre>
 <p>Take a look at that table. You can see that there are some pretty noticeable differences in the way that economic inequality is distributed across states with different major religions. For example, the religion with the largest percentage of equal states is Eastern Orthodox, and the religious with the largest percent of not equal states is “Other”, followed by “Roman Catholic.” To help us visualize these differences, we can generate a stacked bar graph using the technique that we learned in section <a href="making-controlled-comparisons.html#stacked">5.2</a>:</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="chi-squared-etc.html#cb175-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>world <span class="sc">%&gt;%</span></span>
 <span id="cb175-2"><a href="chi-squared-etc.html#cb175-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Religion)<span class="sc">&amp;!</span><span class="fu">is.na</span>(gini3)) <span class="sc">%&gt;%</span> </span>
@@ -401,8 +413,8 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Clearly, there are differences in the distribution of economic equality in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the chi-squared value that is associated with this relationship. We can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. <em>Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the test will not be accurate.</em></p>
 <p>Here is how we would generate a chi-squared value for the relationship between dominant religion of a country and degree of economic equality:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="chi-squared-etc.html#cb176-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation
-## may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared
+## approximation may be incorrect</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -411,25 +423,31 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Look at what R tells us in this output (the text just above this passage, beginning with <code>##  Pearson's Chi-squared test</code>). First, R reports that it will be giving us the results of a Pearson’s Chi-squared test. Second, it repeats the command that we entered. Third, it reports the value for chi-squared (which it writes as X-squared), tells us our degrees of freedom (calculated by (number of rows-1)*(number of columns-1)) and reports our p-value. Lower p values mean that the relationship that we are observing is more likely to be statistically significant (i.e. not due to random sampling error). In this case, our p-value is very low: <span class="math inline">\(4.191*10^{-7}\)</span>, or .0000004191, which means that, according to the chi-squared test, this relationship is statistically significant (because <span class="math inline">\(4.191*10^{-7}\)</span> is lower than .05, our conventional benchmark).</p>
 <p>However, look at warning at the top: R is warning us that this estimate may be wrong. Why? This has to do with the expected values of the cells in our crosstab. Let’s take another look at the crosstab that we generated earlier:</p>
 <pre><code>##                 Religion
-## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
-##   equal                1     1      0     16        8     0          7         12  45
-##   somewhat equal       8     0      1     20        2     3          5          7  46
-##   not equal            0     0      0      4        1     6          5         28  44
-##   Sum                  9     1      1     40       11     9         17         47 135</code></pre>
+## gini3            Eastern Hindu Jewish Muslim Orthodox Other Protestant
+##   equal                1     1      0     16        8     0          7
+##   somewhat equal       8     0      1     20        2     3          5
+##   not equal            0     0      0      4        1     6          5
+##   Sum                  9     1      1     40       11     9         17
+##                 Religion
+## gini3            Roman Cath Sum
+##   equal                  12  45
+##   somewhat equal          7  46
+##   not equal              28  44
+##   Sum                    47 135</code></pre>
 <p>Look at top left cell: countries where “Eastern” religions are dominant and that have economic equality. There is only one country in that category. If there were no relationship at all between a country’s religion, we would expect that cell to be the row total*the column total/the total number of cases in the table. So, (45*9)/135, which is 3. As a general rule, if some cells in a crosstab have an expected value of less than 5, value of the chi-squared test will be artificially high, and we will be more likely to make Type I error (rejecting a true null hypothesis). In this case, we can actually look at the expected values of all of our cells with this command:</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="chi-squared-etc.html#cb180-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>gini3<span class="sc">+</span>Religion, <span class="at">data=</span>world))<span class="sc">$</span>expected</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared approximation
-## may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~gini3 + Religion, data = world)): Chi-squared
+## approximation may be incorrect</code></pre>
 <pre><code>##                 Religion
-## gini3             Eastern     Hindu    Jewish   Muslim Orthodox    Other Protestant
-##   equal          3.000000 0.3333333 0.3333333 13.33333 3.666667 3.000000   5.666667
-##   somewhat equal 3.066667 0.3407407 0.3407407 13.62963 3.748148 3.066667   5.792593
-##   not equal      2.933333 0.3259259 0.3259259 13.03704 3.585185 2.933333   5.540741
+## gini3             Eastern     Hindu    Jewish   Muslim Orthodox    Other
+##   equal          3.000000 0.3333333 0.3333333 13.33333 3.666667 3.000000
+##   somewhat equal 3.066667 0.3407407 0.3407407 13.62963 3.748148 3.066667
+##   not equal      2.933333 0.3259259 0.3259259 13.03704 3.585185 2.933333
 ##                 Religion
-## gini3            Roman Cath
-##   equal            15.66667
-##   somewhat equal   16.01481
-##   not equal        15.31852</code></pre>
+## gini3            Protestant Roman Cath
+##   equal            5.666667   15.66667
+##   somewhat equal   5.792593   16.01481
+##   not equal        5.540741   15.31852</code></pre>
 <p>Looking over this output, we can see that we have many cells with expected values below 5, and thus our estimated chi-squared is less helpful.</p>
 </div>
 <div id="lambda-and-the-pres" class="section level2 hasAnchor" number="7.3">
@@ -508,37 +526,37 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 <p>Then, to see what that table looks like, you can run this line of code:</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="chi-squared-etc.html#cb191-1" tabindex="-1"></a>media.table</span></code></pre></div>
 <pre><code>##               freedomofpress
-## trustmedia     extremely important very important moderately important a little important
-##   none                         594            449                  579                231
-##   a little                     531            417                  485                210
-##   some                         989            554                  578                124
-##   a lot                        804            245                  115                 27
-##   a great deal                 326             59                   41                 19
+## trustmedia     extremely important very important moderately important
+##   none                         594            449                  579
+##   a little                     531            417                  485
+##   some                         989            554                  578
+##   a lot                        804            245                  115
+##   a great deal                 326             59                   41
 ##               freedomofpress
-## trustmedia     not important at all
-##   none                          527
-##   a little                      178
-##   some                           97
-##   a lot                          18
-##   a great deal                   18</code></pre>
+## trustmedia     a little important not important at all
+##   none                        231                  527
+##   a little                    210                  178
+##   some                        124                   97
+##   a lot                        27                   18
+##   a great deal                 19                   18</code></pre>
 <p>After that, to generate the table with column percents, you can go like this:</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="chi-squared-etc.html#cb193-1" tabindex="-1"></a><span class="fu">colPerc</span>(media.table)</span></code></pre></div>
 <pre><code>##               freedomofpress
-## trustmedia     extremely important very important moderately important a little important
-##   none                       18.31          26.04                32.20              37.81
-##   a little                   16.37          24.19                26.97              34.37
-##   some                       30.49          32.13                32.15              20.29
-##   a lot                      24.78          14.21                 6.40               4.42
-##   a great deal               10.05           3.42                 2.28               3.11
-##   Total                     100.00         100.00               100.00             100.00
+## trustmedia     extremely important very important moderately important
+##   none                       18.31          26.04                32.20
+##   a little                   16.37          24.19                26.97
+##   some                       30.49          32.13                32.15
+##   a lot                      24.78          14.21                 6.40
+##   a great deal               10.05           3.42                 2.28
+##   Total                     100.00         100.00               100.00
 ##               freedomofpress
-## trustmedia     not important at all
-##   none                        62.89
-##   a little                    21.24
-##   some                        11.58
-##   a lot                        2.15
-##   a great deal                 2.15
-##   Total                      100.00</code></pre>
+## trustmedia     a little important not important at all
+##   none                      37.81                62.89
+##   a little                  34.37                21.24
+##   some                      20.29                11.58
+##   a lot                      4.42                 2.15
+##   a great deal               3.11                 2.15
+##   Total                    100.00               100.00</code></pre>
 <p>Let’s look at the second table, with the percents. This is telling us that among those who think that freedom of the press is extremely important, 18.31% have no trust in the media. However, among those who do not think that freedom of the press is important at all, 62.89% have no trust in the media. That seems like a pretty strong piece of evidence for our theory!</p>
 <p>We have a number of choices for how to represent this relationship graphically. Since we reviewed a stacked area graph earlier in this chapter (which would be a cool way of looking at this relationship), for this section let’s generate a bar graph with error bars around the 95% confidence interval for one of the values of our dependent variable. We already did this in section <a href="inferences.html#t-test-ind-props">6.6</a>, but here is the code that will help us generate a graph for this data:</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="chi-squared-etc.html#cb195-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
@@ -564,7 +582,8 @@ colPerc(xtabs(~trustmedia+freedomofpress, data=anes2020))</code></pre>
 <pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p>Notice that the bars are going in the way our theory predicted – people that think that press freedom is less important also seem to trust the press less. The error bars on these columns do not seem to overlap with the exception of the upper bar on the “moderately important” column and the lower bar in the “a little important” column. In other words, most of these differences seem to be statistically significant, and the relationship is heading in the direction that we predicted.</p>
 <p>However, what are we to make of those overlapping error bars? And what about all of the data that is not on this graph (i.e. all four other values on media trust)? We can run the tests that we learned about earlier this chapter on our crosstab with the following commands.</p>
