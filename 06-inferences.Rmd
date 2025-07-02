@@ -31,55 +31,55 @@ $$CI = \bar{x} ± t_{critical}{\frac{s}{\sqrt{n}}}$$
 
 The critical value for t will vary with the sample size. "S" is the sample standard deviation, and "n" is the sample size. You might recall from class that $${\frac{s}{\sqrt{n}}}$$ is the standard error of the sample mean.
 
-Let’s imagine that we want to estimate the mean feeling thermometer value for Americans’ view of the Centers for Disease Control and Prevention (the CDC). First we can ask R to calculate the mean of our sample, using the mean() command that we learned in Chapter 3. If we were to enter ```mean(anes2020$ft_cdc)```, we would get NA" as our output, because there are some cases with missing data. To address this, we must ask R to remove the NAs for the purposes of this operation with "na.rm=TRUE", like this:
+Let’s imagine that we want to estimate the mean amount that Americans owe in student loans. First we can ask R to calculate the mean of our sample, using the mean() command that we learned in Chapter 3. If we were to enter ```mean(anes2024$studentLoans)```, we would get NA" as our output, because there are some cases with missing data. To address this, we must ask R to remove the NAs for the purposes of this operation with "na.rm=TRUE", like this:
 ```{r}
-mean(anes2020$ft_cdc, na.rm=TRUE)
+mean(anes2024$studentLoans, na.rm=TRUE)
 ```
-This tells us that the mean of our sample is 70.19634. Or, in other words, the average person in our sample gives the CDC a 70.2 on a feeling thermometer with possible values ranging from 0-100. Based on this, what can we say about the population mean? To answer this question, we can ask R to construct a confidence interval around this mean, with this command:
+This tells us that the mean of our sample is 11262.54.  Or, in other words, the average person in owes \$11,262.54 in student loans. Based on this, what can we say about the population mean? To answer this question, we can ask R to construct a confidence interval around this mean, with this command:
 ```{r}
-t.test(ft_cdc~1, data=anes2020)
+t.test(studentLoans~1, data=anes2024)
 ```
-Before we look at the output, let’s look at the command. We are asking R to construct a t-test of the mean of only one variable (which explains the ~1), and we are telling R to find that variable in the anes2020 dataframe. 
+Before we look at the output, let’s look at the command. We are asking R to construct a t-test of the mean of only one variable (which explains the ~1), and we are telling R to find that variable in the anes2024 dataframe. 
 
-Looking at the output, after the title, "One Sample t-test" the next three lines are not particularly useful. The fourth and fifh lines, however, are quite helpful. They tell us that the 95% confidence interval that we can put around our sample mean goes from 69.7 to 70.7. In other words, there is a 95% chance that the true population mean feeling thermometer when this survey was taken was somewhere between 69.7 and 70.7. If we wanted to be even more confident than 95%--say, for example, we wanted to be 99% confident that our interval contains the population mean—-we could include a line in our command setting the confidence interval like this:
+Looking at the output, after the title, "One Sample t-test" the next three lines are not particularly useful. The fourth and fifth lines, however, are quite helpful. They tell us that the 95% confidence interval that we can put around our sample mean goes from 9835.878 to 12689.193. In other words, there is a 95% chance that the true population mean student loan debt is between \$9,835.88 and  \$12,689.19. If we wanted to be even more confident than 95%--say, for example, we wanted to be 99% confident that our interval contains the population mean—-we could include a line in our command setting the confidence interval like this:
 ```{r}
-t.test(ft_cdc~1, data=anes2020, conf.level=.99)
+t.test(studentLoans~1, data=anes2024, conf.level=.99)
 ```
 When you run this command, notice that if we want to be more confident that our interval contains the true population mean, the margin between our lower and upper estimate gets larger. Similarly, if we set the confidence interval to 90% (using ```conf.level=.9```), or 80% (using ```conf.level=.8```), the interval gets smaller.
 
 ## Constructing a confidence interval around a proportion {#ci-around-proportion}
-For nominal and ordinal variables, it does not make sense to calculate a mean, but we still often want to make inferences about a population from a sample. In fact, these are one of the most commonly reported kinds of inferences that we who follow politics hear: 54.2% of people support this policy, 32.1% of people support that politician, etc. To ask R to calculate a confidence interval around a proportion, we first to answer two questions: how many cases got the value that we are interested in, and how many cases are there total? So, for example, let’s say that we want to use our anes2020 dataset to estimate the proportion of Americans that are married. We can first run the table command, like this:
+For nominal and ordinal variables, it does not make sense to calculate a mean, but we still often want to make inferences about a population from a sample. In fact, these are one of the most commonly reported kinds of inferences that we who follow politics hear: 54.2% of people support this policy, 32.1% of people support that politician, etc. To ask R to calculate a confidence interval around a proportion, we first to answer two questions: how many cases got the value that we are interested in, and how many cases are there total? So, for example, let’s say that we want to use our anes2024 dataset to estimate the proportion of Americans that are married. We can first run the table command, like this:
 ```{r}
-table(anes2020$marital)
+table(anes2024$marital)
 ```
-When we run this command, we see that there are 4,322 married people in our sample. Unfortunately, the table command itself does not tell us the total number of cases in our sample, but to get that, we can ask R to sum all the values that it shows in the table command like this:
+When we run this command, we see that there are 2,745 married people in our sample. Unfortunately, the table command itself does not tell us the total number of cases in our sample, but to get that, we can ask R to sum all the values that it shows in the table command like this:
 ```{r}
-sum(table(anes2020$marital))
+sum(table(anes2024$marital))
 ```
-When we run this command, we get the total number of cases for which R has data on the marital question: 8,224. This is the sum of all of the numbers that we saw above, when we ran the table() command. Since the table() command automatically excludes the NAs, this sum also excludes NAs.
+When we run this command, we get the total number of cases for which R has data on the marital question: 5,263. This is the sum of all of the numbers that we saw above, when we ran the table() command. Since the table() command automatically excludes the NAs, this sum also excludes NAs.
 
-So, now we know that there were 4,322 married people in our dataset out of the 8,224 people for whom we have data. We could do have R do some simple math and calculate a proportion by entering 4332/8224 into the Console. The output tells us that 0.526751—about 52.7%—of individuals in our sample are married. Based on this finding about our sample, what can we say about our population? To help us generalize, we can use those two numbers (4,332 married people out of 8,224 total people) along with the prop.test() command to help generate a confidence interval around that proportion. 
+So, now we know that there were 2,745 married people in our dataset out of the 5,263 people for whom we have data. We could do have R do some simple math and calculate a proportion by entering 2745/5263 into the Console. The output tells us that 0.5215656—about 52.2%—of individuals in our sample are married. Based on this finding about our sample, what can we say about our population? To help us generalize, we can use those two numbers (2,745 married people out of 5,263 total people) along with the prop.test() command to help generate a confidence interval around that proportion. 
 
 When using the prop.test() command, in the parenthesis we first put the number of cases with the value that we are interested in, then a comma, then the total number of cases. So, to estimate the proportion of Americans that are married, we would use prop.test() like this:
 ```{r}
-prop.test(4332,8224)
+prop.test(2745,5263)
 ```
 Just like the output from the t-test, the first few lines are testing a hypothesis that we are likely not interested in. In this case, the default is to test the hypothesis that the population proportion is actually .5. If you want to set that hypothesis to a different value, you can add p=the value you are interested in after a comma. So, for example, if you had a hypothesis that 70% of Americans are married, you could test that hypothesis with this command:
 ```
-prop.test(4332,8224, p=.7)
+prop.test(2745,5263, p=.7)
 ```
-But the most important part of this output begins with the fourth line. This shows that the 95% confidence interval around the estimate that the proportion of Americans that are married goes from .5158893 to .5375875. Or, put another way, based on our sample, we can infer that 95% of the time, a sample like ours would be drawn from a population where between 51.6% and 53.8% of the population was married. 
+But the most important part of this output begins with the fourth line. This shows that the 95% confidence interval around the estimate that the proportion of Americans that are married goes from 0.5079640 to 0.5351356. Or, put another way, based on our sample, we can infer that 95% of the time, a sample like ours would be drawn from a population where between 50.8% and 53.5% of the population was married. 
 
 If we want to change the values of our confidence interval, to be 99% confident (or 90% confident, or 80% confident), we can add a comma and then conf.level= and then the level that we are interested in, expressed as a proportion. So, for example, if we wanted to be 99% confident that our interval contains the true population proportion, we could alter the command like this:
 ```
-prop.test(4332,8224, conf.level=.99)
+prop.test(2745,5263, conf.level=.99)
 ```
 Note that the interval gets wider as the confidence level goes up.
 
 ## Constructing confidence intervals around several proportions at once {#ci-around-proportions}
-In the previous section, we learned how to construct a confidence interval around a single proportion at a time. However, what if we want to calculate confidence intervals around all values of a nominal or ordinal variable at the same time? To do that, you can use the following code. Just replace anes2020 with the dataframe that you are interested in analyzing, and replace the two instances of marital (in the second and third lines of the code) with the name of the variable that you are interested in. You can keep everything else the same:
+In the previous section, we learned how to construct a confidence interval around a single proportion at a time. However, what if we want to calculate confidence intervals around all values of a nominal or ordinal variable at the same time? To do that, you can use the following code. Just replace anes2024 with the dataframe that you are interested in analyzing, and replace the two instances of marital (in the second and third lines of the code) with the name of the variable that you are interested in. You can keep everything else the same:
 ```{r}
-anes2020 %>% 
+anes2024 %>% 
   filter(!is.na(marital)) %>%  
 group_by(marital) %>%     
   summarise(group.n=n()) %>%
@@ -89,11 +89,11 @@ group_by(marital) %>%
   mutate(lower_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[1]) %>% 
   mutate(upper_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[2])  
 ```
-Reading down this output, we can see that a proportion of .148 (or 14.8%) of our sample is divorced. The next two columns tell us that there is a 95% chance that the true population proportion of divorced people is between 14.1% and 15.6%. We can see the married values on the second line, with a familiar confidence interval, and each additional line clearly displays the confidence interval around the proportion that we are interested in. And as we continue to read down, we can see the remaining proportions with their associated confidence intervals.
+Reading down this output, we can see that a proportion of .146 (or 14.6%) of our sample is divorced. The next two columns tell us that there is a 95% chance that the true population proportion of divorced people is between 13.7% and 15.6%. We can see the married values on the second line, with a familiar confidence interval, and each additional line clearly displays the confidence interval around the proportion that we are interested in. And as we continue to read down, we can see the remaining proportions with their associated confidence intervals.
 
-To save this table of confidence intervals in a format that we can easily pull into a word processor, we can use the flextable technique that we learned in Section \@ref(export-crosstabs), which will create a file in our project folder called "maritalProps.docx":
+To save this table of confidence intervals in a format that we can easily pull into a word processor, we can use the flextable technique that we learned in Section \@ref(export-crosstabs), which will create a file in our project folder called "ci_table.docx":
 ```{r}
-marital.props<-anes2020 %>% 
+ci_table<-anes2024 %>% 
   filter(!is.na(marital)) %>%  
 group_by(marital) %>%     
   summarise(group.n=n()) %>%
@@ -102,68 +102,96 @@ group_by(marital) %>%
   rowwise() %>%
   mutate(lower_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[1]) %>% 
   mutate(upper_ci = prop.test(group.n, total.n, conf.level=0.95)$conf.int[2])
-flextable(marital.props) %>% save_as_docx(path="maritalProps.docx")
+flextable(ci_table) %>% save_as_docx(path="ci_table.docx")
 ```
 
 ## T-test of independent means {#t-test-ind-means}
-We often find ourselves in a situation where we want to compare the means of two different groups in our sample, and make inferences about the population. So, for example, we might want to compare men and women, Democrats and Republicans, voters and non-voters, etc. For the purposes of this example, we will be comparing democracies and non-democracies in our world dataframe. Before we can start with this comparison, though, we have to do a bit of housekeeping. The democracy variable that we have in the world dataframe is an interval variable, with values ranging from 14.3 (a value shared by countries including Equatorial Guinea, Eritrea, North Korea, and Saudi Arabia) to 100 (a value shared by Andorra, Australia, the Bahamas, Canada, and the United States).
+We often find ourselves in a situation where we want to compare the means of two different groups in our sample, and make inferences about the population. So, for example, we might want to compare men and women, Democrats and Republicans, voters and non-voters, etc. For the purposes of this example, we will be comparing democracies and non-democracies in our world dataframe. Before we can start with this comparison, though, we have to do a bit of housekeeping. The democracy variable that we have in the world dataframe is an interval variable based on the <a href="https://www.systemicpeace.org/polityproject.html">Polity Score</a>, with values ranging from -10, which is a complete autocracy, to 10, a complete democracy. This score is often simplified, so that -10 to -6 is an autocracy, -5 to 5 is an "anocracy" (a mixed authority regime, neither complete autocracy nor complete democracy), and 6 to 10 means democracy. To simplify the variable in this way, we can use the case_when command from section \@ref(case-when):
 
-To generate an ordinal variable to measure democracies, partial democracies, and non-democracies, we can use the cut2 command like this:
 ```{r}
-world$democ3<-cut2(world$fh_democ, g=3)
+world2025<-world2025 %>% 
+  mutate(polity2=case_when(polity %in% -10:-6 ~ "autocracy",
+          polity %in% -5:5  ~ "anocracy",
+          polity %in% 6:10 ~ "democracy"))
+world2025$polity2<-ordered(world2025$polity2, 
+        levels=c("autocracy","anocracy","democracy"))
 ```
-When we run this command, we get a new ordinal variable in the world dataframe that has three levels. To see what those levels are named, we can use the levels command, like this: 
-```{r}
-levels(world$democ3)
-```
-We can rename those levels to more intuitive names like this:
-```{r}
-levels(world$democ3)<-c("non-democracy","partial democracy","democracy")
-```
-The question that I want to address is whether democracies have more economic equality than non-democracies. The conventional measure of economic equality is the GINI coefficient, which ranges from 0 (total equality) to 100 (total inequality). Using the commands that we learned in chapter 4, we can first examine what the mean differences are between democracies, partial democracies, and non-democracies on their GINI coefficient, with this command:
-```{r}
-world %>% 
-  filter(!is.na(democ3)) %>% 
-  filter(!is.na(UNDP_Gini2014)) %>% 
-  group_by(democ3) %>% 
-  summarise(mean=mean(UNDP_Gini2014), sd=sd(UNDP_Gini2014), n=n())
-```
-This output suggests that the most equal societies are democracies, followed by non-democracies, with partial democracies being the least equal of all. Are these differences due to random sampling error, or do they reflect a population-level difference between democracies and non-democracies? In other words, are these differences statistically significant?
 
-Before conducting a significance test, it is important to specify our null and research hypotheses. In this case, our null hypothesis is that there is no relationship between regime type and level of equality, and our research hypothesis is that democracies have more equality than non-democracies. To test our hypotheses, we can use the same t.test() command from above, but we have to give it more information first. Here is the command that we can use:
-```{r}
-t.test(UNDP_Gini2014 ~ democ3, data=world %>% 
-         filter(democ3=="democracy"|democ3=="non-democracy"))
+The world2025 dataframe also has a variable that measures educational inequality, called edInequality, which can range (at least in theory) from 0 (perfect equality) to 100 (perfect inequality). In our data, however, we can use this script (from section \@ref(states-world)) to see the countries in the world with the fewest educational inequalities
 ```
-Notice how the first thing in the parentheses after t.test is the dependent variable (i.e. the variable that we are calculating the mean of), followed by a ~ and then our independent variable (democ3). One thing that is a little tricky is that R does not like to do a t-test when the independent variable has more than two values. To address this, I have used the dplyr filter command to tell R to only look at cases of democ2 coded "democracy" or "non-democracy" (i.e. I am filtering out the NAs and partial democracies). The "|" between the two conditions (it is the character above the "\" on your keyboard) means "or." 
+world2025 %>% 
+  dplyr::select(country,edInequality) %>% 
+  arrange(edInequality)
+```
+Can you run that same script with arrange(desc) to find the countries in the world with the *most* educational inequality?
 
-Now take a look at the output. There are a few things to note here. First of all, we could see that the reported p-value is .3852. That tells us that, if we accept the research hypothesis that democracies have more equality than non-democracies, there is a probability of .3852, or a 38.5% chance, that we are making Type I error (rejecting a true null hypothesis). Since the critical value for p is generally set to .05 (meaning we are not willing to take more than a 5% risk of Type I error), we would fail to reject the null hypothesis.
+Now, using the commands that we learned in chapter 4, we can first examine what the mean differences are between democracies, anocracies, and autocracies on their level of educational inequality, with this command:
 
-We can also see that we would fail to reject the null hypothesis by looking at the confidence interval that R reports. Since this is a t-test of two samples, the confidence interval is actually of the difference between the two means. In other words, that confidence interval is telling us that there is a 95% chance that the true population difference in GINI coefficient between democracies and non-democracies is between -2.14 and 5.45. Since that interval includes 0, we cannot rule out the possibility that there is no difference at all between our two means in the population.
-
-We can also graph these results. As usual, we will put our independent variable (regime type) on the X-axis, and our dependent variable, GINI score, on the Y axis. For today’s new feature, we will also add 95% confidence intervals to our graph. This gives us the ability to see whether the differences between all of the bars on our graph are statistically significant. And, while an independent samples t-test can only be between the means of two groups at a time, this graph will let you look at more than two groups at a time. Below is the code:
 ```{r}
-plotting.data<-world %>% 
-  filter(!is.na(democ3)) %>%
-  filter(!is.na(UNDP_Gini2014)) %>%
-  group_by(democ3) %>% 
+world2025 %>% 
+  filter(!is.na(polity2)) %>% 
+  filter(!is.na(edInequality)) %>% 
+  group_by(polity2) %>% 
+  summarise(mean=mean(edInequality), sd=sd(edInequality), n=n())
+```
+
+This output suggests that anocracies have the most educational inequality, followed by autocracies, and then democracies have the least educational inequality (although democracies and autocracies are close). Are these differences due to random sampling error, or do they reflect a population-level difference between democracies, anocracies, and autocracies? In other words, are these differences statistically significant?
+
+Before conducting a significance test, it is important to specify our null and research hypotheses. In this case, our null hypothesis is that there is no relationship between regime type and level of educational inequality, and our research hypothesis is that democracies have less educational inequality than autocracies. To test our hypotheses, we can use the same t.test() command from above, but we have to give it more information first. Here is the command that we can use:
+```{r}
+t.test(edInequality ~ polity2, data=world2025 %>% 
+         filter(polity2=="democracy"|polity2=="autocracy"))
+```
+Notice how the first thing in the parentheses after t.test is the dependent variable (i.e. the variable that we are calculating the mean of), followed by a ~ and then our independent variable (polity2). One thing that is a little tricky is that R does not like to do a t-test when the independent variable has more than two values. To address this, I have used the dplyr filter command to tell R to only look at cases of polity2 coded "democracy" or "autocracy" (i.e. I am filtering out the NAs and partial democracies). The "|" between the two conditions (it is the character above the "\" on your keyboard) means "or." 
+
+Now take a look at the output. There are a few things to note here. First of all, we could see that the reported p-value is 0.7568. That tells us that, if we accept the research hypothesis that democracies have more equality than non-democracies, there is a probability of .7568, or a 75.68% chance, that we are making Type I error (rejecting a true null hypothesis). Since the critical value for p is generally set to .05 (meaning we are not willing to take more than a 5% risk of Type I error), we would fail to reject the null hypothesis.
+
+We can also see that we would fail to reject the null hypothesis by looking at the confidence interval that R reports. Since this is a t-test of two samples, the confidence interval is actually of the difference between the two means. In other words, that confidence interval is telling us that there is a 95% chance that the true population difference in educational inequality between democracies and autocracies is between -6.995 and 9.4255. Since that interval includes 0, we cannot rule out the possibility that there is no difference at all between our two means in the population.
+
+We can also graph these results. As usual, we will put our independent variable (regime type) on the X-axis, and our dependent variable, educational inequality, on the Y axis. For today’s new feature, we will also add 95% confidence intervals to our graph. This gives us the ability to see whether the differences between all of the bars on our graph are statistically significant. And, while an independent samples t-test can only be between the means of two groups at a time, this graph will let you look at more than two groups at a time. Below is the code:
+```{r}
+plotting.data<-world2025 %>% 
+  filter(!is.na(polity2)) %>%
+  filter(!is.na(edInequality)) %>%
+  group_by(polity2) %>% 
   summarise( 
     n=n(),
-    mean=mean(UNDP_Gini2014),
-    sd=sd(UNDP_Gini2014)) %>%
+    mean=mean(edInequality),
+    sd=sd(edInequality)) %>%
   mutate(se=sd/sqrt(n))  %>%
   mutate(ci=se * qt((1-0.05)/2 + .5, n-1))
 
 ggplot(plotting.data) +
-  geom_bar(aes(x=democ3, y=mean), stat="identity", fill="purple", alpha=0.5) +
-  geom_errorbar( aes(x=democ3, ymin=mean-ci, ymax=mean+ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
-  ggtitle("Equality in democracies and non-democracies", 
+  geom_bar(aes(x=polity2, y=mean), stat="identity", fill="purple", alpha=0.5) +
+  geom_errorbar( aes(x=polity2, ymin=mean-ci, ymax=mean+ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
+  ggtitle("Educational inequality by regime type", 
           subtitle="Error bars represent 95% confidence intervals")+
   xlab(NULL)+
-ylab("Gini coefficient in 2014 (lower numbers mean more equality)")
+ylab("Educational inequality, 2010 (higher\nnumbers mean more inequality)")
 ```
 
-Here we can see the overlapping 95% confidence intervals on each bar, reminding us that the difference that we observe is not statistically significant.
+Here we can see that, although the differences between some of bars are quite large, some of the error barsoverlap, which means that we can't rule out the possibility that differences between means are due to random sampling error. Whenever the error bars between two totals overlap, the differences are not statistically significant. So for example, the difference between anocracy and democracy is statistically significant, but the difference between anocracy and autocracy and the difference between autocracy and democracy are not statistically significant.
+
+## Caution about "statistical significance"
+The idea of "statistical significance" is often misinterpreted. Saying that a relationship between variables has statistical significance **only** means that we would be unlikely to observe a relationship between variables such as the one we are observing in a sample drawn from a population where there is no relationship between those variables. In other words "statistically significant" means "likely not due to random sampling error."
+
+Saying that a relationship is between two variables is "statistically significant" does **not** mean:
+
+1. That the relationship between those variables is strong. 
+2. That the relationship between those variables is substantively significant (that it matters in the real world) 
+3. That the relationship is causal (that change in one of the variables definitely causes change in the other) 
+
+Conversely, with the statistical tests that we introduce in this workbook, if you observe a relationship that is not statistically significant, you *cannot* conclude (based on that alone) that there is no relationship between your two variables. Let's take another look at the mean comparison table of the relationship between regime type and educational inequality:
+
+```{r,echo=FALSE}
+world2025 %>% 
+  filter(!is.na(polity2)) %>% 
+  filter(!is.na(edInequality)) %>% 
+  group_by(polity2) %>% 
+  summarise(mean=mean(edInequality), sd=sd(edInequality), n=n())
+```
+
+If you look at the leftmost column, titled "n," you will notice that there are only 11 autocracies and 34 anocracies in our world2025 dataframe. Those relatively small number of cases could be the reason that the difference in educational inequality between autocracies and anocracies are not statistically significant. Based on what we observe in this data, we simply don't have enough information to determine whether or not there a meaningful difference between the educational inequality of anocracies and autocracies.
 
 ## T-test of independent proportions {#t-test-ind-props}
 There are times when we want to compare two or more proportions to examine whether or not the differences are due to random sampling error or some genuine correlation at the population level. Unfortunately, R does not make it easy to run a t-test comparing two proportions. However, we can use dplyr in a way similar to what we did in section \@ref(ci-around-proportion) to generate some helpful output. Before we begin, we have to know three things:
@@ -172,19 +200,19 @@ There are times when we want to compare two or more proportions to examine wheth
 2. What is the nominal or ordinal dependent variable that we are interested in examining? 
 3. For our dependent variable, what is the **value** that we want to focus on?
 
-For the following example, I am interested in the relationship between whether or not a voter thought that the 2020 government response to COVID was appropriate or not and whether or not the person voted for Trump in the 2020 election. To generate a table that displays that information, I will use the following code. Please note that this is very similar to the code that we used in section \ref(ci-around-proportions).  When using this code to generate your own table, you can replace anes2020 with the dataframe that you want to look at, "v2020" with your dependent variable, "covid" with your independent variable, and v2020=="Donald Trump" with:
-```
-DV=="the value that you are interested in"
-```
+For the following example, I am interested in the relationship between the belief that America is better than most countries in the world (natPride) and support for military aid to Ukraine (armUkraine). My hypothesis is that those that believe that America is a great country will also believe that America should want to spread that greatness by supporting other democracies that are fighting against foreign invasions.
+
+To generate a table that displays that information, I will use the following code. Please note that this is very similar to the code that we used in section \@ref(ci-around-proportions).  When using this code to generate your own table, you can replace anes2024 with the dataframe that you want to look at, "armUkraine" with your dependent variable, "natPride" with your independent variable, and ```armUkraine=="favor strongly"``` with ```DV=="the value that you are interested in"```.
+
 Here is the code:
 ```{r}
-anes2020 %>% 
-  filter(!is.na(v2020)) %>% 
-  filter(!is.na(covid)) %>% 
-  group_by(covid) %>% 
+anes2024 %>% 
+  filter(!is.na(natPride)) %>% 
+  filter(!is.na(armUkraine)) %>% 
+  group_by(natPride) %>% 
   summarise(
     n=n(),
-    numerat=sum(v2020=="Donald Trump")) %>% 
+    numerat=sum(armUkraine=="favor strongly")) %>% 
   mutate(proportion=numerat/n) %>% 
   rowwise() %>%
   mutate(lower_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[1]) %>% 
@@ -192,15 +220,17 @@ anes2020 %>%
   mutate(upper_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[2])
 ```
 
-This output has a bunch of great information. The first row, "much too quick", for example, tells us that a total of 93 people in the ANES study in 2020 thought that the government’s COVID response moved much too quickly. And of those 93, the second number tells us that 63 of them voted for President Trump. The third number tells us that 67.7% of people that thought that the government’s response was much too quick voted for President Trump. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of Trump voters who thought that the COVID response was much too quick is between .571 (or 57.1%) and .769 (or 76.9%). As we read down the rows, we see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the proportion of Trump votes that thought that the government’s COVID response was somewhat too quick and the proportion that thought that it was about right overlap. The upper limit of the somewhat too quick interval is .95, which is higher than the lower limit of the about right interval (.897). This is easier to see on a graph. We can generate a graph with code similar to what we used in section \ref(t-test-ind-means):
+This output has a bunch of great information. The first row, "a lot better", for example, tells us that a total of 1277 people in the ANES study in 2024 thought that the the US is "a lot better" than most countries. And of those 1277, the second number tells us that 387 of them strongly favor military aide to Ukraine. The third number tells us that 30.3% of people that think America is a lot better than other countries strongly support military aid to Ukraine. The lower_ci and upper_ci columns tell us that there is a 95% chance that the true population proportion of those that think that American is much better than other countries strongly favor military aid to Ukraine is between .278 (27.8%) and .329 (32.9%). 
+
+As we read down the rows, we see that some of the confidence intervals overlap with one another. When these confidence intervals overlap, we can say that the differences are not statistically significant (or that we cannot rule out the chance that the differences that we observed are due to random sampling error). So, for example, the confidence interval between the "a lot better" and "somewhat better" proportions that strongly favor military aid to Ukraine. This is easier to see on a graph. We can generate a graph with code similar to what we used in section \@ref(t-test-ind-means):
 ```{r}
-plotting.data<-anes2020 %>% 
-  filter(!is.na(v2020)) %>% 
-  filter(!is.na(covid)) %>% 
-  group_by(covid) %>% 
+plotting.data<-anes2024 %>% 
+  filter(!is.na(natPride)) %>% 
+  filter(!is.na(armUkraine)) %>% 
+  group_by(natPride) %>% 
   summarise(
     n=n(),
-    numerat=sum(v2020=="Donald Trump")) %>% 
+    numerat=sum(armUkraine=="favor strongly")) %>% 
   mutate(proportion=numerat/n) %>% 
   rowwise() %>%
   mutate(lower_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[1]) %>% 
@@ -208,34 +238,17 @@ plotting.data<-anes2020 %>%
   mutate(upper_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[2]) 
   
 ggplot(plotting.data) +
-  geom_bar(aes(x=covid, y=proportion), stat="identity", fill="purple", alpha=0.5)  +
-  geom_errorbar(aes(x=covid, ymin=lower_ci, ymax=upper_ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
-  ggtitle("Assessment of Gov't covid response and proportion voting for Trump, ANES 2020",
+  geom_bar(aes(x=natPride, y=proportion), stat="identity", fill="purple", alpha=0.5)  +
+  geom_errorbar(aes(x=natPride, ymin=lower_ci, ymax=upper_ci), width=0.4, colour="black", alpha=0.9, linewidth=1.5) +
+  ggtitle("Views on America's greatness and aid to Ukraine, 2024",
           subtitle="Error bars represent 95% confidence intervals")+
-  xlab(NULL)+
-  ylab("Proportion voting for Trump")
+  xlab("Is America better or worse than most countries?")+
+  ylab("Proportion that strongly favor military aid to Ukraine")
 ```
 
-This graph shows us that most of the differences between these bars are statistically significant. In other words, people’s assessment of the government’s response to COVID in 2020 does seem to be pretty strongly correlated with whether or not they voted for President Trump.
+This graph shows us that, while some of those differences are not statistically significant, there is clearly a statistically significant differences between views on arming Ukraine from those that think America is a lot better than most other countries compared with those who think that America is a lot worse. 
 
-Now when looking at this graph, we might be tempted to observe that it seems like the vast majority of our sample voted for President Trump. After all, more than 50% of respondents in every category from "much too quick" to "somewhat too slow" voted for President Trump. In only the final category, "much too slow," were Trump voters a minority. What is going on here?
-
-To get a clue, we can look at those bars around the 95% confidence intervals. Notice that the narrowest interval is around "much too slow." This is because that was, by far, the biggest group of people that we surveyed, which means that our estimate can be more precise (and thus the bars can be closer together). To see that even more clearly, let’s take another look at that table that we generated above:
-```{r, echo=FALSE}
-anes2020 %>% 
-  filter(!is.na(v2020)) %>% 
-  filter(!is.na(covid)) %>% 
-  group_by(covid) %>% 
-  summarise(
-    n=n(),
-    numerat=sum(v2020=="Donald Trump")) %>% 
-  mutate(proportion=numerat/n) %>% 
-  rowwise() %>%
-  mutate(lower_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[1]) %>% 
-  rowwise() %>% 
-mutate(upper_ci = prop.test(numerat, n, conf.level=0.95)$conf.int[2])
-```
-The last row tells us that there were 3,169 people who thought that the government’s response to COVID was much too slow. This is much, much larger than any of the other groups. So, when interpreting these kinds of graphs, we want to be careful not to make interferences that aren’t warranted by the graph. The graph does indeed show us that people that approved of the government’s handling of COVID in 2020 were more likely to vote for President Trump, but it does NOT show us that there were more Trump voters in 2020. If you want to know the proportion of our sample that voted for Trump with a 95% confidence interval, you can use ```table(anes2020$v2020)```, ```sum(table(anes2020$v2020))```, and ```prop.test()``` to calculate it.
+You might also notice that the confidence interval on the "a lot worse bar" is bigger than the confidence interval on the "a lot better" bar. That is because, if you look at the table that we generated at the beginning of this section, there are 1,277 people in our sample that think that America is a lot better than other countries, but only 406 people that think that America is a lot worse. Because we are basing our estimated proportion on a smaller sample when generating the confidence interval around the "a lot worse" bar, the confidence interval is larger (in other words, smaller samples make us less confident of our estimates, and larger samples make us more confident of our estimates).
 
 ## Review of this chapter's commands
 ```{r, echo=FALSE}
@@ -253,19 +266,3 @@ rownames(df)<-NULL
 knitr::kable(df, row.names=NA)
 rm(r1,r2,r3,r4,r5,r6,r7,df)
 ```
-
-## Review exercises
-
-Let’s practice some of the things that we learned in this chapter. 
-
-1. Create a new R script called "Chapter 6 Exercises," and save it to your R scripts folder. Make a header for the script based on the description from section \@ref(org-script). Use the library() command to load the tidyverse, Hmisc, and scales libraries.
-2. Choose an interval variable from either anes2020, states2010, or world (don’t choose one of the variables that we used as an example in this chapter). Use t.test() to estimate the mean of this variable and a 95% confidence interval. Use t.test() again to generate a 99% confidence interval. 
-3. Create a new file in your word processor. In a few sentences, interpret the means and confidence intervals from question 2. 
-4. Choose a nominal or ordinal variable from either anes2020, states2010, or world (don’t choose one of the variables that we used as an example in this chapter). Choose one particular value of that variable, and using table(), sum(table(), and prop.test(), calculate the proportion of cases with that value and a 95% confidence interval around that value. 
-5.	In the word processor file that you interpreted from \#3, interpret the proportion and confidence interval from \#4.
-6.	Look at the variables that you chose in \#2 and \#4, and decide which one you’d rather analyze as a dependent variable. Now choose a nominal or ordinal variable as your independent variable. Using techniques from chapter \@ref(graphing), generate some statistics and a graph to discuss the central tendency and dispersion of your variable. Paste your graph into your word document.
-7. In a few sentences, hypothesize about the relationship between your independent and dependent variables. What do you expect to see and why?
-8. If your dependent variable is interval, use the t.test() command to test your hypotheses (remember that you might have to use filter so that you are only looking at two values for your independent variable). If your dependent variable is ordinal or nominal, use the code from section \@ref(t-test-ind-props) of this chapter to generate confidence intervals around proportions of a value of interest of your DV for all possible values of your IV.
-9.	Graph the relationship between your IV and DV using techniques from either section \@ref(t-test-ind-means) or \@ref(t-test-ind-props).
-10.	Paste your graph into your word processor file as well as a table that shows the statistical significance of the relationships that you are interested in. 
-11.	Based on your output from \#8 and \#10, what do you conclude about your hypothesis from \#7 and why?

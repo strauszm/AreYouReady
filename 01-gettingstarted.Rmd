@@ -16,7 +16,7 @@ In this course, I have **no expectation** that you have any background in coding
 ## Create a project for this class {#class-project}
 Follow the following instructions to get your computer set up for this class.
 
-1. First, you will have to download and install two pieces of software on your computer. NOTE: You can install these programs on a Mac or a PC, but not on an iPad or a tablet that is not running Windows or the Mac OS. 
+1. First, you will have to download and install two pieces of software on your computer. NOTE: You can install these programs on a Mac or a PC, but *not on an iPad or a tablet that is not running Windows or the Mac OS*. 
   - You can find the first piece of software, R, [here](https://mirrors.nics.utk.edu/cran/){target="_blank"}. If you aren't in the US, you can choose the mirror that is closest to you [here](https://cran.r-project.org/mirrors.html){target="_blank"}.  
   - You can find the second piece of software, RStudio, here: https://www.rstudio.com/products/rstudio/. Be sure to download RStudio Desktop open source edition.
 2. Create a folder somewhere on your computer that you can easily find. If no place comes to mind use the Desktop. Title the folder "Scope and Methods Labs" (or another title that you would prefer). 
@@ -104,7 +104,7 @@ Then type this into the Console and you will see the second object, the vector, 
 ```
 rm(my.second.object)
 ```
-## Writing your first R script
+## Writing your first R script {#first-script}
 You will often want to write a series of commands in R that you will be able to refer back to and modify. In that case, instead of writing them in the Console, you can write them in a script file. 
 
 Let’s write our first R script! Go to the File menu at the top of your screen, select "New File" and then select R Script. Before starting to write it, save it in the R scripts section of the folders that you made (click "File" then "Save As" and then give it a name, like "my first script").
@@ -118,7 +118,7 @@ Try entering something like this at the top of your page:
 Now we are going to enter a command. We are going to use the load() command to load one of the datasets that we will be using in this class. Now type:
 
 ```
-load("Data/anes2020.Rda") #This is how I am loading some data that I will use later.
+load("Data/anes2024.Rda") #This is how I am loading some data that I will use later.
 ```
 
 **Be sure to include the ```""``` around the name and location of the dataset.** The comment (following the ```#```) is not necessary, but it is there for your reference. So, at this point you should have two lines of script. To run this script, you must first select it, by highlighting it with your cursor.  Then, you can either click the little run button circled below or you can hit Cntl-Enter in a PC or Command-Enter on a Mac.
@@ -127,7 +127,7 @@ load("Data/anes2020.Rda") #This is how I am loading some data that I will use la
 knitr::include_graphics("images/gettingstarted_9_run.png")
 ```
 
-Once you run this script, you should see a new object in your environment: anes2020 (if that didn't work for you, see section \@ref(wont-load). This is a dataframe – a collection of vectors that are combined to give us a lot of interesting information. In this case, this dataframe tells us about a survey of residents of the United States from 2020. We will look more at this in future weeks. Save your R script, and be sure that you save changes to this project.
+Once you run this script, you should see a new object in your environment: anes2024 (if that didn't work for you, see section \@ref(wont-load)). This is a dataframe – a collection of vectors that are combined to give us a lot of interesting information. In this case, this dataframe tells us about a survey of residents of the United States from 2024. We will look more at this in future weeks. Save your R script, and be sure that you save changes to this project.
 
 ## What do to if the "load" command doesn't load the dataframe {#wont-load}
 1. Click on the folder called "Data" in the bottom right of your screen.
@@ -136,20 +136,20 @@ Once you run this script, you should see a new object in your environment: anes2
 knitr::include_graphics("images/gettingstarted_10_datafile.png")
 ```
 
-2. That should open up a folder with the three dataframes that you downloaded earlier. Click on anes2020. You will get a warning message like this: 
+2. That should open up a folder with the three dataframes that you downloaded earlier. Click on anes2024. You will get a warning message similar to this^[Your warning message should refer to anes2024, not anes 2020]: 
 
 ```{r warning, echo = FALSE, out.width='90%'}
 knitr::include_graphics("images/gettingstarted_11_warning.png")
 ```
 
-Click "Yes," and anes2020 should appear in your environment.
+Click "Yes," and anes2024 should appear in your environment.
 
 ## Review of this chapter's commands 
 ```{r, echo=FALSE}
 r1<-c("<-","To create an object. For example: \"this.object<-1\" assigns the number 1 to an object called \"this.object.\"")
 r2<-c("c()","Concatenate. To combine more than one data point into a vector.")
 r3<-c("rm()","Remove an object from your environment.")
-r4<-c("#","Tells R to stop reading that line, so a useful prefix to comment and reminders.")
+r4<-c("#","Tells R to stop reading that line, so a useful prefix to for comments and reminders.")
 r5<-c("load()","Load an R-formatted dataframe.")
 df<-rbind(r1,r2,r3,r4,r5)
 colnames(df)<-c("Command","Purpose")
@@ -159,13 +159,3 @@ knitr::kable(df, row.names=NA)
 rm(r1,r2,r3,r4,r5,df)
 ```
 
-## Review exercises
-
-Let’s practice some of the things that we learned in this chapter. You can number each of your answers with comments (beginning with the # sign).
-
-1. Create a new R script called "Chapter \@ref(getting-started) Exercises," and save it to the R scripts folder that you created earlier. Make the first line in the script a comment (using #) that includes your name and the phrase "Chapter 1 Exercises."
-2. In 2023, TCU had 10,915 undergraduate students and 1,870 graduate students. Generate a scalar called "tcu.students" that is the total population of TCU students. **NOTE: leave the commas out of the numbers when entering them into R.**
-3. In 2023 SMU had 7,115 undergraduate students and 4,727 graduate students. Generate a scalar called "smu.students" that is the total population of SMU students.
-4. Use the c() command to generate a vector called dfw.area.students. This vector should have two values: the total number of students at TCU, and the total number of students at SMU.
-5. Remove all three of these objects you created using three different rm() commands.
-6. Use the load() command to load both states2010 (which you can find at "Data/states2010.Rda") and world (which you can find at "Data/world.Rda"). If you didn’t already load anes2020 when following along with this chapter, use the load() command to load that too). If the load command isn't working, follow the instructions at the end of section 1.5 to load all three dataframes. You will need these for future labs.

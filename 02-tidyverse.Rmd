@@ -18,25 +18,32 @@ To begin exploring dataframes, open the project that you made in the last lab. T
 knitr::include_graphics("images/tidyverse_1_openproject.png")
 ```
 
-When the project opens up, you should see three objects in the Environment: anes2020, states2010, and world. If you don't see those files, follow the instructions in section \@ref(wont-load), to load them. 
+If you followed the instructions in section \@ref(first-script), you should see an object called anes2024 in your environment. To load the other two dataframes that you will need to use this workbook, copy and paste these two commands into your Console, one by one:
+```
+load("Data/states2025.Rda") 
+```
+```
+load("Data/world2025.Rda") 
+```
+If those commands don't work, you should load anes2024 (if you haven't already), states2025, and world2025 using the instructions from section \@ref(wont-load). 
 
-Those files are the dataframes that we will be doing most of our analysis of in this class. As I mentioned in the last chapter, a dataframe is essentially a group of vectors attached to one another, and is an extremely useful way of storing data for analysis. Here is a quick summary of those three dataframes:
+Those files are the dataframes that we will be doing most of our analysis on in this class. As I mentioned in the last chapter, a dataframe is essentially a group of vectors attached to one another, and is an extremely useful way of storing data for analysis. Here is a quick summary of those three dataframes:
 
-- anes2020 is a snippet of the American National Election Survey, a survey that has been conducted at every election since 1948 by scholars based out of the University of Michigan and Stanford. This snippet that I created only looks at the 2020 election. You can find more information about ANES at their website, [https://electionstudies.org/](https://electionstudies.org/)
--	states2010 is a dataframe with information about US states. It is a snippet of a large dataset produced by scholars at Michigan State University. You can find more information here: [http://ippsr.msu.edu/public-policy/correlates-state-policy](http://ippsr.msu.edu/public-policy/correlates-state-policy)
--	world is a snippet of a dataset about most of the countries of the world gathered from different sources by the great Harvard political scientist Pippa Norris. You can find the whole dataset here: [https://www.pippanorris.com/data](https://www.pippanorris.com/data)
+- anes2024 is a snippet of the American National Election Survey, a survey that has been conducted at every election since 1948 by scholars based out of the University of Michigan and Stanford. This dataframe that I created only looks at the 2024 election. You can find more information about ANES at their website, [https://electionstudies.org/](https://electionstudies.org/)
+-	states2025 is a dataframe with information about US States. It is based on data that I collected from a variety of sources. You can find information about the source of each variable in the file "States 2025 codebook.pdf", which is in the codebooks folder that you downloaded with the other class materials in section \@ref(add-files). If you'd like to suggest additional variables to go in this dataset, please <a href="https://www.michaelstrausz.com/contact">contact me.</a>
+-	world2025 is a dataframe with information about most of the countries in the world. It is based on data that I collected from a variety of sources. You can find information about the source of each variable in the file "World 2025 codebook.pdf", which is in the codebooks folder that you downloaded with the other class materials in section \@ref(add-files). If you'd like to suggest additional variables to include, please <a href="https://www.michaelstrausz.com/contact">contact me.</a>
 
-To begin, let’s take a look at the anes2020 dataset using the "View()" command (note that "View" is capitalized, unlike many R commands). Enter this command into the Console and then hit Enter:
+To begin, let’s take a look at the anes2024 dataset using the "View()" command (note that "View" is capitalized, unlike many R commands). Enter this command into the Console and then hit Enter:
 
 ```
-View(anes2020)
+View(anes2024)
 ```
 When you hit enter, the following should come up on your screen:
 ```{r view, echo = FALSE, out.width='90%'}
 knitr::include_graphics("images/tidyverse_2_view.png")
 ```
 
-This is a neat visualization of the ANES survey. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 46 years old, divorced, with a bachelor’s degree, who never served in the military, etc. If you want to see what all of the variables mean, you can look at the file anes2020 codebook, which you should have downloaded in section \@ref(add-files) as part of the "codebooks" folder.
+This is a neat visualization of the ANES data. Each row represents one case. Since ANES is a survey, each case is a single individual who took the survey. Each column represents a variable: something that the survey designers wanted to measure about the people taking the survey. Look at row #1. That describes a person who is 50-years-old, married, formerly active duty in the military, not a union member, Hispanic, etc. If you want to see what all of the variables mean, you can look at the file ANES 2024 codebook, which you should have downloaded in section \@ref(add-files) as part of the "codebooks" folder.
 
 Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the "\$" and the command "summary." The "\$" command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:
 
@@ -44,28 +51,32 @@ Now let’s say that we want to know a bit more about the age variable. How old 
 load("Data/anes2020.Rda")
 load("Data/states2010.Rda")
 load("Data/world.Rda")
+load("Data/anes2024.Rda")
+load("Data/states2025.Rda")
+load("Data/world2025.Rda")
+
 library(tidyverse)
 options(dplyr.summarise.inform = FALSE)
 ```
 
 ```
-anes2020$age
+anes2024$age
 ```
-When you do this, you will see that R gives you the age of every single person who took the survey. Kind of interesting, but not all that useful. So, let’s try something else. Type summary(anes2020$age) into the Console, and you get these results:
+When you do this, you will see that R gives you the age of every single person who took the survey. Kind of interesting, but not all that useful. So, let’s try something else. Type summary(anes2024$age) into the Console, and you get these results:
 ```{r}
-summary(anes2020$age)
+summary(anes2024$age)
 ```
-This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.^[If you look in the codebook, you will see that the survey codes everyone 80 and over as 80.] You will also see that the median age is 52 and the mean is 51.59. And, you will see that there are 348 NAs. "NA" is what R reports when it does not have data in a particular variable. So, there are 348 cases for whom we don’t have data on their ages.
+This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.^[If you look in the codebook, you will see that the survey codes everyone 80 and over as 80.] You will also see that the median age is 54 and the mean is 53.15. And, you will see that there are 279 NAs. "NA" is what R reports when it does not have data in a particular variable. So, there are 279 cases for whom we don’t have data on their ages.
 
 The "summary" command is very useful with numeric data, like age. However, what if you have a variable like "marital," which measures the marital status of individuals? The mean and median of this variable would not be meaningful, but we might want to know how many married, single, divorced, etc. people there are in our dataframe. To get this information, we can use the "table" command, like this:
 ```
-table(anes2020$marital)
+table(anes2024$marital)
 ```
-That command generates this output
+That command generates this output:
 ```{r, echo=FALSE}
-table(anes2020$marital)
+table(anes2024$marital)
 ```
-In other words, our dataframe has 1221 divorced people, 4322 married people, 1951 never married people, etc. Useful stuff!
+In other words, our dataframe has 771 divorced people, 2745 married people, 1242 never married people, etc. Useful stuff!
 
 ## Organizing your scripts {#org-script}
 As you use R you will generate a lot of script files, and if you are not careful you might find yourself forgetting what some of your scripts are for. This is where the # characters can be really helpful. You can leave notes to yourself.  
@@ -96,51 +107,56 @@ library(tidyverse)
 ```
 Now select all the text on this page, run it, and then save it. You should see something like this in your Console:
 ```
-Warning: package 'tidyverse' was built under R version 4.1.2
-v ggplot2 3.3.5     v purrr   0.3.4
-v tibble  3.1.3     v dplyr   1.0.7
-v tidyr   1.1.3     v stringr 1.4.0
-v readr   2.0.0     v forcats 0.5.1
+── Attaching core tidyverse packages ────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ──────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package to force all conflicts to become errors
 ```
-Don’t worry about the warning messages. The list of packages are the libraries of commands that come with the tidyverse library. The two that we will be using the most are **ggplot2**, which is terrific for graphing, and **dplyr**, which is great for managing data. Since you have installed the tidyverse, you will not have to install those packages separately – you already have them.
+Don’t worry about the warning messages. The list of packages are the libraries of commands that come with the tidyverse library. The two that we will be using the most are **ggplot2**, which is terrific for graphing, and **dplyr**, which is great for managing data. Since you have installed the tidyverse, you will not have to install those packages separately – you already have them installed.
 
 ### Introducing the 'pipe' in tidyverse
 Now that we have access to the tidyverse, we will use a few of the commands that are available to us through the dplyr package to get a better look at some of our data. Before we can do that, however, we need to learn about the somewhat strange feature of dplyr, the "pipe." The pipe is this set of characters:
 ```
 %>%
 ```
-You can always type those three characters to build a pipe, but you can also type Ctrl-Shift-M on a Windows machine or Cmd + Shift + M on a Mac.
+You can always type those three characters to build a pipe, but you can also type Ctrl-Shift-M on a Windows machine or Cmd + Shift + M on a Mac. I am going to repeat this, in bold, because it is an *extremely* useful keyboard shortcut. **You can always type those three characters to build a pipe, but you can also type Ctrl-Shift-M on a Windows machine or Cmd + Shift + M on a Mac.**
 
 The pipe means "and then." Let’s try an example, using the glimpse() command that is available in the tidyverse.
 
 Try entering this command into your script file:
 ```
-anes2020 %>% 
+anes2024 %>% 
   glimpse() #taking a different kind of look at our dataframe
 ```
 Highlight that text and run that command. You should see a lot of output in the Console. If you scroll up a bit in the Console, you should see something like this (this is just the first 12 variables in this dataframe; you will have access to more on your screen):
 ```{r, echo=FALSE}
-anes2020 %>% 
-  dplyr::select(age:partyid) %>% 
+anes2024 %>% 
+  dplyr::select(age:gayLesbian) %>% 
   glimpse()
 ```
-This is giving us information about the dataframe anes2020. At the top, you can see that the dataframe has 8,280 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2020 dataframe represents a survey of 8,280 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 68 columns, which means that the dataframe measures 68 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (<int>, <chr>, <ord>, etc.). We will learn a bit more about those classifications in future chapters To the right of those classifications you can see the first set of values of each variable.
+This is giving us information about the dataframe anes2024. At the top, you can see that the dataframe has 5,521 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2024 dataframe represents a survey of 5,521 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 83 columns, which means that the dataframe measures 83 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (\<int>, \<chr>, \<ord>, etc.). We will learn a bit more about those classifications in future chapters. To the right of those classifications you can see the first set of values of each variable.
 
 ### select() in tidyverse
 Many dataframes are quite large, and you might find yourselves wanting to focus on a few variables at a time. The command select() can be helpful for this. Let’s say that you want to focus in on how many guns people have in their homes and their feelings about the NRA. In that case, you would want to select the variables "ft_nra" and "guns", which you can do like this:
 ```
-anes2020 %>% 
+anes2024 %>% 
   select(guns, ft_nra) #focusing in on a few variables
 ```
 ### A warning about the select() command
 Unfortunately, some of the packages that we will be installing in future labs also use the command select. If you ever run "select" and have more than one of these packages installed, R will give an error. When you get that error, you can add "dplyr::" before select(), to tell R to look at the select() in the dplyr library (which comes with the tidyverse). Here is how the above command would look with that modification:  
 ```
-anes2020 %>% 
+anes2024 %>% 
   dplyr::select(guns, ft_nra) #focusing in on a few variables
 ```
 If you run either of these commands (with or without the dplyr::), and scroll up a bit in the Console, you will see output that begins like this:
 ```{r, echo=FALSE}
-anes2020 %>% 
+anes2024 %>% 
   dplyr::select(guns, ft_nra) %>%  #focusing in on a few variables
   head(., 10)
 ```
@@ -148,7 +164,7 @@ This is a way of displaying dataframes that is unique to the tidyverse called a 
 
 Notice that the dataframe that had been so large before, with 68 columns, now only has 2 columns. If you want to use that glimpse() command from above to just get summary information about each of our variables, you can use a second pipe (%>%) like this:
 ```
-anes2020 %>% 
+anes2024 %>% 
   select(guns, ft_nra) #focusing in on a few variables%>%
   glimpse() #taking a different kind of look at our dataframe
 ```
@@ -156,20 +172,20 @@ anes2020 %>%
 What if we want to see what the people in our sample with the most and fewest guns thought about the NRA? To do that, we can arrange our dataframe from smallest to largest or from largest to smallest on any of our variables. Or, with variables that include text, we can sort according to alphabetic or reverse alphabetic order. We can use the arrange() command to do that:
 
 ```
-anes2020 %>% 
+anes2024 %>% 
   select(guns, ft_nra) %>% #focusing in on a few variables
   arrange(guns) #sorting this variable from smallest to largest
 ```
 When we run the above command, the Console shows us the feeling about the NRA by the people with the fewest guns first, and then on to the people with more guns. But what if we want to see the largest values on the "guns" variable first? To do that, we need to use desc() to modify arrange() like this:
 ```
-anes2020 %>% 
+anes2024 %>% 
   select(guns, ft_nra) %>% #focusing in on a few variables
   arrange(desc(guns)) #sorting this variable from largest to smallest
 ```
 ### glimpse() in tidyverse
 Finally, combining all of the commands that we learned today, we can use glimpse() to see information about each of our variables in this simplified version of our dataframe. To do that, we will need a third pipe:
 ```
-anes2020 %>% 
+anes2024 %>% 
   select(guns, ft_nra) %>% #focusing in on a few variables
   arrange(desc(guns)) %>% #sorting this variable from largest to smallest
   glimpse() #taking a different kind of look at our dataframe
@@ -193,13 +209,3 @@ rownames(df)<-NULL
 knitr::kable(df, row.names=NA, align = c("llll"))
 rm(r1,r2,r3,r4,r5,r6,r7,r8,r9,df)
 ```
-
-## Review exercises
-Let’s practice some of the things that we learned in this chapter. 
-
-1. Create a new R script called "Chapter 2 Exercises," and save it to your R scripts folder. Make a header for the script based on the description from section \@ref(org-script). Use the library() command to load the tidyverse.
-2. Look over the codebooks from our three datasets: anes2020, states2010, and world, and choose a variable that you are interested in. Using either the table() or the summary() command, generate some information about the values of that variable. If you the summary() command does not give you useful information, use the table() command, and vice versa.
-3. Make one or more observations about that variable from question 2.
-4. Choose a second variable from the same dataframe. Use a pipe (%>%) and the select() command, select only the variable from question 2 and the variable from this question.
-5. Use a pipe to modify the command from step 4, and using the arrange() command (with or without desc()), arrange the dataframe by one of the two variables.
-6. Make one or more observations about that output from question 5.

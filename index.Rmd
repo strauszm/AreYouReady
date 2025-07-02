@@ -1,5 +1,5 @@
 ---
-title: "Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0"
+title: "Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0"
 toc-title: "Are you ready for R?"
 author: "Michael Strausz"
 date: "`r Sys.Date()`"
@@ -21,18 +21,27 @@ As I reviewed the available workbooks, I did not find one that I was satisfied w
 
 I decided to make my workbook available for free online because that is consistent with the open source spirit of R. This workbook might be helpful to you if you are trying to teach yourself R, and you are also welcome to use it to teach students R in non-profit high schools and non-profit collegiate settings. Those wishing to use it for commercial reasons outside of non-profit educational uses should contact me for permission.
 
-I'd like to thank my spouse Kate for coming up with the great title and for putting up with my (admittedly annoying) regular, enthusiastic discussion of the new things that I had learned to do and make in R over these last few years.
-
 # About the author {.unnumbered}
 
-I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a Professor and the Chair of the <a href="https://addran.tcu.edu/political-science/index.php">Political Science Department at Texas Christian University</a>. I am the author of the 2019 book <a href="https://www.michaelstrausz.com/book">Help (Not) Wanted: Immigration Politics in Japan</a> and the editor of the forthcoming book <a href= "https://uhpress.hawaii.edu/title/no-island-is-an-island-perspectives-on-immigration-to-japan/">No Island is an Island: Perspectives on Immigration to Japan</a>. My research focuses on Japan’s immigration policy and as the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies. 
+I am <a href="https://www.michaelstrausz.com/">Michael Strausz</a>, a Professor and the Chair of the <a href="https://addran.tcu.edu/political-science/index.php">Political Science Department at Texas Christian University</a>. I am the author of the 2019 book *Help (Not) Wanted: Immigration Politics in Japan* and the editor of the 2025 book <a href="https://uhpress.hawaii.edu/title/no-island-is-an-island-perspectives-on-immigration-to-japan">No Island is an Island: Perspectives on Immigration to Japan</a>. My research focuses on Japan’s immigration policy and the role of norms in international politics. I teach a variety of courses in comparative politics, international relations, research methods, and Asian studies. 
 
-I graduated from Michigan State University’s James Madison College and earned my Ph.D. in political science from the University of Washington in Seattle. I live just outside of Fort Worth, Texas with my spouse and our two children. In my free time, I enjoy cooking, hiking, and schmoozing.
+I graduated from <a href="https://jmc.msu.edu/">Michigan State University’s James Madison College</a> and earned my Ph.D. in <a href="https://www.polisci.washington.edu/">political science from the University of Washington</a>. I live just outside of Fort Worth, Texas with my spouse and our two children. In my free time, I enjoy cooking, hiking, and schmoozing.
 
-# What's new in version 2.0? {.unnumbered}
+
+# Acknowledgements {.unnumbered}
+
+I'd like to thank <a href="https://www.maxwell.syr.edu/directory/seth-jolly">Seth Jolly</a>, <a href="https://lsa.umich.edu/polisci/people/graduate-students/nissenk.html">Katie Nissen</a>, <a href="https://addran.tcu.edu/view/adam-schiffer">Adam Schiffer</a>, <a href="https://www.queens.edu/artsci/campus-directory/amy-sentementes-phd/">Amy Sentementes</a>, and David "The Bad Man" Parzen for their helpful suggestions.
+
+Most importantly, I'd like to thank my spouse Kate for coming up with the great title and for putting up with my (admittedly annoying) regular, enthusiastic discussion of the new things that I had learned to do and make in R over these last few years.
+
+# What's new in version 3.0? {.unnumbered}
 
 The first version of this workbook was a series of PDFs that I uploaded to <a href="https://www.michaelstrausz.com/">my website</a> in April 2022. Those were a bit clunky. They were difficult for students to copy code chunks out of (the formatting would get strange) and they were also difficult for me to update. In April 2023, I created a version of this workbook as a single website. I actually did this as I was teaching a class that used the workbook, so the students switched from PDFs to a website in the middle of the class. It was very dramatic!
 
-I continued to make small updates and corrections to the workbook regularly, but for Version 2.0 I read over the whole workbook, clarifying various explanations and fixing errors. I added section \@ref(case-when), which explains a more precise way of simplifying interval variables than was in earlier versions of the workbook (although the other ways of simplifying interval variables are still there, in section \@ref(cut-2)). I also added section \@ref(export-crosstabs), which explains how to export cross-tabulation tables and other tables generated in R in a format that is easy to bring into word processors. Finally, I added a voter turnout variable to the ANES dataset, as many of my students are interested in the question of "who votes?" 
+I continued to make small updates and corrections to the workbook regularly, but for version 3.0 I read over the whole workbook, and I clarified various explanations and fixed small errors. More substantively, I added commands to calculate the mode of nominal variables and the mode and median of ordinal variables to chapter 3 and I added a discussion of statistical significance to chapter 6. I also added some discussion of residuals to chapters 8 and 9. Finally, I updated the three datasets that use with this workbook. 
+
+I also removed the practice assignments at the end of each chapter. This is because I started writing new practice assignments for students each semester and distributing them in class. If you are an instructor and you'd like my most recent practice assignments for each chapter, please feel free to<a href="https://www.michaelstrausz.com/contact">contact me.</a>
+
+If you want to see the R projects that I used to generate these datasets, you can find them here: <a href="https://github.com/strauszm/ANES2024">anes2024</a>, <a href="https://github.com/strauszm/States2025">states2025</a>, and <a href="https://github.com/strauszm/World2025">world2025</a>.
 
 If you have suggestions and/or notice errors, please <a href="https://www.michaelstrausz.com/contact">let me know!</a>

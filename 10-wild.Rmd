@@ -6,35 +6,30 @@ Unlike the previous chapters, I am not going to ask you to start a practice docu
 ## Importing data into R
 
 ### Importing CSV files
-For this workbook, you have been able to access our three dataframes—world, states2010, and ane2020—as .Rda files. In other words, these files were already formatted for use with R. However, if you keep using, you will regularly run into data that has not been formatted for use with R. 
+For this workbook, you have been able to access our three dataframes—world2025, states2025, and ane2024—as .Rda files. In other words, these files were already formatted for use with R. However, if you keep using R, you will regularly run into data that has not been formatted for use with R. 
 
-For example, when I wanted to generate the ANES dataframe, I went to the ANES website: <a href="https://electionstudies.org/data-center/2020-time-series-study/" target="_blank">https://electionstudies.org/data-center/2020-time-series-study/</a>. I had to create a log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. "CSV" stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.
+For example, when I wanted to generate the ANES dataframe, I went to the ANES website: <a href="https://electionstudies.org/data-center/2024-time-series-study/" target="_blank">https://electionstudies.org/data-center/2024-time-series-study/</a>. I had to create a (free) log in to download data, and once I did that, I was taken to a page that gave me a few different choices of formats to download the data in, and I chose to download the csv version, which is often a good choice. "CSV" stands for comma separated values, and it is a simple form of data storage that many different software packages can understand.
 
-I next created a folder called anes2020, and in that folder, I made three new folders: one called rscripts, one called data, and one called notes (where I keep my codebooks and other reference materials related to that data). I then moved the cvs file that I had downloaded (which downloaded as anes_timeseries_2020_csv_20210719.cvs) into the data folder. 
+I next created a folder on my computer called "CreatingANES2024."^[You can find all of the files that I used to generate anes2024 <a href="https://github.com/strauszm/ANES2024">here.</a>] I then moved the cvs file that I had downloaded (which downloaded as anes_timeseries_2024_csv_20250430.cvs) into that folder. 
 
-After that, I made a new R project which I set to be located in that anes2020 folder. Next, I imported the data with this command:
+After that, I made a new R project which I set to be located in that CreatingANES2024 folder. Next, I imported the data with this command:
 ```
-anes2020<-read.csv("data/anes_timeseries_2020_csv_20210719.csv")
+anes2024<-read.csv("data/anes_timeseries_2024_csv_20250430.csv")
 ```
-
-That dataset is huge: 1,771 variables!  I read over the codebook (which I had also downloaded from the same webpage) and chose the variables that I wanted to keep for this class. I used this command to make a simplified version of that dataset (you need to have the tidyverse package loaded to use this command).
+That dataset is huge: 1,289 variables!  I read over the codebook (which I had also downloaded from the same webpage) and chose the variables that I wanted to keep for this class. I used this command to make a simplified version of that dataset (you need to have the tidyverse package loaded to use this command).
 ```
-anes2020.simplified<-anes2020 %>% 
-select(V201005, V201103, V201115,V201117, V201151,V201152,V201156,V201157, V201200,V201217, V201225x,         V201231x,V201233,V201234,V201237,V201262, V201324, V201336,V201337,V201345x,V201351,V201356x,V201366,V201368, V201369,V201377,  V201392x,V201401,V201405x,V201414x,V201433, V201434,V201435,V201453,V201507x,V201508,V201510,V201516,V201544,
-V201549x,V201567, V201600,V201601,V201617x,V201628,V201644, V202159,V202160,V202161,V202162, V202163,V202164,V202165,V202166,
-V202167,V202168,V202169,V202170, V202171,V202172,V202173,V202174,
-V202175,V202178,V202181,V202182,V202183,V202187,V202073)
+anes2024<-anes2024 %>% 
+  select(V241004, V241106x, V241108, V241118, V241119, V241120, V241177, V241211, V241229, V241230, V241234, V241245, V241248, V241258, V241287x, V241290x, V241308x, V241319x, V241324, V241325, V241327, V241338x, V241366x, V241385x, V241400x, V241403x, V241421, V241422, V241440, V241458x, V241459, V241465x, V241470, V241497, V241501x, V241521, V241525, V241528, V241537, V241550, V241552, V241553, V241567x, V241569, V241583, V241601r, V241612, V241614, V242025, V242096x, V242095x, V242125, V242126, V242134, V242135, V242136, V242137, V242138, V242139, V242140, V242141, V242142, V242143, V242144, V242145, V242146, V242147, V242148, V242149, V242150, V242151, V242152, V242153, V242154, V242155, V242156, V242266x, V242311, V242321, V242325, V242420, V242422, V242423, V241227x)
 ```
-That command looks like a lot, but all it is doing is telling R to make a new dataframe called anes2020.simplified and then selecting "only" that list of variables (instead of the 1,771 variables in the original dataframe).
+That command looks like a lot, but all it is doing is telling R to write over the anes2024 dataset with a new version of the anes2024 dataset with fewer variables (instead of the 1,289 variables in the original dataframe).
 
 ### Importing Excel files
 Sometimes you will find an Excel file that you want to import. There is a very useful package that you can install to help with that called "readxl." Once you have installed it, you can use the "read_excel" command to bring Excel files into R. 
 
-After I downloaded the Excel version of the "DEMOCRACY CROSS-NATIONAL DATA, RELEASE 4.0 FALL 2015" from Dr. Pippa Norris's webpage, [https://www.pippanorris.com/data](https://www.pippanorris.com/data). I read it into R with this command:
+I build a previous version of the world2025 dataset in the following way. After I downloaded the Excel version of the "DEMOCRACY CROSS-NATIONAL DATA, RELEASE 4.0 FALL 2015" from Dr. Pippa Norris's webpage, [https://www.pippanorris.com/data](https://www.pippanorris.com/data). I read it into R with this command:
 ```
+library(readxl)
 world <- read_excel("data/Democracy Cross-National Data V4.1 09092015.xlsx")
-#remember, this command only works if you have installed and called 
-#up the readxl library
 ```
 
 ### Importing other files
@@ -46,34 +41,31 @@ df <- read.spss("data/previous semester data.sav", use.value.label=TRUE, to.data
 ## Cleaning data in R
 One you have imported data, there are a number of things that you want to do to do before you do analysis. It always helps to glimpse() your new dataframe and look at the codebook, if you can find one.  When I was first looking at the ANES data for this lab workbook, I noticed that many of the variables had long names that were difficult to interpret, like this: V201005. I renamed them with this tidyverse command (note that the real command was longer because it included all the variables in the dataframe):
 ```
-anes2020.simplified<-anes2020.simplified %>% 
-  rename(attention=V201005,
-         v2016=V201103,
-         hope=V201115,
-         outrage=V201117,
-         ft_biden=V201151,
-         ft_trump=V201152,
-         ft_dems=V201156,
-         ft_reps=V201157)
+anes2024<-anes2024 %>% 
+  rename(attention=V241004,
+         v2020=V241106x,
+         v2016=V241108,
+         hope=V241118,
+         fear=V241119,
+         outrage=V241120,
+         ideology=V241177)
 ```
-
 You might find that are ordinal or nominal variables that are coded as numeric which you want to recode as factors, using the as.factor command, which you can do like this:
 ```
 df$variable<-as.factor(df.variable)
 ```
-You can also use the codebook and/or the table() command to figure out how data is coded. Often missing data is coded as 8, 9, 99, or negative numbers. You want to make sure to recode that as NAs or R will treat those values as numbers and mess up your analysis. I used the tidyverse command ```mutate(na_if())``` to do that. Here is how I accomplished that with the age variable in ANES:
+You can also use the codebook and/or the table() command to figure out how data is coded. Often missing data is coded as 8, 9, 99, or negative numbers. You want to make sure to recode that as NAs or R will treat those values as numbers and mess up your analysis. I sometimes used the tidyverse command ```mutate(na_if())``` to do that. Here is how I accomplished that with the age variable in ANES:
 ```
-anes2020.simplified<-anes2020.simplified %>%
-mutate(age=na_if(age, '-9'))
+anes2024<-anes2024 %>%
+  mutate(age=na_if(age, -2))
 ```
-And here is how I recoded the marital variable to exclude NAs and to give the numeric variables values that made sense:
+Sometimes I find it is easier to use base R to create NAs and to change numbers. This is how I created the "female" variable in ANES (which was originally set up to make women 2 and men 1):
 ```
-anes2020.simplified<-anes2020.simplified %>%
-  mutate(marital=na_if(marital, '-9')) %>% 
-  mutate(marital=na_if(marital, '-8')) %>% 
-  mutate(marital=recode(marital, '1'="married",'2'="married",'3'="widowed",
-                        '4'="divorced",'5'="separated",'6'="never married"))
+anes2024$female[anes2024$female<0]<-NA
+anes2024$female[anes2024$female==1]<-0
+anes2024$female[anes2024$female==2]<-1
 ```
+
 ## Online R resources {#resources}
 There are excellent free resources for using R online. Here are some of my favorites:
 
