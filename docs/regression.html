@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0</title>
+  <title>Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</title>
   <meta name="description" content="This is the preface of the workbook" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0" />
+  <meta property="og:title" content="Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is the preface of the workbook" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0" />
+  <meta name="twitter:title" content="Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   
   <meta name="twitter:description" content="This is the preface of the workbook" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-03-13" />
+<meta name="date" content="2025-07-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,7 +165,8 @@ div.csl-indent {
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="" data-path="about-the-author.html"><a href="about-the-author.html"><i class="fa fa-check"></i>About the author</a></li>
-<li class="chapter" data-level="" data-path="whats-new-in-version-2.html"><a href="whats-new-in-version-2.html"><i class="fa fa-check"></i>What’s new in version 2.0?</a></li>
+<li class="chapter" data-level="" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="whats-new-in-version-3.html"><a href="whats-new-in-version-3.html"><i class="fa fa-check"></i>What’s new in version 3.0?</a></li>
 <li class="chapter" data-level="1" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>1</b> Getting started with R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="getting-started.html"><a href="getting-started.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
@@ -177,10 +178,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.4.2" data-path="getting-started.html"><a href="getting-started.html#common-practices-when-naming-objects"><i class="fa fa-check"></i><b>1.4.2</b> Common practices when naming objects</a></li>
 <li class="chapter" data-level="1.4.3" data-path="getting-started.html"><a href="getting-started.html#about-vectors"><i class="fa fa-check"></i><b>1.4.3</b> About vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#writing-your-first-r-script"><i class="fa fa-check"></i><b>1.5</b> Writing your first R script</a></li>
+<li class="chapter" data-level="1.5" data-path="getting-started.html"><a href="getting-started.html#first-script"><i class="fa fa-check"></i><b>1.5</b> Writing your first R script</a></li>
 <li class="chapter" data-level="1.6" data-path="getting-started.html"><a href="getting-started.html#wont-load"><i class="fa fa-check"></i><b>1.6</b> What do to if the “load” command doesn’t load the dataframe</a></li>
 <li class="chapter" data-level="1.7" data-path="getting-started.html"><a href="getting-started.html#review-of-this-chapters-commands"><i class="fa fa-check"></i><b>1.7</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="1.8" data-path="getting-started.html"><a href="getting-started.html#review-exercises"><i class="fa fa-check"></i><b>1.8</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>2</b> Welcome to the tidyverse</a>
 <ul>
@@ -196,7 +196,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.4.5" data-path="tidyverse.html"><a href="tidyverse.html#glimpse-in-tidyverse"><i class="fa fa-check"></i><b>2.4.5</b> glimpse() in tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="tidyverse.html"><a href="tidyverse.html#review-of-this-chapters-commands-1"><i class="fa fa-check"></i><b>2.5</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="2.6" data-path="tidyverse.html"><a href="tidyverse.html#review-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="graphing.html"><a href="graphing.html"><i class="fa fa-check"></i><b>3</b> Graphing and describing variables</a>
 <ul>
@@ -215,34 +214,34 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion"><i class="fa fa-check"></i><b>3.3</b> Central tendancy and dispersion</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of ordinal variables</a></li>
-<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendancy and dispersion of interval variables</a></li>
-<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#standard-deviation-and-iqr-when-you-have-nas"><i class="fa fa-check"></i><b>3.3.3</b> Standard deviation and IQR when you have NAs</a></li>
+<li class="chapter" data-level="3.3.1" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-nominal-variables"><i class="fa fa-check"></i><b>3.3.1</b> Central tendency and dispersion of nominal variables</a></li>
+<li class="chapter" data-level="3.3.2" data-path="graphing.html"><a href="graphing.html#central-tendency-and-dispersion-of-ordinal-variables"><i class="fa fa-check"></i><b>3.3.2</b> Central tendency and dispersion of ordinal variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="graphing.html"><a href="graphing.html#central-tendancy-and-dispersion-of-interval-variables"><i class="fa fa-check"></i><b>3.3.3</b> Central tendancy and dispersion of interval variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2010 and world dataframes</a></li>
+<li class="chapter" data-level="3.4" data-path="graphing.html"><a href="graphing.html#states-world"><i class="fa fa-check"></i><b>3.4</b> A note on using the states2025 and world2025</a></li>
 <li class="chapter" data-level="3.5" data-path="graphing.html"><a href="graphing.html#review-of-this-chapters-commands-2"><i class="fa fa-check"></i><b>3.5</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="3.6" data-path="graphing.html"><a href="graphing.html#review-exercises-2"><i class="fa fa-check"></i><b>3.6</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="recoding.html"><a href="recoding.html"><i class="fa fa-check"></i><b>4</b> Recoding and comparing values of variables</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="recoding.html"><a href="recoding.html#getting-started-recoding"><i class="fa fa-check"></i><b>4.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="recoding.html"><a href="recoding.html#recode-nom"><i class="fa fa-check"></i><b>4.2</b> Recoding ordinal and nominal variables</a></li>
-<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#dealing-with-variables-coded-01"><i class="fa fa-check"></i><b>4.3</b> Dealing with variables coded 0/1</a></li>
-<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.4</b> Simplifying interval variables</a>
+<li class="chapter" data-level="4.3" data-path="recoding.html"><a href="recoding.html#reverse-ord"><i class="fa fa-check"></i><b>4.3</b> Reversing the order of ordinal variables</a></li>
+<li class="chapter" data-level="4.4" data-path="recoding.html"><a href="recoding.html#factor-as-numeric"><i class="fa fa-check"></i><b>4.4</b> Making ordinal variables numeric</a></li>
+<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#recode-dummy"><i class="fa fa-check"></i><b>4.5</b> Dealing with variables coded 0/1</a></li>
+<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#simp-int"><i class="fa fa-check"></i><b>4.6</b> Simplifying interval variables</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="recoding.html"><a href="recoding.html#cut-2"><i class="fa fa-check"></i><b>4.4.1</b> Simplifying interval variables using cut2()</a></li>
-<li class="chapter" data-level="4.4.2" data-path="recoding.html"><a href="recoding.html#case-when"><i class="fa fa-check"></i><b>4.4.2</b> Simplifying interval variables with case_when</a></li>
+<li class="chapter" data-level="4.6.1" data-path="recoding.html"><a href="recoding.html#cut-2"><i class="fa fa-check"></i><b>4.6.1</b> Simplifying interval variables using cut2()</a></li>
+<li class="chapter" data-level="4.6.2" data-path="recoding.html"><a href="recoding.html#case-when"><i class="fa fa-check"></i><b>4.6.2</b> Simplifying interval variables with case_when</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.5</b> Cross-tabulation tables</a>
+<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#cross-tabs"><i class="fa fa-check"></i><b>4.7</b> Cross-tabulation tables</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="recoding.html"><a href="recoding.html#generating-cross-tabs"><i class="fa fa-check"></i><b>4.5.1</b> Generating cross-tabs</a></li>
-<li class="chapter" data-level="4.5.2" data-path="recoding.html"><a href="recoding.html#adding-column-totals-to-cross-tabs"><i class="fa fa-check"></i><b>4.5.2</b> Adding column totals to cross-tabs</a></li>
-<li class="chapter" data-level="4.5.3" data-path="recoding.html"><a href="recoding.html#column-percents"><i class="fa fa-check"></i><b>4.5.3</b> Adding column percents to cross-tabs</a></li>
-<li class="chapter" data-level="4.5.4" data-path="recoding.html"><a href="recoding.html#export-crosstabs"><i class="fa fa-check"></i><b>4.5.4</b> Exporting cross-tabs for your word processor</a></li>
+<li class="chapter" data-level="4.7.1" data-path="recoding.html"><a href="recoding.html#generating-cross-tabs"><i class="fa fa-check"></i><b>4.7.1</b> Generating cross-tabs</a></li>
+<li class="chapter" data-level="4.7.2" data-path="recoding.html"><a href="recoding.html#adding-column-totals-to-cross-tabs"><i class="fa fa-check"></i><b>4.7.2</b> Adding column totals to cross-tabs</a></li>
+<li class="chapter" data-level="4.7.3" data-path="recoding.html"><a href="recoding.html#column-percents"><i class="fa fa-check"></i><b>4.7.3</b> Adding column percents to cross-tabs</a></li>
+<li class="chapter" data-level="4.7.4" data-path="recoding.html"><a href="recoding.html#export-crosstabs"><i class="fa fa-check"></i><b>4.7.4</b> Exporting cross-tabs for your word processor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.6</b> Mean comparison tables</a></li>
-<li class="chapter" data-level="4.7" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.7</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#review-exercises-3"><i class="fa fa-check"></i><b>4.8</b> Review exercises</a></li>
+<li class="chapter" data-level="4.8" data-path="recoding.html"><a href="recoding.html#mean-comparison-tables"><i class="fa fa-check"></i><b>4.8</b> Mean comparison tables</a></li>
+<li class="chapter" data-level="4.9" data-path="recoding.html"><a href="recoding.html#review-of-this-chapters-commands-3"><i class="fa fa-check"></i><b>4.9</b> Review of this chapter’s commands</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html"><i class="fa fa-check"></i><b>5</b> Making controlled comparisons</a>
 <ul>
@@ -252,7 +251,6 @@ div.csl-indent {
 <li class="chapter" data-level="5.4" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab"><i class="fa fa-check"></i><b>5.4</b> Adding a control to a crosstab</a></li>
 <li class="chapter" data-level="5.5" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table"><i class="fa fa-check"></i><b>5.5</b> Adding a control to a mean comparison table</a></li>
 <li class="chapter" data-level="5.6" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-of-this-chapters-commands-4"><i class="fa fa-check"></i><b>5.6</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="5.7" data-path="making-controlled-comparisons.html"><a href="making-controlled-comparisons.html#review-exercises-4"><i class="fa fa-check"></i><b>5.7</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="inferences.html"><a href="inferences.html"><i class="fa fa-check"></i><b>6</b> Making inferences from sample means</a>
 <ul>
@@ -261,42 +259,38 @@ div.csl-indent {
 <li class="chapter" data-level="6.3" data-path="inferences.html"><a href="inferences.html#ci-around-proportion"><i class="fa fa-check"></i><b>6.3</b> Constructing a confidence interval around a proportion</a></li>
 <li class="chapter" data-level="6.4" data-path="inferences.html"><a href="inferences.html#ci-around-proportions"><i class="fa fa-check"></i><b>6.4</b> Constructing confidence intervals around several proportions at once</a></li>
 <li class="chapter" data-level="6.5" data-path="inferences.html"><a href="inferences.html#t-test-ind-means"><i class="fa fa-check"></i><b>6.5</b> T-test of independent means</a></li>
-<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.6</b> T-test of independent proportions</a></li>
-<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.7</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-exercises-5"><i class="fa fa-check"></i><b>6.8</b> Review exercises</a></li>
+<li class="chapter" data-level="6.6" data-path="inferences.html"><a href="inferences.html#caution-about-statistical-significance"><i class="fa fa-check"></i><b>6.6</b> Caution about “statistical significance”</a></li>
+<li class="chapter" data-level="6.7" data-path="inferences.html"><a href="inferences.html#t-test-ind-props"><i class="fa fa-check"></i><b>6.7</b> T-test of independent proportions</a></li>
+<li class="chapter" data-level="6.8" data-path="inferences.html"><a href="inferences.html#review-of-this-chapters-commands-5"><i class="fa fa-check"></i><b>6.8</b> Review of this chapter’s commands</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html"><i class="fa fa-check"></i><b>7</b> From chi-squared to somers’ d</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#getting-started-chi"><i class="fa fa-check"></i><b>7.1</b> Getting started with this chapter</a></li>
-<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Caculating chi-squared</a></li>
-<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda-and-the-pres"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
+<li class="chapter" data-level="7.2" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#chi-squared"><i class="fa fa-check"></i><b>7.2</b> Calculating chi-squared</a></li>
+<li class="chapter" data-level="7.3" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#lambda"><i class="fa fa-check"></i><b>7.3</b> Lambda and the PREs</a></li>
 <li class="chapter" data-level="7.4" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#cramers-v"><i class="fa fa-check"></i><b>7.4</b> Cramer’s V</a></li>
 <li class="chapter" data-level="7.5" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#somers-d"><i class="fa fa-check"></i><b>7.5</b> Somers’ D</a></li>
 <li class="chapter" data-level="7.6" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-of-this-chapters-commands-6"><i class="fa fa-check"></i><b>7.6</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="7.7" data-path="chi-squared-etc.html"><a href="chi-squared-etc.html#review-exercises-6"><i class="fa fa-check"></i><b>7.7</b> Review exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="pearsons-r.html"><a href="pearsons-r.html"><i class="fa fa-check"></i><b>8</b> Pearson’s r and linear regression</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="pearsons-r.html"><a href="pearsons-r.html#getting-started-pearsons-r"><i class="fa fa-check"></i><b>8.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="8.2" data-path="pearsons-r.html"><a href="pearsons-r.html#pearsons-r-1"><i class="fa fa-check"></i><b>8.2</b> Pearson’s R</a></li>
 <li class="chapter" data-level="8.3" data-path="pearsons-r.html"><a href="pearsons-r.html#scatterplot"><i class="fa fa-check"></i><b>8.3</b> The scatterplot</a></li>
-<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-linear-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
-<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.5</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-exercises-7"><i class="fa fa-check"></i><b>8.6</b> Review exercises</a></li>
+<li class="chapter" data-level="8.4" data-path="pearsons-r.html"><a href="pearsons-r.html#bivariate-regression"><i class="fa fa-check"></i><b>8.4</b> Bivariate linear regression</a></li>
+<li class="chapter" data-level="8.5" data-path="pearsons-r.html"><a href="pearsons-r.html#residuals"><i class="fa fa-check"></i><b>8.5</b> Residuals</a></li>
+<li class="chapter" data-level="8.6" data-path="pearsons-r.html"><a href="pearsons-r.html#review-of-this-chapters-commands-7"><i class="fa fa-check"></i><b>8.6</b> Review of this chapter’s commands</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>9</b> Multiple regression</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="regression.html"><a href="regression.html#getting-started-multiple-regression"><i class="fa fa-check"></i><b>9.1</b> Getting started with this chapter</a></li>
 <li class="chapter" data-level="9.2" data-path="regression.html"><a href="regression.html#multiple-regression"><i class="fa fa-check"></i><b>9.2</b> Multiple regression</a></li>
-<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.3</b> Stargazer output</a></li>
-<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.4</b> Dummy variables in multiple regression</a></li>
-<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Graphing multiple regression</a>
-<ul>
-<li class="chapter" data-level="9.5.1" data-path="regression.html"><a href="regression.html#facets"><i class="fa fa-check"></i><b>9.5.1</b> Facets</a></li>
-<li class="chapter" data-level="9.5.2" data-path="regression.html"><a href="regression.html#color-coding-dots"><i class="fa fa-check"></i><b>9.5.2</b> Color coding dots</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.6</b> Review of this chapter’s commands</a></li>
-<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#review-exercises-8"><i class="fa fa-check"></i><b>9.7</b> Review exercises</a></li>
+<li class="chapter" data-level="9.3" data-path="regression.html"><a href="regression.html#residuals-in-multiple-regression"><i class="fa fa-check"></i><b>9.3</b> Residuals in multiple regression</a></li>
+<li class="chapter" data-level="9.4" data-path="regression.html"><a href="regression.html#stargazer"><i class="fa fa-check"></i><b>9.4</b> Stargazer output</a></li>
+<li class="chapter" data-level="9.5" data-path="regression.html"><a href="regression.html#dummy-variables-in-multiple-regression"><i class="fa fa-check"></i><b>9.5</b> Dummy variables in multiple regression</a></li>
+<li class="chapter" data-level="9.6" data-path="regression.html"><a href="regression.html#ordinal-variables-in-regression-analysis"><i class="fa fa-check"></i><b>9.6</b> Ordinal variables in regression analysis</a></li>
+<li class="chapter" data-level="9.7" data-path="regression.html"><a href="regression.html#graphing-multiple-regression"><i class="fa fa-check"></i><b>9.7</b> Graphing multiple regression</a></li>
+<li class="chapter" data-level="9.8" data-path="regression.html"><a href="regression.html#review-of-this-chapters-commands-8"><i class="fa fa-check"></i><b>9.8</b> Review of this chapter’s commands</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="wild.html"><a href="wild.html"><i class="fa fa-check"></i><b>10</b> R in the wild</a>
 <ul>
@@ -325,7 +319,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond: Version 2.0</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</a>
           </h1>
         </div>
 
@@ -338,7 +332,7 @@ div.csl-indent {
 <div id="getting-started-multiple-regression" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> Getting started with this chapter<a href="regression.html#getting-started-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section <a href="tidyverse.html#exploring">2.2</a>.</p>
-<p>Now type <code>install.packages("stargazer")</code> into the Console (Stargazer is designed by Hlavac <span class="citation">(<a href="#ref-Hlavac">2022</a>)</span>). This new package will help us label our graphs in a way that is easier to read.</p>
+<p>Now type <code>install.packages("stargazer")</code> into the Console.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. This new package will help us label our graphs in a way that is easier to read.</p>
 <p>Next, open a new script file and save it in your scripts folder as “chapter 9 practice.” Write this on the page:</p>
 <pre><code>####################################
 # Your name
@@ -349,12 +343,9 @@ div.csl-indent {
 #libraries------------------------------------------
 library(tidyverse)
 library(ggrepel)
+library(modelr)
 library(stargazer)</code></pre>
 <p>Now select all the text on this page, run it, and then save it.</p>
-<pre><code>## 
-## Please cite as:</code></pre>
-<pre><code>##  Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.</code></pre>
-<pre><code>##  R package version 5.2.3. https://CRAN.R-project.org/package=stargazer</code></pre>
 </div>
 <div id="multiple-regression" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Multiple regression<a href="regression.html#multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -364,75 +355,100 @@ library(stargazer)</code></pre>
 In this version of the formula, we call the intercept <span class="math inline">\(β_0\)</span> (β is the Greek letter Beta) instead of B, and we call the slope <span class="math inline">\(β_1\)</span> instead of M. When conducting bivariate regression, we are asking R to give us the values of <span class="math inline">\(β_0\)</span> (the intercept, or B) and <span class="math inline">\(β_1\)</span> (the slope, or M) that best fits our data. When we want to conduct multiple regression, we can use the same principle, but we just have to add more independent variables and βs, like this:
 <span class="math display">\[Y=β_0+ β_1X_1 + β_2X_2 + β_3X_3+…+ β_nX_n\]</span>
 Multiple regression results include an estimate for all of those βs. The estimates are called “partial regression coefficients,” which is generally shortened to “coefficients.” And they are very powerful! In the above equation, R’s estimated value for <span class="math inline">\(β_1\)</span> tells us what we expect to happen to our dependent variable, Y, when we increase <span class="math inline">\(X_1\)</span> by one unit, and when we hold <span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>, and all other independent variables in our equation constant. Thus, if someone were to say “Hey, I think that the relationship that you observe between <span class="math inline">\(X_1\)</span> and Y is spurious; variation in <span class="math inline">\(X_2\)</span>, which happens to be correlated with <span class="math inline">\(X_1\)</span>, is the actual cause of variation in Y!” You can reply, “in this multiple regression, I controlled for <span class="math inline">\(X_2\)</span> (in other words, I looked at the relationship between <span class="math inline">\(X_1\)</span> and Y at similar values of <span class="math inline">\(X_2\)</span>) and I still found a meaningful relationship between <span class="math inline">\(X_1\)</span> and Y. Thus, I can rule out spuriousness!”</p>
-<p>Let’s try an example. We will start with a bivariate regression analysis. Under the Trump administration, feelings on the federal agency Immigration and Customs Enforcement (ICE) became pretty politicized. So, I hypothesize that people that feel more warmly about the Democratic Party will likely feel more coldly about ICE (and vice versa). To test this hypothesis, we can run the following regression:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="regression.html#cb226-1" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> ft_ice <span class="sc">~</span> ft_dems, <span class="at">data=</span>anes2020)</span></code></pre></div>
+<p>Let’s try an example, returning to our regression analysis from Chapter <a href="pearsons-r.html#pearsons-r">8</a>, where we looked at reaganMargin1980 as our dependent variable trumpMargin2024 as our dependent variable. To test this analysis, we ran the following regression:</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="regression.html#cb219-1" tabindex="-1"></a>model1<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">formula =</span> trumpMargin2024 <span class="sc">~</span> reaganMargin1980, <span class="at">data =</span> states2025)</span>
+<span id="cb219-2"><a href="regression.html#cb219-2" tabindex="-1"></a><span class="co">#now we ask R to display the results of that analysis</span></span>
+<span id="cb219-3"><a href="regression.html#cb219-3" tabindex="-1"></a>model1</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ ft_dems, data = anes2020)
+## lm(formula = trumpMargin2024 ~ reaganMargin1980, data = states2025)
 ## 
 ## Coefficients:
-## (Intercept)      ft_dems  
-##     69.8606      -0.4475</code></pre>
-<p>This output helps us write the equation for the relationship between feelings on the Democratic Party and feelings in ICE:</p>
-<p>ft_ice = 69.8606 + -0.4475 (ft_dems)</p>
-<p>So in other words, R is estimating that someone who gives Democrats a score of 0 would give ICE a 69.86, and when feelings about the Democratic Party increase by 1, feelings about ICE decrease by 0.45. This is consistent with my theory. However, are these estimates statistically significant? And how much variation in feelings on ICE will our model explain? We could just put summary() around the command that we entered above, but instead we are going to try something a little different. We are going to call the regression of the relationship between feelings on Democrats and feelings on ICE “model.1” and then ask R to summarize “model.1,” like this:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="regression.html#cb228-1" tabindex="-1"></a>model<span class="fl">.1</span><span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">formula =</span> ft_ice <span class="sc">~</span> ft_dems, <span class="at">data=</span>anes2020)</span>
-<span id="cb228-2"><a href="regression.html#cb228-2" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>)</span></code></pre></div>
+##      (Intercept)  reaganMargin1980  
+##         -0.03344           0.72737</code></pre>
+<p>This output helped us write the equation for the relationship between reaganMargin1980 and trumpMargin2024:</p>
+<p>trumpMargin2024 = -.03344 + -0.72737 (reaganMargin1980)</p>
+<p>So in other words, R is estimating that a in state where Reagan and Carter in tied in 1980 (and thus Reagan’s margin was 0), Trump would lose by a proportion of .03344 (or about 3.3%), and that, if a state’s reaganMargin increased by 1 (moving from a score of 0, where Reagan and Carter tied, to a 1, which means that Reagan won 100% of the vote), Trump’s margin of victory would increase by .72737, or about 72.7%.</p>
+<p>To determine whether these estimates are statistically significant, we summarized our regression model, like this:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="regression.html#cb221-1" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ ft_dems, data = anes2020)
+## lm(formula = trumpMargin2024 ~ reaganMargin1980, data = states2025)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -69.861 -19.651   1.467  18.181  74.894 
+##      Min       1Q   Median       3Q      Max 
+## -0.35722 -0.15308  0.00016  0.11850  0.48517 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 69.860595   0.543358  128.57   &lt;2e-16 ***
-## ft_dems     -0.447543   0.009737  -45.96   &lt;2e-16 ***
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      -0.03344    0.03276  -1.021    0.312    
+## reaganMargin1980  0.72737    0.15504   4.692 2.21e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 26.29 on 6969 degrees of freedom
-##   (1309 observations deleted due to missingness)
-## Multiple R-squared:  0.2326, Adjusted R-squared:  0.2325 
-## F-statistic:  2112 on 1 and 6969 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>This output shows us that the estimates of the slope and intercept are both statistically significant, and that the adjusted <span class="math inline">\(R_2\)</span> is .2325, which means that variation in feelings about the Democratic Party explains about 23.25% of variation in feelings about ICE.</p>
-<p>There are many variables which are likely to be correlated with feelings about Democrats which might actually explain the variation in feelings about ICE. To start, let’s look at our age variable, since we know that older people are more likely to be conservative than are younger people. When we control for age, is the relationship between feelings about the Democratic Party and ICE still statistically significant? To help us answer this question, we need to have R estimate <span class="math inline">\(β_1\)</span> and <span class="math inline">\(β_2\)</span> in this formula:</p>
-<p>ft_ice=<span class="math inline">\(β_0\)</span> + <span class="math inline">\(β_1\)</span>ft_dems + <span class="math inline">\(β_2\)</span>age</p>
+## Residual standard error: 0.197 on 49 degrees of freedom
+## Multiple R-squared:   0.31,  Adjusted R-squared:  0.2959 
+## F-statistic: 22.01 on 1 and 49 DF,  p-value: 2.208e-05</code></pre>
+<p>This output shows us that the estimates of the slope and intercept are both statistically significant, and that the adjusted <span class="math inline">\(R_2\)</span> is .2959, which means that variation Reagan’s margin in 1980 explain about 29.59% of variation in Trump’s margin in 2024.</p>
+<p>That is pretty good! We can learn a lot about how states voted in 2024 by observing how they voted in 1980. However, we also know that there is still a lot of variation that is unexplained. Thinking back to our analysis of residuals in section <a href="pearsons-r.html#residuals">8.5</a>, we know that, while our regression analysis does a pretty good job of explaining Michigan, it does a much less good job of explaining West Virginia.</p>
+<p>Moreover, what if there is a variable that is correlated with reaganMargin1980 but which is the true cause of trumpMargin2024? If that were the case, and if we add that new independent variable to our regression analysis, then the relationship between reaganMargin1980 and trumpMargin2024 would no longer be statistically significant, and we would say that the relationship between reaganMargin and trumpMargin that we had observed is spurious.</p>
+<p>One additional variable which might help explain Trump’s margin of victory in 2024 is the percentage of a state’s population that is evangelical, since evangelical Christians are an increasingly important constituency of the Republican party. When we control for percent evangelical, does reaganMargin1980 still help explain trumpMargin2024? To help us answer this question, we need to have R estimate <span class="math inline">\(β_1\)</span> and <span class="math inline">\(β_2\)</span> in this formula:</p>
+<p>trumpMargin2024=<span class="math inline">\(β_0\)</span> + <span class="math inline">\(β_1\)</span>reaganMargin1980 + <span class="math inline">\(β_2\)</span>evanPerc2020</p>
 <p>We can do that with this command:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="regression.html#cb230-1" tabindex="-1"></a>model<span class="fl">.2</span><span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">formula =</span> ft_ice <span class="sc">~</span> ft_dems<span class="sc">+</span>age, <span class="at">data=</span>anes2020)</span>
-<span id="cb230-2"><a href="regression.html#cb230-2" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="regression.html#cb223-1" tabindex="-1"></a>model2<span class="ot">&lt;-</span><span class="fu">lm</span>(<span class="at">formula =</span> trumpMargin2024 <span class="sc">~</span> reaganMargin1980<span class="sc">+</span>evanPerc2020, <span class="at">data =</span> states2025)</span>
+<span id="cb223-2"><a href="regression.html#cb223-2" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ ft_dems + age, data = anes2020)
+## lm(formula = trumpMargin2024 ~ reaganMargin1980 + evanPerc2020, 
+##     data = states2025)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -81.427 -17.172   0.951  17.502  88.915 
+##      Min       1Q   Median       3Q      Max 
+## -0.29391 -0.07966  0.00576  0.07360  0.50405 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 47.039775   1.085838   43.32   &lt;2e-16 ***
-## ft_dems     -0.441223   0.009521  -46.34   &lt;2e-16 ***
-## age          0.429844   0.018050   23.81   &lt;2e-16 ***
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      -0.274902   0.041992  -6.546 3.65e-08 ***
+## reaganMargin1980  0.876417   0.112853   7.766 4.98e-10 ***
+## evanPerc2020      0.013624   0.001967   6.926 9.55e-09 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 25.27 on 6717 degrees of freedom
-##   (1560 observations deleted due to missingness)
-## Multiple R-squared:  0.291,  Adjusted R-squared:  0.2907 
-## F-statistic:  1378 on 2 and 6717 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Looking at the Pr(&gt;|t|) column in this output, we can see that the intercept and both coefficient estimates are statistically significant, because the numbers are much, much lower than .05. The value of adjusted <span class="math inline">\(R_2\)</span> is .2907, which means that variation in age and feelings about the Democratic Party explains about 29% of variation in feelings about ICE. We can also use the estimates column to estimate the βs in the above equation, like this:</p>
-<p>ft_ice=47.04 - 0.44ft_dems + 0.43age</p>
-<p>This equation is telling us that, based on our data, R predicts that someone who gave the Democratic Party a 0 and was 0 years old (not a realistic condition, as is often the case with intercepts in multiple regression analysis) would give ICE a 47.04 out of 100. Holding their age constant and increasing their feelings about Democrats by 1 decreases their feelings about ICE by 0.44. Holding their feelings about Democrats constant and increasing their age by 1 increases their feelings about ICE by 0.43. In other words, we know that the partial relationship between feelings on Democrats and feelings about ICE, controlling for age, is not spurious. And we also know that the partial relationship between age and feelings about ICE, controlling for age, is also not spurious.</p>
+## Residual standard error: 0.1408 on 48 degrees of freedom
+## Multiple R-squared:  0.6549, Adjusted R-squared:  0.6405 
+## F-statistic: 45.54 on 2 and 48 DF,  p-value: 8.155e-12</code></pre>
+<p>Looking at the Pr(&gt;|t|) column in this output, we can see that the intercept and both coefficient estimates are statistically significant, because the numbers are much, much lower than .05. The value of adjusted <span class="math inline">\(R_2\)</span> is .6405, which means that variation in reaganMargin and percent evangelical explains about 64% of variation in trumpMargin2024.</p>
+<p>trumpMargin2024 = -.2749 + .8764reaganMargin1980 + .0136evanPerc2020</p>
+<p>This equation is telling us that, based on our data, R predicts that in a state where Reagan and Carter tied in 1980 (creating a reaganMargin1980 of 0),with 0 evangelical Christians, Trump would have lost to Harris by .2749, or 27.49%. However, holding the percent of evangelicals in that state constant, if we increase Reagan’s margin of victory in 1980 from 0 to 1 (or from 0% to 100%), then we expect Trump’s margin of victory in 2024 to increase by .8764, or 87.64%. Moreover, holding Reagan’s margin in 1980 constant, an 1% increase of the percentage of evangelical Christians in a state is associated with a .0136 increase in trumpMargin2024 (or a 1.36% increase in Trump’s margin of victory). In other words we know that the partial relationship between Reagan margin and Trump margin, controlling for evangelical population, is not spurious.</p>
 </div>
-<div id="stargazer" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Stargazer output<a href="regression.html#stargazer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="residuals-in-multiple-regression" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Residuals in multiple regression<a href="regression.html#residuals-in-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can also apply the same principles that we used in section <a href="pearsons-r.html#residuals">8.5</a> to see which of our cases are really well explained by our model (with residuals that are close to 0) and which are less well explained by our model:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="regression.html#cb225-1" tabindex="-1"></a>model2.data<span class="ot">&lt;-</span>states2025 <span class="sc">%&gt;%</span> </span>
+<span id="cb225-2"><a href="regression.html#cb225-2" tabindex="-1"></a>  <span class="fu">add_predictions</span>(model2) <span class="sc">%&gt;%</span> </span>
+<span id="cb225-3"><a href="regression.html#cb225-3" tabindex="-1"></a>  <span class="fu">add_residuals</span>(model2)</span>
+<span id="cb225-4"><a href="regression.html#cb225-4" tabindex="-1"></a>model2.data<span class="sc">$</span>abs.resid<span class="ot">&lt;-</span><span class="fu">abs</span>(model2.data<span class="sc">$</span>resid)</span></code></pre></div>
+<p>Now let’s look at the states with the residuals that are the farthest from zero:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="regression.html#cb226-1" tabindex="-1"></a>model2.data <span class="sc">%&gt;%</span> </span>
+<span id="cb226-2"><a href="regression.html#cb226-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(state,abs.resid) <span class="sc">%&gt;%</span></span>
+<span id="cb226-3"><a href="regression.html#cb226-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(abs.resid)) <span class="sc">%&gt;%</span> </span>
+<span id="cb226-4"><a href="regression.html#cb226-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##   state                abs.resid
+##   &lt;chr&gt;                    &lt;dbl&gt;
+## 1 West Virginia            0.504
+## 2 Washington               0.294
+## 3 Wyoming                  0.276
+## 4 District of Columbia     0.232
+## 5 Colorado                 0.205
+## 6 California               0.196</code></pre>
+<p>Just like the bivariate regression, West Virginia remains the state with the residual that is the farthest from 0 (the state that our regression has the most trouble explaining). DC also remains in our top six, but other than those two, we can see that, with our multiple regression the other four states with the residuals farthest from zero are not in the South (Washington, Wyoming, Colorado, and California). This might suggest that the percent evangelical was important driver of Trump’s margin of victory in the South in 2024, and that was not captured by our first regression. If you run the same command in without <code>desc()</code>, you will see that Michigan, which was the case that our bivariate regression explained the best, is no longer in the top six best explained cases of our multivariate regression.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+</div>
+<div id="stargazer" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Stargazer output<a href="regression.html#stargazer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The output that we generated in the last section is pretty difficult to read, and would not look good in a paper. But, we have a nice solution – the stargazer package that we installed above! Once we have installed and loaded that package, we can invoke it like this:</p>
-<pre><code>stargazer(model.1, model.2, type=&quot;html&quot;, out=&quot;lab9regressions.html&quot;,
-          column.labels = c(&quot;Dems only&quot;, &quot;Dems and age&quot;), 
-          intercept.bottom = FALSE, 
+<pre><code>stargazer(model1, model2, type=&quot;html&quot;, out=&quot;lab9regressions.html&quot;,
+          column.labels = c(&quot;Model 1&quot;, &quot;Model 2&quot;), 
           single.row=FALSE,     
           notes.append = FALSE, 
           header=FALSE)</code></pre>
@@ -460,17 +476,17 @@ Multiple regression results include an estimate for all of those βs. The estima
 <td style="text-align:left">
 </td>
 <td colspan="2">
-ft_ice
+trumpMargin2024
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-Dems only
+Model 1
 </td>
 <td>
-Dems and age
+Model 2
 </td>
 </tr>
 <tr>
@@ -489,79 +505,79 @@ Dems and age
 </tr>
 <tr>
 <td style="text-align:left">
+reaganMargin1980
+</td>
+<td>
+0.727<sup>***</sup>
+</td>
+<td>
+0.876<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.155)
+</td>
+<td>
+(0.113)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+evanPerc2020
+</td>
+<td>
+</td>
+<td>
+0.014<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
 Constant
 </td>
 <td>
-69.861<sup>***</sup>
+-0.033
 </td>
 <td>
-47.040<sup>***</sup>
+-0.275<sup>***</sup>
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-(0.543)
+(0.033)
 </td>
 <td>
-(1.086)
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-ft_dems
-</td>
-<td>
--0.448<sup>***</sup>
-</td>
-<td>
--0.441<sup>***</sup>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-(0.010)
-</td>
-<td>
-(0.010)
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-age
-</td>
-<td>
-</td>
-<td>
-0.430<sup>***</sup>
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-</td>
-<td>
-</td>
-<td>
-(0.018)
+(0.042)
 </td>
 </tr>
 <tr>
@@ -581,10 +597,10 @@ age
 Observations
 </td>
 <td>
-6,971
+51
 </td>
 <td>
-6,720
+51
 </td>
 </tr>
 <tr>
@@ -592,10 +608,10 @@ Observations
 R<sup>2</sup>
 </td>
 <td>
-0.233
+0.310
 </td>
 <td>
-0.291
+0.655
 </td>
 </tr>
 <tr>
@@ -603,10 +619,10 @@ R<sup>2</sup>
 Adjusted R<sup>2</sup>
 </td>
 <td>
-0.233
+0.296
 </td>
 <td>
-0.291
+0.640
 </td>
 </tr>
 <tr>
@@ -614,10 +630,10 @@ Adjusted R<sup>2</sup>
 Residual Std. Error
 </td>
 <td>
-26.289 (df = 6969)
+0.197 (df = 49)
 </td>
 <td>
-25.269 (df = 6717)
+0.141 (df = 48)
 </td>
 </tr>
 <tr>
@@ -625,10 +641,10 @@ Residual Std. Error
 F Statistic
 </td>
 <td>
-2,112.484<sup>***</sup> (df = 1; 6969)
+22.011<sup>***</sup> (df = 1; 49)
 </td>
 <td>
-1,378.138<sup>***</sup> (df = 2; 6717)
+45.540<sup>***</sup> (df = 2; 48)
 </td>
 </tr>
 <tr>
@@ -644,175 +660,176 @@ F Statistic
 </td>
 </tr>
 </table>
-<p>This is an extremely useful table, very much like what you see when you read many academic journal articles that use regression analysis. At the top, you see a title that identifies the dependent variable for all regressions in the table – feelings on ICE. The column on the left provides the variable names. You should generally go in and change variable names and the title to something that will be easy for your readers to understand. So, for example, instead of ft_ice, you might write “feelings on ICE.” The second column is the results of the first regression that we ran, with only feelings on Democrats as an independent variable (you can tell that the regression did not include the age variable because the spot where the estimated coefficient for age would go is blank). The “constant” is the intercept (they are the same thing). The third column is the results of the second regression analysis. If you look at the Adjusted <span class="math inline">\(R^2\)</span> row, you can see how the Adjusted <span class="math inline">\(R^2\)</span> changes as you add and subtract variables to the regression equation. When Adjusted <span class="math inline">\(R^2\)</span> decreases as you add more independent variables, that means that whatever increase in explanatory power that you get from the new variables is more than offset by the loss in degrees of freedom that you take by adding more variables.</p>
+<p>This is an extremely useful table, very much like what you see when you read many academic journal articles that use regression analysis. At the top, you see a title that identifies the dependent variable for all regressions in the table – trumpMargin2024. The column on the left provides the variable names.</p>
+<p>Once you have pasted that text into your word processor, You should go in and change variable names and the title to something that will be easy for your readers to understand. So, for example, instead of evanPerc2020, you might write “Percent evangelical, 2020” and instead of reaganMargin1980, you might write “Reagan margin, 1980”. The second column is the results of the first regression that we ran, with only reaganMargin1980 as the independent variable (you can tell that the regression did not include the age variable because the spot where the estimated coefficient for evanPerc2020 would go is blank). The “constant” is the intercept (they are the same thing). The third column is the results of the second regression analysis. If you look at the Adjusted <span class="math inline">\(R^2\)</span> row, you can see how the Adjusted <span class="math inline">\(R^2\)</span> changes as you add and subtract variables to the regression equation. When Adjusted <span class="math inline">\(R^2\)</span> decreases as you add more independent variables, that means that whatever increase in explanatory power that you get from the new variables is more than offset by the loss in degrees of freedom that you take by adding more variables.</p>
 </div>
-<div id="dummy-variables-in-multiple-regression" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Dummy variables in multiple regression<a href="regression.html#dummy-variables-in-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We often want to include nominal variables in regression analysis. For example, we want to know whether things like gender, religion, and race might cause variation in our dependent variable. However, since the values in a nominal variable can be listed in any order, it does not make sense to talk about “increasing” the value of a nominal independent variable. We get around this by converting a nominal independent variable into a series of dummy variables (variables coded 0, for when an attribute is absent, and 1, for when it is present). So, for example, the union membership variable in anes2020 is coded so that respondents get a 1 if they are in a union and a 0 if they are not. When including this in a regression, we would be estimating this equation:</p>
-<p>ft_ice=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>union</p>
-<p>When interpreting the results of this regression, for people not in unions, the value of the union variable is 0, and thus the estimated value of ft_ice would be <span class="math inline">\(β_0\)</span> (because <span class="math inline">\(β_1\)</span> multiplied by 0 equals 0). For people in unions, the estimated value of ft_ice would be <span class="math inline">\(β_0\)</span> + <span class="math inline">\(β_1\)</span> (because <span class="math inline">\(β_1\)</span> multiplied by 1 equals <span class="math inline">\(β_1\)</span>).</p>
+<div id="dummy-variables-in-multiple-regression" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Dummy variables in multiple regression<a href="regression.html#dummy-variables-in-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For the next set of examples, we are going to use the variable ft_sccs in ANES as our dependent variable. This variable is a feeling thermometer on the the US Supreme Court, which ranges from 0 (most negative feelings) and 100 (most positive feelings).</p>
+<p>We often want to include nominal variables in regression analysis. For example, we want to know whether things like gender, religion, and race might cause variation in our dependent variable. However, since the values in a nominal variable can be listed in any order, it does not make sense to talk about “increasing” the value of a nominal independent variable. We get around this by converting a nominal independent variable into a series of dummy variables (variables coded 0, for when an attribute is absent, and 1, for when it is present).</p>
+<p>So, for example, the houseKnowledge variable in anes2024 is coded so that respondents that correctly identified the Republicans as the party that controlled the House of Representatives got a 1, and respondents that gave an incorrect answer got a 0. If we want to use that as an independent variable for regression analysis, we are asking R to estimate <span class="math inline">\(β_0\)</span> and <span class="math inline">\(β_1\)</span> in this equation:</p>
+<p>ft_ussc=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>houseKnowledge</p>
+<p>How would we interpret the results of this regression? For people wrong about the party that controls the House, the predicted value of ft_ussc would be <span class="math inline">\(β_0\)</span> (because <span class="math inline">\(β_1\)</span> multiplied by 0 equals 0). For people who know which party controls the House, the estimated value of ft_ussc would be <span class="math inline">\(β_0\)</span> + <span class="math inline">\(β_1\)</span> (because <span class="math inline">\(β_1\)</span> multiplied by 1 equals <span class="math inline">\(β_1\)</span>).</p>
 <p>Let’s run this regression using this command:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="regression.html#cb233-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ft_ice<span class="sc">~</span>union, <span class="at">data=</span>anes2020))</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="regression.html#cb229-1" tabindex="-1"></a>model3<span class="ot">&lt;-</span><span class="fu">lm</span>(ft_ussc<span class="sc">~</span>houseKnowledge, <span class="at">data=</span>anes2024)</span>
+<span id="cb229-2"><a href="regression.html#cb229-2" tabindex="-1"></a><span class="fu">summary</span>(model3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ union, data = anes2020)
+## lm(formula = ft_ussc ~ houseKnowledge, data = anes2024)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -49.932 -19.932   0.068  20.068  52.969 
+## -50.240 -17.953   2.047  19.760  52.047 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  49.9322     0.3845  129.86  &lt; 2e-16 ***
-## union        -2.9010     1.0399   -2.79  0.00529 ** 
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     50.2400     0.6675  75.265  &lt; 2e-16 ***
+## houseKnowledge  -2.2873     0.8244  -2.774  0.00555 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 29.97 on 7035 degrees of freedom
-##   (1243 observations deleted due to missingness)
-## Multiple R-squared:  0.001105,   Adjusted R-squared:  0.000963 
-## F-statistic: 7.782 on 1 and 7035 DF,  p-value: 0.005291</code></pre>
+## Residual standard error: 26.52 on 4582 degrees of freedom
+##   (937 observations deleted due to missingness)
+## Multiple R-squared:  0.001677,   Adjusted R-squared:  0.001459 
+## F-statistic: 7.697 on 1 and 4582 DF,  p-value: 0.005553</code></pre>
 <p>This output tells us a few important things. First, it helps us fill out the equation from above, like this:</p>
-<p>ft_ice=49.32 + -2.9union</p>
-<p>In other words, R is estimating that the average non-union member gives ICE a 49.32, while the average union member gives R a 49.32-2.9, which is 46.42. And these estimates are both statistically significant.</p>
-<p>Second, the adjusted <span class="math inline">\(R^2\)</span> value of this equation tells us that variation in union membership alone only explains about 0.096% of variation in feelings on ICE. Thus, there are likely a lot of major causes that are missing from this model.</p>
+<p>ft_ussc=50.24 + -2.29houseKnowledge</p>
+<p>In other words, R is estimating that the average person who does not know which party controls the House gives the Supreme Court a 50.24, and that the average person who <em>does</em> know which party controls the House gives the Supreme court a 50.24-2.29, which is 47.95. And these estimates are both statistically significant.</p>
+<p>Second, the adjusted <span class="math inline">\(R^2\)</span> value of this equation tells us that variation in House knowledge alone only explains about 0.146% of variation in feelings on the Supreme Court. Thus, there are likely a lot of major causes that are missing from this model.</p>
 <p><strong>An important note:</strong>
-Let’s take a minute to generate a dummy variable for non-union members, like this:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="regression.html#cb235-1" tabindex="-1"></a>anes2020<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
-<span id="cb235-2"><a href="regression.html#cb235-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nonunion=</span><span class="fu">recode</span>(union,<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="dv">0</span>,<span class="st">&#39;0&#39;</span><span class="ot">=</span><span class="dv">1</span>))</span></code></pre></div>
-<p>This variable is the inverse of our union variable. While the union variable is coded 1 for union members, the nonunion variable is coded as 1 for non-union members. If we include that variable in the regression model above, to estimate this equation:</p>
-<p>ft_ice=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>union+<span class="math inline">\(β_2\)</span>nonunion</p>
-<p>we are giving R an impossible task. That it because no case will have a value of 0 for both our union and non-union variables. If we ignore this impossibility, and force R to do it anyway, R does this:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="regression.html#cb236-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ft_ice<span class="sc">~</span>union<span class="sc">+</span>nonunion, <span class="at">data=</span>anes2020))</span></code></pre></div>
+Let’s take a minute to generate a dummy variable for those who gave the wrong answer to House question,like this:</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="regression.html#cb231-1" tabindex="-1"></a>anes2024<span class="ot">&lt;-</span>anes2024 <span class="sc">%&gt;%</span> </span>
+<span id="cb231-2"><a href="regression.html#cb231-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nonKnowledgeable=</span><span class="fu">recode</span>(houseKnowledge,<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="dv">0</span>,<span class="st">&#39;0&#39;</span><span class="ot">=</span><span class="dv">1</span>))</span></code></pre></div>
+<p>This variable is the inverse of our houseKnowledge variable. While the houseKnowledge variable is coded 1 for those who gave the correct answer to the question which party controls the House, the nonKnowledgeable variable is coded 1 for respondents that gave the <em>incorrect</em> answer. If we include that variable in the regression model above, to estimate this equation:</p>
+<p>ft_ussc=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>houseKnowledge+<span class="math inline">\(β_2\)</span>nonKnowledgeable</p>
+<p>we are giving R an impossible task. That it because no case will have a value of 0 for both our houseKnowledge and nonKnowledgable variables. If we ignore this impossibility, and force R to do it anyway, R does this:</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="regression.html#cb232-1" tabindex="-1"></a><span class="fu">lm</span>(ft_ussc<span class="sc">~</span>houseKnowledge<span class="sc">+</span>nonKnowledgeable, <span class="at">data=</span>anes2024)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ union + nonunion, data = anes2020)
+## lm(formula = ft_ussc ~ houseKnowledge + nonKnowledgeable, data = anes2024)
+## 
+## Coefficients:
+##      (Intercept)    houseKnowledge  nonKnowledgeable  
+##           50.240            -2.287                NA</code></pre>
+<p>R essentially says “no thank you.” You will see that the coefficient for nonKnowledgeable is NA. That is because R noticed that the houseKnowledge and nonKnowledgeable variables are redundant with one another and left the nonKnowledgeable variable out. Aside from that coefficient, the rest of the output is the same as when we ran the regression with only the houseKnowledge variable.</p>
+<p>The houseKnowledge variable is a nominal variable with only two values: either each respondent either answered correctly or didn’t. But it is still important to avoid including redundant variables in regression even when we are dealing with nominal independent variables with more than two values, such as race. If we enter <code>table(anes2024$race)</code>, we can see that the race variable in ANES has six values: Asian or Pacific Islander, Black, Hispanic, Multiple races, Native American, and White. Let’s see what happens when we include that variable in a regression analysis with ft_ussc as our dependent variable, like this:</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="regression.html#cb234-1" tabindex="-1"></a>model4<span class="ot">&lt;-</span><span class="fu">lm</span>(ft_ussc<span class="sc">~</span>race, <span class="at">data=</span>anes2024)</span>
+<span id="cb234-2"><a href="regression.html#cb234-2" tabindex="-1"></a><span class="fu">summary</span>(model4)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ft_ussc ~ race, data = anes2024)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -49.932 -19.932   0.068  20.068  52.969 
-## 
-## Coefficients: (1 not defined because of singularities)
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  49.9322     0.3845  129.86  &lt; 2e-16 ***
-## union        -2.9010     1.0399   -2.79  0.00529 ** 
-## nonunion          NA         NA      NA       NA    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 29.97 on 7035 degrees of freedom
-##   (1243 observations deleted due to missingness)
-## Multiple R-squared:  0.001105,   Adjusted R-squared:  0.000963 
-## F-statistic: 7.782 on 1 and 7035 DF,  p-value: 0.005291</code></pre>
-<p>R essentially says “no thank you.” If you look at the row labeled nonunion, you will see 4 NAs. That is because R noticed that the union and nonunion variables were redundant with one another and left the nonunion variable out. Aside from that row, the rest of the output is the same as when we ran the regression with only the union variable.</p>
-<p>The union variable is a nominal variable with only two values: either each respondent is a union member or not. But it is still important to avoid including redundant variables in regression even when we are dealing with nominal independent variables with more than two values, such as race. If we enter <code>table(anes2020$race)</code>, we can see that the race variable in ANES has six values: Asian or Pacific Islander, Black, Hispanic, Multiple Races, Native American, and White. Let’s see what happens when we include that variable in a regression analysis with ft_ice as our dependent variable, like this:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="regression.html#cb238-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ft_ice<span class="sc">~</span>race, <span class="at">data=</span>anes2020))</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = ft_ice ~ race, data = anes2020)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -54.349 -21.725  -1.725  18.275  59.630 
+## -52.125 -19.639   0.361  20.361  56.217 
 ## 
 ## Coefficients:
 ##                     Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)           47.349      1.949  24.293   &lt;2e-16 ***
-## raceBlack             -5.281      2.304  -2.292   0.0219 *  
-## raceHispanic          -6.979      2.278  -3.063   0.0022 ** 
-## raceMultiple Races    -3.538      2.768  -1.278   0.2013    
-## raceNative American    7.000      3.136   2.232   0.0256 *  
-## raceWhite              4.376      1.992   2.196   0.0281 *  
+## (Intercept)           52.125      2.043  25.512  &lt; 2e-16 ***
+## raceBlack             -8.342      2.411  -3.460 0.000545 ***
+## raceHispanic          -4.833      2.364  -2.044 0.040980 *  
+## raceMultiple races    -4.096      2.873  -1.426 0.153976    
+## raceNative American   -7.085      5.677  -1.248 0.212077    
+## raceWhite             -2.486      2.091  -1.189 0.234511    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 29.69 on 6988 degrees of freedom
-##   (1286 observations deleted due to missingness)
-## Multiple R-squared:  0.0195, Adjusted R-squared:  0.0188 
-## F-statistic:  27.8 on 5 and 6988 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 26.48 on 4814 degrees of freedom
+##   (701 observations deleted due to missingness)
+## Multiple R-squared:  0.004912,   Adjusted R-squared:  0.003878 
+## F-statistic: 4.752 on 5 and 4814 DF,  p-value: 0.0002467</code></pre>
 <p>What R has done here is converted our race variable into six dummy variables: one for each value in the original race variable, and estimated the intercept and coefficient for this equation:</p>
-<p>ft_ice=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>Black + <span class="math inline">\(β_2\)</span>Hispanic + <span class="math inline">\(β_3\)</span>MultipleRaces + <span class="math inline">\(β_4\)</span>NativeAmerican + <span class="math inline">\(β_5\)</span>White</p>
-<p>Notice that our original race variable had six categories, but there are only five dummy variables in the model. That is because if R included the sixth value—Asian or Pacific Islander—then R would have put itself in a position where it was trying to estimate the ft_ice for a person would cannot exist in our data – someone with 0s on all 0 possible values for race. Thus, R chooses one category to be the “reference category,” and leaves that one out.</p>
-<p>In the case of the race variable in ANES, R chose to leave out the first category in alphabetical order which is regression analysis, which is “Asian or Pacific Islander.” Thus, the intercept that R estimated in the above regression (47.35) is the predicted value of feelings about ICE for someone who identified themselves as Asian or Pacific Islander (because their values on all of the other possible race dummy variables are 0).</p>
-<p>-5.281 is the expected differences between someone who is an Asian or Pacific Islander and someone who is Black; in other words, Blacks seem to have a lower estimation of ICE, on average, than Asians or Pacific Islanders. And the rest of the coefficients estimate the differences between the groups that they identify and Asian Pacific Islanders.</p>
-<p>R chose “Asian or Pacific Islander” as the reference category because it comes first in alphabetical order when looking at the values for the race variable. This would be useful analysis if we were writing a paper about the public opinion of Asians and Pacific Islanders. However, given that whites are the majority in our sample, and whites are possibly less likely to have negative experiences with ICE than those who identify with other racial groups, we might want to compare the various ethnic minority groups in this sample with whites. To do that, we would have to first make the race variable into a factor, like this:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="regression.html#cb240-1" tabindex="-1"></a>anes2020<span class="sc">$</span>race.factor<span class="ot">&lt;-</span><span class="fu">as.factor</span>(anes2020<span class="sc">$</span>race)</span></code></pre></div>
+<p>ft_ussc = <span class="math inline">\(β_0\)</span> + <span class="math inline">\(β_1\)</span>Black + <span class="math inline">\(β_2\)</span>Hispanic + <span class="math inline">\(β_3\)</span>MultipleRaces + <span class="math inline">\(β_4\)</span>NativeAmerican + <span class="math inline">\(β_5\)</span>White</p>
+<p>Notice that our original race variable had six categories, but there are only five dummy variables in the model. That is because if R included the sixth value—Asian or Pacific Islander—then R would have put itself in a position where it was trying to estimate ft_ussc for a person would cannot exist in our data – someone with 0s on all 0 possible values for race. Thus, R chooses one category to be the “reference category,” and leaves that one out.</p>
+<p>In the case of the race variable in ANES, R chose to leave out the first category in alphabetical order, which is “Asian or Pacific Islander.” Thus, the intercept that R estimated in the above regression (52.13) is the predicted value of feelings about the Supreme Court for someone who identified themselves as Asian or Pacific Islander (because their values on all of the other possible race dummy variables are 0).</p>
+<p>-8.342 is the expected differences between someone who is an Asian or Pacific Islander and someone who is Black; in other words, Blacks seem to have a lower estimation of the Supreme Court, on average, than Asians or Pacific Islanders. And the rest of the coefficients estimate the differences between the groups that they identify and Asian Pacific Islanders.</p>
+<p>R chose “Asian or Pacific Islander” as the reference category because it comes first in alphabetical order when looking at the values for the race variable. This would be useful analysis if we were writing a paper about the public opinion of Asians and Pacific Islanders. However, given that whites are the majority in our sample, we might want to compare the various ethnic minority groups in this sample with whites. To do that, we would have to first make the race variable into a factor,<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> like this:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="regression.html#cb236-1" tabindex="-1"></a>anes2024<span class="sc">$</span>race.factor<span class="ot">&lt;-</span><span class="fu">as.factor</span>(anes2024<span class="sc">$</span>race)</span></code></pre></div>
 <p>Next, we have to relevel the variable, telling R what we want the reference category to be, like this:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="regression.html#cb241-1" tabindex="-1"></a>anes2020<span class="sc">$</span>race.factor<span class="ot">&lt;-</span><span class="fu">relevel</span>(anes2020<span class="sc">$</span>race.factor, <span class="at">ref=</span><span class="st">&quot;White&quot;</span>)</span></code></pre></div>
-<p>This will compare all the racial groups in this variable to whites. So, if we run a regression with ft_ice as our dependent variable and race.factor as our independent variable, like this:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="regression.html#cb242-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ft_ice<span class="sc">~</span>race.factor, <span class="at">data=</span>anes2020))</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="regression.html#cb237-1" tabindex="-1"></a>anes2024<span class="sc">$</span>race.factor<span class="ot">&lt;-</span><span class="fu">relevel</span>(anes2024<span class="sc">$</span>race.factor, <span class="at">ref=</span><span class="st">&quot;White&quot;</span>)</span></code></pre></div>
+<p>This will compare all the racial groups in this variable to whites. So, now, let’s run a regression with ft_ussc as our dependent variable and race.factor as our independent variable, like this:</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="regression.html#cb238-1" tabindex="-1"></a>model5<span class="ot">&lt;-</span><span class="fu">lm</span>(ft_ussc<span class="sc">~</span>race.factor, <span class="at">data=</span>anes2024)</span>
+<span id="cb238-2"><a href="regression.html#cb238-2" tabindex="-1"></a><span class="fu">summary</span>(model5)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = ft_ice ~ race.factor, data = anes2020)
+## lm(formula = ft_ussc ~ race.factor, data = anes2024)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -54.349 -21.725  -1.725  18.275  59.630 
+## -52.125 -19.639   0.361  20.361  56.217 
 ## 
 ## Coefficients:
 ##                                      Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                           51.7248     0.4128 125.289  &lt; 2e-16 ***
-## race.factorAsian or Pacific Islander  -4.3757     1.9923  -2.196   0.0281 *  
-## race.factorBlack                      -9.6563     1.2960  -7.451 1.04e-13 ***
-## race.factorHispanic                  -11.3551     1.2501  -9.083  &lt; 2e-16 ***
-## race.factorMultiple Races             -7.9134     2.0090  -3.939 8.26e-05 ***
-## race.factorNative American             2.6245     2.4914   1.053   0.2922    
+## (Intercept)                           49.6386     0.4457 111.381  &lt; 2e-16 ***
+## race.factorAsian or Pacific Islander   2.4864     2.0912   1.189   0.2345    
+## race.factorBlack                      -5.8559     1.3554  -4.320 1.59e-05 ***
+## race.factorHispanic                   -2.3463     1.2699  -1.848   0.0647 .  
+## race.factorMultiple races             -1.6096     2.0679  -0.778   0.4364    
+## race.factorNative American            -4.5986     5.3152  -0.865   0.3870    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 29.69 on 6988 degrees of freedom
-##   (1286 observations deleted due to missingness)
-## Multiple R-squared:  0.0195, Adjusted R-squared:  0.0188 
-## F-statistic:  27.8 on 5 and 6988 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>Now R is using the dummy variable for “white” as our reference category. So, interpreting this, we can see that R predicts that the average white person will give ICE a 51.72, the average Black person’s score will be 4.38 points lower than that, the average Hispanic person’s score will be 9.66 points lower than the average white person, etc.</p>
+## Residual standard error: 26.48 on 4814 degrees of freedom
+##   (701 observations deleted due to missingness)
+## Multiple R-squared:  0.004912,   Adjusted R-squared:  0.003878 
+## F-statistic: 4.752 on 5 and 4814 DF,  p-value: 0.0002467</code></pre>
+<p>Now R is using the dummy variable for “white” as our reference category. So, interpreting this, we can see that R predicts that the average white person will give the Supreme Court a 49.64, the average Black person’s score will be 5.86 points lower than that, the average Hispanic person’s score will be 2.35 points lower than the average white person, etc. Interestingly, we can also see that Blacks are the only racial group that differs from Whites in their assessment of the Supreme Court in a statistically significant way.</p>
 </div>
-<div id="graphing-multiple-regression" class="section level2 hasAnchor" number="9.5">
-<h2><span class="header-section-number">9.5</span> Graphing multiple regression<a href="regression.html#graphing-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ordinal-variables-in-regression-analysis" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Ordinal variables in regression analysis<a href="regression.html#ordinal-variables-in-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If we put an ordinal variable into our regression analysis as an ordered factor (the way that R likes to treat ordinal variables), R will treat the possible values as a series of dummy variables, leave one out, and produce in the output in a way that is pretty confusing.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a> One way around this is to convert an ordinal variable into a numeric variable, like we did in section <a href="recoding.html#factor-as-numeric">4.4</a>. Let’s try this with the outrage variable, testing the hypothesis that people that are more prone to outrage are also more likely to be outraged about the US Supreme Court, and thus produce a lower ft_ussc.</p>
+<p>First, we have to check the way that the values are ordered, using this command: <code>levels(anes2024$outrage)</code>. If you enter that into your console, you will see that the variable is coded so that the lowest value is “not at all” outraged, and the highest value is “extremely” outraged. So when we convert this to numeric, it will still make sense to keep the values in this order. Now let’s convert the variable to numeric and rename it:</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="regression.html#cb240-1" tabindex="-1"></a>anes2024<span class="sc">$</span>outrage2<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(anes2024<span class="sc">$</span>outrage)</span></code></pre></div>
+<p>Now, if you run <code>table(anes2024$outrage2)</code>, you will see that our new variable is scaled from 1 to 5. However, it will be a little easier for us if we scale this variable from 0 to 4. We can accomplish that with this command:</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="regression.html#cb241-1" tabindex="-1"></a>anes2024<span class="sc">$</span>outrage2<span class="ot">&lt;-</span>anes2024<span class="sc">$</span>outrage2<span class="dv">-1</span></span></code></pre></div>
+<p>Now let’s try our regression analysis with our new variable:</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="regression.html#cb242-1" tabindex="-1"></a>model6<span class="ot">&lt;-</span><span class="fu">lm</span>(ft_ussc<span class="sc">~</span>outrage2, <span class="at">data=</span>anes2024)</span>
+<span id="cb242-2"><a href="regression.html#cb242-2" tabindex="-1"></a><span class="fu">summary</span>(model6)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ft_ussc ~ outrage2, data = anes2024)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -53.17 -18.36   1.64  19.24  56.45 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  43.5532     0.7590  57.385  &lt; 2e-16 ***
+## outrage2      2.4032     0.2953   8.137 5.14e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 26.32 on 4658 degrees of freedom
+##   (861 observations deleted due to missingness)
+## Multiple R-squared:  0.01402,    Adjusted R-squared:  0.0138 
+## F-statistic: 66.21 on 1 and 4658 DF,  p-value: 5.142e-16</code></pre>
+<p>Interestingly, these results show that, on average, someone with an outrage score of 0 (meaning they were not at all outraged) gave the Supreme Court a 43.55, but a one point increase in the outrage scale is associated with a 2.4 point <em>increase</em> in positive feelings toward the Supreme Court. Perhaps outraged people trust the Supreme Court to address their sources of outrage?</p>
+</div>
+<div id="graphing-multiple-regression" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Graphing multiple regression<a href="regression.html#graphing-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you ask R to calculate a bivariate OLS regression, you are actually asking R to estimate the formula for a line. This is relatively easy to represent on a two-dimensional scatterplot. You can have R plot all of the points that it is using to estimate the line, as well as the line itself (like we did in Chapter 8). When you add a second independent variable, you are asking R to estimate the formula for a plane, which becomes harder to graph, and when you add a third, you are asking R to estimate the formula for a three-dimensional object, which is even harder to graph. Adding four or more independent variable makes it impossible to graph the whole relationship about which you are asking R to theorize. However, there are still ways to represent part of the relationship. For example, let’s say that we have asked R to run this regression:</p>
-<pre><code>summary(lm(ft_ice~ft_dems+race.factor, data=anes2020))</code></pre>
+<pre><code>summary(lm(ft_ussc~ft_liberals+race.factor, data=anes2024))</code></pre>
 <p>When we do this, we are asking R to estimate the intercept and coefficients in this equation:</p>
-<p>ft_ice=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>ft_dem + <span class="math inline">\(β_2\)</span>AsianPacificIslander + <span class="math inline">\(β_3\)</span>Black + <span class="math inline">\(β_4\)</span>Hispanic + <span class="math inline">\(β_5\)</span>MultipleRaces + <span class="math inline">\(β_6\)</span>NativeAmerican</p>
-<p>with “white” as the reference category for race. There are a few different ways that we can represent this relationship in a graph.</p>
-<div id="facets" class="section level3 hasAnchor" number="9.5.1">
-<h3><span class="header-section-number">9.5.1</span> Facets<a href="regression.html#facets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can ask R to make a different scatterplot for every value of our nominal race variable, using the following code.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="regression.html#cb245-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex2)), <span class="fu">aes</span>(<span class="at">x=</span>ft_dems, <span class="at">y=</span>ft_ice)) <span class="sc">+</span></span>
+<p>ft_ussc=<span class="math inline">\(β_0\)</span>+ <span class="math inline">\(β_1\)</span>ft_liberals + <span class="math inline">\(β_2\)</span>AsianPacificIslander + <span class="math inline">\(β_3\)</span>Black + <span class="math inline">\(β_4\)</span>Hispanic + <span class="math inline">\(β_5\)</span>MultipleRaces + <span class="math inline">\(β_6\)</span>NativeAmerican</p>
+<p>with “White” as the reference category for race. One way that we can graphically represent this relationship is by using <em>facets</em>. In other words, we can ask R to make a different scatterplot for every value of our nominal race variable, using the following code.</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="regression.html#cb245-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>anes2024 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(race.factor)), <span class="fu">aes</span>(<span class="at">x=</span>ft_liberals, <span class="at">y=</span>ft_ussc)) <span class="sc">+</span></span>
 <span id="cb245-2"><a href="regression.html#cb245-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>, <span class="at">color=</span><span class="st">&quot;purple&quot;</span>) <span class="sc">+</span></span>
 <span id="cb245-3"><a href="regression.html#cb245-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
 <span id="cb245-4"><a href="regression.html#cb245-4" tabindex="-1"></a>  <span class="co">#add axis labels</span></span>
-<span id="cb245-5"><a href="regression.html#cb245-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ICE and the Democratic Party&quot;</span>, </span>
-<span id="cb245-6"><a href="regression.html#cb245-6" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">&quot;ANES2020&quot;</span>,</span>
-<span id="cb245-7"><a href="regression.html#cb245-7" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Feeling thermometer about the Democratic Party&quot;</span>, </span>
-<span id="cb245-8"><a href="regression.html#cb245-8" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Feeling thermometer about ICE&quot;</span>, <span class="at">color=</span><span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb245-5"><a href="regression.html#cb245-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Feelings about liberals &amp; Supreme Court&quot;</span>, </span>
+<span id="cb245-6"><a href="regression.html#cb245-6" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">&quot;ANES 2024&quot;</span>,</span>
+<span id="cb245-7"><a href="regression.html#cb245-7" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Feelings about liberals&quot;</span>, </span>
+<span id="cb245-8"><a href="regression.html#cb245-8" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Feeling about Supreme Court&quot;</span>, <span class="at">color=</span><span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb245-9"><a href="regression.html#cb245-9" tabindex="-1"></a>  <span class="co">#add regression line</span></span>
 <span id="cb245-10"><a href="regression.html#cb245-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">color=</span><span class="st">&quot;BLACK&quot;</span>)<span class="sc">+</span></span>
-<span id="cb245-11"><a href="regression.html#cb245-11" tabindex="-1"></a>  <span class="co">#make different graphs for every value of a nominal or ordinal variable  </span></span>
+<span id="cb245-11"><a href="regression.html#cb245-11" tabindex="-1"></a>  <span class="co">#make different graphs for every value of a nominal or ordinal variable</span></span>
 <span id="cb245-12"><a href="regression.html#cb245-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race.factor)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
-<p>This graph shows us the relationship between feelings about the Democratic Party and feelings about ICE at all values of our race variable. Note that the relationship that we observe in the zero-order regression persists for all values of our control except for Blacks, for whom feelings about the Democratic Party do not appear correlated with feelings about ICE.</p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p>This graph shows us the relationship between feelings about liberals and feelings about the US Supreme court at all values of our race variable. Notice how much more substantially negative the relationship is among whites than it is among other racial groups.</p>
 </div>
-<div id="color-coding-dots" class="section level3 hasAnchor" number="9.5.2">
-<h3><span class="header-section-number">9.5.2</span> Color coding dots<a href="regression.html#color-coding-dots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We could also represent this same kind of relationship by color coding the dots. This would be a little bit difficult to read with the race variable, since there are six different races in the dataframe, but let’s try with a variable with only two values: the sex variable. The sex variable is currently coded as a dummy variable, with 0 meaning male and 1 meaning female. Since R will use those labels on the graph that we generate, let’s make a new variable called sex2 which is labeled “male” and “female,” like this:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="regression.html#cb246-1" tabindex="-1"></a>anes2020<span class="ot">&lt;-</span>anes2020 <span class="sc">%&gt;%</span> </span>
-<span id="cb246-2"><a href="regression.html#cb246-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex2=</span><span class="fu">recode</span>(sex, <span class="st">&#39;0&#39;</span><span class="ot">=</span><span class="st">&quot;male&quot;</span>,<span class="st">&#39;1&#39;</span><span class="ot">=</span><span class="st">&quot;female&quot;</span>))</span></code></pre></div>
-<p>Now, we can generate a graph with this code (which you can also find in the file “Strausz ggplot2 templates” which is in the “rscripts” folder that was in the zipped filed that you should have downloaded in section <a href="getting-started.html#add-files">1.3</a>.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="regression.html#cb247-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>anes2020 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex2)), <span class="fu">aes</span>(<span class="at">x=</span>ft_dems, <span class="at">y=</span>ft_ice,<span class="at">color=</span>sex2)) <span class="sc">+</span></span>
-<span id="cb247-2"><a href="regression.html#cb247-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>, <span class="at">alpha=</span>.<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb247-3"><a href="regression.html#cb247-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb247-4"><a href="regression.html#cb247-4" tabindex="-1"></a>  <span class="co">#add axis labels</span></span>
-<span id="cb247-5"><a href="regression.html#cb247-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ICE and the Democratic Party&quot;</span>, </span>
-<span id="cb247-6"><a href="regression.html#cb247-6" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">&quot;ANES2020&quot;</span>,</span>
-<span id="cb247-7"><a href="regression.html#cb247-7" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&quot;Feeling thermometer about the Democratic Party&quot;</span>, </span>
-<span id="cb247-8"><a href="regression.html#cb247-8" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&quot;Feeling thermometer about ICE&quot;</span>, <span class="at">color=</span><span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb247-9"><a href="regression.html#cb247-9" tabindex="-1"></a>  <span class="co">#add regression line</span></span>
-<span id="cb247-10"><a href="regression.html#cb247-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
-<p>Note that this graph has dots colored according to their value on our sex2 variable, and it also has estimated two regression lines – one for men and one for women. We can see that, for people that dislike the Democratic Party, men feel more positively about ICE than women overall, but that difference seems to disappear as feelings about the Democratic Party increase.</p>
-</div>
-</div>
-<div id="review-of-this-chapters-commands-8" class="section level2 hasAnchor" number="9.6">
-<h2><span class="header-section-number">9.6</span> Review of this chapter’s commands<a href="regression.html#review-of-this-chapters-commands-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="review-of-this-chapters-commands-8" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> Review of this chapter’s commands<a href="regression.html#review-of-this-chapters-commands-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <colgroup>
 <col width="9%" />
@@ -820,45 +837,30 @@ Let’s take a minute to generate a dummy variable for non-union members, like t
 <col width="5%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th align="left">Command</th>
 <th align="left">Purpose</th>
 <th align="left">Library</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left">stargazer()</td>
 <td align="left">Use this code to generate a beautiful table displaying the results of one or more regressions.</td>
 <td align="left">stargazer</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">as.factor()</td>
 <td align="left">Changes a character variable to a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.</td>
 <td align="left">Base R</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">relevel(, ref=““)</td>
 <td align="left">Changes the reference category of a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.</td>
 <td align="left">Base R</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div id="review-exercises-8" class="section level2 hasAnchor" number="9.7">
-<h2><span class="header-section-number">9.7</span> Review exercises<a href="regression.html#review-exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Let’s practice some of the things that we learned in this chapter.</p>
-<ol style="list-style-type: decimal">
-<li>Create a new R script called “Chapter 9 Exercises,” and save it to your R scripts folder. Make a header for the script based on the description from section <a href="tidyverse.html#org-script">2.3</a>. Use the library() command to load the tidyverse and stargazer packages.</li>
-<li>Choose an interval variable from states2010, anes2020 (not age!) or world that you want to think about as a dependent variable. Generate a histogram and statistics to help you visualize and discuss the central tendency and dispersion of this variable.</li>
-<li>Create a new file in your word processor. Paste the graphic that you generated from #2 into your word processor file. In a few sentences, discuss the central tendency and dispersion of that variable.</li>
-<li>Choose a second interval variable from the same dataset that you used for #2. In your word processor file, briefly generate and discuss a null and research hypothesis. What do you expect to see in this relationship and why?</li>
-<li>Run a regression of your independent variable on your dependent variable, and save that regression as model.1.</li>
-<li>Choose a nominal or ordinal variable (with more than two possible values) to be a second independent variable in your regression. If you have an interval variable that you prefer, simplify it into an ordinal variable using <code>cut2</code>, <code>levels()</code>, and/or <code>mutate(recode())</code>. Set the reference category to something that makes sense. Run the regression again with both your independent variable from #4 and this new variable as independent variables, and save the regression model as model.2.</li>
-<li>Using either facets or colored dots, make a scatterplot of the regression from #6, and paste it into your word processor document.</li>
-<li>Using the stargazer package (as explained in section <a href="regression.html#stargazer">9.3</a>), generate a table of model.1 and model.2, and paste that into your word processor document.</li>
-<li>In a few sentences, interpret the estimated intercept, coefficients, significance levels, and adjusted R2 of models 1 and 2 from #8, as well as your graph from #7.</li>
-</ol>
 
 </div>
 </div>
@@ -867,6 +869,15 @@ Let’s take a minute to generate a dummy variable for non-union members, like t
 <div id="ref-Hlavac" class="csl-entry">
 Hlavac, Marek. 2022. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. Bratislava, Slovakia: Social Policy Institute. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>.
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="8">
+<li id="fn8"><p>Stargazer is designed by Hlavac <span class="citation">(<a href="#ref-Hlavac">2022</a>)</span><a href="regression.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>To test this, you can use this command: <code>model2.data %&gt;%  dplyr::select(state,abs.resid) %&gt;% arrange(abs.resid) %&gt;%  head()</code><a href="regression.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>Because race is a nominal variable, we are making it into a non-ordered factor. If it were an ordinal variable, we would want to make it an ordered factor.<a href="regression.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>if you don’t believe me, enter <code>lm(ft_ussc~outrage,data=anes2024)</code> into the Console.<a href="regression.html#fnref11" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
