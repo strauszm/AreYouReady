@@ -30,7 +30,7 @@ I graduated from <a href="https://jmc.msu.edu/">Michigan State University’s Ja
 
 # Acknowledgements {.unnumbered}
 
-I'd like to thank <a href="https://www.maxwell.syr.edu/directory/seth-jolly">Seth Jolly</a>, <a href="https://lsa.umich.edu/polisci/people/graduate-students/nissenk.html">Katie Nissen</a>, <a href="https://addran.tcu.edu/view/adam-schiffer">Adam Schiffer</a>, <a href="https://www.queens.edu/artsci/campus-directory/amy-sentementes-phd/">Amy Sentementes</a>, and David "The Bad Man" Parzen for their helpful suggestions.
+I'd like to thank <a href="https://www.maxwell.syr.edu/directory/seth-jolly">Seth Jolly</a>, <a href="https://lsa.umich.edu/polisci/people/graduate-students/nissenk.html">Katie Nissen</a>, <a href="https://addran.tcu.edu/view/adam-schiffer">Adam Schiffer</a>, <a href="https://lsa.umich.edu/polisci/people/graduate-students/amrauh.html">Adam Rauh</a>, <a href="https://www.queens.edu/artsci/campus-directory/amy-sentementes-phd/">Amy Sentementes</a>, and David "The Bad Man" Parzen for their helpful suggestions.
 
 Most importantly, I'd like to thank my spouse Kate for coming up with the great title and for putting up with my (admittedly annoying) regular, enthusiastic discussion of the new things that I had learned to do and make in R over these last few years.
 
