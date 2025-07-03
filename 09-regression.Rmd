@@ -50,7 +50,7 @@ To determine whether these estimates are statistically significant, we summarize
 ```{r}
 summary(model1)
 ```
-This output shows us that the estimates of the slope and intercept are both statistically significant, and that the adjusted $R_2$ is .2959, which means that variation Reagan's margin in 1980 explain about 29.59% of variation in Trump's margin in 2024.
+This output shows us that the estimates of the slope is statistically significant but the intrecept is not, and that the adjusted $R_2$ is .2959, which means that variation Reagan's margin in 1980 explain about 29.59% of variation in Trump's margin in 2024.
 
 That is pretty good! We can learn a lot about how states voted in 2024 by observing how they voted in 1980. However, we also know that there is still a lot of variation that is unexplained. Thinking back to our analysis of residuals in section \@ref(residuals), we know that, while our regression analysis does a pretty good job of explaining Michigan, it does a much less good job of explaining West Virginia. 
 
