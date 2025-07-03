@@ -3,7 +3,7 @@
 ## Getting started with this chapter {#getting-started-multiple-regression}
 To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section \@ref(exploring).
 
-Now type ```install.packages("stargazer")``` into the Console.^[Stargazer is designed by Hlavac [-@Hlavac]]. This new package will help us label our graphs in a way that is easier to read.
+Now type ```install.packages("stargazer")``` into the Console.^[Stargazer is designed by Hlavac [-@Hlavac].] This new package will help us label our graphs in a way that is easier to read.
 
 Next, open a new script file and save it in your scripts folder as "chapter 9 practice." Write this on the page:
 ```
@@ -20,7 +20,7 @@ library(modelr)
 library(stargazer)
 ```
 Now select all the text on this page, run it, and then save it. 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=FALSE}
 library(stargazer)
 ```
 
