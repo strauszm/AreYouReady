@@ -240,7 +240,7 @@ ggplot(anes2024 %>% filter(!is.na(ideology3) & (!is.na(ncis2))),
   scale_fill_discrete(name = "NCIS")
 ```
 
-This boxplot clearly shows how the relationship between NCIS viewership and feelings about the police is stronger for liberals than it was for conservatives. This is a really nice example of an interaction, and it suggests that NCIS viewerhip may have had different meanings for liberals, moderates, and conservatives.
+This boxplot clearly shows how the relationship between NCIS viewership and feelings about the police is stronger for liberals than it was for conservatives. This is a really nice example of an interaction, and it suggests that NCIS viewership may have had different meanings for liberals, moderates, and conservatives.
 
 ## Review of this chapter's commands
 ```{r, echo=FALSE}

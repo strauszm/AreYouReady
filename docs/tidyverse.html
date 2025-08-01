@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-07-03" />
+<meta name="date" content="2025-07-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,7 +361,7 @@ div.csl-indent {
 <p>Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the “$” and the command “summary.” The “$” command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:</p>
 <pre><code>anes2024$age</code></pre>
 <p>When you do this, you will see that R gives you the age of every single person who took the survey. Kind of interesting, but not all that useful. So, let’s try something else. Type summary(anes2024$age) into the Console, and you get these results:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tidyverse.html#cb12-1" tabindex="-1"></a><span class="fu">summary</span>(anes2024<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tidyverse.html#cb13-1" tabindex="-1"></a><span class="fu">summary</span>(anes2024<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##   18.00   39.00   54.00   53.15   68.00   80.00     279</code></pre>
 <p>This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> You will also see that the median age is 54 and the mean is 53.15. And, you will see that there are 279 NAs. “NA” is what R reports when it does not have data in a particular variable. So, there are 279 cases for whom we don’t have data on their ages.</p>
@@ -420,18 +420,18 @@ library(tidyverse)</code></pre>
 <p>Highlight that text and run that command. You should see a lot of output in the Console. If you scroll up a bit in the Console, you should see something like this (this is just the first 12 variables in this dataframe; you will have access to more on your screen):</p>
 <pre><code>## Rows: 5,521
 ## Columns: 12
-## $ age        &lt;int&gt; 50, 41, 44, 45, 80, 75, 41, 49, 45, 41, 59, 34, 42, 70, 58,…
-## $ female     &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,…
-## $ marital    &lt;chr&gt; &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;widowed&quot;, &quot;div…
-## $ mil        &lt;chr&gt; &quot;formerly active duty&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;ne…
-## $ union      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,…
-## $ race       &lt;chr&gt; &quot;Hispanic&quot;, &quot;Asian or Pacific Islander&quot;, &quot;White&quot;, &quot;Asian or…
-## $ children   &lt;int&gt; 0, 0, 1, 1, 0, 0, 2, 0, 0, 2, 0, 1, 2, 0, 0, 2, 0, 0, 0, 0,…
-## $ landline   &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,…
-## $ smartphone &lt;dbl&gt; 1, 1, 1, NA, NA, 1, 1, 1, NA, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,…
-## $ passport   &lt;dbl&gt; 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0,…
-## $ trans      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-## $ gayLesbian &lt;chr&gt; &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;,…</code></pre>
+## $ age        &lt;int&gt; 50, 41, 44, 45, 80, 75, 41, 49, 45, 41, 59, 34, 42, 70, 5…
+## $ female     &lt;dbl&gt; 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, …
+## $ marital    &lt;chr&gt; &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;married&quot;, &quot;widowed&quot;, &quot;d…
+## $ mil        &lt;chr&gt; &quot;formerly active duty&quot;, &quot;never served&quot;, &quot;never served&quot;, &quot;…
+## $ union      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, …
+## $ race       &lt;chr&gt; &quot;Hispanic&quot;, &quot;Asian or Pacific Islander&quot;, &quot;White&quot;, &quot;Asian …
+## $ children   &lt;int&gt; 0, 0, 1, 1, 0, 0, 2, 0, 0, 2, 0, 1, 2, 0, 0, 2, 0, 0, 0, …
+## $ landline   &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, …
+## $ smartphone &lt;dbl&gt; 1, 1, 1, NA, NA, 1, 1, 1, NA, 1, 1, 0, 1, 1, 1, 1, 1, 1, …
+## $ passport   &lt;dbl&gt; 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, …
+## $ trans      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ gayLesbian &lt;chr&gt; &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight&quot;, &quot;straight…</code></pre>
 <p>This is giving us information about the dataframe anes2024. At the top, you can see that the dataframe has 5,521 rows. Since this is a survey, and each row represents one person that was surveyed, that tells us that the anes2024 dataframe represents a survey of 5,521 people. On the output above, you can see that the dataframe has 12 columns (because I told R to only display the first 12.) If you ran the command, you should see that the full dataframe has 83 columns, which means that the dataframe measures 83 variables. The glimpse() command in the tidyverse gives us a bit of information about each of these variables. On the left of the output you can see all of the variable names (age, marital, etc.). And then just to the right of that you can see the way that R is classifying those variables (&lt;int&gt;, &lt;chr&gt;, &lt;ord&gt;, etc.). We will learn a bit more about those classifications in future chapters. To the right of those classifications you can see the first set of values of each variable.</p>
 </div>
 <div id="select-in-tidyverse" class="section level3 hasAnchor" number="2.4.2">
@@ -485,6 +485,12 @@ library(tidyverse)</code></pre>
 </div>
 <div id="review-of-this-chapters-commands-1" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Review of this chapter’s commands<a href="tidyverse.html#review-of-this-chapters-commands-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)
+## Warning: &#39;xfun::attr()&#39; is deprecated.
+## Use &#39;xfun::attr2()&#39; instead.
+## See help(&quot;Deprecated&quot;)</code></pre>
 <table>
 <colgroup>
 <col width="7%" />
@@ -575,42 +581,42 @@ library(tidyverse)</code></pre>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-tidyverse.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/02-tidyverse.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
