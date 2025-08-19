@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-07-31" />
+<meta name="date" content="2025-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -361,7 +361,7 @@ div.csl-indent {
 <p>Now let’s say that we want to know a bit more about the age variable. How old was the average person that took our survey? To answer, we need to learn two more R commands: the “$” and the command “summary.” The “$” command helps us identify single columns within a dataframe. So, if we just want to see the age column, you can type this in the Console:</p>
 <pre><code>anes2024$age</code></pre>
 <p>When you do this, you will see that R gives you the age of every single person who took the survey. Kind of interesting, but not all that useful. So, let’s try something else. Type summary(anes2024$age) into the Console, and you get these results:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tidyverse.html#cb13-1" tabindex="-1"></a><span class="fu">summary</span>(anes2024<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tidyverse.html#cb12-1" tabindex="-1"></a><span class="fu">summary</span>(anes2024<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##   18.00   39.00   54.00   53.15   68.00   80.00     279</code></pre>
 <p>This gives you a lot of useful information! You can see that the youngest age in the dataframe is 18 (likely because they were not surveying minors), and the oldest is 80.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> You will also see that the median age is 54 and the mean is 53.15. And, you will see that there are 279 NAs. “NA” is what R reports when it does not have data in a particular variable. So, there are 279 cases for whom we don’t have data on their ages.</p>

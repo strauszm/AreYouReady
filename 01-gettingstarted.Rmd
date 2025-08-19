@@ -145,7 +145,7 @@ knitr::include_graphics("images/gettingstarted_11_warning.png")
 Click "Yes," and anes2024 should appear in your environment.
 
 ## Review of this chapter's commands 
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("<-","To create an object. For example: \"this.object<-1\" assigns the number 1 to an object called \"this.object.\"")
 r2<-c("c()","Concatenate. To combine more than one data point into a vector.")
 r3<-c("rm()","Remove an object from your environment.")
