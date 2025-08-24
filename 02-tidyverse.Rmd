@@ -6,7 +6,7 @@ One of the nice things about R is that users can create their own libraries of c
 ```
 install.packages("tidyverse")
 ```
-Once you hit enter, you should see some action in your Console (what it says will depend on what version of R you are using). Some of it might be in red, but don't worry about it. Now you have installed the tidyverse set of libraries of commands! We will regularly work with the tools that this library makes possible for us. 
+Once you hit enter, you should see some action in your Console (what it says will depend on what version of R you are using). Some of it might be in red, but don't worry about it. Now you have installed the tidyverse! We will regularly work with the tools that this library makes possible for us. 
 
 ## Exploring dataframes {#exploring}
 To begin exploring dataframes, open the project that you made in the last lab. There are two ways that you can do this:
@@ -191,7 +191,7 @@ anes2024 %>%
   glimpse() #taking a different kind of look at our dataframe
 ```
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("install.packages(\"\")",
       "To install new packages, or libraries of R commands. You have to do this only once on your computer per library when your computer is connected to the internet so that it will download the relevant library.", "Base R")
 r2<-c("View()","Displays a dataframe as a spreadsheet. Notice that the word \"View\" is capitalized.", "Base R")
