@@ -242,7 +242,7 @@ flextable(mc1) %>% save_as_docx(path="mc1.docx")
 Now you should see a file called "mc1.docx" in the main folder where you have your Scope and Methods labs (the folder that you created in section \@ref(class-project)). 
 
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("mutate(recode())","A set of commands to rename the values of variables.", "dplyr (tidyverse)")
 r2<-c("cut2()","Turn an interval variable into an ordinal variable. Remember to specify \"g=\" to tell R how many groups to split your variable into.","Hmisc")
 r3<-c("levels()","You can use this command to see the levels of an ordered factor, or you can also use it to assign new levels to an ordered factor, like this: levels(df\\$variable<-c(\"new level1\",\"new level2\",…)","Base R")

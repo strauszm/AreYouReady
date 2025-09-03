@@ -208,7 +208,7 @@ This is telling us that there is a .95 probability that Somer's D at the populat
 One note: Somers' D is an asymmetric test, which means that it gives different results when you treat one of your two variables as independent than when you treat that same variable as dependent. **So, be careful to list your dependent variable first when setting up your test.**
 
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("chisq.test()","Runs a chi-squared test on a pair of variables. In this class we use it on crosstabs that we generate with the xtabs() command, but you can also use it on a table that you generate with other commands or on a pair of variables that you define with a \\$.","Base R")
 r2<-c("Lambda()","Runs a Cramer's V test (a test of the relationship between two nominal or ordinal variables) on a pair of variables. In this class we use it on crosstabs that we generate with the xtabs() command.","DescTools")
 r3<-c("CramerV()","Runs a Lambda test (a PRE test of the relationship between two nominal or ordinal variables) on a pair of variables. In this class we use it on crosstabs that we generate with the xtabs() command.","DescTools")

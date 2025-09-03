@@ -231,7 +231,7 @@ ggplot(data=anes2024 %>% filter(!is.na(race.factor)), aes(x=ft_liberals, y=ft_us
 This graph shows us the relationship between feelings about liberals and feelings about the US Supreme court at all values of our race variable. Notice how much more substantially negative the relationship is among whites than it is among other racial groups. 
 
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("stargazer()","Use this code to generate a beautiful table displaying the results of one or more regressions.","stargazer")
 r2<-c("as.factor()","Changes a character variable to a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.","Base R")
 r3<-c("relevel(, ref=\"\")","Changes the reference category of a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.","Base R")

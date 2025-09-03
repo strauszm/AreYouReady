@@ -183,7 +183,7 @@ model.1.data %>%
 Look at these results. Michigan is the state in which the 1980 presidential election results does the best job in predicting the 2024 election, followed by Pennsylvania, Wisconsin, Kansas, Minnesota, and Rhode Island.
 
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("cor.test()","Generates a Pearson's R statistic for the relationship between two variables. Variables can be listed in any order and should be written dataframe\\$variable.","Base R")
 r2<-c("lm(formula = DV ~ IV, data = DATAFRAME)","Generates the slope and intercept for a regression line. Replace DV with the dependent variable you are interested in, the IV with the independent variable, and DATAFRAME with the dataframe that you are using.","Base R")
 r3<-c("summary(lm(...))","Generates much more data about a regression relationship than the above command. Replace the \"…\" with the IV, DV, and DATAFRAME the same way that you would with the above command.","Base R")

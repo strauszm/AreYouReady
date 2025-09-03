@@ -251,7 +251,7 @@ This graph shows us that, while some of those differences are not statistically 
 You might also notice that the confidence interval on the "a lot worse bar" is bigger than the confidence interval on the "a lot better" bar. That is because, if you look at the table that we generated at the beginning of this section, there are 1,277 people in our sample that think that America is a lot better than other countries, but only 406 people that think that America is a lot worse. Because we are basing our estimated proportion on a smaller sample when generating the confidence interval around the "a lot worse" bar, the confidence interval is larger (in other words, smaller samples make us less confident of our estimates, and larger samples make us more confident of our estimates).
 
 ## Review of this chapter's commands
-```{r, echo=FALSE}
+```{r, echo=FALSE,warning=FALSE}
 r1<-c("t.test()","To calculate a t-test. With a one sample test, you put the variable that we are interested in ~1, and then a comma, and then data=\"your dataframe.\" For an an independent samples t-test, you put DV~IV in the parenthesis, and then a comma, and then data= \"your dataframe\".","Base R")
 r2<-c("t.test(…, mu=?)","A t-test of a single sample is testing the hypothesis that the population mean of the variable you are testing is 0. If you want to test another hypothesis (for example, that the average TCU student has a 17 purple shirts), you can set mu to be the number that you are hypothesizing.","Base R")
 r3<-c("t.test(…, conf.level=?)","The default confidence interval for a t-test is .95. If you want to set it to something else, you can do it with the conf.level command.","Base R")
