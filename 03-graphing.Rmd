@@ -259,7 +259,7 @@ states2025 %>%
 When you execute this code, what do you learn about the states that Trump and Harris won by the largest amounts in 2024?
 
 ## Review of this chapter's commands
-```{r, echo=FALSE,warning=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 r1<-c("class()","Tells us how a specific vector is categorized. Is it a character vector, an ordered factor, etc.?","Base R")
 r2<-c("ggplot()","Begins a ggplot graphic. Feel free to refer to the \"20093 ggplot2 templates\" script file to find templates for all graphs you will make using this workbook",	"ggplot2 (tidyverse)")
 r3<-c("mean()","Calculates the mean of a variable. Use na.rm=TRUE if there is some missing data, like this: mean(dataframe\\$variable, na.rm=TRUE).","Base R")
