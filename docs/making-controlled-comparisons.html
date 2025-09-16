@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-02" />
+<meta name="date" content="2025-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -396,7 +397,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb109-5"><a href="making-controlled-comparisons.html#cb109-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Region&quot;</span>)<span class="sc">+</span></span>
 <span id="cb109-6"><a href="making-controlled-comparisons.html#cb109-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion of state residents that</span><span class="sc">\n</span><span class="st">approve of their governor, 2024&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
-<p>This graph shows us a lot of cool things. We can see that there is less variation among the states in the West than other reasons, and that altough the West has the lowest median approval the south appears to have the states with the lowest approval overall.</p>
+<p>This graph shows us a lot of cool things. We can see that there is less variation among the states in the West than other regions, and that although the West has the lowest median approval the South appears to have the state with the lowest approval overall.</p>
 </div>
 <div id="adding-a-control-to-a-crosstab" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Adding a control to a crosstab<a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab" class="anchor-section" aria-label="Anchor link to header"></a></h2>

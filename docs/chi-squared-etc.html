@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-02" />
+<meta name="date" content="2025-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,8 +55,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -524,45 +525,45 @@ colPerc(xtabs(~armUkraine+natPride, data=anes2024))</code></pre>
 <p>Then, to see what that table looks like, you can run this line of code:</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="chi-squared-etc.html#cb182-1" tabindex="-1"></a>xt</span></code></pre></div>
 <pre><code>##                  natPride
-## armUkraine        a lot better somewhat better the same somewhat worse
-##   favor strongly           387             341      299            166
-##   favor                    239             202      200            129
-##   favor weakly              51              72       61             36
-##   neither                  276             297      327            187
-##   oppose weakly             33              30       32             33
-##   oppose                   104             101       93             52
-##   oppose strongly          187             117      107             98
+## armUkraine        a lot better somewhat better the same
+##   favor strongly           387             341      299
+##   favor                    239             202      200
+##   favor weakly              51              72       61
+##   neither                  276             297      327
+##   oppose weakly             33              30       32
+##   oppose                   104             101       93
+##   oppose strongly          187             117      107
 ##                  natPride
-## armUkraine        a lot worse
-##   favor strongly           88
-##   favor                    67
-##   favor weakly             16
-##   neither                 112
-##   oppose weakly             9
-##   oppose                   34
-##   oppose strongly          80</code></pre>
+## armUkraine        somewhat worse a lot worse
+##   favor strongly             166          88
+##   favor                      129          67
+##   favor weakly                36          16
+##   neither                    187         112
+##   oppose weakly               33           9
+##   oppose                      52          34
+##   oppose strongly             98          80</code></pre>
 <p>After that, to generate the table with column percents, you can go like this:</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="chi-squared-etc.html#cb184-1" tabindex="-1"></a><span class="fu">colPerc</span>(xt)</span></code></pre></div>
 <pre><code>##                  natPride
-## armUkraine        a lot better somewhat better the same somewhat worse
-##   favor strongly         30.31           29.40    26.72          23.68
-##   favor                  18.72           17.41    17.87          18.40
-##   favor weakly            3.99            6.21     5.45           5.14
-##   neither                21.61           25.60    29.22          26.68
-##   oppose weakly           2.58            2.59     2.86           4.71
-##   oppose                  8.14            8.71     8.31           7.42
-##   oppose strongly        14.64           10.09     9.56          13.98
-##   Total                 100.00          100.00   100.00         100.00
+## armUkraine        a lot better somewhat better the same
+##   favor strongly         30.31           29.40    26.72
+##   favor                  18.72           17.41    17.87
+##   favor weakly            3.99            6.21     5.45
+##   neither                21.61           25.60    29.22
+##   oppose weakly           2.58            2.59     2.86
+##   oppose                  8.14            8.71     8.31
+##   oppose strongly        14.64           10.09     9.56
+##   Total                 100.00          100.00   100.00
 ##                  natPride
-## armUkraine        a lot worse
-##   favor strongly        21.67
-##   favor                 16.50
-##   favor weakly           3.94
-##   neither               27.59
-##   oppose weakly          2.22
-##   oppose                 8.37
-##   oppose strongly       19.70
-##   Total                100.00</code></pre>
+## armUkraine        somewhat worse a lot worse
+##   favor strongly           23.68       21.67
+##   favor                    18.40       16.50
+##   favor weakly              5.14        3.94
+##   neither                  26.68       27.59
+##   oppose weakly             4.71        2.22
+##   oppose                    7.42        8.37
+##   oppose strongly          13.98       19.70
+##   Total                   100.00      100.00</code></pre>
 <p>Let’s look at the second table, with the percents. The first column in that table tells us that, among those who believe that the US is a lot better than other countries, 30.31% strongly favor military aid to Ukraine, and 14.64% oppose military aide to Ukraine strongly. However, the last column shows us thatm among those to think that the US is a lot worst than other countries, 21.67% strongly favor military aid to Ukraine, and 19.7% oppose. That seems like a piece of evidence for our theory!</p>
 <p>We have a number of choices for how to represent this relationship graphically. Since we generated a bar graph with error bars in of this relationship in section <a href="inferences.html#t-test-ind-props">6.7</a>, for this section let’s generate stacked bar graph.</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chi-squared-etc.html#cb186-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2024 <span class="sc">%&gt;%</span></span>

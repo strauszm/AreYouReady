@@ -82,7 +82,7 @@ ggplot(states2025, aes(x = region, y = govApproval2024)) +
   ylab("Proportion of state residents that\napprove of their governor, 2024")
 ```
 
-This graph shows us a lot of cool things. We can see that there is less variation among the states in the West than other reasons, and that altough the West has the lowest median approval the south appears to have the states with the lowest approval overall.
+This graph shows us a lot of cool things. We can see that there is less variation among the states in the West than other regions, and that although the West has the lowest median approval the South appears to have the state with the lowest approval overall.
 
 ## Adding a control to a crosstab
 So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. If we look at the relationship between our independent and dependent variable at different values of a control variable and there no longer seems to be a relationship, then we can say that the correlation that we observe between our independent and dependent variable is **spurious**. If the relationship between the independent and dependent variable is roughly the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, **additive**. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an **interaction**.
