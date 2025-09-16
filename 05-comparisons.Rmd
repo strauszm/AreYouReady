@@ -128,7 +128,7 @@ flextable(ctab1women) %>% save_as_docx(path="ctab1women.docx")
 
 There is not a single tool to graph relationships between three ordinal or nominal variables in an easy to interpret way. Instead, we can use the filter() command from above to make two graphs, and then use insert table in our word processor to nearly display them side by side.
 
-Here is the code for the graph for only men (with the line "filter(female==0) %>% #filtering so that we only look at men" added):
+Here is the code for the graph for only men (with the line ```"filter(female==0) %>% #filtering so that we only look at men```" added):
 ```{r}
 plotting.data<-anes2024 %>%
   filter(!is.na(income)&!is.na(education)) %>% 
@@ -167,7 +167,7 @@ ggplot(plotting.data, aes(x = education, y = freq, fill=income)) +
 ## Adding a control to a mean comparison table
 The ANES survey has a number of "feeling thermometer" questions, where respondents were asked how warmly or coldly they felt toward institutions, individuals, and groups of people. These questions all range from 0 (meaning that the respondent feel very negatively toward the subject), to 100 (meaning that the respondent feels very positively about the subject). 
 
-For this section, I am going to treat the feeling thermometer about the police as my dependent variable. For my independent variable, I am going to look at whether or not a person watches NCIS, a TV drama that, according to the <a href="https://www.imdb.com/title/tt0364845/">Internet Movie Database</a>, "Follows the Major Case Response Team (MCRT) from the Naval Criminal Investigative Service (NCIS), as they get to the bottom of criminal cases connected to Navy and Marine Corps personnel." Do people that watch that show, which portrays the Naval Police as its protagonists, like the police more than people that don't watch that show?
+For this section, I am going to treat the feeling thermometer about the police as my dependent variable. For my independent variable, I am going to look at whether or not a person watches NCIS, a TV drama that, according to the <a href="https://www.imdb.com/title/tt0364845/">Internet Movie Database</a>, "Follows the Major Case Response Team (MCRT) from the Naval Criminal Investigative Service (NCIS), as they get to the bottom of criminal cases connected to Navy and Marine Corps personnel." Do people that watch that show, which portrays the  police as its protagonists, like the police more than people that don't watch that show?
 
 The ncis variable is currently coded as as a dummy variable, with those who don't watch the show getting a 0 and those who watch the show getting a 1. To make our output easier to read, I am going to generate a new version of that variable with the values "watches NCIS" and "doesn't watch", using the same technique that I used in section \@ref(recode-dummy). Note that I call the new variable ncis2, so that I preserve the original ncis variable instead of writing over it:
 
