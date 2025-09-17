@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-16" />
+<meta name="date" content="2025-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -363,31 +363,19 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Now, we can generate a crosstab, with this command (remember when generating a crosstab we put our dependent variable first):</p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="chi-squared-etc.html#cb161-1" tabindex="-1"></a><span class="fu">addmargins</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>femLeg3<span class="sc">+</span>religion, <span class="at">data=</span>world2025))</span></code></pre></div>
 <pre><code>##          religion
-## femLeg3   Eastern Hindu Jewish Muslim Orthodox Other Protestant
-##   fewer         9     1      0     26        4     5          7
-##   typical       4     0      1     14        3     4          5
-##   many          1     1      0      6        5     2         14
-##   Sum          14     2      1     46       12    11         26
-##          religion
-## femLeg3   Roman Cath Sum
-##   fewer            6  58
-##   typical         22  53
-##   many            23  52
-##   Sum             51 163</code></pre>
+## femLeg3   Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
+##   fewer         9     1      0     26        4     5          7          6  58
+##   typical       4     0      1     14        3     4          5         22  53
+##   many          1     1      0      6        5     2         14         23  52
+##   Sum          14     2      1     46       12    11         26         51 163</code></pre>
 <p>This crosstab gives us raw numbers, which are interesting to look at. It also foreshadows a potential limitation to our conclusions. Because we only have one predominantly Jewish state (Israel) and two predominantly Hindu states (Nepal and Mauritius) in our sample, we will be attempting to generalize about those two kinds of states from a tiny sample. We discuss that issue more below. To better interpret this crosstab, we need to look at column percents, which we can do with this command:</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="chi-squared-etc.html#cb163-1" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>femLeg3<span class="sc">+</span>religion, <span class="at">data=</span>world2025))</span></code></pre></div>
 <pre><code>##          religion
-## femLeg3   Eastern Hindu Jewish Muslim Orthodox  Other Protestant
-##   fewer     64.29    50      0  56.52    33.33  45.45      26.92
-##   typical   28.57     0    100  30.43    25.00  36.36      19.23
-##   many       7.14    50      0  13.04    41.67  18.18      53.85
-##   Total    100.00   100    100 100.00   100.00 100.00     100.00
-##          religion
-## femLeg3   Roman Cath
-##   fewer        11.76
-##   typical      43.14
-##   many         45.10
-##   Total       100.00</code></pre>
+## femLeg3   Eastern Hindu Jewish Muslim Orthodox  Other Protestant Roman Cath
+##   fewer     64.29    50      0  56.52    33.33  45.45      26.92      11.76
+##   typical   28.57     0    100  30.43    25.00  36.36      19.23      43.14
+##   many       7.14    50      0  13.04    41.67  18.18      53.85      45.10
+##   Total    100.00   100    100 100.00   100.00 100.00     100.00     100.00</code></pre>
 <p>Take a look at that table. You can see that there are some pretty noticeable differences in female representation across states with different major religions. For example, the religion with the largest percentage of states with many women in their legislatures is Protestantism, with 53.85%, followed by Roman Catholicism, with 45.1%. To help us visualize these differences, we can generate a stacked bar graph using the technique that we learned in section <a href="making-controlled-comparisons.html#stacked">5.2</a>:</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="chi-squared-etc.html#cb165-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>world2025 <span class="sc">%&gt;%</span></span>
 <span id="cb165-2"><a href="chi-squared-etc.html#cb165-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(religion)<span class="sc">&amp;!</span><span class="fu">is.na</span>(femLeg3)) <span class="sc">%&gt;%</span> </span>
@@ -407,8 +395,8 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Clearly, there are differences in the distribution of women in legislatures in countries with different major religions. But, are these differences statistically significant? To test that, we can ask R to calculate the chi-squared value that is associated with this relationship. We can use the chisq.test() command, and in the parenthesis we can put the command that generates crosstab that we want to run this test on. <em>Note: be careful to use the chisq.test() command on the command for a crosstab with actual values and not percents, or the test will not be accurate.</em></p>
 <p>Here is how we would generate a chi-squared value for the relationship between dominant religion of a country and the percent of women in the legislature:</p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="chi-squared-etc.html#cb166-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>femLeg3<span class="sc">+</span>religion, <span class="at">data=</span>world2025))</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~femLeg3 + religion, data = world2025)):
-## Chi-squared approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~femLeg3 + religion, data = world2025)): Chi-squared approximation may be
+## incorrect</code></pre>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -417,31 +405,20 @@ library(DescTools)    #this has tools to calculate Cramer&#39;s V, Lambda and So
 <p>Look at what R tells us in this output (the text just above this passage, beginning with <code>##  Pearson's Chi-squared test</code>). First, R reports that it will be giving us the results of a Pearson’s Chi-squared test. Second, it repeats the command that we entered. Third, it reports the value for chi-squared (which it writes as X-squared), tells us our degrees of freedom (calculated by (number of rows-1)*(number of columns-1)) and reports our p-value. Lower p values mean that the relationship that we are observing is more likely to be statistically significant (i.e. not due to random sampling error). In this case, our p-value is very low: .00025, which means that, according to the chi-squared test, this relationship is statistically significant (because .00025 is lower than .05, our conventional benchmark).</p>
 <p>However, look at warning at the top: R is warning us that this estimate may be wrong. Why? This has to do with the expected values of the cells in our crosstab. Let’s take another look at the crosstab that we generated earlier:</p>
 <pre><code>##          religion
-## femLeg3   Eastern Hindu Jewish Muslim Orthodox Other Protestant
-##   fewer         9     1      0     26        4     5          7
-##   typical       4     0      1     14        3     4          5
-##   many          1     1      0      6        5     2         14
-##   Sum          14     2      1     46       12    11         26
-##          religion
-## femLeg3   Roman Cath Sum
-##   fewer            6  58
-##   typical         22  53
-##   many            23  52
-##   Sum             51 163</code></pre>
+## femLeg3   Eastern Hindu Jewish Muslim Orthodox Other Protestant Roman Cath Sum
+##   fewer         9     1      0     26        4     5          7          6  58
+##   typical       4     0      1     14        3     4          5         22  53
+##   many          1     1      0      6        5     2         14         23  52
+##   Sum          14     2      1     46       12    11         26         51 163</code></pre>
 <p>Look at top cell in the “Hindu” column: countries where Hinduism is dominant that have fewer women in their legislatures. There is only one country in that category. If there were no relationship at all between a country’s religion, we would expect that cell to be the row total*the column total/the total number of cases in the table. So, (58*2)/163, which is .712<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>. As a general rule, if some cells in a crosstab have an expected value of less than 5, value of the chi-squared test will be artificially high, and we will be more likely to make Type I error (rejecting a true null hypothesis). In this case, we can actually look at the expected values of all of our cells with this command:</p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="chi-squared-etc.html#cb170-1" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>femLeg3<span class="sc">+</span>religion, <span class="at">data=</span>world2025))<span class="sc">$</span>expected</span></code></pre></div>
-<pre><code>## Warning in chisq.test(xtabs(~femLeg3 + religion, data = world2025)):
-## Chi-squared approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(xtabs(~femLeg3 + religion, data = world2025)): Chi-squared approximation may be
+## incorrect</code></pre>
 <pre><code>##          religion
-## femLeg3    Eastern     Hindu    Jewish   Muslim Orthodox    Other
-##   fewer   4.981595 0.7116564 0.3558282 16.36810 4.269939 3.914110
-##   typical 4.552147 0.6503067 0.3251534 14.95706 3.901840 3.576687
-##   many    4.466258 0.6380368 0.3190184 14.67485 3.828221 3.509202
-##          religion
-## femLeg3   Protestant Roman Cath
-##   fewer     9.251534   18.14724
-##   typical   8.453988   16.58282
-##   many      8.294479   16.26994</code></pre>
+## femLeg3    Eastern     Hindu    Jewish   Muslim Orthodox    Other Protestant Roman Cath
+##   fewer   4.981595 0.7116564 0.3558282 16.36810 4.269939 3.914110   9.251534   18.14724
+##   typical 4.552147 0.6503067 0.3251534 14.95706 3.901840 3.576687   8.453988   16.58282
+##   many    4.466258 0.6380368 0.3190184 14.67485 3.828221 3.509202   8.294479   16.26994</code></pre>
 <p>Looking over this output, we can see that we have many cells with expected values below 5, and thus our estimated chi-squared is less helpful.</p>
 </div>
 <div id="lambda" class="section level2 hasAnchor" number="7.3">
@@ -525,45 +502,26 @@ colPerc(xtabs(~armUkraine+natPride, data=anes2024))</code></pre>
 <p>Then, to see what that table looks like, you can run this line of code:</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="chi-squared-etc.html#cb182-1" tabindex="-1"></a>xt</span></code></pre></div>
 <pre><code>##                  natPride
-## armUkraine        a lot better somewhat better the same
-##   favor strongly           387             341      299
-##   favor                    239             202      200
-##   favor weakly              51              72       61
-##   neither                  276             297      327
-##   oppose weakly             33              30       32
-##   oppose                   104             101       93
-##   oppose strongly          187             117      107
-##                  natPride
-## armUkraine        somewhat worse a lot worse
-##   favor strongly             166          88
-##   favor                      129          67
-##   favor weakly                36          16
-##   neither                    187         112
-##   oppose weakly               33           9
-##   oppose                      52          34
-##   oppose strongly             98          80</code></pre>
+## armUkraine        a lot better somewhat better the same somewhat worse a lot worse
+##   favor strongly           387             341      299            166          88
+##   favor                    239             202      200            129          67
+##   favor weakly              51              72       61             36          16
+##   neither                  276             297      327            187         112
+##   oppose weakly             33              30       32             33           9
+##   oppose                   104             101       93             52          34
+##   oppose strongly          187             117      107             98          80</code></pre>
 <p>After that, to generate the table with column percents, you can go like this:</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="chi-squared-etc.html#cb184-1" tabindex="-1"></a><span class="fu">colPerc</span>(xt)</span></code></pre></div>
 <pre><code>##                  natPride
-## armUkraine        a lot better somewhat better the same
-##   favor strongly         30.31           29.40    26.72
-##   favor                  18.72           17.41    17.87
-##   favor weakly            3.99            6.21     5.45
-##   neither                21.61           25.60    29.22
-##   oppose weakly           2.58            2.59     2.86
-##   oppose                  8.14            8.71     8.31
-##   oppose strongly        14.64           10.09     9.56
-##   Total                 100.00          100.00   100.00
-##                  natPride
-## armUkraine        somewhat worse a lot worse
-##   favor strongly           23.68       21.67
-##   favor                    18.40       16.50
-##   favor weakly              5.14        3.94
-##   neither                  26.68       27.59
-##   oppose weakly             4.71        2.22
-##   oppose                    7.42        8.37
-##   oppose strongly          13.98       19.70
-##   Total                   100.00      100.00</code></pre>
+## armUkraine        a lot better somewhat better the same somewhat worse a lot worse
+##   favor strongly         30.31           29.40    26.72          23.68       21.67
+##   favor                  18.72           17.41    17.87          18.40       16.50
+##   favor weakly            3.99            6.21     5.45           5.14        3.94
+##   neither                21.61           25.60    29.22          26.68       27.59
+##   oppose weakly           2.58            2.59     2.86           4.71        2.22
+##   oppose                  8.14            8.71     8.31           7.42        8.37
+##   oppose strongly        14.64           10.09     9.56          13.98       19.70
+##   Total                 100.00          100.00   100.00         100.00      100.00</code></pre>
 <p>Let’s look at the second table, with the percents. The first column in that table tells us that, among those who believe that the US is a lot better than other countries, 30.31% strongly favor military aid to Ukraine, and 14.64% oppose military aide to Ukraine strongly. However, the last column shows us thatm among those to think that the US is a lot worst than other countries, 21.67% strongly favor military aid to Ukraine, and 19.7% oppose. That seems like a piece of evidence for our theory!</p>
 <p>We have a number of choices for how to represent this relationship graphically. Since we generated a bar graph with error bars in of this relationship in section <a href="inferences.html#t-test-ind-props">6.7</a>, for this section let’s generate stacked bar graph.</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="chi-squared-etc.html#cb186-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2024 <span class="sc">%&gt;%</span></span>
@@ -600,12 +558,10 @@ colPerc(xtabs(~armUkraine+natPride, data=anes2024))</code></pre>
 <p>These three tests all show a statistically significant relationship. The statistics that we just calculated let us discuss the strength (in the case of Lambda) and significance (in the case of Cramer’s V and chi-squared) of the relationship that we are interested in, but how about the direction? To examine the direction of a relationship between two ordinal variables, we can use a Somers’ D test. Somers D is a Proportional Reduction in Error (PRE) statistic like Lambda. Unlike Lambda, however, which ranges from 0 to 1, Somers’ D can range from 0 to 1 OR -1. A perfect negative relationship, where knowledge of the independent variable lets us guess the value of the dependent variable with absolute certainty, would generate a Somers’ D score of -1, while a perfect positive relationship would generate a Somers’ D score of 1. A Somers’ D score of 0 means that knowing the independent variable gives us no insight at all in predicting the dependent variable.</p>
 <p>Before we run Somers’ D, we need to see whether our hypothesis is predicting a positive or a negative relationship. What does it mean to “increase” or “decrease” on those two variables? For this, we can use the levels() command, like this:</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="chi-squared-etc.html#cb194-1" tabindex="-1"></a><span class="fu">levels</span>(anes2024<span class="sc">$</span>natPride)</span></code></pre></div>
-<pre><code>## [1] &quot;a lot better&quot;    &quot;somewhat better&quot; &quot;the same&quot;       
-## [4] &quot;somewhat worse&quot;  &quot;a lot worse&quot;</code></pre>
+<pre><code>## [1] &quot;a lot better&quot;    &quot;somewhat better&quot; &quot;the same&quot;        &quot;somewhat worse&quot;  &quot;a lot worse&quot;</code></pre>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="chi-squared-etc.html#cb196-1" tabindex="-1"></a><span class="fu">levels</span>(anes2024<span class="sc">$</span>armUkraine)</span></code></pre></div>
-<pre><code>## [1] &quot;favor strongly&quot;  &quot;favor&quot;           &quot;favor weakly&quot;   
-## [4] &quot;neither&quot;         &quot;oppose weakly&quot;   &quot;oppose&quot;         
-## [7] &quot;oppose strongly&quot;</code></pre>
+<pre><code>## [1] &quot;favor strongly&quot;  &quot;favor&quot;           &quot;favor weakly&quot;    &quot;neither&quot;         &quot;oppose weakly&quot;  
+## [6] &quot;oppose&quot;          &quot;oppose strongly&quot;</code></pre>
 <p>The levels() command only works with ordered factors (which is how R treats ordinal variables), and the output lists the scores of the variable from low to high. So, the lowest value on natPride mean that the respondent thinks that the US is “a lot better” than other countries, and the highest means that the respondent thinks that the US is “a lot worse” than other countries. Increasing values means less national pride. With “armUkraine”, the lowest value means that the respondent “favors strongly” arming Ukraine, and the highest value means that the respondent “opposed strongly” arming Ukraine. So increasing values mean less support for arming Ukraine. Since our hypothesis is that Americans with more national pride will be more likely to support arming Ukraine, we hypothesize a positive relationship between those two variables.</p>
 <p>We run Somers’ D just like how we ran Cramer’s V, Lambda, and chi-squared, above:</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="chi-squared-etc.html#cb198-1" tabindex="-1"></a><span class="fu">SomersDelta</span>(xt, <span class="at">conf.level=</span>.<span class="dv">95</span>)</span></code></pre></div>

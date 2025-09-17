@@ -27,6 +27,7 @@ Now, open a new script file and save it in your scripts folder as "chapter 3 pra
 library(tidyverse)
 library(epiDisplay)   #the tab1 command helps us make nice frequency tables
 library(scales)       #this helps us to put more readable scales on our graphs
+library(DescTools)
 ```
 Now select all the text on this page, run it, and then save it. 
 
