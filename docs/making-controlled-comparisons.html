@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-17" />
+<meta name="date" content="2025-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -404,27 +404,45 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <p>So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. If we look at the relationship between our independent and dependent variable at different values of a control variable and there no longer seems to be a relationship, then we can say that the correlation that we observe between our independent and dependent variable is <strong>spurious</strong>. If the relationship between the independent and dependent variable is roughly the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, <strong>additive</strong>. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an <strong>interaction</strong>.</p>
 <p>Let’s return to the relationship that we looked at earlier, between education and income. Here is the crosstab that we generated in chapter <a href="recoding.html#recoding">4</a>:</p>
 <pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         31.64       15.09         7.98   5.25            4.55
-##   $10,000 to $29,999                   25.39       17.18        14.56   5.25            2.42
-##   $30,000 to $59,999                   22.27       29.85        23.58  15.82            9.48
-##   $60,000 to $99,999                   12.89       21.04        23.83  22.92           18.18
-##   $100,000 to $249,999                  7.42       14.43        25.78  42.28           47.20
-##   $250,000 or more                      0.39        2.42         4.27   8.49           18.18
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+## income                 less than high school high school some college
+##   under $9,999                         31.64       15.09         7.98
+##   $10,000 to $29,999                   25.39       17.18        14.56
+##   $30,000 to $59,999                   22.27       29.85        23.58
+##   $60,000 to $99,999                   12.89       21.04        23.83
+##   $100,000 to $249,999                  7.42       14.43        25.78
+##   $250,000 or more                      0.39        2.42         4.27
+##   Total                               100.00      100.00       100.00
+##                       education
+## income                     ba graduate degree
+##   under $9,999           5.25            4.55
+##   $10,000 to $29,999     5.25            2.42
+##   $30,000 to $59,999    15.82            9.48
+##   $60,000 to $99,999    22.92           18.18
+##   $100,000 to $249,999  42.28           47.20
+##   $250,000 or more       8.49           18.18
+##   Total                100.00          100.00</code></pre>
 <p>Let’s look at the row representing the people who make $250,000 or more per year. As we move from the lowest level of education to the highest, we can see that the percent of people in the highest income category moves from .39% to 18.18%. We can actually subtract .39 from 18.18 to say that the effect size is roughly 17.79%. In other words, 17.79% more people with the highest degree of education are in the highest income category than are people in the lowest education category.</p>
 <p>Do we think that this result would be roughly the same for men and women? To answer this question, we can use a neat tool that we have actually played with a bit in previous chapters: the “filter” command that is a part of the dplyr package (and thus works with pipes). The ANES dataset has a variable called female, where 0 means “men” and 1 means “women.” Let’s have R make that crosstab again, but only for men, and then again, but only for women. To do that, we can use this code:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="making-controlled-comparisons.html#cb111-1" tabindex="-1"></a><span class="co">#men only</span></span>
 <span id="cb111-2"><a href="making-controlled-comparisons.html#cb111-2" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">0</span>)))</span></code></pre></div>
 <pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         27.05       12.31         6.29   4.19            4.09
-##   $10,000 to $29,999                   18.03       16.14        10.16   4.35            1.23
-##   $30,000 to $59,999                   28.69       30.79        22.03  14.35            9.41
-##   $60,000 to $99,999                   16.39       22.08        25.89  20.81           14.93
-##   $100,000 to $249,999                  9.02       16.77        30.76  46.94           48.88
-##   $250,000 or more                      0.82        1.91         4.86   9.35           21.47
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+## income                 less than high school high school some college
+##   under $9,999                         27.05       12.31         6.29
+##   $10,000 to $29,999                   18.03       16.14        10.16
+##   $30,000 to $59,999                   28.69       30.79        22.03
+##   $60,000 to $99,999                   16.39       22.08        25.89
+##   $100,000 to $249,999                  9.02       16.77        30.76
+##   $250,000 or more                      0.82        1.91         4.86
+##   Total                               100.00      100.00       100.00
+##                       education
+## income                     ba graduate degree
+##   under $9,999           4.19            4.09
+##   $10,000 to $29,999     4.35            1.23
+##   $30,000 to $59,999    14.35            9.41
+##   $60,000 to $99,999    20.81           14.93
+##   $100,000 to $249,999  46.94           48.88
+##   $250,000 or more       9.35           21.47
+##   Total                100.00          100.00</code></pre>
 <p><strong>A quick note</strong>: if we wanted to use filter with a variable whose values are defined by text, such as our income variable, we must put the text in quotation marks. Here, we do not have to use quotation marks because female is defined numerically.</p>
 <p>If we do the same comparison that we did above, we can see that as men more from the lowest to the highest education category, the percent in the highest income category increases from .82% to 21.47%. The total effect size is about 20.65%, which is a bit higher than the 17.79% overall effect size that we witnessed above.</p>
 <p>To save this crosstab as in a word file that we can easily pull into various word processors, we can use this code, based on what we did in Section <a href="recoding.html#export-crosstabs">4.7.4</a>.</p>
@@ -436,14 +454,23 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="making-controlled-comparisons.html#cb114-1" tabindex="-1"></a><span class="co">#women only</span></span>
 <span id="cb114-2"><a href="making-controlled-comparisons.html#cb114-2" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">1</span>)))</span></code></pre></div>
 <pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         35.34       17.89         9.25   6.23            4.97
-##   $10,000 to $29,999                   32.33       18.35        17.85   5.93            3.50
-##   $30,000 to $59,999                   16.54       28.90        24.76  17.21            9.39
-##   $60,000 to $99,999                    9.77       19.95        22.32  24.78           21.18
-##   $100,000 to $249,999                  6.02       11.93        22.00  38.13           45.86
-##   $250,000 or more                      0.00        2.98         3.83   7.72           15.10
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+## income                 less than high school high school some college
+##   under $9,999                         35.34       17.89         9.25
+##   $10,000 to $29,999                   32.33       18.35        17.85
+##   $30,000 to $59,999                   16.54       28.90        24.76
+##   $60,000 to $99,999                    9.77       19.95        22.32
+##   $100,000 to $249,999                  6.02       11.93        22.00
+##   $250,000 or more                      0.00        2.98         3.83
+##   Total                               100.00      100.00       100.00
+##                       education
+## income                     ba graduate degree
+##   under $9,999           6.23            4.97
+##   $10,000 to $29,999     5.93            3.50
+##   $30,000 to $59,999    17.21            9.39
+##   $60,000 to $99,999    24.78           21.18
+##   $100,000 to $249,999  38.13           45.86
+##   $250,000 or more       7.72           15.10
+##   Total                100.00          100.00</code></pre>
 <p>Applying the same analysis that we did above, we can see that as women’s education level increases from the lowest to the highest level, the percent of people in the highest income bracket moves from 0% to 15.1%; a total effect size of 15.1% (compared with 20.65% for men). In other words, this data suggests that both men and women are economically rewarded for more education, but that men seem to be rewarded a bit more. If we were to write up these results, at this point we would have to use our own judgment to decide whether the effect size differs enough to call the relationship between education and income controlling for gender an interaction, or whether it makes more sense to call it additive. We can use more advanced statistical tools to make that determination with more rigor, but for now, we will rely on our judgment.</p>
 <p>We can also save this table as a Word document, using the following code:</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="making-controlled-comparisons.html#cb116-1" tabindex="-1"></a>ctab1women<span class="ot">&lt;-</span><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 </span>

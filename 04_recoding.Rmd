@@ -89,8 +89,8 @@ v<-levels(anes2024$ideology)
 #second we reverse the order of v, telling R to make the largest value the smallest and the smallest the largest
 v<-v[length(v):1]
 
-#third, we use reorder to generate a new factor called liberalism with the opposite levels as our ideology variable 
-anes2024$liberalism<-reorder(anes2024$ideology,new.order=v)
+#third, we generate a new factor called liberalism with the opposite levels as our ideology variable 
+anes2024$liberalism <- factor(anes2024$ideology, levels = v)
 
 #finally, we can remove our vector v, since we don't need it anymore
 rm(v)
@@ -246,17 +246,16 @@ Now you should see a file called "mc1.docx" in the main folder where you have yo
 r1<-c("mutate(recode())","A set of commands to rename the values of variables.", "dplyr (tidyverse)")
 r2<-c("cut2()","Turn an interval variable into an ordinal variable. Remember to specify \"g=\" to tell R how many groups to split your variable into.","Hmisc")
 r3<-c("levels()","You can use this command to see the levels of an ordered factor, or you can also use it to assign new levels to an ordered factor, like this: levels(df\\$variable<-c(\"new level1\",\"new level2\",…)","Base R")
-r4<-c("reorder()","You can use this command to change the order of levels in an ordered factor", "Base R")
-r5<-c("as.numeric", "You can use this command to make a factor into a numeric variable, like this: df\\$NewVariable<-as.numeric(df\\$Variable)","Base R")
-r6<-c("case_when()","You can use this command along with mutate() and %in% to assign ranges of an interval variable to a new value of a new variable","dplyr (tidyverse)")
-r7<-c("ordered","you can use this command to make a variable into an ordered factor", "Base R")
-r8<-c("xtabs()","Makes a crosstab table with raw values. Remember to define variables like this: xtabs(~DV+IV, data=DATAFRAME)","Base R")
-r9<-c("addmargins(xtabs())","Makes a crosstab table with row and column totals.","Base R")
-r10<-c("colPerc(xtabs())","Makes a crosstab table with column percents. Useful for making comparisons.","tigerstats")
-r11<-c("flextable", "You can use this with %>% save_as_docx(path=\"...\") to export your tables for word processors", "flextable")
-r12<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-r13<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8, r9, r10, r11,r12,r13)
+r4<-c("as.numeric", "You can use this command to make a factor into a numeric variable, like this: df\\$NewVariable<-as.numeric(df\\$Variable)","Base R")
+r5<-c("case_when()","You can use this command along with mutate() and %in% to assign ranges of an interval variable to a new value of a new variable","dplyr (tidyverse)")
+r6<-c("ordered","you can use this command to make a variable into an ordered factor", "Base R")
+r7<-c("xtabs()","Makes a crosstab table with raw values. Remember to define variables like this: xtabs(~DV+IV, data=DATAFRAME)","Base R")
+r8<-c("addmargins(xtabs())","Makes a crosstab table with row and column totals.","Base R")
+r9<-c("colPerc(xtabs())","Makes a crosstab table with column percents. Useful for making comparisons.","tigerstats")
+r10<-c("flextable", "You can use this with %>% save_as_docx(path=\"...\") to export your tables for word processors", "flextable")
+r11<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+r12<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8, r9, r10, r11,r12)
 colnames(df)<-c("Command","Purpose","Library")
 df<-as.data.frame(df)
 rownames(df)<-NULL
