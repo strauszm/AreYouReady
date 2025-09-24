@@ -89,6 +89,7 @@ So far, we have learned to look at the relationship between pairs of variables. 
 
 Let’s return to the relationship that we looked at earlier, between education and income. Here is the crosstab that we generated in chapter \@ref(recoding):
 ```{r, echo=FALSE}
+library(tigerstats)
 colPerc(xtabs(~income+education, data=anes2024))
 ```
 Let’s look at the row representing the people who make $250,000 or more per year. As we move from the lowest level of education to the highest, we can see that the percent of people in the highest income category moves from .39% to 18.18%. We can actually subtract .39 from 18.18 to say that the effect size is roughly 17.79%. In other words, 17.79% more people with the highest degree of education are in the highest income category than are people in the lowest education category.  

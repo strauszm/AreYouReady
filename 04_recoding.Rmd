@@ -3,16 +3,16 @@
 ## Getting started with this chapter {#getting-started-recoding}
 To get started in today’s chapter, open the project that you made in lab 1. If you forgot how to do this, see the instructions in section \@ref(exploring).
 
-We are going to install three new packages to use today.They are called "epiDisplay", "Hmisc", and "flextable." Enter these three commands into your Console one by one:
+We are going to install three new packages to use today.They are called "Hmisc", "flextable", and "janitor". Enter these commands into your Console one by one:
 ```
 install.packages("Hmisc")
-install.packages("tigerstats")
 install.packages("flextable")
+install.packages("janitor")
 ```
 ```{r, echo=FALSE, message=FALSE,warning=FALSE}
 library(Hmisc)
-library(tigerstats)
 library(flextable)
+library(janitor)
 ```
 Now, open a new script file and save it in your scripts folder as "chapter 4 practice." Copy and paste this onto the page (updating the text so that it is about you):
 ```
@@ -26,7 +26,7 @@ Now, open a new script file and save it in your scripts folder as "chapter 4 pra
 library(tidyverse)
 library(epiDisplay)   #the tab1 command helps us make nice frequency tables
 library(Hmisc)        #the cut2 command helps us simplify interval variables
-library(tigerstats)   #colPerc can also be useful with crosstabs
+library(janitor)      #this helps us make nice crosstabs
 library(flextable)    #this makes tables that we can easily export into a word processor
 ```
 Now select all the text on this page, run it, and save it.
@@ -192,28 +192,28 @@ addmargins(xtabs(~income+education, data=anes2024))
 ```
 
 ### Adding column percents to cross-tabs {#column-percents}
-Take a look at the above column totals. Our anes2024 dataframe has 1,034 people with graduate degrees, while it has 1,296 people with BAs. So, returning to those two numbers from above, the 488 people with graduate degrees with household incomes of \$100,000 to \$250,000 make up 47.2% of all of graduate degree holders in our sample (because 488/1034=.472), while the 548 people with BAs with household incomes of \$100,000 to \$250,000 make up only 42.3% of all of the people with some college in our sample (because 528/1296=.423). In other words, there is a larger proportion of people with graduate degrees with household incomes of \$100,000 to \$250,000 than people with BAs with household incomes of \$100,000 to \$250,000. **Thus, when interpreting crosstabs it is important to look at the column percents, and not just the raw numbers.** To make R generate all of the column percents in a crosstab at the same time, we can use the colPerc() command from the tigerstats package that we installed for today. We can enter this command:
+Take a look at the above column totals. Our anes2024 dataframe has 1,034 people with graduate degrees, while it has 1,296 people with BAs. So, returning to those two numbers from above, the 488 people with graduate degrees with household incomes of \$100,000 to \$250,000 make up 47.2% of all of graduate degree holders in our sample (because 488/1034=.472), while the 548 people with BAs with household incomes of \$100,000 to \$250,000 make up only 42.3% of all of the people with some college in our sample (because 528/1296=.423). In other words, there is a larger proportion of people with graduate degrees with household incomes of \$100,000 to \$250,000 than people with BAs with household incomes of \$100,000 to \$250,000. **Thus, when interpreting crosstabs it is important to look at the column percents, and not just the raw numbers.** To make R generate all of the column percents in a crosstab at the same time, we can use the following code from the janitor package that we downloaded for today:
 ```{r}
-colPerc(xtabs(~income+education, data=anes2024))
+crosstab_result <- anes2024 %>% #name the dataframe that you are using
+  filter(!is.na(education)) %>% 
+  filter(!is.na(income)) %>% 
+  tabyl(education, income) %>% #put the independent variable first
+  adorn_percentages("col") %>%
+  adorn_totals("col") %>%
+  adorn_totals("row") %>%
+  adorn_pct_formatting(digits = 2) %>% #round your numbers
+  adorn_ns()
+crosstab_result
 ```
-**Remember when interpreting this output that the numbers are now the column percents, not the raw numbers.** If you take a look at this output, you will see that people with more education seem to make more money. If you look at the top income category row (for those with household incomes of \$250,000 or more, the percent of thsoe at the lowest education level, "less than high school" in that income category is 0.39%, and as the education level increases this percent increase to 2.42%, 4.27%, 8.49%, and 18,18% for those with graduate degrees.
+**Remember when interpreting this output that the numbers are column percents, and the raw numbers are in parentheses.** If you take a look at this output, you will see that people with more education seem to make more money. If you look at the top income category row (for those with household incomes of \$250,000 or more, the percent of those at the lowest education level, "less than high school" in that income category is 0.26%. As the education level increases this percent increase to 5.63%, 17.9%, 28.13%, and 48.08% for those with graduate degrees.
 
 ### Exporting cross-tabs for your word processor {#export-crosstabs}
-If you have been following along, the cross-tabs that you have generated have shown up reasonably neatly in the Console of R-Studio. But often, you will want to export those tables into a format that you can easily bring into your word processor so that you can refer to it in papers that you are writing. To do this, you first want to give the cross tab you want to export a name as an object, like this:
-```{r}
-ctab1<-colPerc(xtabs(~income+education, data=anes2024))
-```
-That command creates a new object called "ctab1." If you paste ```ctab1``` into your Console and hit enter, you will see that same crosstab that you made in section \@ref(column-percents).
+If you have been following along, the cross-tabs that you have generated have shown up reasonably neatly in the Console of R-Studio. But often, you will want to export those tables into a format that you can easily bring into your word processor so that you can refer to it in papers that you are writing. In section \@ref(column-percents), we named the crosstab with education in rows and income in columns ```crosstab_result```. To export that crosstab, you can use the following code:
 
-Before exporting this crosstab, you have to make two changes to it in order for the export command that we will use to work. You need to change it to a dataframe, and you need to set the row names (which are currently the different income levels) as a column. To do both of those things, you can run this command:
 ```{r}
-ctab1<-as.data.frame(ctab1)%>%rownames_to_column("income")
+flextable(crosstab_result) %>% save_as_docx(path="crosstab_result.docx")
 ```
-Now your "ctab1" is formatted to be exported nicely (when you use this with other tables, just rename the text in quotes after "rownames_to_columns" to fit what you'd like to call your rownames). To export this, run this command:
-```{r}
-flextable(ctab1) %>% save_as_docx(path="ctab1.docx")
-```
-This has created a file called "ctab1.docx" in the main folder where you have your Scope and Methods labs (the folder that you created in section \@ref(class-project)). You can open that file in Microsoft Word, or you can pull it into a Pages file or a Google Document. If you'd rather export your table into a rich text format file, you can use ```save_as_rtf``` instead of ```save_as_docx``` in the above command.
+This has created a file called "crosstab_result.docx" in the main folder where you have your Scope and Methods labs (the folder that you created in section \@ref(class-project)). You can open that file in Microsoft Word, or you can pull it into a Pages file or a Google Document. If you'd rather export your table into a rich text format file, you can use ```save_as_rtf``` instead of ```save_as_docx``` in the above command.
 
 ## Mean comparison tables
 Crosstabs are useful when we have two nominal or ordinal variables. But what if we want to look at the relationship between a nominal or ordinal variable and an interval variable? In that case, a mean comparison table can be helpful. The tidyverse has some commands that we can use to generate such a table. To demonstrate, let’s look at our states2025 dataframe, and the relationship between the region variable and the govApproval2024 variable (which measures the proportion of the population that approved of a state's governor in 2024). The first thing that we need to learn is the group_by() command. This tells R: "make groups based on the variable that we tell you." In our case, we want to make groups based on our independent variable (which, for now, must be ordinal or nominal). Once we have done that, we can use the summarise() command to get the mean. For good measure, we can also use the summarise() command to calculate the standard deviation as well as the size of each group. Here is what that command looks like:
@@ -251,11 +251,10 @@ r5<-c("case_when()","You can use this command along with mutate() and %in% to as
 r6<-c("ordered","you can use this command to make a variable into an ordered factor", "Base R")
 r7<-c("xtabs()","Makes a crosstab table with raw values. Remember to define variables like this: xtabs(~DV+IV, data=DATAFRAME)","Base R")
 r8<-c("addmargins(xtabs())","Makes a crosstab table with row and column totals.","Base R")
-r9<-c("colPerc(xtabs())","Makes a crosstab table with column percents. Useful for making comparisons.","tigerstats")
-r10<-c("flextable", "You can use this with %>% save_as_docx(path=\"...\") to export your tables for word processors", "flextable")
-r11<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-r12<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
-df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8, r9, r10, r11,r12)
+r9<-c("flextable", "You can use this with %>% save_as_docx(path=\"...\") to export your tables for word processors", "flextable")
+r10<-c("group_by()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+r11<-c("summarise()","A dplyr command that is useful when summarizing a dataframe according to a nominal or ordinal variable. Usually used with the \"pipe\" (%>%).","dplyr (tidyverse)")
+df<-rbind(r1,r2,r3,r4,r5,r6,r7,r8, r9, r10, r11)
 colnames(df)<-c("Command","Purpose","Library")
 df<-as.data.frame(df)
 rownames(df)<-NULL
