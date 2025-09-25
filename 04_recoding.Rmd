@@ -197,7 +197,7 @@ Take a look at the above column totals. Our anes2024 dataframe has 1,034 people 
 crosstab_result <- anes2024 %>% #name the dataframe that you are using
   filter(!is.na(education)) %>% 
   filter(!is.na(income)) %>% 
-  tabyl(education, income) %>% #put the independent variable first
+  tabyl(income, education) %>% #put the dependent variable first
   adorn_percentages("col") %>%
   adorn_totals("col") %>%
   adorn_totals("row") %>%
@@ -205,7 +205,7 @@ crosstab_result <- anes2024 %>% #name the dataframe that you are using
   adorn_ns()
 crosstab_result
 ```
-**Remember when interpreting this output that the numbers are column percents, and the raw numbers are in parentheses.** If you take a look at this output, you will see that people with more education seem to make more money. If you look at the top income category row (for those with household incomes of \$250,000 or more, the percent of those at the lowest education level, "less than high school" in that income category is 0.26%. As the education level increases this percent increase to 5.63%, 17.9%, 28.13%, and 48.08% for those with graduate degrees.
+**Remember when interpreting this output that the numbers are column percents, and the raw numbers are in parentheses.** If you take a look at this output, you will see that people with more education seem to make more money. If you look at the top income category row (for those with household incomes of \$250,000 or more, the percent of those at the lowest education level, "less than high school" in that income category is 0.39%. As the education level increases this percent increase to 2.42%, 4.27%, 8.49%, and 18.18% for those with graduate degrees.
 
 ### Exporting cross-tabs for your word processor {#export-crosstabs}
 If you have been following along, the cross-tabs that you have generated have shown up reasonably neatly in the Console of R-Studio. But often, you will want to export those tables into a format that you can easily bring into your word processor so that you can refer to it in papers that you are writing. In section \@ref(column-percents), we named the crosstab with education in rows and income in columns ```crosstab_result```. To export that crosstab, you can use the following code:

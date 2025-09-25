@@ -20,6 +20,7 @@ library(DescTools)    #this has tools to calculate Cramer's V, Lambda and Somers
 ```
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(DescTools)
+library(tigerstats)
 ```
 Now select all the text on this page, run it, and save it.
 

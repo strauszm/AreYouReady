@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-24" />
+<meta name="date" content="2025-09-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -344,7 +344,7 @@ div.csl-indent {
 library(tidyverse)
 library(Hmisc)      #the cut2 command helps us simplify interval variables
 library(scales)     #this is useful when the labels on our axes overlap
-library(tigerstats) #colPerc can also be useful with crosstabs
+library(janitor)      #this helps us make nice crosstabs
 library(flextable)  #this makes tables that we can easily export into a word processor</code></pre>
 <p>Now select all the text on this page, run it, and save it.</p>
 </div>
@@ -372,7 +372,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <p>One thing to note in this code: it begins by creating a new dataframe called “plotting.data.” When you run it, that dataframe will show up in your RStudio environment. If you run it again with new variables, the new “plotting data” that you make will overwrite the old one.</p>
 <p>If it bothers you having that “plotting.data” object in your environment, you can always remove it with the command <code>rm(plotting.data)</code>.</p>
 <p>Another thing to note: the “scale_fill_viridis_d()+” line of code asks R to use a color palette that is easy to read for people that are colorblind. There are many, many choices of color palette in R, and you are welcome to play around with colors, but it is also fine to just stick to this palette. If you’d rather have a black and white graph, there is code for that in the “Strausz ggplot2 templates” which is in the “rscripts” folder that was in the zipped filed that you should have downloaded in section <a href="getting-started.html#add-files">1.3</a>.</p>
-<p>Looking at the graph, we can see that our X-axis is our independent variable, education, and our Y-axis is the column percentages of our dependent variable, income. Focusing on the yellow region, we can clearly see that each increase in education seems to correspond to an increase in the percent of people in the highest income earning category (with the possible exception of the movement between some college and associate degree). Focusing on the dark blue region, we can clearly see that, as level of education increases, the percent of people in the lowest income category decreases. In short, this graph has all of the same information that we got when looking at the crosstab that we generated with <code>colPerc(xtabs(~income+edu, data=anes2024))</code> from our previous lab, but it is much easier to take in a bunch of that information at the same time.</p>
+<p>Looking at the graph, we can see that our X-axis is our independent variable, education, and our Y-axis is the column percentages of our dependent variable, income. Focusing on the yellow region, we can clearly see that each increase in education seems to correspond to an increase in the percent of people in the highest income earning category (with the possible exception of the movement between some college and associate degree). Focusing on the dark blue region, we can clearly see that, as level of education increases, the percent of people in the lowest income category decreases. In short, this graph has all of the same information that we got when looking at the crosstab that we generated when we made crosstabs in our previous lab, but it is much easier to take in a bunch of that information at the same time.</p>
 </div>
 <div id="representing-mean-comparison-tables-with-boxplots" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Representing mean comparison tables with boxplots<a href="making-controlled-comparisons.html#representing-mean-comparison-tables-with-boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -403,53 +403,88 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <h2><span class="header-section-number">5.4</span> Adding a control to a crosstab<a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. If we look at the relationship between our independent and dependent variable at different values of a control variable and there no longer seems to be a relationship, then we can say that the correlation that we observe between our independent and dependent variable is <strong>spurious</strong>. If the relationship between the independent and dependent variable is roughly the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, <strong>additive</strong>. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an <strong>interaction</strong>.</p>
 <p>Let’s return to the relationship that we looked at earlier, between education and income. Here is the crosstab that we generated in chapter <a href="recoding.html#recoding">4</a>:</p>
-<pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         31.64       15.09         7.98   5.25            4.55
-##   $10,000 to $29,999                   25.39       17.18        14.56   5.25            2.42
-##   $30,000 to $59,999                   22.27       29.85        23.58  15.82            9.48
-##   $60,000 to $99,999                   12.89       21.04        23.83  22.92           18.18
-##   $100,000 to $249,999                  7.42       14.43        25.78  42.28           47.20
-##   $250,000 or more                      0.39        2.42         4.27   8.49           18.18
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+<pre><code>##                income less than high school   high school    some college
+##          under $9,999          31.64%  (81)  15.09% (137)   7.98%   (131)
+##    $10,000 to $29,999          25.39%  (65)  17.18% (156)  14.56%   (239)
+##    $30,000 to $59,999          22.27%  (57)  29.85% (271)  23.58%   (387)
+##    $60,000 to $99,999          12.89%  (33)  21.04% (191)  23.83%   (391)
+##  $100,000 to $249,999           7.42%  (19)  14.43% (131)  25.78%   (423)
+##      $250,000 or more           0.39%   (1)   2.42%  (22)   4.27%    (70)
+##                 Total         100.00% (256) 100.00% (908) 100.00% (1,641)
+##               ba graduate degree           Total
+##    5.25%    (68)   4.55%    (47)  64.50%   (464)
+##    5.25%    (68)   2.42%    (25)  64.80%   (553)
+##   15.82%   (205)   9.48%    (98) 100.99% (1,018)
+##   22.92%   (297)  18.18%   (188)  98.85% (1,100)
+##   42.28%   (548)  47.20%   (488) 137.11% (1,609)
+##    8.49%   (110)  18.18%   (188)  33.75%   (391)
+##  100.00% (1,296) 100.00% (1,034) 500.00% (5,135)</code></pre>
 <p>Let’s look at the row representing the people who make $250,000 or more per year. As we move from the lowest level of education to the highest, we can see that the percent of people in the highest income category moves from .39% to 18.18%. We can actually subtract .39 from 18.18 to say that the effect size is roughly 17.79%. In other words, 17.79% more people with the highest degree of education are in the highest income category than are people in the lowest education category.</p>
-<p>Do we think that this result would be roughly the same for men and women? To answer this question, we can use a neat tool that we have actually played with a bit in previous chapters: the “filter” command that is a part of the dplyr package (and thus works with pipes). The ANES dataset has a variable called female, where 0 means “men” and 1 means “women.” Let’s have R make that crosstab again, but only for men, and then again, but only for women. To do that, we can use this code:</p>
+<p>Do we think that this result would be roughly the same for men and women? To answer this question, we can use a neat tool that we have actually played with a bit in previous chapters: the “filter” command that is a part of the dplyr package (and thus works with pipes). The ANES dataset has a variable called female, where 0 means “men” and 1 means “women.” Let’s have R make that crosstab again, but only for men, and then again, but only for women. To do that, we can insert the qualifier <code>filter(female==[THE VALUE WE WANT])%&gt;%</code> after we call our data. Like this:</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="making-controlled-comparisons.html#cb109-1" tabindex="-1"></a><span class="co">#men only</span></span>
-<span id="cb109-2"><a href="making-controlled-comparisons.html#cb109-2" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">0</span>)))</span></code></pre></div>
-<pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         27.05       12.31         6.29   4.19            4.09
-##   $10,000 to $29,999                   18.03       16.14        10.16   4.35            1.23
-##   $30,000 to $59,999                   28.69       30.79        22.03  14.35            9.41
-##   $60,000 to $99,999                   16.39       22.08        25.89  20.81           14.93
-##   $100,000 to $249,999                  9.02       16.77        30.76  46.94           48.88
-##   $250,000 or more                      0.82        1.91         4.86   9.35           21.47
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+<span id="cb109-2"><a href="making-controlled-comparisons.html#cb109-2" tabindex="-1"></a>men_crosstab <span class="ot">&lt;-</span> anes2024 <span class="sc">%&gt;%</span> <span class="co">#name the dataframe that you are using</span></span>
+<span id="cb109-3"><a href="making-controlled-comparisons.html#cb109-3" tabindex="-1"></a>  <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">0</span>)<span class="sc">%&gt;%</span> <span class="co">#only look at men this time</span></span>
+<span id="cb109-4"><a href="making-controlled-comparisons.html#cb109-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(education)) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-5"><a href="making-controlled-comparisons.html#cb109-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(income)) <span class="sc">%&gt;%</span> </span>
+<span id="cb109-6"><a href="making-controlled-comparisons.html#cb109-6" tabindex="-1"></a>  <span class="fu">tabyl</span>(income, education) <span class="sc">%&gt;%</span> <span class="co">#put the dependent variable first</span></span>
+<span id="cb109-7"><a href="making-controlled-comparisons.html#cb109-7" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">&quot;col&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb109-8"><a href="making-controlled-comparisons.html#cb109-8" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;col&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb109-9"><a href="making-controlled-comparisons.html#cb109-9" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;row&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb109-10"><a href="making-controlled-comparisons.html#cb109-10" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#round your numbers</span></span>
+<span id="cb109-11"><a href="making-controlled-comparisons.html#cb109-11" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span>
+<span id="cb109-12"><a href="making-controlled-comparisons.html#cb109-12" tabindex="-1"></a>men_crosstab</span></code></pre></div>
+<pre><code>##                income less than high school   high school  some college
+##          under $9,999          27.05%  (33)  12.31%  (58)   6.29%  (44)
+##    $10,000 to $29,999          18.03%  (22)  16.14%  (76)  10.16%  (71)
+##    $30,000 to $59,999          28.69%  (35)  30.79% (145)  22.03% (154)
+##    $60,000 to $99,999          16.39%  (20)  22.08% (104)  25.89% (181)
+##  $100,000 to $249,999           9.02%  (11)  16.77%  (79)  30.76% (215)
+##      $250,000 or more           0.82%   (1)   1.91%   (9)   4.86%  (34)
+##                 Total         100.00% (122) 100.00% (471) 100.00% (699)
+##             ba graduate degree           Total
+##    4.19%  (26)     4.09%  (20)  53.94%   (181)
+##    4.35%  (27)     1.23%   (6)  49.91%   (202)
+##   14.35%  (89)     9.41%  (46) 105.27%   (469)
+##   20.81% (129)    14.93%  (73) 100.10%   (507)
+##   46.94% (291)    48.88% (239) 152.36%   (835)
+##    9.35%  (58)    21.47% (105)  38.42%   (207)
+##  100.00% (620)   100.00% (489) 500.00% (2,401)</code></pre>
 <p><strong>A quick note</strong>: if we wanted to use filter with a variable whose values are defined by text, such as our income variable, we must put the text in quotation marks. Here, we do not have to use quotation marks because female is defined numerically.</p>
 <p>If we do the same comparison that we did above, we can see that as men more from the lowest to the highest education category, the percent in the highest income category increases from .82% to 21.47%. The total effect size is about 20.65%, which is a bit higher than the 17.79% overall effect size that we witnessed above.</p>
 <p>To save this crosstab as in a word file that we can easily pull into various word processors, we can use this code, based on what we did in Section <a href="recoding.html#export-crosstabs">4.7.4</a>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="making-controlled-comparisons.html#cb111-1" tabindex="-1"></a>ctab1men<span class="ot">&lt;-</span><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 </span>
-<span id="cb111-2"><a href="making-controlled-comparisons.html#cb111-2" tabindex="-1"></a>                              <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex<span class="sc">==</span><span class="dv">0</span>)))</span>
-<span id="cb111-3"><a href="making-controlled-comparisons.html#cb111-3" tabindex="-1"></a>ctab1men<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(ctab1men)<span class="sc">%&gt;%</span><span class="fu">rownames_to_column</span>(<span class="st">&quot;income&quot;</span>)</span>
-<span id="cb111-4"><a href="making-controlled-comparisons.html#cb111-4" tabindex="-1"></a><span class="fu">flextable</span>(ctab1men) <span class="sc">%&gt;%</span> <span class="fu">save_as_docx</span>(<span class="at">path=</span><span class="st">&quot;ctab1men.docx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="making-controlled-comparisons.html#cb111-1" tabindex="-1"></a><span class="fu">flextable</span>(men_crosstab) <span class="sc">%&gt;%</span> <span class="fu">save_as_docx</span>(<span class="at">path=</span><span class="st">&quot;men_crosstab.docx&quot;</span>)</span></code></pre></div>
 <p>Now let’s look at women only:</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="making-controlled-comparisons.html#cb112-1" tabindex="-1"></a><span class="co">#women only</span></span>
-<span id="cb112-2"><a href="making-controlled-comparisons.html#cb112-2" tabindex="-1"></a><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">1</span>)))</span></code></pre></div>
-<pre><code>##                       education
-## income                 less than high school high school some college     ba graduate degree
-##   under $9,999                         35.34       17.89         9.25   6.23            4.97
-##   $10,000 to $29,999                   32.33       18.35        17.85   5.93            3.50
-##   $30,000 to $59,999                   16.54       28.90        24.76  17.21            9.39
-##   $60,000 to $99,999                    9.77       19.95        22.32  24.78           21.18
-##   $100,000 to $249,999                  6.02       11.93        22.00  38.13           45.86
-##   $250,000 or more                      0.00        2.98         3.83   7.72           15.10
-##   Total                               100.00      100.00       100.00 100.00          100.00</code></pre>
+<span id="cb112-2"><a href="making-controlled-comparisons.html#cb112-2" tabindex="-1"></a>women_crosstab <span class="ot">&lt;-</span> anes2024 <span class="sc">%&gt;%</span> <span class="co">#name the dataframe that you are using</span></span>
+<span id="cb112-3"><a href="making-controlled-comparisons.html#cb112-3" tabindex="-1"></a>  <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">1</span>)<span class="sc">%&gt;%</span> <span class="co">#only look at men this time</span></span>
+<span id="cb112-4"><a href="making-controlled-comparisons.html#cb112-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(education)) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-5"><a href="making-controlled-comparisons.html#cb112-5" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(income)) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-6"><a href="making-controlled-comparisons.html#cb112-6" tabindex="-1"></a>  <span class="fu">tabyl</span>(income, education) <span class="sc">%&gt;%</span> <span class="co">#put the dependent variable first</span></span>
+<span id="cb112-7"><a href="making-controlled-comparisons.html#cb112-7" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">&quot;col&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb112-8"><a href="making-controlled-comparisons.html#cb112-8" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;col&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb112-9"><a href="making-controlled-comparisons.html#cb112-9" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;row&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb112-10"><a href="making-controlled-comparisons.html#cb112-10" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#round your numbers</span></span>
+<span id="cb112-11"><a href="making-controlled-comparisons.html#cb112-11" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span>
+<span id="cb112-12"><a href="making-controlled-comparisons.html#cb112-12" tabindex="-1"></a>women_crosstab</span></code></pre></div>
+<pre><code>##                income less than high school   high school  some college
+##          under $9,999          35.34%  (47)  17.89%  (78)   9.25%  (87)
+##    $10,000 to $29,999          32.33%  (43)  18.35%  (80)  17.85% (168)
+##    $30,000 to $59,999          16.54%  (22)  28.90% (126)  24.76% (233)
+##    $60,000 to $99,999           9.77%  (13)  19.95%  (87)  22.32% (210)
+##  $100,000 to $249,999           6.02%   (8)  11.93%  (52)  22.00% (207)
+##      $250,000 or more           0.00%   (0)   2.98%  (13)   3.83%  (36)
+##                 Total         100.00% (133) 100.00% (436) 100.00% (941)
+##             ba graduate degree           Total
+##    6.23%  (42)     4.97%  (27)  73.68%   (281)
+##    5.93%  (40)     3.50%  (19)  77.97%   (350)
+##   17.21% (116)     9.39%  (51)  96.80%   (548)
+##   24.78% (167)    21.18% (115)  98.00%   (592)
+##   38.13% (257)    45.86% (249) 123.93%   (773)
+##    7.72%  (52)    15.10%  (82)  29.62%   (183)
+##  100.00% (674)   100.00% (543) 500.00% (2,727)</code></pre>
 <p>Applying the same analysis that we did above, we can see that as women’s education level increases from the lowest to the highest level, the percent of people in the highest income bracket moves from 0% to 15.1%; a total effect size of 15.1% (compared with 20.65% for men). In other words, this data suggests that both men and women are economically rewarded for more education, but that men seem to be rewarded a bit more. If we were to write up these results, at this point we would have to use our own judgment to decide whether the effect size differs enough to call the relationship between education and income controlling for gender an interaction, or whether it makes more sense to call it additive. We can use more advanced statistical tools to make that determination with more rigor, but for now, we will rely on our judgment.</p>
 <p>We can also save this table as a Word document, using the following code:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="making-controlled-comparisons.html#cb114-1" tabindex="-1"></a>ctab1women<span class="ot">&lt;-</span><span class="fu">colPerc</span>(<span class="fu">xtabs</span>(<span class="sc">~</span>income<span class="sc">+</span>education, <span class="at">data=</span>anes2024 </span>
-<span id="cb114-2"><a href="making-controlled-comparisons.html#cb114-2" tabindex="-1"></a>                              <span class="sc">%&gt;%</span> <span class="fu">filter</span>(female<span class="sc">==</span><span class="dv">1</span>)))</span>
-<span id="cb114-3"><a href="making-controlled-comparisons.html#cb114-3" tabindex="-1"></a>ctab1women<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(ctab1women)<span class="sc">%&gt;%</span><span class="fu">rownames_to_column</span>(<span class="st">&quot;income&quot;</span>)</span>
-<span id="cb114-4"><a href="making-controlled-comparisons.html#cb114-4" tabindex="-1"></a><span class="fu">flextable</span>(ctab1women) <span class="sc">%&gt;%</span> <span class="fu">save_as_docx</span>(<span class="at">path=</span><span class="st">&quot;ctab1women.docx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="making-controlled-comparisons.html#cb114-1" tabindex="-1"></a><span class="fu">flextable</span>(women_crosstab) <span class="sc">%&gt;%</span> <span class="fu">save_as_docx</span>(<span class="at">path=</span><span class="st">&quot;women_crosstab.docx&quot;</span>)</span></code></pre></div>
 <p>There is not a single tool to graph relationships between three ordinal or nominal variables in an easy to interpret way. Instead, we can use the filter() command from above to make two graphs, and then use insert table in our word processor to nearly display them side by side.</p>
 <p>Here is the code for the graph for only men (with the line <code>"filter(female==0) %&gt;% #filtering so that we only look at men</code>” added):</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="making-controlled-comparisons.html#cb115-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2024 <span class="sc">%&gt;%</span></span>
