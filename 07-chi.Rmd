@@ -15,12 +15,11 @@ Now, open a new script file and save it in your scripts folder as "chapter \@ref
 library(tidyverse)
 library(Hmisc)        #the cut2 command helps us simplify interval variables
 library(scales)       #this is useful when the labels on our axes overlap
-library(tigerstats)   #colPerc can also be useful with crosstabs 
+library(janitor)      #this helps us make nice crosstabs
 library(DescTools)    #this has tools to calculate Cramer's V, Lambda and Somers' D
 ```
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(DescTools)
-library(tigerstats)
 ```
 Now select all the text on this page, run it, and save it.
 
@@ -50,7 +49,16 @@ addmargins(xtabs(~femLeg3+religion, data=world2025))
 ```
 This crosstab gives us raw numbers, which are interesting to look at. It also foreshadows a potential limitation to our conclusions. Because we only have one predominantly Jewish state (Israel) and two predominantly Hindu states (Nepal and Mauritius) in our sample, we will be attempting to generalize about those two kinds of states from a tiny sample. We  discuss that issue more below. To better interpret this crosstab, we need to look at column percents, which we can do with this command:
 ```{r}
-colPerc(xtabs(~femLeg3+religion, data=world2025))
+crosstab_result <- world2025 %>% #name the dataframe that you are using
+  filter(!is.na(femLeg3)) %>% 
+  filter(!is.na(religion)) %>% 
+  tabyl(femLeg3, religion) %>% #put the dependent variable first
+  adorn_percentages("col") %>%
+  adorn_totals("col") %>%
+  adorn_totals("row") %>%
+  adorn_pct_formatting(digits = 2) %>% #round your numbers
+  adorn_ns()
+crosstab_result
 ```
 Take a look at that table. You can see that there are some pretty noticeable differences in female representation across states with different major religions. For example, the religion with the largest percentage of states with many women in their legislatures is Protestantism, with 53.85%, followed by Roman Catholicism, with 45.1%. To help us visualize these differences, we can generate a stacked bar graph using the technique that we learned in section \@ref(stacked):
 ```{r}
@@ -140,22 +148,18 @@ My theory is that people that believe that America is better than other countrie
 
 We can use the following two commands to generate a crosstab and a table of the columns percentages (notice that I put the dependent variable, armUkraine, first in these commands):
 ```
-xtabs(~armUkraine+natPride, data=anes2024)
-colPerc(xtabs(~armUkraine+natPride, data=anes2024))
+crosstab_result <- anes2024 %>% #name the dataframe that you are using
+  filter(!is.na(armUkraine)) %>% 
+  filter(!is.na(natPride)) %>% 
+  tabyl(armUkraine, natPride) %>% #put the dependent variable first
+  adorn_percentages("col") %>%
+  adorn_totals("col") %>%
+  adorn_totals("row") %>%
+  adorn_pct_formatting(digits = 2) %>% #round your numbers
+  adorn_ns()
+crosstab_result
 ```
-One tip before we move on: R is almost always willing to create an object so that you don't have to keep typing the same things over and over. So, in this case, you can make your crosstab an object called xt like this:
-```{r}
-xt<-xtabs(~armUkraine+natPride, data=anes2024)
-```
-Then, to see what that table looks like, you can run this line of code:
-```{r}
-xt
-```
-After that, to generate the table with column percents, you can go like this:
-```{r}
-colPerc(xt)
-```
-Let's look at the second table, with the percents. The first column in that table tells us that, among those who believe that the US is a lot better than other countries, 30.31% strongly favor military aid to Ukraine, and 14.64% oppose military aide to Ukraine strongly. However, the last column shows us thatm among those to think that the US is a lot worst than other countries, 21.67% strongly favor military aid to Ukraine, and 19.7% oppose. That seems like a piece of evidence for our theory!
+Take a look at the above crosstab. The first column in that table tells us that, among those who believe that the US is a lot better than other countries, 30.31% strongly favor military aid to Ukraine, and 14.64% oppose military aide to Ukraine strongly. However, the last column shows us thatm among those to think that the US is a lot worst than other countries, 21.67% strongly favor military aid to Ukraine, and 19.7% oppose. That seems like a piece of evidence for our theory!
 
 We have a number of choices for how to represent this relationship graphically. Since we generated a bar graph with error bars in of this relationship in section \@ref(t-test-ind-props), for this section let's generate stacked bar graph.
 ```{r}
