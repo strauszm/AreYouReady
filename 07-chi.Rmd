@@ -103,7 +103,7 @@ One way to address the deficiency in chi-squared—that chi-squared is less accu
 PRE statistics produce a value between 0 and 1 or between 0 and |1| (in the case of PRE statistics that let us look at the direction of relationships). These statistics are useful in interpreting both the significance and strength of relationships. A PRE statistic with a value of 0 means that knowing the independent value has no impact on our ability to correctly predict the value of the dependent variable, while a PRE statistic with a value of 1 (or -1, in the case of a negative relationship) means that knowing our independent variable will allow us to perfectly predict the value of our dependent variable (these kinds of perfect relationships do not exist in actual political science). A PRE statistic of .35, for example, tells us that knowing our independent variable improves our ability to guess the dependent variable by a probability of .35 (or 35%) compared with how good our guess would be if we did not know the independent variable.
 
 Here is a general rule of thumb when interpreting PRE-statistics on social science data [this is based on @pollock-edwards, p. 225]: 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 r1<-c("0 and .1","Weak relationship")
 r2<-c("0 and -.1","Weak relationship")
 r3<-c(".1 and .2","Moderate relationship")
@@ -147,7 +147,7 @@ For this example, let's return to the relationship between ideas about whether A
 My theory is that people that believe that America is better than other countries will tend to support military aid to Ukraine, because they will conceive of that kind of aid as a way to spread American values abroad (a democracy fighting off invasion from an autocracy). Before we can do our statistical tests of this theory, we can take a look the data in graphics and crosstabs to see whether the data seems to support our theory. 
 
 We can use the following two commands to generate a crosstab and a table of the columns percentages (notice that I put the dependent variable, armUkraine, first in these commands):
-```
+```{r}
 crosstab_result <- anes2024 %>% #name the dataframe that you are using
   filter(!is.na(armUkraine)) %>% 
   filter(!is.na(natPride)) %>% 
@@ -179,8 +179,7 @@ ggplot(plotting.data, aes(x = natPride, y = freq, fill=armUkraine)) +
   ylab(NULL)
 ```
 
-Notice that the bars are going in the way our theory predicted – people that think America is better than other countries also seem to be more supportive of errors to Ukraine. But are these differences larger than we would expect to see from random sampling error? 
-
+Notice that the bars are going in the way our theory predicted – people that think America is better than other countries also seem to be more supportive of aid to Ukraine. But are these differences larger than we would expect to see from random sampling error? 
 
 First, if you didn't generate the crosstab object before, you can do that now like this:
 
