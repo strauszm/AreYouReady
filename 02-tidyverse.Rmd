@@ -165,7 +165,7 @@ This is a way of displaying dataframes that is unique to the tidyverse called a 
 Notice that the dataframe that had been so large before, with 68 columns, now only has 2 columns. If you want to use that glimpse() command from above to just get summary information about each of our variables, you can use a second pipe (%>%) like this:
 ```
 anes2024 %>% 
-  select(guns, ft_nra) #focusing in on a few variables%>%
+  select(guns, ft_nra)%>% #focusing in on a few variables
   glimpse() #taking a different kind of look at our dataframe
 ```
 ### arrange() in tidyverse

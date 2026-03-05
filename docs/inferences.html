@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Making inferences from sample means | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-30" />
+<meta name="date" content="2026-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -516,7 +516,7 @@ library(flextable)#this makes tables that we can easily export into a word proce
 <span id="cb149-16"><a href="inferences.html#cb149-16" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb149-17"><a href="inferences.html#cb149-17" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb149-18"><a href="inferences.html#cb149-18" tabindex="-1"></a><span class="fu">ylab</span>(<span class="st">&quot;Educational inequality, 2010 (higher</span><span class="sc">\n</span><span class="st">numbers mean more inequality)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-79-1.png" alt="" width="672" /></p>
 <p>Here we can see that, although the differences between some of bars are quite large, some of the error barsoverlap, which means that we can’t rule out the possibility that differences between means are due to random sampling error. Whenever the error bars between two totals overlap, the differences are not statistically significant. So for example, the difference between anocracy and democracy is statistically significant, but the difference between anocracy and autocracy and the difference between autocracy and democracy are not statistically significant.</p>
 </div>
 <div id="caution-about-statistical-significance" class="section level2 hasAnchor" number="6.6">
@@ -591,7 +591,7 @@ library(flextable)#this makes tables that we can easily export into a word proce
 <span id="cb153-18"><a href="inferences.html#cb153-18" tabindex="-1"></a>          <span class="at">subtitle=</span><span class="st">&quot;Error bars represent 95% confidence intervals&quot;</span>)<span class="sc">+</span></span>
 <span id="cb153-19"><a href="inferences.html#cb153-19" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Is America better or worse than most countries?&quot;</span>)<span class="sc">+</span></span>
 <span id="cb153-20"><a href="inferences.html#cb153-20" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion that strongly favor military aid to Ukraine&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-82-1.png" alt="" width="672" /></p>
 <p>This graph shows us that, while some of those differences are not statistically significant, there is clearly a statistically significant differences between views on arming Ukraine from those that think America is a lot better than most other countries compared with those who think that America is a lot worse.</p>
 <p>You might also notice that the confidence interval on the “a lot worse bar” is bigger than the confidence interval on the “a lot better” bar. That is because, if you look at the table that we generated at the beginning of this section, there are 1,277 people in our sample that think that America is a lot better than other countries, but only 406 people that think that America is a lot worse. Because we are basing our estimated proportion on a smaller sample when generating the confidence interval around the “a lot worse” bar, the confidence interval is larger (in other words, smaller samples make us less confident of our estimates, and larger samples make us more confident of our estimates).</p>
 </div>
@@ -604,44 +604,44 @@ library(flextable)#this makes tables that we can easily export into a word proce
 <col width="1%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Command</th>
 <th align="left">Purpose</th>
 <th align="left">Library</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">t.test()</td>
 <td align="left">To calculate a t-test. With a one sample test, you put the variable that we are interested in ~1, and then a comma, and then data=“your dataframe.” For an an independent samples t-test, you put DV~IV in the parenthesis, and then a comma, and then data= “your dataframe”.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">t.test(…, mu=?)</td>
 <td align="left">A t-test of a single sample is testing the hypothesis that the population mean of the variable you are testing is 0. If you want to test another hypothesis (for example, that the average TCU student has a 17 purple shirts), you can set mu to be the number that you are hypothesizing.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">t.test(…, conf.level=?)</td>
 <td align="left">The default confidence interval for a t-test is .95. If you want to set it to something else, you can do it with the conf.level command.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">sum(table())</td>
 <td align="left">This command adds up all of the values in a frequency table. It is useful when calculating proportions.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">prop.test()</td>
 <td align="left">This command calculates a confidence interval around a proportion. You must give R two numbers. The number of your cases with the value that you are interested in, followed by a comma, and then the total number of cases that you have data on for that variable (which you can calculate with sum(table()). For example, if you had a sample with 500 people and 200 said that bagels were their favorite baked good, you would write prop,test(200,500) to get a confidence interval around the proportion of people that like bagels best.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">prop.test(…, p=?)</td>
 <td align="left">The default hypothesis for an estimate of a population proportion is that the proportion is .5 (or 50%). If you want to change that, you can type p=and then the proportion that you are hypothesizing about.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">prop.test(…, conf.level=?)</td>
 <td align="left">The default confidence interval for a test of proportions is .95. If you want to set it to something else, you can do it with the conf.level command.</td>
 <td align="left">Base R</td>

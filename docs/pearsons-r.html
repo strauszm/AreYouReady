@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Pearson’s r and linear regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-30" />
+<meta name="date" content="2026-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -382,7 +382,7 @@ library(modelr)</code></pre>
 <span id="cb197-7"><a href="pearsons-r.html#cb197-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Reagan&#39;s margin in 1980&quot;</span>, </span>
 <span id="cb197-8"><a href="pearsons-r.html#cb197-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Trumps&#39;s margin in 2024&quot;</span>)<span class="sc">+</span></span>
 <span id="cb197-9"><a href="pearsons-r.html#cb197-9" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;The 1980 and 2024 presidential elections in US States&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-106-1.png" alt="" width="672" /></p>
 <p>The neat thing about scatterplots is that they display the values of all of the cases of the two variables that you are interested in for all of your data. So, looking at this graph, we can see dots representing all 50 states as well as Washington D.C.</p>
 <p>We are also able to label our dots. This is something that is possible when you are comparing a relatively small number of units that you are able to identify in a way that makes sense to your readers. Labeling individual dots usually doesn’t make sense with survey data, such as what we find in the ANES dataframe, because there are many thousands of individuals who took that survey, and they took it anonymously (although we might want to color code the dots for additional variables not captured on the X and Y axes).</p>
 <p>The above graph alone tells a pretty clear story about the relationship between our two variables – it is easy to visualize a positive relationship going from the District of Columbia in the bottom left to Wyoming, Idaho, and Utah in the top right. However, what if we wanted to ask R to fit a line to this data? In other words, what if we wanted R to find the line that is closest to all of the points on this graph? To do that, we can add a single line to our code from
@@ -397,7 +397,7 @@ above:</p>
 <span id="cb198-8"><a href="pearsons-r.html#cb198-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Reagan&#39;s margin in 1980&quot;</span>, </span>
 <span id="cb198-9"><a href="pearsons-r.html#cb198-9" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Trumps&#39;s margin in 2024&quot;</span>)<span class="sc">+</span></span>
 <span id="cb198-10"><a href="pearsons-r.html#cb198-10" tabindex="-1"></a><span class="fu">ggtitle</span>(<span class="st">&quot;The 1980 and 2024 presidential elections in US States&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-107-1.png" alt="" width="672" /></p>
 <p>The line on this graph is called a regression line, and it is the line that is as close as possible to all of the dots on this graph. The shaded region around it is a 95% confidence interval. Visualize drawing a line from the top left corner of that region to the bottom right corner. If that line that visualize was horizontal or sloping down, then we could not rule out the possibility that there was no relationship or a negative relationship between the two variables that we are looking at there. But looking at the above graph, even that imaginary line slopes upwards, which is good evidence for our hypothesis.</p>
 </div>
 <div id="bivariate-regression" class="section level2 hasAnchor" number="8.4">
@@ -453,7 +453,7 @@ above:</p>
 <div id="residuals" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Residuals<a href="pearsons-r.html#residuals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s take another look at the scatterplot of the relationship between the 1980 Reagan margin and the 2024 Trump margin:
-<img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<img src="bookdown-demo_files/figure-html/unnamed-chunk-110-1.png" alt="" width="672" /></p>
 <p>If you look at the points in relationship to the regression line, there are some points that seem to be right on the line, such as Rhode Island, some that are pretty significantly above the line, such as West Virginia, and some that are pretty significantly below the line, such as Vermont. Being above the line means that that state’s value on the dependent variable is larger than we would have expected, given the value on the independent variable, and being below the line means that the dependent variable is smaller than expected, given the dependent variable. So, in other words, West Virgina voted for Trump by a bigger margin than we would have predicted given its margin for Reagan (it actually voted against Reagan, and for Carter), and Vermont voted for Trump by a smaller margin than we would have predicted given its margin for Reagan (Vermont voted the opposite way from West Virginia in both elections, voting for Reagan in 1980 and Harris in 2024).</p>
 <p>The difference between the observed and predicted value for a given point in a regression analysis is known as the <em>residual</em>. When the residual is positive, that means that the observed value (the value of the dependent variable that we actually see in our data), is larger than the expected value (the value of the dependent variable that is actually on the regression line).</p>
 <p>R makes it very easy to calculate the residuals for all of our points. We can do that with the following code. This code will generate a version of our states2025 dataframe called model.1.data that has two new variables:</p>
@@ -512,44 +512,44 @@ above:</p>
 <col width="3%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Command</th>
 <th align="left">Purpose</th>
 <th align="left">Library</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">cor.test()</td>
 <td align="left">Generates a Pearson’s R statistic for the relationship between two variables. Variables can be listed in any order and should be written dataframe$variable.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">lm(formula = DV ~ IV, data = DATAFRAME)</td>
 <td align="left">Generates the slope and intercept for a regression line. Replace DV with the dependent variable you are interested in, the IV with the independent variable, and DATAFRAME with the dataframe that you are using.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">summary(lm(…))</td>
 <td align="left">Generates much more data about a regression relationship than the above command. Replace the “…” with the IV, DV, and DATAFRAME the same way that you would with the above command.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">add_predictions</td>
 <td align="left">Adds predictions from regression analysis to a dataset. Must save the regression as an object and put that object in the parenthesis. Follows the dataset after a pipe</td>
 <td align="left">modelr</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">add_residuals</td>
 <td align="left">Adds residuals from regression analysis to a dataset. Must save the regression as an object and put that object in the parenthesis. Follows the dataset after a pipe</td>
 <td align="left">modelr</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">identical()</td>
 <td align="left">Indicates whether two vectors are identical. Put the vectors in the parenthesis, sepeated by a comma</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">abs()</td>
 <td align="left">Calculates the absolute value of a scalar or vector</td>
 <td align="left">Base R</td>

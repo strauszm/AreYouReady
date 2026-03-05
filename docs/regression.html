@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Multiple regression | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-30" />
+<meta name="date" content="2026-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -760,20 +760,20 @@ Let’s take a minute to generate a dummy variable for those who gave the wrong 
 ## -52.125 -19.639   0.361  20.361  56.217 
 ## 
 ## Coefficients:
-##                                      Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)                           49.6386     0.4457 111.381  &lt; 2e-16
-## race.factorAsian or Pacific Islander   2.4864     2.0912   1.189   0.2345
-## race.factorBlack                      -5.8559     1.3554  -4.320 1.59e-05
-## race.factorHispanic                   -2.3463     1.2699  -1.848   0.0647
-## race.factorMultiple races             -1.6096     2.0679  -0.778   0.4364
-## race.factorNative American            -4.5986     5.3152  -0.865   0.3870
-##                                         
-## (Intercept)                          ***
-## race.factorAsian or Pacific Islander    
-## race.factorBlack                     ***
-## race.factorHispanic                  .  
-## race.factorMultiple races               
-## race.factorNative American              
+##                                      Estimate Std. Error t value
+## (Intercept)                           49.6386     0.4457 111.381
+## race.factorAsian or Pacific Islander   2.4864     2.0912   1.189
+## race.factorBlack                      -5.8559     1.3554  -4.320
+## race.factorHispanic                   -2.3463     1.2699  -1.848
+## race.factorMultiple races             -1.6096     2.0679  -0.778
+## race.factorNative American            -4.5986     5.3152  -0.865
+##                                      Pr(&gt;|t|)    
+## (Intercept)                           &lt; 2e-16 ***
+## race.factorAsian or Pacific Islander   0.2345    
+## race.factorBlack                     1.59e-05 ***
+## race.factorHispanic                    0.0647 .  
+## race.factorMultiple races              0.4364    
+## race.factorNative American             0.3870    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -833,7 +833,7 @@ Let’s take a minute to generate a dummy variable for those who gave the wrong 
 <span id="cb239-10"><a href="regression.html#cb239-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&#39;lm&#39;</span>, <span class="at">color=</span><span class="st">&quot;BLACK&quot;</span>)<span class="sc">+</span></span>
 <span id="cb239-11"><a href="regression.html#cb239-11" tabindex="-1"></a>  <span class="co">#make different graphs for every value of a nominal or ordinal variable</span></span>
 <span id="cb239-12"><a href="regression.html#cb239-12" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race.factor)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-135-1.png" alt="" width="672" /></p>
 <p>This graph shows us the relationship between feelings about liberals and feelings about the US Supreme court at all values of our race variable. Notice how much more substantially negative the relationship is among whites than it is among other racial groups.</p>
 </div>
 <div id="review-of-this-chapters-commands-8" class="section level2 hasAnchor" number="9.8">
@@ -845,24 +845,24 @@ Let’s take a minute to generate a dummy variable for those who gave the wrong 
 <col width="5%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Command</th>
 <th align="left">Purpose</th>
 <th align="left">Library</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">stargazer()</td>
 <td align="left">Use this code to generate a beautiful table displaying the results of one or more regressions.</td>
 <td align="left">stargazer</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">as.factor()</td>
 <td align="left">Changes a character variable to a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.</td>
 <td align="left">Base R</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">relevel(, ref=““)</td>
 <td align="left">Changes the reference category of a factor. Necessary when you want to set a different reference category when including a nominal variable in regression analysis.</td>
 <td align="left">Base R</td>

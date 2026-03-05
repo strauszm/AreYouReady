@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Making controlled comparisons | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0</title>
   <meta name="description" content="This is the preface of the workbook" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Making controlled comparisons | Are you ready for R? A Workbook for R for Political Science and Beyond: Version 3.0" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Michael Strausz" />
 
 
-<meta name="date" content="2025-09-30" />
+<meta name="date" content="2026-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -368,7 +368,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb105-14"><a href="making-controlled-comparisons.html#cb105-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Education and income in the 2024 ANES&quot;</span>)<span class="sc">+</span></span>
 <span id="cb105-15"><a href="making-controlled-comparisons.html#cb105-15" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)<span class="sc">+</span></span>
 <span id="cb105-16"><a href="making-controlled-comparisons.html#cb105-16" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-51-1.png" alt="" width="672" /></p>
 <p>One thing to note in this code: it begins by creating a new dataframe called “plotting.data.” When you run it, that dataframe will show up in your RStudio environment. If you run it again with new variables, the new “plotting data” that you make will overwrite the old one.</p>
 <p>If it bothers you having that “plotting.data” object in your environment, you can always remove it with the command <code>rm(plotting.data)</code>.</p>
 <p>Another thing to note: the “scale_fill_viridis_d()+” line of code asks R to use a color palette that is easy to read for people that are colorblind. There are many, many choices of color palette in R, and you are welcome to play around with colors, but it is also fine to just stick to this palette. If you’d rather have a black and white graph, there is code for that in the “Strausz ggplot2 templates” which is in the “rscripts” folder that was in the zipped filed that you should have downloaded in section <a href="getting-started.html#add-files">1.3</a>.</p>
@@ -384,10 +384,10 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb106-5"><a href="making-controlled-comparisons.html#cb106-5" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Approval of governors in US states&quot;</span>)<span class="sc">+</span></span>
 <span id="cb106-6"><a href="making-controlled-comparisons.html#cb106-6" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb106-7"><a href="making-controlled-comparisons.html#cb106-7" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion of state residents</span><span class="sc">\n</span><span class="st">approving of governor&quot;</span>)<span class="co">#the \n forces a second line in the axis title</span></span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-52-1.png" alt="" width="672" /></p>
 <p>A boxplot gives us some interesting information about an interval variable. The bottom of the box is the 1st quartile (25% of cases have that value or lower) and the top of the box represents the 3rd quartile (75% of cases have that value or lower). The horizontal line represents the median value, and the vertical lines coming out of the box extend to the first quartile minus 1.5 multiplied by the interquartile range and the third quartile plus 1.5 multiplied by the interquartile range. If there were any outlier points above or below this line, they would be identified by individual points on the graph. The</p>
 <p>Here is a labeled version of another boxplot for your reference:<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
-<img src="images/comparisons_1_boxplot.png" width="90%" /></p>
+<img src="images/comparisons_1_boxplot.png" alt="" width="90%" /></p>
 <p>So, in other words, we can learn a lot about a variable from a single graph!</p>
 <p>Boxplots are also a useful way to look at the properties of an interval variable across several values of a nominal or ordinal variable, which is what we were doing with our mean comparison table in chapter <a href="recoding.html#recoding">4</a>. Let’s take a graphical look at the relationship between the region that a state is in and approval of the governor. We can set up that kind of graph with the following code:</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="making-controlled-comparisons.html#cb107-1" tabindex="-1"></a><span class="co">#make boxplots of regions and govapproval</span></span>
@@ -396,29 +396,29 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb107-4"><a href="making-controlled-comparisons.html#cb107-4" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Region and gubernatorial approval in US states&quot;</span>)<span class="sc">+</span></span>
 <span id="cb107-5"><a href="making-controlled-comparisons.html#cb107-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Region&quot;</span>)<span class="sc">+</span></span>
 <span id="cb107-6"><a href="making-controlled-comparisons.html#cb107-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Proportion of state residents that</span><span class="sc">\n</span><span class="st">approve of their governor, 2024&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-53-1.png" alt="" width="672" /></p>
 <p>This graph shows us a lot of cool things. We can see that there is less variation among the states in the West than other regions, and that although the West has the lowest median approval the South appears to have the state with the lowest approval overall.</p>
 </div>
 <div id="adding-a-control-to-a-crosstab" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Adding a control to a crosstab<a href="making-controlled-comparisons.html#adding-a-control-to-a-crosstab" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So far, we have learned to look at the relationship between pairs of variables. However, in real social scientific analysis we will often be interested in more than that. We will be interested in other factors that could be the true cause of variation in our dependent variable. If we look at the relationship between our independent and dependent variable at different values of a control variable and there no longer seems to be a relationship, then we can say that the correlation that we observe between our independent and dependent variable is <strong>spurious</strong>. If the relationship between the independent and dependent variable is roughly the same at different values of a control, we call the relationship between the independent and dependent variables, controlling for the third, <strong>additive</strong>. If the relationship between the independent and dependent variables is different at different values of a control, we call that relationship an <strong>interaction</strong>.</p>
 <p>Let’s return to the relationship that we looked at earlier, between education and income. Here is the crosstab that we generated in chapter <a href="recoding.html#recoding">4</a>:</p>
-<pre><code>##                income less than high school   high school    some college
-##          under $9,999          31.64%  (81)  15.09% (137)   7.98%   (131)
-##    $10,000 to $29,999          25.39%  (65)  17.18% (156)  14.56%   (239)
-##    $30,000 to $59,999          22.27%  (57)  29.85% (271)  23.58%   (387)
-##    $60,000 to $99,999          12.89%  (33)  21.04% (191)  23.83%   (391)
-##  $100,000 to $249,999           7.42%  (19)  14.43% (131)  25.78%   (423)
-##      $250,000 or more           0.39%   (1)   2.42%  (22)   4.27%    (70)
-##                 Total         100.00% (256) 100.00% (908) 100.00% (1,641)
-##               ba graduate degree           Total
-##    5.25%    (68)   4.55%    (47)  64.50%   (464)
-##    5.25%    (68)   2.42%    (25)  64.80%   (553)
-##   15.82%   (205)   9.48%    (98) 100.99% (1,018)
-##   22.92%   (297)  18.18%   (188)  98.85% (1,100)
-##   42.28%   (548)  47.20%   (488) 137.11% (1,609)
-##    8.49%   (110)  18.18%   (188)  33.75%   (391)
-##  100.00% (1,296) 100.00% (1,034) 500.00% (5,135)</code></pre>
+<pre><code>##                income less than high school   high school
+##          under $9,999          31.64%  (81)  15.09% (137)
+##    $10,000 to $29,999          25.39%  (65)  17.18% (156)
+##    $30,000 to $59,999          22.27%  (57)  29.85% (271)
+##    $60,000 to $99,999          12.89%  (33)  21.04% (191)
+##  $100,000 to $249,999           7.42%  (19)  14.43% (131)
+##      $250,000 or more           0.39%   (1)   2.42%  (22)
+##                 Total         100.00% (256) 100.00% (908)
+##     some college              ba graduate degree           Total
+##    7.98%   (131)   5.25%    (68)   4.55%    (47)  64.50%   (464)
+##   14.56%   (239)   5.25%    (68)   2.42%    (25)  64.80%   (553)
+##   23.58%   (387)  15.82%   (205)   9.48%    (98) 100.99% (1,018)
+##   23.83%   (391)  22.92%   (297)  18.18%   (188)  98.85% (1,100)
+##   25.78%   (423)  42.28%   (548)  47.20%   (488) 137.11% (1,609)
+##    4.27%    (70)   8.49%   (110)  18.18%   (188)  33.75%   (391)
+##  100.00% (1,641) 100.00% (1,296) 100.00% (1,034) 500.00% (5,135)</code></pre>
 <p>Let’s look at the row representing the people who make $250,000 or more per year. As we move from the lowest level of education to the highest, we can see that the percent of people in the highest income category moves from .39% to 18.18%. We can actually subtract .39 from 18.18 to say that the effect size is roughly 17.79%. In other words, 17.79% more people with the highest degree of education are in the highest income category than are people in the lowest education category.</p>
 <p>Do we think that this result would be roughly the same for men and women? To answer this question, we can use a neat tool that we have actually played with a bit in previous chapters: the “filter” command that is a part of the dplyr package (and thus works with pipes). The ANES dataset has a variable called female, where 0 means “men” and 1 means “women.” Let’s have R make that crosstab again, but only for men, and then again, but only for women. To do that, we can insert the qualifier <code>filter(female==[THE VALUE WE WANT])%&gt;%</code> after we call our data. Like this:</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="making-controlled-comparisons.html#cb109-1" tabindex="-1"></a><span class="co">#men only</span></span>
@@ -433,22 +433,22 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb109-10"><a href="making-controlled-comparisons.html#cb109-10" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#round your numbers</span></span>
 <span id="cb109-11"><a href="making-controlled-comparisons.html#cb109-11" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span>
 <span id="cb109-12"><a href="making-controlled-comparisons.html#cb109-12" tabindex="-1"></a>men_crosstab</span></code></pre></div>
-<pre><code>##                income less than high school   high school  some college
-##          under $9,999          27.05%  (33)  12.31%  (58)   6.29%  (44)
-##    $10,000 to $29,999          18.03%  (22)  16.14%  (76)  10.16%  (71)
-##    $30,000 to $59,999          28.69%  (35)  30.79% (145)  22.03% (154)
-##    $60,000 to $99,999          16.39%  (20)  22.08% (104)  25.89% (181)
-##  $100,000 to $249,999           9.02%  (11)  16.77%  (79)  30.76% (215)
-##      $250,000 or more           0.82%   (1)   1.91%   (9)   4.86%  (34)
-##                 Total         100.00% (122) 100.00% (471) 100.00% (699)
-##             ba graduate degree           Total
-##    4.19%  (26)     4.09%  (20)  53.94%   (181)
-##    4.35%  (27)     1.23%   (6)  49.91%   (202)
-##   14.35%  (89)     9.41%  (46) 105.27%   (469)
-##   20.81% (129)    14.93%  (73) 100.10%   (507)
-##   46.94% (291)    48.88% (239) 152.36%   (835)
-##    9.35%  (58)    21.47% (105)  38.42%   (207)
-##  100.00% (620)   100.00% (489) 500.00% (2,401)</code></pre>
+<pre><code>##                income less than high school   high school
+##          under $9,999          27.05%  (33)  12.31%  (58)
+##    $10,000 to $29,999          18.03%  (22)  16.14%  (76)
+##    $30,000 to $59,999          28.69%  (35)  30.79% (145)
+##    $60,000 to $99,999          16.39%  (20)  22.08% (104)
+##  $100,000 to $249,999           9.02%  (11)  16.77%  (79)
+##      $250,000 or more           0.82%   (1)   1.91%   (9)
+##                 Total         100.00% (122) 100.00% (471)
+##   some college            ba graduate degree           Total
+##    6.29%  (44)   4.19%  (26)     4.09%  (20)  53.94%   (181)
+##   10.16%  (71)   4.35%  (27)     1.23%   (6)  49.91%   (202)
+##   22.03% (154)  14.35%  (89)     9.41%  (46) 105.27%   (469)
+##   25.89% (181)  20.81% (129)    14.93%  (73) 100.10%   (507)
+##   30.76% (215)  46.94% (291)    48.88% (239) 152.36%   (835)
+##    4.86%  (34)   9.35%  (58)    21.47% (105)  38.42%   (207)
+##  100.00% (699) 100.00% (620)   100.00% (489) 500.00% (2,401)</code></pre>
 <p><strong>A quick note</strong>: if we wanted to use filter with a variable whose values are defined by text, such as our income variable, we must put the text in quotation marks. Here, we do not have to use quotation marks because female is defined numerically.</p>
 <p>If we do the same comparison that we did above, we can see that as men more from the lowest to the highest education category, the percent in the highest income category increases from .82% to 21.47%. The total effect size is about 20.65%, which is a bit higher than the 17.79% overall effect size that we witnessed above.</p>
 <p>To save this crosstab as in a word file that we can easily pull into various word processors, we can use this code, based on what we did in Section <a href="recoding.html#export-crosstabs">4.7.4</a>.</p>
@@ -466,22 +466,22 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb112-10"><a href="making-controlled-comparisons.html#cb112-10" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co">#round your numbers</span></span>
 <span id="cb112-11"><a href="making-controlled-comparisons.html#cb112-11" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()</span>
 <span id="cb112-12"><a href="making-controlled-comparisons.html#cb112-12" tabindex="-1"></a>women_crosstab</span></code></pre></div>
-<pre><code>##                income less than high school   high school  some college
-##          under $9,999          35.34%  (47)  17.89%  (78)   9.25%  (87)
-##    $10,000 to $29,999          32.33%  (43)  18.35%  (80)  17.85% (168)
-##    $30,000 to $59,999          16.54%  (22)  28.90% (126)  24.76% (233)
-##    $60,000 to $99,999           9.77%  (13)  19.95%  (87)  22.32% (210)
-##  $100,000 to $249,999           6.02%   (8)  11.93%  (52)  22.00% (207)
-##      $250,000 or more           0.00%   (0)   2.98%  (13)   3.83%  (36)
-##                 Total         100.00% (133) 100.00% (436) 100.00% (941)
-##             ba graduate degree           Total
-##    6.23%  (42)     4.97%  (27)  73.68%   (281)
-##    5.93%  (40)     3.50%  (19)  77.97%   (350)
-##   17.21% (116)     9.39%  (51)  96.80%   (548)
-##   24.78% (167)    21.18% (115)  98.00%   (592)
-##   38.13% (257)    45.86% (249) 123.93%   (773)
-##    7.72%  (52)    15.10%  (82)  29.62%   (183)
-##  100.00% (674)   100.00% (543) 500.00% (2,727)</code></pre>
+<pre><code>##                income less than high school   high school
+##          under $9,999          35.34%  (47)  17.89%  (78)
+##    $10,000 to $29,999          32.33%  (43)  18.35%  (80)
+##    $30,000 to $59,999          16.54%  (22)  28.90% (126)
+##    $60,000 to $99,999           9.77%  (13)  19.95%  (87)
+##  $100,000 to $249,999           6.02%   (8)  11.93%  (52)
+##      $250,000 or more           0.00%   (0)   2.98%  (13)
+##                 Total         100.00% (133) 100.00% (436)
+##   some college            ba graduate degree           Total
+##    9.25%  (87)   6.23%  (42)     4.97%  (27)  73.68%   (281)
+##   17.85% (168)   5.93%  (40)     3.50%  (19)  77.97%   (350)
+##   24.76% (233)  17.21% (116)     9.39%  (51)  96.80%   (548)
+##   22.32% (210)  24.78% (167)    21.18% (115)  98.00%   (592)
+##   22.00% (207)  38.13% (257)    45.86% (249) 123.93%   (773)
+##    3.83%  (36)   7.72%  (52)    15.10%  (82)  29.62%   (183)
+##  100.00% (941) 100.00% (674)   100.00% (543) 500.00% (2,727)</code></pre>
 <p>Applying the same analysis that we did above, we can see that as women’s education level increases from the lowest to the highest level, the percent of people in the highest income bracket moves from 0% to 15.1%; a total effect size of 15.1% (compared with 20.65% for men). In other words, this data suggests that both men and women are economically rewarded for more education, but that men seem to be rewarded a bit more. If we were to write up these results, at this point we would have to use our own judgment to decide whether the effect size differs enough to call the relationship between education and income controlling for gender an interaction, or whether it makes more sense to call it additive. We can use more advanced statistical tools to make that determination with more rigor, but for now, we will rely on our judgment.</p>
 <p>We can also save this table as a Word document, using the following code:</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="making-controlled-comparisons.html#cb114-1" tabindex="-1"></a><span class="fu">flextable</span>(women_crosstab) <span class="sc">%&gt;%</span> <span class="fu">save_as_docx</span>(<span class="at">path=</span><span class="st">&quot;women_crosstab.docx&quot;</span>)</span></code></pre></div>
@@ -501,7 +501,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb115-12"><a href="making-controlled-comparisons.html#cb115-12" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Education and income for men in the 2024 ANES&quot;</span>)<span class="sc">+</span></span>
 <span id="cb115-13"><a href="making-controlled-comparisons.html#cb115-13" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)<span class="sc">+</span></span>
 <span id="cb115-14"><a href="making-controlled-comparisons.html#cb115-14" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-59-1.png" alt="" width="672" /></p>
 <p>And here is the code for the graph for only women:</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="making-controlled-comparisons.html#cb116-1" tabindex="-1"></a>plotting.data<span class="ot">&lt;-</span>anes2024 <span class="sc">%&gt;%</span></span>
 <span id="cb116-2"><a href="making-controlled-comparisons.html#cb116-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(income)<span class="sc">&amp;!</span><span class="fu">is.na</span>(education)) <span class="sc">%&gt;%</span> </span>
@@ -517,7 +517,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb116-12"><a href="making-controlled-comparisons.html#cb116-12" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Education and income for women in the 2024 ANES&quot;</span>)<span class="sc">+</span></span>
 <span id="cb116-13"><a href="making-controlled-comparisons.html#cb116-13" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>)<span class="sc">+</span></span>
 <span id="cb116-14"><a href="making-controlled-comparisons.html#cb116-14" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-1.png" alt="" width="672" /></p>
 </div>
 <div id="adding-a-control-to-a-mean-comparison-table" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Adding a control to a mean comparison table<a href="making-controlled-comparisons.html#adding-a-control-to-a-mean-comparison-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -545,7 +545,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb120-4"><a href="making-controlled-comparisons.html#cb120-4" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;ANES 2024, Feelings about police by NCIS viewership&quot;</span>)<span class="sc">+</span></span>
 <span id="cb120-5"><a href="making-controlled-comparisons.html#cb120-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span> <span class="co">#I use null here because the value labels for my NCIS variable explain what is going on to readers, so an additional axis label is not necessary</span></span>
 <span id="cb120-6"><a href="making-controlled-comparisons.html#cb120-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Feelings about police</span><span class="sc">\n</span><span class="st">(100 is warm and 0 is cold)&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-63-1.png" alt="" width="672" /></p>
 <p>This graph shows us that the feeling thermometer scores for the police seem to have ranged from 0 to 100 for both NCIS viewers and non-viewers. However, the median score for non-NCIS watchers appears to be right around the first quartile for NCIS watchers. This graph does suggest that, overall, NCIS watchers seem to like the police more than non-watchers.</p>
 <p>When doing this analysis, I wondered whether what is really going might have to do with ideology. Maybe conservatives are more likely to both watch NCIS and like the police than are liberals. To test this hypothesis, I took a look at the ideology3 variable that I generated in section <a href="recoding.html#recode-nom">4.2</a>.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p>Now let’s add our control variable to our mean comparison table. It is easier to add a control variable into a mean comparison table than it was to add a control variable into our cross tab. To do so, we can use the following code:</p>
@@ -584,7 +584,7 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <span id="cb124-5"><a href="making-controlled-comparisons.html#cb124-5" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>)<span class="sc">+</span></span>
 <span id="cb124-6"><a href="making-controlled-comparisons.html#cb124-6" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Feelings about the police</span><span class="sc">\n</span><span class="st">(100 is warm and 0 is cold)&quot;</span>)<span class="sc">+</span></span>
 <span id="cb124-7"><a href="making-controlled-comparisons.html#cb124-7" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">&quot;NCIS&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-66-1.png" alt="" width="672" /></p>
 <p>This boxplot clearly shows how the relationship between NCIS viewership and feelings about the police is stronger for liberals than it was for conservatives. This is a really nice example of an interaction, and it suggests that NCIS viewership may have had different meanings for liberals, moderates, and conservatives.</p>
 </div>
 <div id="review-of-this-chapters-commands-4" class="section level2 hasAnchor" number="5.6">
@@ -596,14 +596,14 @@ library(flextable)  #this makes tables that we can easily export into a word pro
 <col width="7%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">Command</th>
 <th align="left">Purpose</th>
 <th align="left">Library</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">filter(VARIABLE==VALUE) %&gt;%</td>
 <td align="left">A way to filter out cases that you are not interested in. If the value you are interested in is coded as text (as is the case with our nominal and ordinal variables), be sure to put it in quotation marks.</td>
 <td align="left">dplyr (tidyverse)</td>
